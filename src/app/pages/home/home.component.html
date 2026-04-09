@@ -1,0 +1,304 @@
+<div class="home-wrapper">
+
+  <!-- Loading overlay -->
+  <div class="loading-overlay" *ngIf="!cargado && !errorCarga()">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Error state -->
+  <div class="error-overlay" *ngIf="errorCarga()">
+    <span class="error-icon">⚡</span>
+    <p>No se pudo conectar al servidor.<br/>Comprueba tu conexión e intenta de nuevo.</p>
+    <button class="btn-retry" [disabled]="isRefreshing()" (click)="refrescar()">
+      <svg *ngIf="!isRefreshing()" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+      </svg>
+      <span *ngIf="isRefreshing()" class="btn-spinner" aria-hidden="true"></span>
+      {{ isRefreshing() ? 'Cargando...' : 'Reintentar' }}
+    </button>
+  </div>
+
+  <!-- Header -->
+  <header class="home-header">
+    <div class="header-brand">
+      <span class="brand-dot"></span>
+      <h1>PalabrApp</h1>
+    </div>
+    <div class="header-meta">
+      <span class="badge-count">{{ cantPalabras }}</span>
+      <span class="badge-label">conceptos</span>
+    </div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button type="button" class="search-btn" (click)="irABuscar()">
+      <svg class="search-btn-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="11" cy="11" r="6.5" />
+        <line x1="16" y1="16" x2="21" y2="21" />
+      </svg>
+      Buscar concepto...
+    </button>
+    <button class="btn-orden" (click)="ciclarOrden()" [attr.data-orden]="orden()">
+      {{ orden() }}
+    </button>
+  </div>
+
+  <!-- Refresh bar -->
+  <div class="refresh-bar" *ngIf="isRefreshing()">
+    <div class="refresh-progress"></div>
+  </div>
+
+  <!-- Lista -->
+  <main class="lista-scroll">
+    <ul class="lista-palabras" *ngIf="cargado">
+      <li
+        *ngFor="let p of palabrasOrdenadas(); trackBy: trackById; let i = index"
+        class="item-palabra"
+        [style.animation-delay]="(i * 25) + 'ms'"
+      >
+        <button type="button" class="item-action" (click)="verPalabra(p)">
+          <span class="concepto-text">{{ p.concepto }}</span>
+          <svg class="item-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </button>
+      </li>
+    </ul>
+
+    <div class="empty-state" *ngIf="cargado && palabrasOrdenadas().length === 0">
+      <p>Aún no hay conceptos.<br/>¡Sé el primero en agregar uno!</p>
+    </div>
+  </main>
+
+  <!-- FABs -->
+  <div class="fabs">
+    <button class="fab fab-trivia" [disabled]="cargandoInicioJuego()" (click)="iniciarJuegoDirecto()" title="Juego de trivia" *ngIf="!juegoActivo()">
+      <svg *ngIf="!cargandoInicioJuego()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="1"/>
+        <circle cx="8" cy="8" r="1.5" fill="currentColor"/>
+        <circle cx="12" cy="16" r="1.5" fill="currentColor"/>
+        <circle cx="16" cy="8" r="1.5" fill="currentColor"/>
+      </svg>
+      <span *ngIf="cargandoInicioJuego()" class="btn-spinner" aria-hidden="true"></span>
+    </button>
+    <button class="fab fab-refresh" [disabled]="isRefreshing()" (click)="refrescar()" title="Recargar">
+      <svg *ngIf="!isRefreshing()" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+      </svg>
+      <span *ngIf="isRefreshing()" class="btn-spinner" aria-hidden="true"></span>
+    </button>
+    <button class="fab fab-add" (click)="nuevaPalabra()" title="Agregar concepto">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+      </svg>
+    </button>
+  </div>
+
+</div>
+
+<!-- Popup invitacion juego -->
+<div class="game-modal-overlay" *ngIf="mostrarInvitacionJuego()" (click)="cerrarInvitacionJuego()">
+  <div class="game-modal" (click)="$event.stopPropagation()">
+    <h3>¡Gracias por usar PalabrApp!</h3>
+    <p>Antes de consultar el listado, ¿quieres jugar?</p>
+    <div class="game-actions">
+      <button type="button" class="btn-secondary" [disabled]="cargandoAceptarInvitacion()" (click)="cerrarInvitacionJuego()">Ahora no</button>
+      <button type="button" class="btn-primary" [disabled]="cargandoAceptarInvitacion()" (click)="aceptarInvitacionJuego()">
+        <span *ngIf="cargandoAceptarInvitacion()" class="btn-spinner" aria-hidden="true"></span>
+        {{ cargandoAceptarInvitacion() ? 'Cargando juego...' : 'Aceptar' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup juego -->
+<div
+  class="game-modal-overlay"
+  [ngClass]="{ 'crossword-mode': tipoJuego() === 'crucigrama', 'sopa-mode': tipoJuego() === 'sopa' }"
+  *ngIf="juegoActivo()"
+  (click)="cerrarJuego()"
+>
+  <!-- Celebración de confetti -->
+  <div class="celebration" *ngIf="mostrarCelebracion()">
+    <div class="confetti" *ngFor="let i of [0,1,2,3,4,5,6,7,8,9]" [style.left]="(Math.random() * 100) + '%'"></div>
+  </div>
+
+  <div class="game-modal" [ngClass]="{ 'crossword-modal': tipoJuego() === 'crucigrama', 'sopa-modal': tipoJuego() === 'sopa' }" (click)="$event.stopPropagation()">
+    <!-- TRIVIA: Adivina el significado -->
+    <ng-container *ngIf="tipoJuego() === 'trivia'">
+      <h3>¡Adivina el significado!</h3>
+
+      <p class="game-loading" *ngIf="juegoCargando()">Preparando reto...</p>
+
+      <ng-container *ngIf="!juegoCargando() && triviaService.conceptoJuego()">
+        <p class="game-concepto">Concepto: <strong>{{ triviaService.conceptoJuego() }}</strong></p>
+
+        <div class="game-options">
+          <button
+            type="button"
+            class="game-option"
+            *ngFor="let opcion of triviaService.opcionesJuego(); let i = index"
+            [ngClass]="claseOpcion(i)"
+            [disabled]="triviaService.indiceSeleccionado() !== null"
+            (click)="resolverOpcion(i)"
+          >
+            {{ opcion }}
+          </button>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- AHORCADO: Adivina la palabra -->
+    <ng-container *ngIf="tipoJuego() === 'ahorcado'">
+      <h3>¡Adivina la palabra!</h3>
+
+      <p class="game-loading" *ngIf="juegoCargando()">Preparando reto...</p>
+
+      <ng-container *ngIf="!juegoCargando() && ahorcadoService.palabraAhorcado()">
+        <p class="game-significado">Pista: {{ ahorcadoService.significadoAhorcado() }}</p>
+        <p class="hangman-word">{{ ahorcadoService.palabraMostrada() }}</p>
+        <p class="hangman-intentos">Intentos restantes: <strong>{{ ahorcadoService.intentosRestantes() }}</strong></p>
+
+        <div class="hangman-letters">
+          <button
+            type="button"
+            class="hangman-letter-btn"
+            *ngFor="let letra of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')"
+            [disabled]="
+              ahorcadoService.letrasAdivinadas().includes(letra) ||
+              ahorcadoService.letrasIncorrectas().includes(letra) ||
+              ahorcadoService.juegoAhorcadoGanado() !== null
+            "
+            [ngClass]="{
+              'adivinada': ahorcadoService.letrasAdivinadas().includes(letra),
+              'incorrecta': ahorcadoService.letrasIncorrectas().includes(letra)
+            }"
+            (click)="adivinarLetraAhorcado(letra)"
+          >
+            {{ letra }}
+          </button>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- CRUCIGRAMA: Completa las celdas -->
+    <ng-container *ngIf="tipoJuego() === 'crucigrama'">
+      <h3>¡Completa el crucigrama!</h3>
+
+      <p class="game-loading" *ngIf="juegoCargando()">Generando tablero...</p>
+
+      <ng-container *ngIf="!juegoCargando() && crucigramaService.crucigramaGrid().length">
+        <div class="crossword-grid" [ngClass]="{ 'is-solved': crucigramaService.crucigramaResuelto() === true }" role="grid" aria-label="Crucigrama">
+          <div class="crossword-row" *ngFor="let fila of crucigramaService.crucigramaGrid()" role="row">
+            <div
+              class="crossword-cell"
+              *ngFor="let celda of fila"
+              [ngClass]="{ 'blocked': celda.bloqueada }"
+              role="gridcell"
+            >
+              <ng-container *ngIf="!celda.bloqueada">
+                <span class="crossword-number" *ngIf="celda.numero">{{ celda.numero }}</span>
+                <ng-container *ngIf="celda.fijaDesdeInicio">
+                  <span class="crossword-fixed">{{ celda.letra }}</span>
+                </ng-container>
+                <ng-container *ngIf="!celda.fijaDesdeInicio">
+                  <input
+                    class="crossword-input"
+                    type="text"
+                    maxlength="1"
+                    [attr.data-cell-key]="celda.key"
+                    [value]="valorCeldaCrucigrama(celda.key)"
+                    [disabled]="crucigramaService.crucigramaResuelto() === true"
+                    (focus)="onFocusCeldaCrucigrama(celda.key, $event)"
+                    (input)="actualizarCeldaCrucigrama(celda.key, $any($event.target).value)"
+                  />
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <div class="crossword-clues">
+          <div class="crossword-clue-group">
+            <h4>Horizontales</h4>
+            <p *ngFor="let p of crucigramaService.crucigramaPistasHorizontales()"><strong>{{ p.numero }}.</strong> {{ p.pista }}</p>
+          </div>
+          <div class="crossword-clue-group">
+            <h4>Verticales</h4>
+            <p *ngFor="let p of crucigramaService.crucigramaPistasVerticales()"><strong>{{ p.numero }}.</strong> {{ p.pista }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- SOPA DE LETRAS: Encuentra palabras -->
+    <ng-container *ngIf="tipoJuego() === 'sopa'">
+      <h3>¡Sopa de letras!</h3>
+
+      <p class="game-loading" *ngIf="juegoCargando()">Generando sopa...</p>
+
+      <ng-container *ngIf="!juegoCargando() && sopaService.sopaGrid().length">
+        <div class="sopa-grid" role="grid" aria-label="Sopa de letras" (pointermove)="onSopaPointerMove($event)">
+          <div class="sopa-row" *ngFor="let fila of sopaService.sopaGrid()" role="row">
+            <button
+              type="button"
+              class="sopa-cell"
+              *ngFor="let celda of fila"
+              [attr.data-fila]="celda.fila"
+              [attr.data-columna]="celda.columna"
+              [ngClass]="{
+                'is-selected': esCeldaSopaSeleccionada(celda.key),
+                'is-found': esCeldaSopaEncontrada(celda.key),
+                'is-invalid': esCeldaSopaInvalida(celda.key),
+                'is-start': sopaService.sopaSeleccionInicio()?.f === celda.fila && sopaService.sopaSeleccionInicio()?.c === celda.columna
+              }"
+              (pointerdown)="iniciarArrastreSopa(celda.fila, celda.columna)"
+              (pointerenter)="actualizarArrastreSopa(celda.fila, celda.columna)"
+              (pointerup)="finalizarArrastreSopa()"
+              (pointercancel)="cancelarArrastreSopa()"
+              (click)="onClickCeldaSopa(celda.fila, celda.columna)"
+            >
+              {{ celda.letra }}
+            </button>
+          </div>
+        </div>
+
+        <div class="sopa-words">
+          <button
+            type="button"
+            class="sopa-word"
+            *ngFor="let p of sopaService.sopaPalabras()"
+            [ngClass]="{ 'found': palabraSopaEncontrada(p.id), 'selected': palabraSopaSeleccionada(p.id) }"
+            (click)="seleccionarPalabraSopa(p.id)"
+          >
+            {{ p.texto }}
+          </button>
+        </div>
+
+        <p class="sopa-significado" *ngIf="significadoSopaSeleccionado()">
+          {{ significadoSopaSeleccionado() }}
+        </p>
+      </ng-container>
+    </ng-container>
+
+    <p class="game-feedback" *ngIf="mensajeJuego()">{{ mensajeJuego() }}</p>
+
+    <div class="game-actions" [ngClass]="{ 'crossword-actions': tipoJuego() === 'crucigrama', 'sopa-actions': tipoJuego() === 'sopa' }">
+      <button
+        type="button"
+        class="btn-secondary btn-revisar"
+        *ngIf="tipoJuego() === 'crucigrama' && !juegoCargando()"
+        (click)="revisarCrucigrama()"
+      >
+        Revisar
+      </button>
+      <button type="button" class="btn-secondary btn-close" (click)="cerrarJuego()">Cerrar</button>
+      <button type="button" class="btn-primary" *ngIf="!juegoCargando()" [disabled]="cargandoOtroJuego()" (click)="jugarOtra()">
+        <span *ngIf="cargandoOtroJuego()" class="btn-spinner" aria-hidden="true"></span>
+        {{ cargandoOtroJuego() ? 'Cargando...' : 'Siguiente juego' }}
+      </button>
+    </div>
+  </div>
+</div>

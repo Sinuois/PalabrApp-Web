@@ -1,0 +1,149 @@
+<div class="palabra-wrapper"
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)">
+
+  <!-- Loading -->
+  <div class="loading-center" *ngIf="cargando() || guardando()">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Concurrent delete notice -->
+  <div class="deleted-notice" *ngIf="!cargando() && !guardando() && conceptoEliminado()">
+    <span class="deleted-icon">⚠</span>
+    <h2>Concepto no disponible</h2>
+    <p>Este concepto fue eliminado recientemente por otro usuario.</p>
+  </div>
+
+  <!-- -- View mode --------------------------------------------- -->
+  <ng-container *ngIf="!cargando() && !guardando() && modo === 'view' && palabra()">
+    <div class="nav-row">
+      <button class="btn-back" (click)="volver()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>
+        Volver
+      </button>
+      <div class="swipe-nav">
+        <button class="swipe-btn" [disabled]="!anterior()" (click)="irAnterior()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+          </svg>
+        </button>
+        <span class="swipe-hint">{{ indiceActual() + 1 }} / {{ palabrasService.cantPalabras() }}</span>
+        <button class="swipe-btn" [disabled]="!siguiente()" (click)="irSiguiente()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <span class="view-tag">concepto</span>
+    <h1 class="view-concepto">{{ palabra()!.concepto }}</h1>
+    <div class="view-divider"></div>
+    <p class="view-significado">{{ palabra()!.significado }}</p>
+
+    <div class="view-actions">
+      <button class="btn-secondary" (click)="activarEdicion()">Editar</button>
+      <button class="btn-danger" (click)="pedirEliminar()">Eliminar</button>
+    </div>
+  </ng-container>
+
+  <!-- -- Edit mode --------------------------------------------- -->
+  <ng-container *ngIf="!cargando() && !guardando() && modo === 'edit'">
+    <button class="btn-back" (click)="cancelarEdicion()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+      </svg>
+      Cancelar
+    </button>
+
+    <p class="form-title">Editar significado</p>
+    <label class="form-label">concepto</label>
+    <input
+      class="form-input"
+      type="text"
+      [value]="palabra()?.concepto ?? ''"
+      disabled
+    />
+
+    <label class="form-label">significado</label>
+    <textarea
+      class="form-textarea"
+      [(ngModel)]="significado"
+      [disabled]="guardando()"
+      placeholder="Definicion del concepto..."
+    ></textarea>
+
+    <div class="error-msg" *ngIf="error()">{{ error() }}</div>
+
+    <button class="btn-primary" (click)="guardarEdicion()" [disabled]="guardando() || !significado.trim()">
+      <div class="mini-spinner" *ngIf="guardando()"></div>
+      {{ guardando() ? 'Guardando...' : 'Guardar cambios' }}
+    </button>
+  </ng-container>
+
+  <!-- -- Nueva mode -------------------------------------------- -->
+  <ng-container *ngIf="!cargando() && !guardando() && modo === 'nueva'">
+    <button class="btn-back" (click)="volver()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+      </svg>
+      Volver
+    </button>
+
+    <p class="form-title">Nuevo concepto</p>
+
+    <label class="form-label">concepto</label>
+    <input
+      class="form-input"
+      type="text"
+      [(ngModel)]="concepto"
+      placeholder="Ej. Conspicuo"
+      [disabled]="guardando()"
+      (keyup.enter)="autocompletarDefinicion()"
+      autofocus
+    />
+
+    <button
+      class="btn-autocomplete"
+      (click)="autocompletarDefinicion()"
+      [disabled]="buscandoRAE() || !concepto.trim() || guardando()"
+    >
+      <div class="mini-spinner" *ngIf="buscandoRAE()"></div>
+      {{ buscandoRAE() ? 'Buscando...' : 'Autocompletar significado' }}
+    </button>
+
+    <label class="form-label">significado</label>
+    <textarea
+      class="form-textarea"
+      [(ngModel)]="significado"
+      placeholder="Definicion del concepto..."
+      [disabled]="guardando()"
+    ></textarea>
+
+    <div class="error-msg" *ngIf="error()">{{ error() }}</div>
+
+    <button
+      class="btn-primary"
+      (click)="guardar()"
+      [disabled]="guardando() || !concepto.trim() || !significado.trim()"
+    >
+      <div class="mini-spinner" *ngIf="guardando()"></div>
+      {{ guardando() ? 'Guardando...' : 'Agregar concepto' }}
+    </button>
+  </ng-container>
+
+</div>
+
+<!-- ── Modal de confirmación ──────────────────────────────────────────── -->
+<div class="modal-faux-viewport" *ngIf="mostrarModal()" (click)="cancelarEliminar()">
+  <div class="modal-box" (click)="$event.stopPropagation()">
+    <h3>Eliminar concepto</h3>
+    <p>¿Estás seguro de que querés eliminar <strong>"{{ palabra()?.concepto }}"</strong>?<br/>Esta acción no se puede deshacer.</p>
+    <div class="modal-actions">
+      <button class="btn-secondary" (click)="cancelarEliminar()">Cancelar</button>
+      <button class="btn-danger" (click)="confirmarEliminar()">Sí, eliminar</button>
+    </div>
+  </div>
+</div>

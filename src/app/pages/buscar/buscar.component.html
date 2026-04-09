@@ -1,0 +1,47 @@
+<div class="buscar-wrapper">
+
+  <div class="search-bar">
+      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="11" cy="11" r="6.5" />
+      <line x1="16" y1="16" x2="21" y2="21" />
+    </svg>
+    <input
+      class="search-input"
+      type="text"
+      placeholder="Buscar concepto o significado..."
+      [value]="termino()"
+      (input)="onInput($event)"
+      autocomplete="off"
+      autocapitalize="none"
+      autocorrect="off"
+      spellcheck="false"
+      inputmode="search"
+      enterkeyhint="search"
+    />
+    <button class="clear-btn" *ngIf="termino()" (click)="buscar('')">✕</button>
+  </div>
+
+  <ul class="resultados-lista" *ngIf="resultados().length > 0">
+    <li
+      class="resultado-item"
+      *ngFor="let p of resultados(); trackBy: trackById; let i = index"
+      [style.animation-delay]="(i * 35) + 'ms'"
+    >
+      <button type="button" class="resultado-action" (click)="verPalabra(p)">
+        <span class="res-concepto">{{ p.concepto }}</span>
+        <span class="res-significado">{{ p.significado }}</span>
+      </button>
+    </li>
+  </ul>
+
+  <div class="empty-search" *ngIf="termino() && resultados().length === 0">
+    <span class="empty-icon">🔍</span>
+    <p>Sin resultados para <strong>"{{ termino() }}"</strong></p>
+  </div>
+
+  <div class="initial-hint" *ngIf="!termino()">
+    <div class="hint-count">{{ palabrasService.cantPalabras() }}</div>
+    <p>conceptos disponibles<br/>para buscar</p>
+  </div>
+
+</div>

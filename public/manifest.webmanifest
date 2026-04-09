@@ -1,0 +1,17 @@
+{
+  "name": "PalabrApp",
+  "short_name": "PalabrApp",
+  "description": "La aplicación definitiva para ampliar el vocabulario.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d14",
+  "theme_color": "#0d0d14",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
