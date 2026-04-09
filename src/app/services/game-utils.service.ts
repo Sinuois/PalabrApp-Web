@@ -2,27 +2,29 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class GameUtilsService {
-  normalizarLetra(letra: string): string {
-    return letra
+  private removerDiacriticosPreservandoEnye(texto: string): string {
+    return texto
       .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/N\u0303/g, 'Ñ')
+      .replace(/n\u0303/g, 'ñ')
+      .replace(/[\u0300-\u036f]/g, '');
+  }
+
+  normalizarLetra(letra: string): string {
+    return this.removerDiacriticosPreservandoEnye(letra)
       .toUpperCase();
   }
 
   normalizarParaComparar(texto: string): string {
-    return texto
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
+    return this.removerDiacriticosPreservandoEnye(texto)
       .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, ' ')
+      .replace(/[^a-z0-9ñ\s]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
   }
 
   normalizarPalabraSopa(valor: string): string {
-    return valor
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
+    return this.removerDiacriticosPreservandoEnye(valor)
       .toUpperCase()
       .replace(/[^A-ZÑ]/g, '');
   }

@@ -14,10 +14,16 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should render the bottom navigation', async () => {
     const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
     await fixture.whenStable();
+
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, palabrapp-web');
+    const labels = Array.from(compiled.querySelectorAll('.tab-label')).map(element => element.textContent?.trim());
+
+    expect(compiled.querySelector('app-tab-nav')).toBeTruthy();
+    expect(labels).toContain('Listado');
+    expect(labels).toContain('Búsqueda');
   });
 });
