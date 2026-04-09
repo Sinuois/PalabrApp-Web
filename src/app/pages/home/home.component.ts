@@ -113,13 +113,19 @@ export class HomeComponent implements OnInit {
     if (this.cargandoAceptarInvitacion()) return;
 
     this.cargandoAceptarInvitacion.set(true);
-    this.mostrarInvitacionJuego.set(false);
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('juegoPresentado', 'true');
-    }
-    this.juegoActivo.set(true);
 
     try {
+      // Asegurarse de que las palabras estén cargadas
+      if (!this.palabrasService.cargado()) {
+        await this.palabrasService.cargarPalabras();
+      }
+
+      this.mostrarInvitacionJuego.set(false);
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('juegoPresentado', 'true');
+      }
+      this.juegoActivo.set(true);
+
       await this.prepararJuego();
     } finally {
       this.cargandoAceptarInvitacion.set(false);

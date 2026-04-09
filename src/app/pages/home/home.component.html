@@ -99,15 +99,16 @@
 </div>
 
 <!-- Popup invitacion juego -->
-<div class="game-modal-overlay" *ngIf="mostrarInvitacionJuego()" (click)="cerrarInvitacionJuego()">
+<div class="game-modal-overlay" *ngIf="mostrarInvitacionJuego() && cargado" (click)="cerrarInvitacionJuego()">
   <div class="game-modal" (click)="$event.stopPropagation()">
     <h3>¡Gracias por usar PalabrApp!</h3>
-    <p>Antes de consultar el listado, ¿quieres jugar?</p>
+    <p *ngIf="!cargandoAceptarInvitacion()">Antes de consultar el listado, ¿quieres jugar?</p>
+    <p *ngIf="cargandoAceptarInvitacion()" class="loading-message">Preparando juego...</p>
     <div class="game-actions">
       <button type="button" class="btn-secondary" [disabled]="cargandoAceptarInvitacion()" (click)="cerrarInvitacionJuego()">Ahora no</button>
       <button type="button" class="btn-primary" [disabled]="cargandoAceptarInvitacion()" (click)="aceptarInvitacionJuego()">
         <span *ngIf="cargandoAceptarInvitacion()" class="btn-spinner" aria-hidden="true"></span>
-        {{ cargandoAceptarInvitacion() ? 'Cargando juego...' : 'Aceptar' }}
+        {{ cargandoAceptarInvitacion() ? 'Preparando...' : 'Aceptar' }}
       </button>
     </div>
   </div>
