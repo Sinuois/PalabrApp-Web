@@ -4,7 +4,9 @@
     type="button"
     class="tab-item"
     [class.active]="isHomeActive()"
-    (click)="goHome()"
+    (pointerup)="onGoHomeTap($event)"
+    (click)="onGoHomeTap($event)"
+    (touchend)="onGoHomeTap($event)"
     [attr.aria-current]="isHomeActive() ? 'page' : null"
   >
     <span class="tab-icon">
@@ -19,7 +21,9 @@
     type="button"
     class="tab-item"
     [class.active]="isBuscarActive()"
-    (click)="goBuscar()"
+    (pointerup)="onGoBuscarTap($event)"
+    (click)="onGoBuscarTap($event)"
+    (touchend)="onGoBuscarTap($event)"
     [attr.aria-current]="isBuscarActive() ? 'page' : null"
   >
     <span class="tab-icon">

@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PalabrasService, Orden } from '../../services/palabras.service';
@@ -16,7 +16,8 @@ type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
 
@@ -34,6 +35,8 @@ export class HomeComponent implements OnInit {
   cargandoAceptarInvitacion = signal(false);
   cargandoInicioJuego = signal(false);
   cargandoOtroJuego = signal(false);
+  navegandoBuscar = signal(false);
+  navegandoNuevaPalabra = signal(false);
   sopaArrastrando = false;
   sopaUltimaCeldaArrastre: string | null = null;
   sopaArrastreTuvoMovimiento = false;
@@ -41,6 +44,8 @@ export class HomeComponent implements OnInit {
   sopaPrimerToque: SopaCelda | null = null;
   sopaRutaInvalida = signal<Array<{ f: number; c: number }>>([]);
   private sopaTimerRutaInvalida: number | null = null;
+  private ultimoTapTouchMs = 0;
+  private readonly ventanaIgnorarClickMs = 700;
 
   get orden()            { return this.palabrasService.orden; }
   get palabrasOrdenadas(){ return this.palabrasService.palabrasOrdenadas; }
@@ -59,12 +64,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // Mostrar invitación solo una vez por sesión (solo en navegador)
-    if (typeof window !== 'undefined') {
-      const juegoPresentado = sessionStorage.getItem('juegoPresentado');
-      if (juegoPresentado) {
-        this.mostrarInvitacionJuego.set(false);
-      }
+    if (this.leerJuegoPresentadoEnSesion()) {
+      this.mostrarInvitacionJuego.set(false);
     }
+    this.precalentarRutasSecundarias();
     this.refrescar();
   }
 
@@ -89,7 +92,15 @@ export class HomeComponent implements OnInit {
   }
 
   irABuscar(): void {
-    this.router.navigateByUrl('/buscar');
+    if (this.navegandoBuscar()) return;
+
+    this.navegandoBuscar.set(true);
+    void this.router.navigateByUrl('/buscar')
+      .finally(() => this.navegandoBuscar.set(false));
+  }
+
+  onBuscarTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.irABuscar());
   }
 
   verPalabra(p: Palabra): void {
@@ -98,15 +109,29 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  onVerPalabraTap(event: Event, p: Palabra): void {
+    this.ejecutarTapSeguro(event, () => this.verPalabra(p));
+  }
+
   nuevaPalabra(): void {
-    this.router.navigate(['/palabra/nueva']);
+    if (this.navegandoNuevaPalabra()) return;
+
+    this.navegandoNuevaPalabra.set(true);
+    void this.router.navigate(['/palabra/nueva'])
+      .finally(() => this.navegandoNuevaPalabra.set(false));
+  }
+
+  onNuevaPalabraTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.nuevaPalabra());
   }
 
   cerrarInvitacionJuego(): void {
     this.mostrarInvitacionJuego.set(false);
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('juegoPresentado', 'true');
-    }
+    this.marcarJuegoPresentadoEnSesion();
+  }
+
+  onCerrarInvitacionTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.cerrarInvitacionJuego());
   }
 
   async aceptarInvitacionJuego(): Promise<void> {
@@ -121,15 +146,19 @@ export class HomeComponent implements OnInit {
       }
 
       this.mostrarInvitacionJuego.set(false);
-      if (typeof window !== 'undefined') {
-        sessionStorage.setItem('juegoPresentado', 'true');
-      }
       this.juegoActivo.set(true);
+      this.marcarJuegoPresentadoEnSesion();
 
       await this.prepararJuego();
     } finally {
       this.cargandoAceptarInvitacion.set(false);
     }
+  }
+
+  onAceptarInvitacionTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => {
+      void this.aceptarInvitacionJuego();
+    });
   }
 
   async iniciarJuegoDirecto(): Promise<void> {
@@ -143,6 +172,12 @@ export class HomeComponent implements OnInit {
     } finally {
       this.cargandoInicioJuego.set(false);
     }
+  }
+
+  onIniciarJuegoDirectoTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => {
+      void this.iniciarJuegoDirecto();
+    });
   }
 
   cerrarJuego(): void {
@@ -169,6 +204,20 @@ export class HomeComponent implements OnInit {
     } finally {
       this.cargandoOtroJuego.set(false);
     }
+  }
+
+  onJugarOtraTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => {
+      void this.jugarOtra();
+    });
+  }
+
+  onCerrarJuegoTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.cerrarJuego());
+  }
+
+  onRevisarCrucigramaTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.revisarCrucigrama());
   }
 
   resolverOpcion(indice: number): void {
@@ -669,5 +718,46 @@ export class HomeComponent implements OnInit {
       clearTimeout(this.sopaTimerRutaInvalida);
       this.sopaTimerRutaInvalida = null;
     }
+  }
+
+  private ejecutarTapSeguro(event: Event, accion: () => void): void {
+    const esTapPrimario = event.type === 'touchend' || event.type === 'pointerup';
+
+    if (esTapPrimario) {
+      this.ultimoTapTouchMs = Date.now();
+      accion();
+      return;
+    }
+
+    if (Date.now() - this.ultimoTapTouchMs < this.ventanaIgnorarClickMs) {
+      return;
+    }
+
+    accion();
+  }
+
+  private leerJuegoPresentadoEnSesion(): boolean {
+    if (typeof window === 'undefined') return false;
+    try {
+      return Boolean(window.sessionStorage.getItem('juegoPresentado'));
+    } catch {
+      return false;
+    }
+  }
+
+  private marcarJuegoPresentadoEnSesion(): void {
+    if (typeof window === 'undefined') return;
+    try {
+      window.sessionStorage.setItem('juegoPresentado', 'true');
+    } catch {
+      // Algunos Safari/iOS pueden bloquear storage; no debe romper la UI.
+    }
+  }
+
+  private precalentarRutasSecundarias(): void {
+    if (typeof window === 'undefined') return;
+
+    void import('../buscar/buscar.component');
+    void import('../palabra/palabra.component');
   }
 }

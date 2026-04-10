@@ -11,6 +11,10 @@ import { filter, map, startWith } from 'rxjs/operators';
 })
 export class TabNavComponent {
   private readonly router = inject(Router);
+  private ultimoTapTouchMs = 0;
+  private readonly ventanaIgnorarClickMs = 700;
+  private navegandoHome = false;
+  private navegandoBuscar = false;
 
   private readonly currentUrl = toSignal(
     this.router.events.pipe(
@@ -25,10 +29,46 @@ export class TabNavComponent {
   readonly isBuscarActive = computed(() => this.currentUrl().startsWith('/buscar'));
 
   goHome(): void {
-    this.router.navigateByUrl('/');
+    if (this.navegandoHome) return;
+
+    this.navegandoHome = true;
+    void this.router.navigateByUrl('/')
+      .finally(() => {
+        this.navegandoHome = false;
+      });
   }
 
   goBuscar(): void {
-    this.router.navigateByUrl('/buscar');
+    if (this.navegandoBuscar) return;
+
+    this.navegandoBuscar = true;
+    void this.router.navigateByUrl('/buscar')
+      .finally(() => {
+        this.navegandoBuscar = false;
+      });
+  }
+
+  onGoHomeTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.goHome());
+  }
+
+  onGoBuscarTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.goBuscar());
+  }
+
+  private ejecutarTapSeguro(event: Event, accion: () => void): void {
+    const esTapPrimario = event.type === 'touchend' || event.type === 'pointerup';
+
+    if (esTapPrimario) {
+      this.ultimoTapTouchMs = Date.now();
+      accion();
+      return;
+    }
+
+    if (Date.now() - this.ultimoTapTouchMs < this.ventanaIgnorarClickMs) {
+      return;
+    }
+
+    accion();
   }
 }
