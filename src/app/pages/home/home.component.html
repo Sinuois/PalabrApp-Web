@@ -235,6 +235,8 @@
                     [disabled]="crucigramaService.crucigramaResuelto() === true"
                     (focus)="onFocusCeldaCrucigrama(celda.key, $event)"
                     (input)="actualizarCeldaCrucigrama(celda.key, $any($event.target).value)"
+                    (touchend)="$any($event.target).focus()"
+                    (pointerup)="$any($event.target).focus()"
                   />
                 </ng-container>
               </ng-container>

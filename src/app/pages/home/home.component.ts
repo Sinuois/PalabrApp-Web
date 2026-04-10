@@ -786,6 +786,12 @@ export class HomeComponent implements OnInit {
   }
 
   private ejecutarTapSeguro(event: Event, accion: () => void): void {
+    // NO procesar eventos en inputs del crucigrama (necesitan propagación normal)
+    if (event.target instanceof HTMLInputElement && event.target.classList.contains('crossword-input')) {
+      accion();
+      return;
+    }
+
     // Consumir el evento para evitar propagación a elementos subyacentes
     event.stopPropagation();
     if (event instanceof PointerEvent || event instanceof TouchEvent || event instanceof MouseEvent) {
