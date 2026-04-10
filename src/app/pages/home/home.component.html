@@ -47,7 +47,13 @@
       <span *ngIf="navegandoBuscar()" class="btn-spinner" aria-hidden="true"></span>
       {{ navegandoBuscar() ? 'Abriendo...' : 'Buscar concepto...' }}
     </button>
-    <button class="btn-orden" (click)="ciclarOrden()" [attr.data-orden]="orden()">
+    <button
+      class="btn-orden"
+      [attr.data-orden]="orden()"
+      (pointerdown)="onCiclarOrdenTap($event)"
+      (touchstart)="onCiclarOrdenTap($event)"
+      (click)="onCiclarOrdenTap($event)"
+    >
       {{ orden() }}
     </button>
   </div>
@@ -58,7 +64,7 @@
   </div>
 
   <!-- Lista -->
-  <main class="lista-scroll">
+  <main class="lista-scroll" (touchstart)="onListaTouchStart($event)" (touchmove)="onListaTouchMove($event)" (touchend)="onListaTouchEnd()">
     <ul class="lista-palabras" *ngIf="cargado">
       <li
         *ngFor="let p of palabrasOrdenadas(); trackBy: trackById; let i = index"
@@ -149,10 +155,13 @@
           <button
             type="button"
             class="game-option"
+            trivia-option
             *ngFor="let opcion of triviaService.opcionesJuego(); let i = index"
             [ngClass]="claseOpcion(i)"
             [disabled]="triviaService.indiceSeleccionado() !== null"
-            (click)="resolverOpcion(i)"
+            (pointerup)="onResolverOpcionTap($event, i)"
+            (click)="onResolverOpcionTap($event, i)"
+            (touchend)="onResolverOpcionTap($event, i)"
           >
             {{ opcion }}
           </button>
@@ -175,6 +184,7 @@
           <button
             type="button"
             class="hangman-letter-btn"
+            hangman-letter
             *ngFor="let letra of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')"
             [disabled]="
               ahorcadoService.letrasAdivinadas().includes(letra) ||
@@ -185,7 +195,9 @@
               'adivinada': ahorcadoService.letrasAdivinadas().includes(letra),
               'incorrecta': ahorcadoService.letrasIncorrectas().includes(letra)
             }"
-            (click)="adivinarLetraAhorcado(letra)"
+            (pointerup)="onAdivinarLetraAhorcadoTap($event, letra)"
+            (click)="onAdivinarLetraAhorcadoTap($event, letra)"
+            (touchend)="onAdivinarLetraAhorcadoTap($event, letra)"
           >
             {{ letra }}
           </button>

@@ -43,9 +43,16 @@ export class HomeComponent implements OnInit {
   sopaIgnorarSiguienteClick = false;
   sopaPrimerToque: SopaCelda | null = null;
   sopaRutaInvalida = signal<Array<{ f: number; c: number }>>([]);
+  private listaTouchInicioX = 0;
+  private listaTouchInicioY = 0;
+  private listaTouchSeMovio = false;
+  private listaIgnorarClicksHasta = 0;
   private sopaTimerRutaInvalida: number | null = null;
   private ultimoTapTouchMs = 0;
+  private ultimoTapTouchTarget: EventTarget | null = null;
   private readonly ventanaIgnorarClickMs = 700;
+  private ultimoCambioOrdenMs = 0;
+  private juegoAbriendoHasta = 0;
 
   get orden()            { return this.palabrasService.orden; }
   get palabrasOrdenadas(){ return this.palabrasService.palabrasOrdenadas; }
@@ -91,6 +98,17 @@ export class HomeComponent implements OnInit {
     this.palabrasService.orden.set(ciclo[(idx + 1) % ciclo.length]);
   }
 
+  onCiclarOrdenTap(event: Event): void {
+    const ahora = Date.now();
+    const esClick = event.type === 'click';
+
+    if (esClick && ahora - this.ultimoCambioOrdenMs < 650) return;
+    if (!esClick && ahora - this.ultimoCambioOrdenMs < 120) return;
+
+    this.ultimoCambioOrdenMs = ahora;
+    this.ciclarOrden();
+  }
+
   irABuscar(): void {
     if (this.navegandoBuscar()) return;
 
@@ -110,7 +128,44 @@ export class HomeComponent implements OnInit {
   }
 
   onVerPalabraTap(event: Event, p: Palabra): void {
+    if (Date.now() < this.listaIgnorarClicksHasta) return;
+
+    if ((event.type === 'touchend' || event.type === 'pointerup') && this.listaTouchSeMovio) {
+      this.listaIgnorarClicksHasta = Date.now() + 550;
+      return;
+    }
+
     this.ejecutarTapSeguro(event, () => this.verPalabra(p));
+
+    if (event.type === 'touchend' || event.type === 'pointerup') {
+      this.listaIgnorarClicksHasta = Date.now() + 450;
+    }
+  }
+
+  onListaTouchStart(event: TouchEvent): void {
+    const touch = event.touches[0];
+    if (!touch) return;
+
+    this.listaTouchInicioX = touch.clientX;
+    this.listaTouchInicioY = touch.clientY;
+    this.listaTouchSeMovio = false;
+  }
+
+  onListaTouchMove(event: TouchEvent): void {
+    const touch = event.touches[0];
+    if (!touch) return;
+
+    const dx = Math.abs(touch.clientX - this.listaTouchInicioX);
+    const dy = Math.abs(touch.clientY - this.listaTouchInicioY);
+    if (dx > 8 || dy > 8) {
+      this.listaTouchSeMovio = true;
+      this.listaIgnorarClicksHasta = Date.now() + 420;
+    }
+  }
+
+  onListaTouchEnd(): void {
+    if (!this.listaTouchSeMovio) return;
+    this.listaIgnorarClicksHasta = Date.now() + 550;
   }
 
   nuevaPalabra(): void {
@@ -166,6 +221,7 @@ export class HomeComponent implements OnInit {
 
     this.cargandoInicioJuego.set(true);
     this.juegoActivo.set(true);
+    this.juegoAbriendoHasta = Date.now() + 300; // Bloquear eventos de juego durante 300ms
 
     try {
       await this.prepararJuego();
@@ -199,6 +255,7 @@ export class HomeComponent implements OnInit {
     if (this.cargandoOtroJuego()) return;
 
     this.cargandoOtroJuego.set(true);
+    this.juegoAbriendoHasta = Date.now() + 300; // Bloquear eventos de juego durante 300ms
     try {
       await this.prepararJuego(this.tipoJuego());
     } finally {
@@ -232,6 +289,10 @@ export class HomeComponent implements OnInit {
     }
 
     this.mensajeJuego.set('Para la otra será, compa. Aunque Gonzalo dice que deberías pasar más tiempo en PalabrApp.');
+  }
+
+  onResolverOpcionTap(event: Event, indice: number): void {
+    this.ejecutarTapSeguro(event, () => this.resolverOpcion(indice));
   }
 
   claseOpcion(indice: number): string {
@@ -341,6 +402,10 @@ export class HomeComponent implements OnInit {
     if (perdio) {
       this.mensajeJuego.set(`Perdiste. La palabra era: ${this.ahorcadoService.palabraAhorcado()}`);
     }
+  }
+
+  onAdivinarLetraAhorcadoTap(event: Event, letra: string): void {
+    this.ejecutarTapSeguro(event, () => this.adivinarLetraAhorcado(letra));
   }
 
   private async prepararCrucigrama(): Promise<void> {
@@ -721,19 +786,50 @@ export class HomeComponent implements OnInit {
   }
 
   private ejecutarTapSeguro(event: Event, accion: () => void): void {
+    // Consumir el evento para evitar propagación a elementos subyacentes
+    event.stopPropagation();
+    if (event instanceof PointerEvent || event instanceof TouchEvent || event instanceof MouseEvent) {
+      event.preventDefault();
+    }
+
+    // Si estamos en ventana de apertura de juego, bloquear acciones dentro del modal del juego
+    if (this.juegoAbriendoHasta > Date.now() && this.juegoActivo()) {
+      const target = event.target;
+      if (target instanceof Element) {
+        // Bloquear si el toque está en elementos del juego
+        if (target.closest('[game-button]') || 
+            target.closest('.game-modal') || 
+            target.closest('[trivia-option]') ||
+            target.closest('[hangman-letter]')) {
+          return;
+        }
+      }
+    }
+
     const esTapPrimario = event.type === 'touchend' || event.type === 'pointerup';
 
     if (esTapPrimario) {
       this.ultimoTapTouchMs = Date.now();
+      this.ultimoTapTouchTarget = event.target;
       accion();
       return;
     }
 
-    if (Date.now() - this.ultimoTapTouchMs < this.ventanaIgnorarClickMs) {
+    const clickReciente = Date.now() - this.ultimoTapTouchMs < this.ventanaIgnorarClickMs;
+    const mismoObjetivo = this.esMismoObjetivoTap(event.target, this.ultimoTapTouchTarget);
+    if (clickReciente && mismoObjetivo) {
       return;
     }
 
     accion();
+  }
+
+  private esMismoObjetivoTap(actual: EventTarget | null, previo: EventTarget | null): boolean {
+    if (!(actual instanceof Element) || !(previo instanceof Element)) {
+      return false;
+    }
+
+    return actual === previo || actual.contains(previo) || previo.contains(actual);
   }
 
   private leerJuegoPresentadoEnSesion(): boolean {
