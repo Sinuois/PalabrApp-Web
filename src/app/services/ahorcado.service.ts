@@ -55,6 +55,10 @@ export class AhorcadoService {
   }
 
   adivinarLetra(letra: string): { verificarEstado: boolean } {
+    if (this.juegoAhorcadoGanado() !== null || this.intentosRestantes() <= 0) {
+      return { verificarEstado: false };
+    }
+
     const letraUpper = letra.toUpperCase();
     const letraNormalizada = this.gameUtils.normalizarLetra(letraUpper);
     const adivinadas = this.letrasAdivinadas();
@@ -73,7 +77,7 @@ export class AhorcadoService {
       this.letrasAdivinadas.set([...adivinadas, letraUpper]);
     } else {
       this.letrasIncorrectas.set([...incorrectas, letraUpper]);
-      this.intentosRestantes.update(v => v - 1);
+      this.intentosRestantes.update(v => Math.max(0, v - 1));
     }
 
     this.actualizarPalabraMostrada();

@@ -496,15 +496,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.triviaService.indiceSeleccionado() !== null) return;
 
     const gano = this.triviaService.resolverOpcion(indice);
-    const mensajeExtra = this.mensajeDatoTrivia();
     if (gano) {
       this.mostrarCelebracion.set(true);
-      this.mensajeJuego.set(`¡Felicitaciones, sigue así!${mensajeExtra}`);
+      this.mensajeJuego.set('¡Felicitaciones, sigue así!');
       setTimeout(() => this.mostrarCelebracion.set(false), 3000);
       return;
     }
 
-    this.mensajeJuego.set(`No pasa nada, inténtalo de nuevo.${mensajeExtra}`);
+    this.mensajeJuego.set('No pasa nada, inténtalo de nuevo.');
   }
 
   onResolverOpcionTap(event: Event, indice: number): void {
@@ -760,6 +759,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   adivinarLetraAhorcado(letra: string): void {
+    if (this.ahorcadoService.juegoAhorcadoGanado() !== null || this.ahorcadoService.intentosRestantes() <= 0) {
+      return;
+    }
+
     this.ahorcadoService.adivinarLetra(letra);
     const { gano, perdio } = this.ahorcadoService.verificarEstado();
 
@@ -1222,7 +1225,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     const dato = this.triviaDatoExtra().trim();
     if (!dato) return '';
 
-    return ` Dato extra: ${dato}`;
+    return `Dato extra: ${dato}`;
+  }
+
+  datoExtraTriviaVisible(): string {
+    if (this.triviaService.indiceSeleccionado() === null) return '';
+    return this.mensajeDatoTrivia();
   }
 
   private leerJuegoPresentadoEnSesion(): boolean {
