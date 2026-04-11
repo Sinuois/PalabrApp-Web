@@ -32,9 +32,10 @@
 .error-icon { font-size: 2.5rem; }
 .error-overlay p { color: $text-secondary; line-height: 1.75; margin: 0; }
 .btn-retry {
-  @include btn-base();
-  display: flex; align-items: center; gap: 8px;
-  background: rgba($accent-blue, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
   border: 1px solid rgba($accent-blue, 0.3);
   color: $accent-blue;
   &:hover { background: rgba($accent-blue, 0.18); }
@@ -58,10 +59,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 22px 14px;
+  padding: 14px 22px;
   border-bottom: 1px solid $border-subtle;
   flex-shrink: 0;
 }
+
 .header-brand { display: flex; align-items: center; gap: 10px; }
 .brand-dot {
   width: 9px; height: 9px;
@@ -734,6 +736,170 @@ h1 {
   line-height: 1.5;
 }
 
+.mode-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.mode-selector-stage {
+  position: relative;
+  min-height: 132px;
+
+  &.is-loading .mode-selector {
+    visibility: hidden;
+  }
+}
+
+.mode-selector-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: $text-secondary;
+  }
+}
+
+.mode-card {
+  background: transparent;
+  border: 0;
+  color: $text-primary;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  width: 100px;
+
+  .mode-icon {
+    width: 74px;
+    height: 74px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: visible;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease;
+
+    .mode-icon-image {
+      position: absolute;
+      width: 76%;
+      height: 76%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: contain;
+      border-radius: 0;
+      z-index: 2;
+    }
+
+    .mode-icon-fallback {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.12s ease;
+
+      &.is-visible {
+        opacity: 1;
+      }
+    }
+  }
+
+  .mode-label {
+    font-size: 0.83rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.2;
+    min-height: 2.2em;
+    display: grid;
+    place-items: center;
+  }
+
+  &:hover .mode-icon {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.3);
+    filter: saturate(1.05);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.72;
+  }
+
+  &:disabled .mode-icon {
+    transform: none;
+    box-shadow: none;
+    filter: none;
+  }
+
+  &.mode-vocab .mode-icon { background: linear-gradient(145deg, #b45a2f, #f0bb85); }
+  &.mode-geo .mode-icon { background: linear-gradient(145deg, #2f7f78, #9fd2c9); }
+  &.mode-capitales .mode-icon { background: linear-gradient(145deg, #b86a38, #f1c88e); }
+  &.mode-arte .mode-icon { background: linear-gradient(145deg, #5d4aa6, #9884d1); }
+  &.mode-ciencia .mode-icon { background: linear-gradient(145deg, #7a3f88, #bf7fc8); }
+}
+
+@media (max-width: 420px) {
+  .mode-selector {
+    gap: 12px;
+  }
+
+  .mode-card {
+    width: 92px;
+
+    .mode-icon {
+      width: 66px;
+      height: 66px;
+      font-size: 0.82rem;
+    }
+
+    .mode-label {
+      font-size: 0.78rem;
+      min-height: 2.4em;
+    }
+  }
+}
+
+@media (max-width: 340px) {
+  .mode-selector {
+    gap: 10px;
+  }
+
+  .mode-card {
+    width: 84px;
+
+    .mode-icon {
+      width: 60px;
+      height: 60px;
+      font-size: 0.74rem;
+    }
+
+    .mode-label {
+      font-size: 0.72rem;
+      min-height: 2.6em;
+    }
+  }
+}
+
 .game-actions {
   display: flex;
   gap: 10px;
@@ -779,6 +945,7 @@ h1 {
 
     &.btn-vocab-mode { background: linear-gradient(135deg, #74c, #96f); }
     &.btn-geo-mode { background: linear-gradient(135deg, #1a6, #4c8); }
+    &.btn-capitales-mode { background: linear-gradient(135deg, #2a8bd6, #59b8ff); }
 
     &:hover {
       transform: translateY(-1px);

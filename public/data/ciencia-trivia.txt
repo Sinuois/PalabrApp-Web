@@ -1,0 +1,77 @@
+# Formato:
+# Q|Pregunta|Respuesta correcta|Alternativa 1|Alternativa 2|Alternativa 3|Dato extra opcional
+
+Q|¿Qué científico propuso la teoría de la relatividad?|Albert Einstein|Isaac Newton|Nikola Tesla|Niels Bohr|Einstein publicó la relatividad especial en 1905.
+Q|¿Qué planeta es conocido como el planeta rojo?|Marte|Venus|Júpiter|Mercurio|El color se debe al óxido de hierro en su superficie.
+Q|¿Qué unidad mide la intensidad de corriente eléctrica?|Amperio|Voltio|Ohmio|Vatio|El símbolo del amperio es A.
+Q|¿Qué organelo celular contiene el material genético en células eucariotas?|Núcleo|Mitocondria|Ribosoma|Aparato de Golgi|El ADN se organiza en cromosomas dentro del núcleo.
+Q|¿Qué gas es más abundante en la atmósfera terrestre?|Nitrógeno|Oxígeno|Dióxido de carbono|Argón|El nitrógeno representa cerca del 78% del aire.
+Q|¿Qué científica desarrolló investigaciones clave sobre la radiactividad?|Marie Curie|Rosalind Franklin|Ada Lovelace|Jane Goodall|Marie Curie ganó dos premios Nobel.
+Q|¿Qué rama de la biología estudia los genes y la herencia?|Genética|Ecología|Botánica|Zoología|Mendel es considerado padre de la genética clásica.
+Q|¿Qué instrumento se usa para observar células?|Microscopio|Telescopio|Barómetro|Sismógrafo|Los primeros microscopios compuestos surgieron en el siglo XVII.
+Q|¿Qué tipo de energía aprovechan los paneles solares?|Energía solar|Energía eólica|Energía geotérmica|Energía hidráulica|Las celdas fotovoltaicas convierten luz en electricidad.
+Q|¿Qué elemento químico tiene símbolo O?|Oxígeno|Oro|Osmio|Oganesón|El oxígeno es esencial para la respiración aeróbica.
+Q|¿Qué proceso transforma agua líquida en vapor?|Evaporación|Condensación|Solidificación|Sublimación|La evaporación aumenta con mayor temperatura.
+Q|¿Qué científico formuló las leyes del movimiento clásico?|Isaac Newton|Galileo Galilei|Johannes Kepler|Michael Faraday|Newton publicó sus leyes en Principia.
+Q|¿Qué partícula tiene carga eléctrica negativa?|Electrón|Protón|Neutrón|Positrón|El electrón fue identificado a fines del siglo XIX.
+Q|¿Qué capa de la atmósfera contiene la mayor parte del ozono?|Estratósfera|Troposfera|Mesosfera|Termosfera|La capa de ozono ayuda a filtrar radiación ultravioleta.
+Q|¿Qué tipo de enlace comparten átomos para completar su capa de valencia?|Enlace covalente|Enlace iónico|Enlace metálico|Puente de hidrógeno|En moléculas como el agua predominan enlaces covalentes.
+Q|¿Qué científico propuso la teoría de la evolución por selección natural?|Charles Darwin|Gregor Mendel|Louis Pasteur|Alfred Wegener|Darwin publicó su teoría en 1859.
+Q|¿Qué instrumento mide la presión atmosférica?|Barómetro|Termómetro|Anemómetro|Higrómetro|El barómetro de mercurio fue desarrollado en el siglo XVII.
+Q|¿Qué nombre recibe el cambio de sólido a gas sin pasar por líquido?|Sublimación|Evaporación|Condensación|Fusión|El hielo seco es un ejemplo clásico de sublimación.
+Q|¿Qué planeta tiene los anillos más notorios del sistema solar?|Saturno|Urano|Neptuno|Júpiter|Saturno está compuesto principalmente por hidrógeno y helio.
+Q|¿Qué molécula transporta la información genética en la mayoría de los seres vivos?|ADN|ARN|ATP|NADH|El ADN tiene estructura de doble hélice.
+Q|¿Qué ley establece que la energía no se crea ni se destruye?|Primera ley de la termodinámica|Ley de gravitación universal|Ley de Boyle|Ley de Ohm|También se conoce como principio de conservación de la energía.
+Q|¿Qué unidad se utiliza para medir la resistencia eléctrica?|Ohmio|Amperio|Voltio|Julio|Su símbolo es la letra griega omega.
+Q|¿Qué órgano del cuerpo humano se encarga de bombear sangre?|Corazón|Pulmón|Hígado|Riñón|Un adulto tiene alrededor de 60 a 100 latidos por minuto en reposo.
+Q|¿Qué rama de la ciencia estudia los fósiles?|Paleontología|Meteorología|Oceanografía|Embriología|Los fósiles permiten reconstruir ecosistemas antiguos.
+Q|¿Quiénes inventaron el transistor en 1947?|John Bardeen, Walter Brattain y William Shockley|Thomas Edison, Nikola Tesla y Guglielmo Marconi|Alexander Graham Bell, Elisha Gray y Antonio Meucci|James Watt, Michael Faraday y André-Marie Ampère|El transistor se desarrolló en los laboratorios Bell y revolucionó la electrónica.
+Q|¿Quién desarrolló la primera vacuna contra la viruela?|Edward Jenner|Louis Pasteur|Robert Koch|Alexander Fleming|La vacuna de Jenner se aplicó por primera vez en 1796.
+Q|¿Quién descubrió la penicilina en 1928?|Alexander Fleming|Marie Curie|Gregor Mendel|Dmitri Mendeléyev|El hallazgo de Fleming abrió el camino a los antibióticos modernos.
+Q|¿Quién formuló las leyes de la herencia genética clásica?|Gregor Mendel|Charles Darwin|Francis Crick|James Watson|Mendel realizó sus experimentos con plantas de guisante.
+Q|¿Qué científica fue clave en la identificación de la estructura del ADN mediante difracción de rayos X?|Rosalind Franklin|Barbara McClintock|Lise Meitner|Dorothy Hodgkin|La “Fotografía 51” fue fundamental para entender la doble hélice.
+Q|¿Quién propuso la teoría heliocéntrica en la Edad Moderna?|Nicolás Copérnico|Claudio Ptolomeo|Tycho Brahe|Johannes Kepler|Copérnico publicó su propuesta en 1543.
+Q|¿Quién inventó la pila eléctrica en 1800?|Alessandro Volta|André-Marie Ampère|Georg Ohm|Heinrich Hertz|La pila voltaica permitió generar corriente continua estable.
+Q|¿Quién enunció la ley de la gravitación universal?|Isaac Newton|Galileo Galilei|René Descartes|Blaise Pascal|Newton la presentó en su obra Principia.
+Q|¿Quién descubrió la radiactividad natural en 1896?|Henri Becquerel|Ernest Rutherford|Niels Bohr|Max Planck|El descubrimiento impulsó los estudios posteriores de Marie Curie.
+Q|¿Quién desarrolló la primera bombilla incandescente comercialmente viable?|Thomas Alva Edison|Nikola Tesla|Alessandro Volta|James Clerk Maxwell|Edison mejoró diseños previos para uso práctico y masivo.
+Q|¿Quién estableció la tabla periódica moderna en el siglo XIX?|Dmitri Mendeléyev|Antoine Lavoisier|Amedeo Avogadro|Jöns Jacob Berzelius|Mendeléyev dejó espacios para elementos aún no descubiertos.
+Q|¿Quién inventó el teléfono patentado en 1876?|Alexander Graham Bell|Guglielmo Marconi|Heinrich Hertz|Samuel Morse|El invento transformó las comunicaciones a larga distancia.
+Q|¿Qué astrónoma chilena es reconocida por sus aportes al estudio de enanas blancas y estrellas variables?|María Teresa Ruiz|Mónica Rubio|Paula Jofré|Dora Riedel|María Teresa Ruiz recibió el Premio Nacional de Ciencias Exactas en 1997.
+Q|¿Qué tipo de célula no posee núcleo definido?|Procariota|Eucariota|Somática|Germinal|Las bacterias son organismos procariotas.
+Q|¿Qué científico descubrió la circulación sanguínea mayor en el siglo XVII?|William Harvey|Andreas Vesalio|Marcello Malpighi|Antonie van Leeuwenhoek|Harvey describió el rol del corazón como bomba.
+Q|¿Qué unidad del Sistema Internacional mide la fuerza?|Newton|Pascal|Joule|Tesla|Un newton equivale a un kilogramo por metro sobre segundo cuadrado.
+Q|¿Qué metal es líquido a temperatura ambiente?|Mercurio|Sodio|Aluminio|Plata|El mercurio fue usado históricamente en termómetros.
+Q|¿Qué científico formuló el principio de incertidumbre?|Werner Heisenberg|Erwin Schrödinger|Max Planck|Paul Dirac|Este principio es central en la mecánica cuántica.
+Q|¿Qué fenómeno principal separa la luz en colores en un arcoíris?|Dispersión de la luz|Difracción de la luz|Interferencia destructiva|Polarización lineal|Las gotas de agua separan la luz en diferentes longitudes de onda.
+Q|¿Qué estructura del oído interno participa en el equilibrio?|Canales semicirculares|Cóclea|Tímpano|Yunque|Los canales semicirculares detectan movimientos de la cabeza.
+Q|¿Qué científico propuso las leyes del movimiento planetario?|Johannes Kepler|Galileo Galilei|Nicolás Copérnico|Edmond Halley|Las leyes de Kepler describen órbitas elípticas.
+Q|¿Qué proceso realizan las plantas para producir glucosa?|Fotosíntesis|Respiración celular|Fermentación|Digestión|La fotosíntesis utiliza energía luminosa, agua y dióxido de carbono.
+Q|¿Qué elemento químico tiene símbolo Fe?|Hierro|Flúor|Francio|Fósforo|El símbolo Fe proviene del latín ferrum.
+Q|¿Qué rama de la física estudia el calor y la temperatura?|Termodinámica|Óptica|Electromagnetismo|Mecánica de fluidos|La termodinámica analiza transferencias de energía.
+Q|¿Qué órgano filtra la sangre para formar orina?|Riñón|Hígado|Páncreas|Bazo|Los riñones mantienen el equilibrio de agua y sales.
+Q|¿Qué científico descubrió los rayos X en 1895?|Wilhelm Conrad Röntgen|Henri Becquerel|J. J. Thomson|Ernest Rutherford|Röntgen recibió el primer Nobel de Física en 1901.
+Q|¿Qué partícula subatómica se encuentra en el núcleo y no tiene carga eléctrica?|Neutrón|Electrón|Protón|Fotón|El neutrón fue descubierto por James Chadwick.
+Q|¿Qué planeta del sistema solar tarda más en completar una órbita alrededor del Sol?|Neptuno|Saturno|Júpiter|Urano|Neptuno tarda cerca de 165 años terrestres en dar una vuelta al Sol.
+Q|¿Qué científico es considerado padre de la computación teórica?|Alan Turing|John von Neumann|Claude Shannon|Tim Berners-Lee|La máquina de Turing es un modelo fundamental en informática.
+Q|¿Qué científico propuso la ley de conservación de la masa en química?|Antoine Lavoisier|Robert Boyle|Amedeo Avogadro|John Dalton|Lavoisier es considerado uno de los fundadores de la química moderna.
+Q|¿Qué planeta es el más grande del sistema solar?|Júpiter|Saturno|Neptuno|Urano|Júpiter tiene una gran mancha roja que es una tormenta gigante.
+Q|¿Qué órgano produce la insulina en el cuerpo humano?|Páncreas|Hígado|Riñón|Bazo|La insulina regula los niveles de glucosa en sangre.
+Q|¿Qué científico desarrolló la teoría de la relatividad general?|Albert Einstein|Isaac Newton|Niels Bohr|Stephen Hawking|La relatividad general fue publicada en 1915.
+Q|¿Qué tipo de energía tiene un objeto en movimiento?|Energía cinética|Energía potencial|Energía térmica|Energía química|Depende de la masa y la velocidad del objeto.
+Q|¿Qué gas necesitan las plantas para realizar la fotosíntesis?|Dióxido de carbono|Oxígeno|Nitrógeno|Hidrógeno|El CO₂ es clave para producir glucosa.
+Q|¿Qué científico propuso el modelo atómico con órbitas cuantizadas?|Niels Bohr|Ernest Rutherford|J. J. Thomson|John Dalton|El modelo de Bohr explica los niveles de energía del electrón.
+Q|¿Qué unidad mide la potencia eléctrica?|Vatio|Voltio|Amperio|Ohmio|El símbolo del vatio es W.
+Q|¿Qué órgano del cuerpo humano produce bilis?|Hígado|Páncreas|Estómago|Intestino|La bilis ayuda a digerir grasas.
+Q|¿Qué partícula transporta la carga positiva en el núcleo?|Protón|Electrón|Neutrón|Fotón|El protón define el número atómico.
+Q|¿Qué fenómeno ocurre cuando la luz cambia de dirección al pasar de un medio a otro?|Refracción|Reflexión|Difracción|Interferencia|Es clave en lentes y prismas.
+Q|¿Qué científico desarrolló la teoría del Big Bang junto a las ecuaciones de expansión del universo?|Georges Lemaître|Edwin Hubble|Albert Einstein|Carl Sagan|Lemaître era sacerdote y físico.
+Q|¿Qué tipo de célula forma los tejidos del cuerpo humano?|Célula eucariota|Procariota|Bacteriana|Arquea|Las células humanas tienen núcleo definido.
+Q|¿Qué estructura celular produce energía en forma de ATP?|Mitocondria|Núcleo|Ribosoma|Lisoma|Se le conoce como la “central energética”.
+Q|¿Qué unidad mide la frecuencia?|Hertz|Newton|Joule|Pascal|Un hertz equivale a un ciclo por segundo.
+Q|¿Qué científico formuló las leyes del electromagnetismo clásico?|James Clerk Maxwell|Michael Faraday|Nikola Tesla|André-Marie Ampère|Sus ecuaciones unifican electricidad y magnetismo.
+Q|¿Qué proceso convierte glucosa en energía en las células?|Respiración celular|Fotosíntesis|Digestión|Fermentación|Ocurre en la mitocondria.
+Q|¿Qué planeta es el más cercano al Sol?|Mercurio|Venus|Tierra|Marte|Tiene temperaturas extremas.
+Q|¿Qué tipo de enlace ocurre cuando un átomo cede electrones a otro?|Enlace iónico|Enlace covalente|Enlace metálico|Puente de hidrógeno|Es común en sales como NaCl.
+Q|¿Qué científico descubrió el electrón?|J. J. Thomson|Ernest Rutherford|Niels Bohr|James Chadwick|Utilizó tubos de rayos catódicos.
+Q|¿Qué fenómeno permite que un avión se mantenga en el aire?|Sustentación|Gravedad|Fricción|Inercia|Se genera por diferencias de presión en las alas.

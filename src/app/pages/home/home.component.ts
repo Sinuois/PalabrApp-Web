@@ -9,11 +9,14 @@ import { AhorcadoService } from '../../services/ahorcado.service';
 import { CrucigramaService, CrucigramaCelda } from '../../services/crucigrama.service';
 import { SopaCelda, SopaService, SopaPalabra } from '../../services/sopa.service';
 import { GeografiaChileTriviaService } from '../../services/geografia-chile-trivia.service';
+import { CapitalesMundoTriviaService } from '../../services/capitales-mundo-trivia.service';
+import { ArteTriviaService } from '../../services/arte-trivia.service';
+import { CienciaTriviaService } from '../../services/ciencia-trivia.service';
 import { Palabra } from '../../interfaces/app.interfaces';
 import { Subject } from 'rxjs';
 
 type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
-type ModalidadJuego = 'vocabulario' | 'geografia';
+type ModalidadJuego = 'vocabulario' | 'geografia' | 'capitales' | 'arte' | 'ciencia';
 
 @Component({
   selector: 'app-home',
@@ -50,7 +53,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   sopaIgnorarSiguienteClick = false;
   sopaPrimerToque: SopaCelda | null = null;
   sopaRutaInvalida = signal<Array<{ f: number; c: number }>>([]);
-  triviaGeografiaDatoExtra = signal('');
+  triviaDatoExtra = signal('');
+  iconosModalidadesListos = signal(false);
   private listaTouchInicioX = 0;
   private listaTouchInicioY = 0;
   private listaTouchSeMovio = false;
@@ -65,8 +69,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private crucigramaActualizandoTimer: any = null;
   private letraIndiceActivaTimer: number | null = null;
   private alfabetoIgnorarClickHasta = 0;
+  private iconosModalidadPendientes = new Set<ModalidadJuego>();
   private destroy$ = new Subject<void>();
   private geografiaTriviaService = inject(GeografiaChileTriviaService);
+  private capitalesTriviaService = inject(CapitalesMundoTriviaService);
+  private arteTriviaService = inject(ArteTriviaService);
+  private cienciaTriviaService = inject(CienciaTriviaService);
 
   get orden()            { return this.palabrasService.orden; }
   get palabrasOrdenadas(){ return this.palabrasService.palabrasOrdenadas; }
@@ -353,6 +361,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   abrirSelectorModalidadJuego(): void {
+    this.reiniciarCargaIconosModalidad();
     this.juegoActivo.set(false);
     this.juegoCargando.set(false);
     this.invitacionAbriendoHasta = Date.now() + 350;
@@ -361,6 +370,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   aceptarInvitacionJuego(): void {
+    this.reiniciarCargaIconosModalidad();
     this.invitacionAbriendoHasta = Date.now() + 300;
     this.pasoInvitacionJuego.set('modalidad');
   }
@@ -447,6 +457,21 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  onIconoModalidadLoad(event: Event): void {
+    this.registrarIconoModalidad(event);
+  }
+
+  onIconoModalidadError(event: Event): void {
+    const img = event.target as HTMLImageElement | null;
+    if (!img) return;
+
+    img.style.display = 'none';
+    const fallback = img.parentElement?.querySelector<HTMLElement>('.mode-icon-fallback');
+    fallback?.classList.add('is-visible');
+
+    this.registrarIconoModalidad(event);
+  }
+
   onCerrarJuegoTap(event: Event): void {
     this.ejecutarTapSeguro(event, () => this.cerrarJuego());
   }
@@ -468,7 +493,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.triviaService.indiceSeleccionado() !== null) return;
 
     const gano = this.triviaService.resolverOpcion(indice);
-    const mensajeExtra = this.mensajeDatoGeografia();
+    const mensajeExtra = this.mensajeDatoTrivia();
     if (gano) {
       this.mostrarCelebracion.set(true);
       this.mensajeJuego.set(`¡Felicitaciones, sigue así!${mensajeExtra}`);
@@ -488,17 +513,59 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   etiquetaPromptTrivia(): string {
-    return this.modalidadJuego() === 'geografia' ? 'Pregunta' : 'Concepto';
+    return this.modalidadJuego() === 'vocabulario' ? 'Concepto' : 'Pregunta';
+  }
+
+  tituloTrivia(): string {
+    if (this.modalidadJuego() === 'geografia') {
+      return '¡Trivia de geografía chilena!';
+    }
+
+    if (this.modalidadJuego() === 'capitales') {
+      return '¡Trivia de capitales del mundo!';
+    }
+
+    if (this.modalidadJuego() === 'arte') {
+      return '¡Trivia de arte!';
+    }
+
+    if (this.modalidadJuego() === 'ciencia') {
+      return '¡Trivia de ciencia!';
+    }
+
+    return '¡Adivina el significado!';
+  }
+
+  etiquetaBotonSiguienteJuego(): string {
+    return this.modalidadJuego() === 'vocabulario' ? 'Siguiente juego' : 'Siguiente pregunta';
   }
 
   private async prepararJuego(excluirTipo?: TipoJuego): Promise<void> {
     this.mensajeJuego.set('');
     this.mostrarCelebracion.set(false);
-    this.triviaGeografiaDatoExtra.set('');
+    this.triviaDatoExtra.set('');
 
     if (this.modalidadJuego() === 'geografia') {
       this.tipoJuego.set('trivia');
       await this.prepararTriviaGeografia();
+      return;
+    }
+
+    if (this.modalidadJuego() === 'capitales') {
+      this.tipoJuego.set('trivia');
+      await this.prepararTriviaCapitales();
+      return;
+    }
+
+    if (this.modalidadJuego() === 'arte') {
+      this.tipoJuego.set('trivia');
+      await this.prepararTriviaArte();
+      return;
+    }
+
+    if (this.modalidadJuego() === 'ciencia') {
+      this.tipoJuego.set('trivia');
+      await this.prepararTriviaCiencia();
       return;
     }
 
@@ -559,20 +626,89 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private async prepararTriviaGeografia(): Promise<void> {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
-    this.triviaGeografiaDatoExtra.set('');
+    this.triviaDatoExtra.set('');
 
     try {
       const reto = await this.geografiaTriviaService.generarPregunta();
       if (!reto) {
-        this.mensajeJuego.set('No se pudo generar una pregunta de geografia chilena en este momento.');
+        this.mensajeJuego.set('No se pudo generar una pregunta de geografía chilena en este momento.');
         return;
       }
 
-      this.triviaGeografiaDatoExtra.set(reto.datoExtra ?? '');
+      this.triviaDatoExtra.set(reto.datoExtra ?? '');
 
       const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
       if (!exito) {
-        this.mensajeJuego.set('No se pudo preparar la trivia de geografia chilena en este intento.');
+        this.mensajeJuego.set('No se pudo preparar la trivia de geografía chilena en este intento.');
+      }
+    } finally {
+      this.juegoCargando.set(false);
+    }
+  }
+
+  private async prepararTriviaCapitales(): Promise<void> {
+    this.juegoCargando.set(true);
+    this.triviaService.resetear();
+    this.triviaDatoExtra.set('');
+
+    try {
+      const reto = await this.capitalesTriviaService.generarPregunta();
+      if (!reto) {
+        this.mensajeJuego.set('No se pudo generar una pregunta de capitales del mundo en este momento.');
+        return;
+      }
+
+      this.triviaDatoExtra.set(reto.datoExtra ?? '');
+
+      const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
+      if (!exito) {
+        this.mensajeJuego.set('No se pudo preparar la trivia de capitales del mundo en este intento.');
+      }
+    } finally {
+      this.juegoCargando.set(false);
+    }
+  }
+
+  private async prepararTriviaArte(): Promise<void> {
+    this.juegoCargando.set(true);
+    this.triviaService.resetear();
+    this.triviaDatoExtra.set('');
+
+    try {
+      const reto = await this.arteTriviaService.generarPregunta();
+      if (!reto) {
+        this.mensajeJuego.set('No se pudo generar una pregunta de arte en este momento.');
+        return;
+      }
+
+      this.triviaDatoExtra.set(reto.datoExtra ?? '');
+
+      const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
+      if (!exito) {
+        this.mensajeJuego.set('No se pudo preparar la trivia de arte en este intento.');
+      }
+    } finally {
+      this.juegoCargando.set(false);
+    }
+  }
+
+  private async prepararTriviaCiencia(): Promise<void> {
+    this.juegoCargando.set(true);
+    this.triviaService.resetear();
+    this.triviaDatoExtra.set('');
+
+    try {
+      const reto = await this.cienciaTriviaService.generarPregunta();
+      if (!reto) {
+        this.mensajeJuego.set('No se pudo generar una pregunta de ciencia en este momento.');
+        return;
+      }
+
+      this.triviaDatoExtra.set(reto.datoExtra ?? '');
+
+      const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
+      if (!exito) {
+        this.mensajeJuego.set('No se pudo preparar la trivia de ciencia en este intento.');
       }
     } finally {
       this.juegoCargando.set(false);
@@ -1067,10 +1203,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     return actual === previo || actual.contains(previo) || previo.contains(actual);
   }
 
-  private mensajeDatoGeografia(): string {
-    if (this.modalidadJuego() !== 'geografia') return '';
+  private mensajeDatoTrivia(): string {
+    if (this.modalidadJuego() === 'vocabulario') return '';
 
-    const dato = this.triviaGeografiaDatoExtra().trim();
+    const dato = this.triviaDatoExtra().trim();
     if (!dato) return '';
 
     return ` Dato extra: ${dato}`;
@@ -1099,5 +1235,23 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     void import('../buscar/buscar.component');
     void import('../palabra/palabra.component');
+  }
+
+  private reiniciarCargaIconosModalidad(): void {
+    this.iconosModalidadPendientes = new Set<ModalidadJuego>(['vocabulario', 'geografia', 'capitales', 'arte', 'ciencia']);
+    this.iconosModalidadesListos.set(false);
+  }
+
+  private registrarIconoModalidad(event: Event): void {
+    const img = event.target as HTMLImageElement | null;
+    if (!img) return;
+
+    const modo = img.dataset['modo'] as ModalidadJuego | undefined;
+    if (!modo || !this.iconosModalidadPendientes.has(modo)) return;
+
+    this.iconosModalidadPendientes.delete(modo);
+    if (this.iconosModalidadPendientes.size === 0) {
+      this.iconosModalidadesListos.set(true);
+    }
   }
 }
