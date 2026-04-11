@@ -16,7 +16,8 @@ import { Palabra } from '../../interfaces/app.interfaces';
 import { Subject } from 'rxjs';
 
 type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
-type ModalidadJuego = 'vocabulario' | 'geografia' | 'capitales' | 'arte' | 'ciencia';
+type ModalidadJuego = 'aleatoria' | 'vocabulario' | 'geografia' | 'capitales' | 'arte' | 'ciencia';
+type ModalidadActiva = Exclude<ModalidadJuego, 'aleatoria'>;
 
 @Component({
   selector: 'app-home',
@@ -38,7 +39,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   juegoActivo = signal(false);
   juegoCargando = signal(false);
   tipoJuego = signal<TipoJuego>('trivia');
-  modalidadJuego = signal<ModalidadJuego>('vocabulario');
+  modalidadJuego = signal<ModalidadJuego>('aleatoria');
+  modalidadJuegoActiva = signal<ModalidadActiva>('vocabulario');
   mensajeJuego = signal('');
   mostrarCelebracion = signal(false);
   cargandoSeleccionModalidad = signal<ModalidadJuego | null>(null);
@@ -428,6 +430,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.juegoActivo.set(false);
     this.juegoCargando.set(false);
     this.tipoJuego.set('trivia');
+    this.modalidadJuegoActiva.set('vocabulario');
     this.mensajeJuego.set('');
     this.cargandoInicioJuego.set(false);
     this.cargandoSeleccionModalidad.set(null);
@@ -513,23 +516,23 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   etiquetaPromptTrivia(): string {
-    return this.modalidadJuego() === 'vocabulario' ? 'Concepto' : 'Pregunta';
+    return this.modalidadJuegoActiva() === 'vocabulario' ? 'Concepto' : 'Pregunta';
   }
 
   tituloTrivia(): string {
-    if (this.modalidadJuego() === 'geografia') {
+    if (this.modalidadJuegoActiva() === 'geografia') {
       return '¡Trivia de geografía chilena!';
     }
 
-    if (this.modalidadJuego() === 'capitales') {
+    if (this.modalidadJuegoActiva() === 'capitales') {
       return '¡Trivia de capitales del mundo!';
     }
 
-    if (this.modalidadJuego() === 'arte') {
+    if (this.modalidadJuegoActiva() === 'arte') {
       return '¡Trivia de arte!';
     }
 
-    if (this.modalidadJuego() === 'ciencia') {
+    if (this.modalidadJuegoActiva() === 'ciencia') {
       return '¡Trivia de ciencia!';
     }
 
@@ -537,7 +540,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   etiquetaBotonSiguienteJuego(): string {
-    return this.modalidadJuego() === 'vocabulario' ? 'Siguiente juego' : 'Siguiente pregunta';
+    if (this.modalidadJuego() === 'aleatoria') return 'Siguiente juego';
+    return this.modalidadJuegoActiva() === 'vocabulario' ? 'Siguiente juego' : 'Siguiente pregunta';
   }
 
   private async prepararJuego(excluirTipo?: TipoJuego): Promise<void> {
@@ -545,25 +549,34 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mostrarCelebracion.set(false);
     this.triviaDatoExtra.set('');
 
-    if (this.modalidadJuego() === 'geografia') {
+    const modalidadSeleccionada = this.modalidadJuego();
+    let modalidadObjetivo: ModalidadActiva;
+    if (modalidadSeleccionada === 'aleatoria') {
+      modalidadObjetivo = this.elegirModalidadAleatoria();
+    } else {
+      modalidadObjetivo = modalidadSeleccionada;
+    }
+    this.modalidadJuegoActiva.set(modalidadObjetivo);
+
+    if (modalidadObjetivo === 'geografia') {
       this.tipoJuego.set('trivia');
       await this.prepararTriviaGeografia();
       return;
     }
 
-    if (this.modalidadJuego() === 'capitales') {
+    if (modalidadObjetivo === 'capitales') {
       this.tipoJuego.set('trivia');
       await this.prepararTriviaCapitales();
       return;
     }
 
-    if (this.modalidadJuego() === 'arte') {
+    if (modalidadObjetivo === 'arte') {
       this.tipoJuego.set('trivia');
       await this.prepararTriviaArte();
       return;
     }
 
-    if (this.modalidadJuego() === 'ciencia') {
+    if (modalidadObjetivo === 'ciencia') {
       this.tipoJuego.set('trivia');
       await this.prepararTriviaCiencia();
       return;
@@ -1204,7 +1217,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private mensajeDatoTrivia(): string {
-    if (this.modalidadJuego() === 'vocabulario') return '';
+    if (this.modalidadJuegoActiva() === 'vocabulario') return '';
 
     const dato = this.triviaDatoExtra().trim();
     if (!dato) return '';
@@ -1238,8 +1251,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private reiniciarCargaIconosModalidad(): void {
-    this.iconosModalidadPendientes = new Set<ModalidadJuego>(['vocabulario', 'geografia', 'capitales', 'arte', 'ciencia']);
+    this.iconosModalidadPendientes = new Set<ModalidadJuego>(['aleatoria', 'vocabulario', 'geografia', 'capitales', 'arte', 'ciencia']);
     this.iconosModalidadesListos.set(false);
+  }
+
+  private elegirModalidadAleatoria(): ModalidadActiva {
+    const modalidades: ModalidadActiva[] = ['vocabulario', 'geografia', 'capitales', 'arte', 'ciencia'];
+    return modalidades[Math.floor(Math.random() * modalidades.length)] ?? 'vocabulario';
   }
 
   private registrarIconoModalidad(event: Event): void {

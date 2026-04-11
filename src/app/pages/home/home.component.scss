@@ -737,16 +737,16 @@ h1 {
 }
 
 .mode-selector {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
-  margin-top: 12px;
+  width: min(360px, 100%);
+  margin: 12px auto 0;
 }
 
 .mode-selector-stage {
   position: relative;
-  min-height: 132px;
+  min-height: 248px;
 
   &.is-loading .mode-selector {
     visibility: hidden;
@@ -782,7 +782,7 @@ h1 {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-  width: 100px;
+  width: auto;
 
   .mode-icon {
     width: 74px;
@@ -851,6 +851,7 @@ h1 {
     filter: none;
   }
 
+  &.mode-aleatoria .mode-icon { background: linear-gradient(145deg, #4d5b73, #8694ad); }
   &.mode-vocab .mode-icon { background: linear-gradient(145deg, #b45a2f, #f0bb85); }
   &.mode-geo .mode-icon { background: linear-gradient(145deg, #2f7f78, #9fd2c9); }
   &.mode-capitales .mode-icon { background: linear-gradient(145deg, #b86a38, #f1c88e); }
@@ -861,11 +862,10 @@ h1 {
 @media (max-width: 420px) {
   .mode-selector {
     gap: 12px;
+    width: min(320px, 100%);
   }
 
   .mode-card {
-    width: 92px;
-
     .mode-icon {
       width: 66px;
       height: 66px;
@@ -882,11 +882,10 @@ h1 {
 @media (max-width: 340px) {
   .mode-selector {
     gap: 10px;
+    width: min(300px, 100%);
   }
 
   .mode-card {
-    width: 84px;
-
     .mode-icon {
       width: 60px;
       height: 60px;

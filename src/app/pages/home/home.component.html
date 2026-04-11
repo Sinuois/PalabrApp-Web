@@ -127,7 +127,7 @@
 
     <ng-container *ngIf="pasoInvitacionJuego() === 'modalidad'">
       <h3>Elige una modalidad de juego</h3>
-      <p>Puedes jugar con el formato clásico de vocabulario o elegir una trivia temática.</p>
+      <p>Puedes jugar con el formato clásico de vocabulario, elegir una trivia temática o dejar la modalidad en aleatorio.</p>
       <div class="mode-selector-stage" [class.is-loading]="!iconosModalidadesListos()">
         <div class="mode-selector-loading" *ngIf="!iconosModalidadesListos()">
           <span class="btn-spinner" aria-hidden="true"></span>
@@ -219,6 +219,23 @@
             </ng-container>
           </span>
           <span class="mode-label">{{ cargandoSeleccionModalidad() === 'ciencia' ? 'Preparando...' : 'Ciencia' }}</span>
+        </button>
+        <button
+          type="button"
+          class="mode-card mode-aleatoria"
+          [disabled]="cargandoSeleccionModalidad() !== null"
+          (pointerup)="onSeleccionarModalidadTap($event, 'aleatoria')"
+          (click)="onSeleccionarModalidadTap($event, 'aleatoria')"
+          (touchend)="onSeleccionarModalidadTap($event, 'aleatoria')"
+        >
+          <span class="mode-icon" aria-hidden="true">
+            <span *ngIf="cargandoSeleccionModalidad() === 'aleatoria'" class="btn-spinner"></span>
+            <ng-container *ngIf="cargandoSeleccionModalidad() !== 'aleatoria'">
+              <img class="mode-icon-image" src="images/modos/aleatoria.png" alt="" data-modo="aleatoria" (load)="onIconoModalidadLoad($event)" (error)="onIconoModalidadError($event)" />
+              <span class="mode-icon-fallback">RND</span>
+            </ng-container>
+          </span>
+          <span class="mode-label">{{ cargandoSeleccionModalidad() === 'aleatoria' ? 'Preparando...' : 'Aleatoria' }}</span>
         </button>
       </div>
       </div>
