@@ -5,7 +5,7 @@ import { Palabra, PalabrasResponse } from '../interfaces/app.interfaces';
 
 const BASE_URL = 'https://palabrapp-backend-production.up.railway.app/api';
 
-export type Orden = 'New' | 'Abc' | 'Zyx';
+export type Orden = 'New' | 'Abc';
 
 interface WikipediaSummaryResponse {
   extract?: string;
@@ -37,7 +37,6 @@ export class PalabrasService {
     const lista = [...this._palabras()];
     switch (this.orden()) {
       case 'Abc': return lista.sort((a, b) => a.concepto.localeCompare(b.concepto));
-      case 'Zyx': return lista.sort((a, b) => b.concepto.localeCompare(a.concepto));
       default:    return lista;
     }
   });

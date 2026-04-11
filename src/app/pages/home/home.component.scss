@@ -136,7 +136,7 @@ h1 {
   }
   &[data-orden='New'] { background: rgba($accent-green,0.1); border: 1px solid rgba($accent-green,0.35); color: $accent-green; &:hover { background: rgba($accent-green,0.18); } }
   &[data-orden='Abc'] { background: rgba($accent-amber,0.1); border: 1px solid rgba($accent-amber,0.35); color: $accent-amber; &:hover { background: rgba($accent-amber,0.18); } }
-  &[data-orden='Zyx'] { background: rgba($accent-red,0.08); border: 1px solid rgba($accent-red,0.3); color: $accent-red; &:hover { background: rgba($accent-red,0.14); } }
+
 }
 
 .refresh-bar { height: 2px; background: rgba($accent-blue,0.15); overflow: hidden; flex-shrink: 0; }
@@ -192,13 +192,13 @@ h1 {
 }
 
 .letter-btn {
-  width: 22px; height: 18px;
+  width: 22px; flex: 1;
   border: 0; background: transparent; color: rgba($text-muted, 0.5);
   font-size: 0.5rem; font-weight: 700; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: all 0.12s; text-transform: uppercase;
+  transition: all 0.12s; text-transform: uppercase; min-height: 0;
   -webkit-tap-highlight-color: transparent; touch-action: manipulation;
-  font-family: $font-mono; flex-shrink: 0;
+  font-family: $font-mono;
   &:hover { color: $accent-blue; background: rgba($accent-blue, 0.1); }
   &:active { background: rgba($accent-blue, 0.15); }
 }

@@ -118,7 +118,7 @@ export class HomeComponent implements OnInit {
   }
 
   ciclarOrden(): void {
-    const ciclo: Orden[] = ['Abc', 'New', 'Zyx'];
+    const ciclo: Orden[] = ['Abc', 'New'];
     const idx = ciclo.indexOf(this.palabrasService.orden());
     this.palabrasService.orden.set(ciclo[(idx + 1) % ciclo.length]);
   }
