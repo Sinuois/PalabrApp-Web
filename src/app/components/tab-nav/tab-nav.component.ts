@@ -2,6 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map, startWith } from 'rxjs/operators';
+import { AppActionsService } from '../../services/app-actions.service';
 
 @Component({
   selector: 'app-tab-nav',
@@ -11,6 +12,7 @@ import { filter, map, startWith } from 'rxjs/operators';
 })
 export class TabNavComponent {
   private readonly router = inject(Router);
+  private readonly appActions = inject(AppActionsService);
   private ultimoTapTouchMs = 0;
   private readonly ventanaIgnorarClickMs = 700;
   private navegandoHome = false;
@@ -54,6 +56,28 @@ export class TabNavComponent {
 
   onGoBuscarTap(event: Event): void {
     this.ejecutarTapSeguro(event, () => this.goBuscar());
+  }
+
+  onIniciarJuegoTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => {
+      if (this.isHomeActive()) {
+        this.appActions.iniciarJuego();
+        return;
+      }
+
+      if (this.navegandoHome) return;
+
+      this.navegandoHome = true;
+      void this.router.navigateByUrl('/', {
+        state: { iniciarJuegoDesdeNav: true }
+      }).finally(() => {
+        this.navegandoHome = false;
+      });
+    });
+  }
+
+  onNuevoConceptoTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.appActions.nuevoConcepto());
   }
 
   private ejecutarTapSeguro(event: Event, accion: () => void): void {

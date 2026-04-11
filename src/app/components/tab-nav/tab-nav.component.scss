@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../styles/tokens' as *;
 
 .tab-nav {
@@ -33,6 +34,18 @@
     .tab-icon svg { filter: drop-shadow(0 0 6px #{$accent-violet}66); }
   }
   &:hover:not(.active) { color: $text-secondary; }
+
+  &.tab-juego {
+    color: $accent-amber;
+    .tab-icon svg { filter: drop-shadow(0 0 5px #{$accent-amber}55); }
+    &:hover { color: color.mix(white, $accent-amber, 20%); }
+  }
+
+  &.tab-nuevo {
+    color: $accent-green;
+    .tab-icon svg { filter: drop-shadow(0 0 5px #{$accent-green}55); }
+    &:hover { color: color.mix(white, $accent-green, 20%); }
+  }
 }
 
 .tab-icon {

@@ -1,13 +1,15 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit, OnDestroy, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PalabrasService, Orden } from '../../services/palabras.service';
 import { GameUtilsService } from '../../services/game-utils.service';
+import { AppActionsService } from '../../services/app-actions.service';
 import { TriviaService } from '../../services/trivia.service';
 import { AhorcadoService } from '../../services/ahorcado.service';
 import { CrucigramaService, CrucigramaCelda } from '../../services/crucigrama.service';
 import { SopaCelda, SopaService, SopaPalabra } from '../../services/sopa.service';
 import { Palabra } from '../../interfaces/app.interfaces';
+import { Subject } from 'rxjs';
 
 type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
 
@@ -19,7 +21,7 @@ type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   Math = Math;
 
@@ -55,11 +57,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private ultimoCambioOrdenMs = 0;
   private juegoAbriendoHasta = 0;
   private crucigramaActualizandoTimer: any = null;
+  private letraIndiceActivaTimer: number | null = null;
+  private alfabetoIgnorarClickHasta = 0;
+  private destroy$ = new Subject<void>();
 
   get orden()            { return this.palabrasService.orden; }
   get palabrasOrdenadas(){ return this.palabrasService.palabrasOrdenadas; }
   get cantPalabras()     { return this.palabrasService.cantPalabras(); }
   get cargado()          { return this.palabrasService.cargado(); }
+  letraIndiceActiva = signal<string | null>(null);
+  letraIndiceActivaTop = 0;
 
   alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
@@ -71,17 +78,61 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   scrollALetra(event: Event, letra: string): void {
     event.stopPropagation();
+
+    if (event instanceof MouseEvent && Date.now() < this.alfabetoIgnorarClickHasta) {
+      event.preventDefault();
+      return;
+    }
+
     if (event instanceof PointerEvent || event instanceof TouchEvent || event instanceof MouseEvent) {
       event.preventDefault();
     }
+    this.scrollALetraInterno(letra);
+  }
 
+  private scrollALetraInterno(letra: string): void {
+    this.letraIndiceActiva.set(letra);
+    if (this.letraIndiceActivaTimer !== null) {
+      window.clearTimeout(this.letraIndiceActivaTimer);
+    }
+    this.letraIndiceActivaTimer = window.setTimeout(() => {
+      this.letraIndiceActiva.set(null);
+      this.letraIndiceActivaTimer = null;
+    }, 700);
     const lista = document.querySelector<HTMLElement>('.lista-scroll');
     if (!lista) return;
-
     const item = lista.querySelector<HTMLElement>(`[data-letter="${letra}"]`);
     if (!item) return;
-
     item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  onAlphabetDragStart(event: TouchEvent): void {
+    event.stopPropagation();
+    event.preventDefault();
+    this.alfabetoIgnorarClickHasta = Date.now() + 450;
+    this.processAlphabetTouch(event);
+  }
+
+  onAlphabetDragMove(event: TouchEvent): void {
+    event.stopPropagation();
+    event.preventDefault();
+    this.processAlphabetTouch(event);
+  }
+
+  onAlphabetDragEnd(): void {
+    this.alfabetoIgnorarClickHasta = Date.now() + 450;
+    // auto-clear timer in scrollALetraInterno handles hiding bubble
+  }
+
+  private processAlphabetTouch(event: TouchEvent): void {
+    const touch = event.touches[0];
+    if (!touch) return;
+    this.letraIndiceActivaTop = touch.clientY;
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    const boton = el?.closest<HTMLElement>('[data-letra]');
+    const letra = boton?.dataset['letra'];
+    if (!letra) return;
+    this.scrollALetraInterno(letra);
   }
 
   constructor(
@@ -91,7 +142,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     public ahorcadoService: AhorcadoService,
     public crucigramaService: CrucigramaService,
     public sopaService: SopaService,
-    private gameUtils: GameUtilsService
+    private gameUtils: GameUtilsService,
+    private appActions: AppActionsService
   ) {}
 
   ngOnInit(): void {
@@ -101,6 +153,41 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
     this.precalentarRutasSecundarias();
     this.refrescar();
+
+    // Suscribirse a eventos del servicio compartido
+    this.appActions.iniciarJuego$.subscribe(() => {
+      void this.iniciarJuegoDirecto();
+    });
+
+    this.appActions.nuevoConcepto$.subscribe(() => {
+      void this.nuevaPalabra();
+    });
+
+    this.appActions.volver$.subscribe(() => {
+      void this.router.navigateByUrl('/');
+    });
+
+    if (typeof history !== 'undefined' && history.state?.iniciarJuegoDesdeNav) {
+      this.juegoAbriendoHasta = Date.now() + 350;
+      setTimeout(() => {
+        void this.iniciarJuegoDirecto();
+      }, 0);
+
+      // Limpiar bandera para no reabrir juego en futuras entradas a Home.
+      const stateActual = history.state ?? {};
+      const { iniciarJuegoDesdeNav: _omit, ...resto } = stateActual;
+      history.replaceState(resto, '');
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.letraIndiceActivaTimer !== null) {
+      window.clearTimeout(this.letraIndiceActivaTimer);
+      this.letraIndiceActivaTimer = null;
+    }
+
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   ngAfterViewInit(): void {
@@ -319,6 +406,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   onCerrarJuegoTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.cerrarJuego());
+  }
+
+  onOverlayJuegoTap(event: Event): void {
+    if (Date.now() < this.juegoAbriendoHasta) {
+      event.stopPropagation();
+      return;
+    }
+
     this.ejecutarTapSeguro(event, () => this.cerrarJuego());
   }
 

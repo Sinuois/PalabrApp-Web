@@ -61,6 +61,10 @@ export class BuscarComponent {
     this.buscar(input?.value ?? '');
   }
 
+  volver(): void {
+    void this.router.navigateByUrl('/');
+  }
+
   private normalizarTexto(texto: string): string {
     return texto
       .normalize('NFD')
