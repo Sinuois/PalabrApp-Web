@@ -777,11 +777,15 @@ h1 {
     color: #fff;
     box-shadow: 0 6px 14px rgba($accent-blue, 0.3);
 
+    &.btn-vocab-mode { background: linear-gradient(135deg, #74c, #96f); }
+    &.btn-geo-mode { background: linear-gradient(135deg, #1a6, #4c8); }
+
     &:hover {
       transform: translateY(-1px);
       box-shadow: 0 8px 18px rgba($accent-blue, 0.42);
       filter: saturate(1.05);
     }
+
 
     &:disabled {
       opacity: 0.72;

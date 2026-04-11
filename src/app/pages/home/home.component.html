@@ -114,18 +114,46 @@
 </div>
 
 <!-- Popup invitacion juego -->
-<div class="game-modal-overlay" *ngIf="mostrarInvitacionJuego() && cargado" (click)="cerrarInvitacionJuego()">
-  <div class="game-modal" (click)="$event.stopPropagation()">
-    <h3>¡Gracias por usar PalabrApp!</h3>
-    <p *ngIf="!cargandoAceptarInvitacion()">Antes de consultar el listado, ¿quieres jugar?</p>
-    <p *ngIf="cargandoAceptarInvitacion()" class="loading-message">Preparando juego...</p>
-    <div class="game-actions">
-      <button type="button" class="btn-secondary" [disabled]="cargandoAceptarInvitacion()" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Ahora no</button>
-      <button type="button" class="btn-primary" [disabled]="cargandoAceptarInvitacion()" (pointerup)="onAceptarInvitacionTap($event)" (click)="onAceptarInvitacionTap($event)" (touchend)="onAceptarInvitacionTap($event)">
-        <span *ngIf="cargandoAceptarInvitacion()" class="btn-spinner" aria-hidden="true"></span>
-        {{ cargandoAceptarInvitacion() ? 'Preparando...' : 'Aceptar' }}
-      </button>
-    </div>
+<div class="game-modal-overlay" *ngIf="mostrarInvitacionJuego() && cargado" (pointerup)="onOverlayInvitacionTap($event)" (click)="onOverlayInvitacionTap($event)" (touchend)="onOverlayInvitacionTap($event)">
+  <div class="game-modal" (pointerup)="$event.stopPropagation()" (click)="$event.stopPropagation()" (touchend)="$event.stopPropagation()">
+    <ng-container *ngIf="pasoInvitacionJuego() === 'actualizacion'">
+      <h3>¡PalabrApp se ha actualizado!</h3>
+      <p>De ahora en adelante, PalabrApp no solo será para aprender vocabulario, sino que también ofrecerá trivia sobre geografía chilena. ¿Quieres probar?</p>
+      <div class="game-actions">
+        <button type="button" class="btn-secondary" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Ahora no</button>
+        <button type="button" class="btn-primary" (pointerup)="onAceptarInvitacionTap($event)" (click)="onAceptarInvitacionTap($event)" (touchend)="onAceptarInvitacionTap($event)">Aceptar</button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="pasoInvitacionJuego() === 'modalidad'">
+      <h3>Elige una modalidad de juego</h3>
+      <p>Puedes jugar con el formato clásico de vocabulario o probar la nueva trivia de geografía chilena.</p>
+      <div class="game-actions crossword-actions">
+        <button
+          type="button"
+          class="btn-primary btn-vocab-mode"
+          [disabled]="cargandoSeleccionModalidad() !== null"
+          (pointerup)="onSeleccionarModalidadTap($event, 'vocabulario')"
+          (click)="onSeleccionarModalidadTap($event, 'vocabulario')"
+          (touchend)="onSeleccionarModalidadTap($event, 'vocabulario')"
+        >
+          <span *ngIf="cargandoSeleccionModalidad() === 'vocabulario'" class="btn-spinner" aria-hidden="true"></span>
+          {{ cargandoSeleccionModalidad() === 'vocabulario' ? 'Preparando...' : 'Juegos de vocabulario' }}
+        </button>
+        <button
+          type="button"
+          class="btn-primary btn-geo-mode"
+          [disabled]="cargandoSeleccionModalidad() !== null"
+          (pointerup)="onSeleccionarModalidadTap($event, 'geografia')"
+          (click)="onSeleccionarModalidadTap($event, 'geografia')"
+          (touchend)="onSeleccionarModalidadTap($event, 'geografia')"
+        >
+          <span *ngIf="cargandoSeleccionModalidad() === 'geografia'" class="btn-spinner" aria-hidden="true"></span>
+          {{ cargandoSeleccionModalidad() === 'geografia' ? 'Preparando...' : 'Trivia de geografía chilena' }}
+        </button>
+        <button type="button" class="btn-secondary" [disabled]="cargandoSeleccionModalidad() !== null" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Cerrar</button>
+      </div>
+    </ng-container>
   </div>
 </div>
 
@@ -146,12 +174,12 @@
   <div class="game-modal" [ngClass]="{ 'crossword-modal': tipoJuego() === 'crucigrama', 'sopa-modal': tipoJuego() === 'sopa' }" (click)="$event.stopPropagation()" (pointerup)="$event.stopPropagation()" (touchend)="$event.stopPropagation()">
     <!-- TRIVIA: Adivina el significado -->
     <ng-container *ngIf="tipoJuego() === 'trivia'">
-      <h3>¡Adivina el significado!</h3>
+      <h3>{{ modalidadJuego() === 'geografia' ? '¡Trivia de geografía chilena!' : '¡Adivina el significado!' }}</h3>
 
       <p class="game-loading" *ngIf="juegoCargando()">Preparando reto...</p>
 
       <ng-container *ngIf="!juegoCargando() && triviaService.conceptoJuego()">
-        <p class="game-concepto">Concepto: <strong>{{ triviaService.conceptoJuego() }}</strong></p>
+        <p class="game-concepto">{{ etiquetaPromptTrivia() }}: <strong>{{ triviaService.conceptoJuego() }}</strong></p>
 
         <div class="game-options">
           <button
@@ -325,7 +353,7 @@
       <button type="button" class="btn-secondary btn-close" (pointerup)="onCerrarJuegoTap($event)" (click)="onCerrarJuegoTap($event)" (touchend)="onCerrarJuegoTap($event)">Cerrar</button>
       <button type="button" class="btn-primary" *ngIf="!juegoCargando()" [disabled]="cargandoOtroJuego()" (pointerup)="onJugarOtraTap($event)" (click)="onJugarOtraTap($event)" (touchend)="onJugarOtraTap($event)">
         <span *ngIf="cargandoOtroJuego()" class="btn-spinner" aria-hidden="true"></span>
-        {{ cargandoOtroJuego() ? 'Cargando...' : 'Siguiente juego' }}
+        {{ cargandoOtroJuego() ? 'Cargando...' : (modalidadJuego() === 'geografia' ? 'Siguiente pregunta' : 'Siguiente juego') }}
       </button>
     </div>
   </div>

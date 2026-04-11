@@ -69,7 +69,7 @@ export class TabNavComponent {
 
       this.navegandoHome = true;
       void this.router.navigateByUrl('/', {
-        state: { iniciarJuegoDesdeNav: true }
+        state: { abrirModalidadJuegoDesdeNav: true }
       }).finally(() => {
         this.navegandoHome = false;
       });

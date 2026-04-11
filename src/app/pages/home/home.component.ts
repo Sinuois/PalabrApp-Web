@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit, OnDestroy, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit, OnDestroy, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PalabrasService, Orden } from '../../services/palabras.service';
@@ -8,10 +8,12 @@ import { TriviaService } from '../../services/trivia.service';
 import { AhorcadoService } from '../../services/ahorcado.service';
 import { CrucigramaService, CrucigramaCelda } from '../../services/crucigrama.service';
 import { SopaCelda, SopaService, SopaPalabra } from '../../services/sopa.service';
+import { GeografiaChileTriviaService } from '../../services/geografia-chile-trivia.service';
 import { Palabra } from '../../interfaces/app.interfaces';
 import { Subject } from 'rxjs';
 
 type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
+type ModalidadJuego = 'vocabulario' | 'geografia';
 
 @Component({
   selector: 'app-home',
@@ -29,12 +31,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   isRefreshing = signal(false);
   errorCarga = signal(false);
   mostrarInvitacionJuego = signal(true);
+  pasoInvitacionJuego = signal<'actualizacion' | 'modalidad'>('actualizacion');
   juegoActivo = signal(false);
   juegoCargando = signal(false);
   tipoJuego = signal<TipoJuego>('trivia');
+  modalidadJuego = signal<ModalidadJuego>('vocabulario');
   mensajeJuego = signal('');
   mostrarCelebracion = signal(false);
-  cargandoAceptarInvitacion = signal(false);
+  cargandoSeleccionModalidad = signal<ModalidadJuego | null>(null);
   cargandoInicioJuego = signal(false);
   cargandoOtroJuego = signal(false);
   navegandoBuscar = signal(false);
@@ -46,6 +50,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   sopaIgnorarSiguienteClick = false;
   sopaPrimerToque: SopaCelda | null = null;
   sopaRutaInvalida = signal<Array<{ f: number; c: number }>>([]);
+  triviaGeografiaDatoExtra = signal('');
   private listaTouchInicioX = 0;
   private listaTouchInicioY = 0;
   private listaTouchSeMovio = false;
@@ -56,10 +61,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly ventanaIgnorarClickMs = 700;
   private ultimoCambioOrdenMs = 0;
   private juegoAbriendoHasta = 0;
+  private invitacionAbriendoHasta = 0;
   private crucigramaActualizandoTimer: any = null;
   private letraIndiceActivaTimer: number | null = null;
   private alfabetoIgnorarClickHasta = 0;
   private destroy$ = new Subject<void>();
+  private geografiaTriviaService = inject(GeografiaChileTriviaService);
 
   get orden()            { return this.palabrasService.orden; }
   get palabrasOrdenadas(){ return this.palabrasService.palabrasOrdenadas; }
@@ -156,7 +163,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // Suscribirse a eventos del servicio compartido
     this.appActions.iniciarJuego$.subscribe(() => {
-      void this.iniciarJuegoDirecto();
+      this.abrirSelectorModalidadJuego();
     });
 
     this.appActions.nuevoConcepto$.subscribe(() => {
@@ -167,15 +174,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       void this.router.navigateByUrl('/');
     });
 
-    if (typeof history !== 'undefined' && history.state?.iniciarJuegoDesdeNav) {
+    if (typeof history !== 'undefined' && history.state?.abrirModalidadJuegoDesdeNav) {
       this.juegoAbriendoHasta = Date.now() + 350;
       setTimeout(() => {
-        void this.iniciarJuegoDirecto();
+        this.abrirSelectorModalidadJuego();
       }, 0);
 
-      // Limpiar bandera para no reabrir juego en futuras entradas a Home.
+      // Limpiar bandera para no reabrir selector en futuras entradas a Home.
       const stateActual = history.state ?? {};
-      const { iniciarJuegoDesdeNav: _omit, ...resto } = stateActual;
+      const { abrirModalidadJuegoDesdeNav: _omit, ...resto } = stateActual;
       history.replaceState(resto, '');
     }
   }
@@ -222,6 +229,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     const ciclo: Orden[] = ['Abc', 'New'];
     const idx = ciclo.indexOf(this.palabrasService.orden());
     this.palabrasService.orden.set(ciclo[(idx + 1) % ciclo.length]);
+
+    if (this.palabrasService.orden() === 'New') {
+      this.scrollListaAlInicio();
+    }
+  }
+
+  private scrollListaAlInicio(): void {
+    if (typeof document === 'undefined') return;
+    const lista = document.querySelector<HTMLElement>('.lista-scroll');
+    lista?.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   onCiclarOrdenTap(event: Event): void {
@@ -317,38 +334,63 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   cerrarInvitacionJuego(): void {
+    this.pasoInvitacionJuego.set('actualizacion');
     this.mostrarInvitacionJuego.set(false);
     this.marcarJuegoPresentadoEnSesion();
+  }
+
+  onOverlayInvitacionTap(event: Event): void {
+    if (Date.now() < this.invitacionAbriendoHasta) {
+      event.stopPropagation();
+      return;
+    }
+
+    this.ejecutarTapSeguro(event, () => this.cerrarInvitacionJuego());
   }
 
   onCerrarInvitacionTap(event: Event): void {
     this.ejecutarTapSeguro(event, () => this.cerrarInvitacionJuego());
   }
 
-  async aceptarInvitacionJuego(): Promise<void> {
-    if (this.cargandoAceptarInvitacion()) return;
+  abrirSelectorModalidadJuego(): void {
+    this.juegoActivo.set(false);
+    this.juegoCargando.set(false);
+    this.invitacionAbriendoHasta = Date.now() + 350;
+    this.mostrarInvitacionJuego.set(true);
+    this.pasoInvitacionJuego.set('modalidad');
+  }
 
-    this.cargandoAceptarInvitacion.set(true);
-
-    try {
-      // Asegurarse de que las palabras estén cargadas
-      if (!this.palabrasService.cargado()) {
-        await this.palabrasService.cargarPalabras();
-      }
-
-      this.mostrarInvitacionJuego.set(false);
-      this.juegoActivo.set(true);
-      this.marcarJuegoPresentadoEnSesion();
-
-      await this.prepararJuego();
-    } finally {
-      this.cargandoAceptarInvitacion.set(false);
-    }
+  aceptarInvitacionJuego(): void {
+    this.invitacionAbriendoHasta = Date.now() + 300;
+    this.pasoInvitacionJuego.set('modalidad');
   }
 
   onAceptarInvitacionTap(event: Event): void {
     this.ejecutarTapSeguro(event, () => {
-      void this.aceptarInvitacionJuego();
+      this.aceptarInvitacionJuego();
+    });
+  }
+
+  async seleccionarModalidadJuego(modalidad: ModalidadJuego): Promise<void> {
+    if (this.cargandoSeleccionModalidad()) return;
+
+    this.cargandoSeleccionModalidad.set(modalidad);
+    this.modalidadJuego.set(modalidad);
+    this.mostrarInvitacionJuego.set(false);
+    this.pasoInvitacionJuego.set('actualizacion');
+    this.juegoActivo.set(true);
+    this.marcarJuegoPresentadoEnSesion();
+
+    try {
+      await this.prepararJuego();
+    } finally {
+      this.cargandoSeleccionModalidad.set(null);
+    }
+  }
+
+  onSeleccionarModalidadTap(event: Event, modalidad: ModalidadJuego): void {
+    this.ejecutarTapSeguro(event, () => {
+      void this.seleccionarModalidadJuego(modalidad);
     });
   }
 
@@ -378,7 +420,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.tipoJuego.set('trivia');
     this.mensajeJuego.set('');
     this.cargandoInicioJuego.set(false);
-    this.cargandoAceptarInvitacion.set(false);
+    this.cargandoSeleccionModalidad.set(null);
     this.cargandoOtroJuego.set(false);
     this.triviaService.resetear();
     this.ahorcadoService.resetear();
@@ -426,14 +468,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.triviaService.indiceSeleccionado() !== null) return;
 
     const gano = this.triviaService.resolverOpcion(indice);
+    const mensajeExtra = this.mensajeDatoGeografia();
     if (gano) {
       this.mostrarCelebracion.set(true);
-      this.mensajeJuego.set('¡Felicitaciones! Tómale captura a esto y mándaselo a Gonzalo. ¡Lo harás muy feliz!');
+      this.mensajeJuego.set(`¡Felicitaciones, sigue así!${mensajeExtra}`);
       setTimeout(() => this.mostrarCelebracion.set(false), 3000);
       return;
     }
 
-    this.mensajeJuego.set('Para la otra será, compa. Aunque Gonzalo dice que deberías pasar más tiempo en PalabrApp.');
+    this.mensajeJuego.set(`No pasa nada, inténtalo de nuevo.${mensajeExtra}`);
   }
 
   onResolverOpcionTap(event: Event, indice: number): void {
@@ -444,9 +487,20 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.triviaService.claseOpcion(indice);
   }
 
+  etiquetaPromptTrivia(): string {
+    return this.modalidadJuego() === 'geografia' ? 'Pregunta' : 'Concepto';
+  }
+
   private async prepararJuego(excluirTipo?: TipoJuego): Promise<void> {
     this.mensajeJuego.set('');
     this.mostrarCelebracion.set(false);
+    this.triviaGeografiaDatoExtra.set('');
+
+    if (this.modalidadJuego() === 'geografia') {
+      this.tipoJuego.set('trivia');
+      await this.prepararTriviaGeografia();
+      return;
+    }
 
     const tipos: TipoJuego[] = ['trivia', 'ahorcado', 'crucigrama', 'sopa'];
     const tiposDisponibles = excluirTipo ? tipos.filter(t => t !== excluirTipo) : tipos;
@@ -502,6 +556,29 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.juegoCargando.set(false);
   }
 
+  private async prepararTriviaGeografia(): Promise<void> {
+    this.juegoCargando.set(true);
+    this.triviaService.resetear();
+    this.triviaGeografiaDatoExtra.set('');
+
+    try {
+      const reto = await this.geografiaTriviaService.generarPregunta();
+      if (!reto) {
+        this.mensajeJuego.set('No se pudo generar una pregunta de geografia chilena en este momento.');
+        return;
+      }
+
+      this.triviaGeografiaDatoExtra.set(reto.datoExtra ?? '');
+
+      const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
+      if (!exito) {
+        this.mensajeJuego.set('No se pudo preparar la trivia de geografia chilena en este intento.');
+      }
+    } finally {
+      this.juegoCargando.set(false);
+    }
+  }
+
   private async prepararAhorcado(): Promise<void> {
     this.juegoCargando.set(true);
     this.ahorcadoService.resetear();
@@ -539,7 +616,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (gano) {
       this.mostrarCelebracion.set(true);
-      this.mensajeJuego.set('¡Lo adivinaste! Tómale captura a esto y mándaselo a Gonzalo. ¡Lo harás muy feliz!');
+      this.mensajeJuego.set('¡Lo adivinaste!');
       setTimeout(() => this.mostrarCelebracion.set(false), 3000);
       return;
     }
@@ -625,7 +702,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     this.mostrarCelebracion.set(true);
-    this.mensajeJuego.set('¡Crucigrama resuelto! Tómale captura y mándaselo a Gonzalo.');
+    this.mensajeJuego.set('¡Crucigrama resuelto!');
     setTimeout(() => this.mostrarCelebracion.set(false), 3000);
   }
 
@@ -869,7 +946,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (halladas >= total) {
       this.mostrarCelebracion.set(true);
-      this.mensajeJuego.set('¡Sopa completada! Tómale captura y mándaselo a Gonzalo.');
+      this.mensajeJuego.set('¡Sopa completada!');
       setTimeout(() => this.mostrarCelebracion.set(false), 3000);
       return;
     }
@@ -988,6 +1065,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     return actual === previo || actual.contains(previo) || previo.contains(actual);
+  }
+
+  private mensajeDatoGeografia(): string {
+    if (this.modalidadJuego() !== 'geografia') return '';
+
+    const dato = this.triviaGeografiaDatoExtra().trim();
+    if (!dato) return '';
+
+    return ` Dato extra: ${dato}`;
   }
 
   private leerJuegoPresentadoEnSesion(): boolean {

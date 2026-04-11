@@ -1,0 +1,392 @@
+# Formato base:
+# R|Nombre Región|Código|Capital (si existe un campo histórico intermedio, se ignora)
+# C|Nombre Región|Comuna
+# V|Volcán|Región
+# RI|Río|Región
+# M|Montaña importante|Región
+# PN|Parque nacional|Región
+# IS|Isla|Región
+# GL|Glaciar|Región
+# L|Lago|Región
+# LG|Laguna|Región
+# CC|Ciudad costera|Región
+# CI|Ciudad|Región
+# P|Pueblo|Región
+# FL|Flora nativa|Zona
+# FA|Fauna nativa|Zona
+# X|Categoría distractor externo|Nombre
+# Categorías de X: volcan, rio, montana, parque, isla, glaciar, lago, laguna, ciudad_costera, ciudad, pueblo, flora, fauna
+# En líneas V, RI, M, PN, IS, GL, L, LG, CC, CI, P, FL y FA:
+# Campo opcional extra: |Dato extra breve
+
+R|Arica y Parinacota|XV|XV|Arica
+C|Arica y Parinacota|Arica
+C|Arica y Parinacota|Camarones
+C|Arica y Parinacota|Putre
+C|Arica y Parinacota|General Lagos
+
+R|Tarapacá|I|I|Iquique
+C|Tarapacá|Iquique
+C|Tarapacá|Alto Hospicio
+C|Tarapacá|Pozo Almonte
+C|Tarapacá|Pica
+C|Tarapacá|Colchane
+C|Tarapacá|Huara
+
+R|Antofagasta|II|II|Antofagasta
+C|Antofagasta|Antofagasta
+C|Antofagasta|Mejillones
+C|Antofagasta|Calama
+C|Antofagasta|San Pedro de Atacama
+C|Antofagasta|Tocopilla
+C|Antofagasta|Taltal
+
+R|Atacama|III|III|Copiapó
+C|Atacama|Copiapó
+C|Atacama|Caldera
+C|Atacama|Vallenar
+C|Atacama|Chañaral
+C|Atacama|Freirina
+C|Atacama|Tierra Amarilla
+
+R|Coquimbo|IV|IV|La Serena
+C|Coquimbo|La Serena
+C|Coquimbo|Coquimbo
+C|Coquimbo|Ovalle
+C|Coquimbo|Illapel
+C|Coquimbo|Vicuña
+C|Coquimbo|Monte Patria
+
+R|Valparaíso|V|V|Valparaíso
+C|Valparaíso|Valparaíso
+C|Valparaíso|Viña del Mar
+C|Valparaíso|Quilpué
+C|Valparaíso|Villa Alemana
+C|Valparaíso|San Antonio
+C|Valparaíso|Quillota
+C|Valparaíso|San Felipe
+
+R|Metropolitana de Santiago|RM|XIII|Santiago
+C|Metropolitana de Santiago|Santiago
+C|Metropolitana de Santiago|Puente Alto
+C|Metropolitana de Santiago|Maipú
+C|Metropolitana de Santiago|Las Condes
+C|Metropolitana de Santiago|Providencia
+C|Metropolitana de Santiago|La Florida
+C|Metropolitana de Santiago|Ñuñoa
+C|Metropolitana de Santiago|San Bernardo
+
+R|Libertador General Bernardo O'Higgins|VI|VI|Rancagua
+C|Libertador General Bernardo O'Higgins|Rancagua
+C|Libertador General Bernardo O'Higgins|Machalí
+C|Libertador General Bernardo O'Higgins|San Fernando
+C|Libertador General Bernardo O'Higgins|Santa Cruz
+C|Libertador General Bernardo O'Higgins|Rengo
+C|Libertador General Bernardo O'Higgins|Pichilemu
+
+R|Maule|VII|VII|Talca
+C|Maule|Talca
+C|Maule|Curicó
+C|Maule|Linares
+C|Maule|Constitución
+C|Maule|Parral
+C|Maule|Cauquenes
+C|Maule|Molina
+
+R|Ñuble|XVI|XVI|Chillán
+C|Ñuble|Chillán
+C|Ñuble|Chillán Viejo
+C|Ñuble|San Carlos
+C|Ñuble|Bulnes
+C|Ñuble|Quillón
+C|Ñuble|Yungay
+
+R|Biobío|VIII|VIII|Concepción
+C|Biobío|Concepción
+C|Biobío|Talcahuano
+C|Biobío|Los Ángeles
+C|Biobío|Coronel
+C|Biobío|Lota
+C|Biobío|Hualpén
+C|Biobío|Chiguayante
+
+R|La Araucanía|IX|IX|Temuco
+C|La Araucanía|Temuco
+C|La Araucanía|Padre Las Casas
+C|La Araucanía|Villarrica
+C|La Araucanía|Angol
+C|La Araucanía|Pucón
+C|La Araucanía|Lautaro
+C|La Araucanía|Nueva Imperial
+
+R|Los Ríos|XIV|XIV|Valdivia
+C|Los Ríos|Valdivia
+C|Los Ríos|La Unión
+C|Los Ríos|Río Bueno
+C|Los Ríos|Panguipulli
+C|Los Ríos|Futrono
+C|Los Ríos|Lanco
+
+R|Los Lagos|X|X|Puerto Montt
+C|Los Lagos|Puerto Montt
+C|Los Lagos|Osorno
+C|Los Lagos|Castro
+C|Los Lagos|Ancud
+C|Los Lagos|Puerto Varas
+C|Los Lagos|Frutillar
+C|Los Lagos|Puerto Octay
+
+R|Aysén del General Carlos Ibáñez del Campo|XI|XI|Coyhaique
+C|Aysén del General Carlos Ibáñez del Campo|Coyhaique
+C|Aysén del General Carlos Ibáñez del Campo|Puerto Aysén
+C|Aysén del General Carlos Ibáñez del Campo|Chile Chico
+C|Aysén del General Carlos Ibáñez del Campo|Cochrane
+C|Aysén del General Carlos Ibáñez del Campo|Cisnes
+C|Aysén del General Carlos Ibáñez del Campo|Río Ibáñez
+
+R|Magallanes y de la Antártica Chilena|XII|XII|Punta Arenas
+C|Magallanes y de la Antártica Chilena|Punta Arenas
+C|Magallanes y de la Antártica Chilena|Puerto Natales
+C|Magallanes y de la Antártica Chilena|Porvenir
+C|Magallanes y de la Antártica Chilena|Cabo de Hornos
+C|Magallanes y de la Antártica Chilena|Primavera
+C|Magallanes y de la Antártica Chilena|Torres del Paine
+
+V|Parinacota|Arica y Parinacota|Su cumbre nevada destaca en el altiplano chileno.
+V|Guallatiri|Arica y Parinacota|Tiene actividad fumarólica visible en su cumbre.
+V|Licancabur|Antofagasta|Estratovolcán fronterizo visible desde San Pedro de Atacama.
+V|Lascar|Antofagasta|Es uno de los volcanes más activos del norte de Chile.
+V|Ojos del Salado|Atacama|Es el volcán más alto del mundo, sobre los 6.800 m.
+V|Nevados de Chillán|Ñuble|Es un complejo volcánico con centros de ski cercanos.
+V|Lonquimay|La Araucanía|Su erupción de 1988 formó el cono Navidad.
+V|Osorno|Los Lagos|Es uno de los volcanes con forma cónica más icónica de Chile.
+V|Villarrica|La Araucanía|Es de los volcanes más activos de Sudamérica.
+V|Chaitén|Los Lagos|Su erupción de 2008 cambió la geografía local.
+
+RI|Río Lluta|Arica y Parinacota|Desemboca en el Pacífico al norte de Arica.
+RI|Río Loa|Antofagasta|Es el río más largo de Chile.
+RI|Río Copiapó|Atacama|Es clave para los valles agrícolas de Atacama.
+RI|Río Elqui|Coquimbo|Atraviesa el valle famoso por su producción pisquera.
+RI|Río Aconcagua|Valparaíso|Riega extensas zonas agrícolas de la región.
+RI|Río Maipo|Metropolitana de Santiago|Abastece de agua a gran parte de Santiago.
+RI|Río Cachapoal|Libertador General Bernardo O'Higgins
+RI|Río Maule|Maule|Ha sido históricamente un eje agrícola y energético.
+RI|Río Itata|Ñuble|Da nombre al histórico valle vitivinícola del Itata.
+RI|Río Biobío|Biobío|Fue frontera natural durante parte de la Colonia.
+RI|Río Cautín|La Araucanía
+RI|Río Valdivia|Los Ríos
+RI|Río Petrohué|Los Lagos
+RI|Río Baker|Aysén del General Carlos Ibáñez del Campo|Es famoso por sus aguas de intenso color turquesa.
+RI|Río Serrano|Magallanes y de la Antártica Chilena
+
+M|Cerro Parinacota|Arica y Parinacota|Supera los 6.300 metros de altitud.
+M|Cerro El Plomo|Metropolitana de Santiago|Es una cumbre emblemática visible desde Santiago.
+M|Cerro Provincia|Metropolitana de Santiago|Es uno de los cerros más tradicionales del trekking capitalino.
+M|Monte San Valentín|Aysén del General Carlos Ibáñez del Campo|Es la cumbre más alta de la Patagonia occidental.
+M|Cerro Castillo|Aysén del General Carlos Ibáñez del Campo|Es famoso por sus formas rocosas y senderos de montaña.
+M|Cerro Paine Grande|Magallanes y de la Antártica Chilena|Es una de las cumbres principales del macizo Paine.
+M|Cerro Tronador|Los Lagos|Su nombre alude al ruido producido por desprendimientos de hielo.
+M|Sierra Velluda|Biobío
+
+PN|Lauca|Arica y Parinacota|Incluye bofedales, altiplano y avifauna andina.
+PN|Volcán Isluga|Tarapacá|Resguarda ecosistemas altoandinos y cultura aymara.
+PN|Pan de Azúcar|Atacama|Protege costa desértica y fauna marina del norte.
+PN|Fray Jorge|Coquimbo|Destaca por su bosque hidrófilo en plena zona semiárida.
+PN|La Campana|Valparaíso|Fue visitado por Charles Darwin en el siglo XIX.
+PN|Radal Siete Tazas|Maule
+PN|Laguna del Laja|Biobío
+PN|Conguillío|La Araucanía|Combina bosques de araucaria con paisajes volcánicos.
+PN|Alerce Costero|Los Ríos|Protege alerces milenarios de gran valor ecológico.
+PN|Vicente Pérez Rosales|Los Lagos|Es el parque nacional más antiguo de Chile.
+PN|Queulat|Aysén del General Carlos Ibáñez del Campo|Es conocido por su glaciar colgante.
+PN|Torres del Paine|Magallanes y de la Antártica Chilena|Es uno de los parques nacionales más visitados de Sudamérica.
+
+IS|Isla Grande de Chiloé|Los Lagos|Es la isla más grande de Chile continental.
+IS|Isla Wellington|Magallanes y de la Antártica Chilena|Es una de las islas más extensas de la Patagonia chilena.
+IS|Isla Riesco|Magallanes y de la Antártica Chilena|Está entre las islas más grandes de Chile.
+IS|Isla Navarino|Magallanes y de la Antártica Chilena|Alberga Puerto Williams, ciudad más austral del mundo.
+IS|Isla Mocha|Biobío|Está frente a la costa de la provincia de Arauco.
+IS|Isla Santa María|Biobío|Se ubica frente al golfo de Arauco.
+IS|Isla Robinson Crusoe|Valparaíso|Forma parte del archipiélago Juan Fernández.
+IS|Isla de Pascua|Valparaíso|Es famosa por sus moáis y cultura Rapa Nui.
+IS|Isla Guarello|Magallanes y de la Antártica Chilena|Integra archipiélagos australes de canales patagónicos.
+IS|Isla Magdalena|Magallanes y de la Antártica Chilena|Es conocida por su colonia de pingüinos.
+
+GL|Glaciar San Rafael|Aysén del General Carlos Ibáñez del Campo|Es uno de los glaciares más visitados de la Patagonia chilena.
+GL|Glaciar Grey|Magallanes y de la Antártica Chilena|Se encuentra en el Parque Nacional Torres del Paine.
+GL|Glaciar Pío XI|Magallanes y de la Antártica Chilena|Es el glaciar más grande del hemisferio sur fuera de la Antártica.
+GL|Glaciar Balmaceda|Magallanes y de la Antártica Chilena|Es visible en navegaciones por el seno Última Esperanza.
+GL|Glaciar Serrano|Magallanes y de la Antártica Chilena|Suele visitarse junto al glaciar Balmaceda.
+GL|Glaciar Exploradores|Aysén del General Carlos Ibáñez del Campo|Está cerca de Puerto Río Tranquilo.
+GL|Glaciar Tyndall|Magallanes y de la Antártica Chilena|Pertenece al Campo de Hielo Sur.
+GL|Glaciar Jorge Montt|Aysén del General Carlos Ibáñez del Campo|Es una de las lenguas glaciares más dinámicas del sur.
+
+L|Lago Chungará|Arica y Parinacota|Es uno de los lagos más altos del mundo.
+L|Lago General Carrera|Aysén del General Carlos Ibáñez del Campo|Es el lago más grande de Chile.
+L|Lago Llanquihue|Los Lagos|Es el segundo lago más grande de Chile.
+L|Lago Villarrica|La Araucanía|En sus riberas destacan Pucón y Villarrica.
+L|Lago Ranco|Los Ríos|Es un importante destino turístico lacustre del sur.
+L|Lago Vichuquén|Maule
+L|Lago Colbún|Maule|Está asociado a una relevante central hidroeléctrica.
+L|Lago Grey|Magallanes y de la Antártica Chilena|Recibe témpanos provenientes del glaciar Grey.
+
+LG|Laguna Cotacotani|Arica y Parinacota
+LG|Laguna Miscanti|Antofagasta|Se ubica en el altiplano y forma parte de rutas turísticas.
+LG|Laguna Verde|Atacama|Está ubicada a gran altitud cerca del Ojos del Salado.
+LG|Laguna del Maule|Maule|Es conocida por su entorno volcánico y andino.
+LG|Laguna Avendaño|Ñuble|Es un balneario interior tradicional de la región.
+LG|Laguna San Rafael|Aysén del General Carlos Ibáñez del Campo|Se vincula al famoso glaciar San Rafael.
+LG|Laguna Amarga|Magallanes y de la Antártica Chilena
+
+CC|Arica|Arica y Parinacota|Tiene un clima templado durante gran parte del año.
+CC|Iquique|Tarapacá|Es reconocida por su borde costero y deportes de viento.
+CC|Antofagasta|Antofagasta|Es un polo minero y portuario del norte grande.
+CC|Caldera|Atacama|Fue uno de los primeros puertos del norte chileno.
+CC|Coquimbo|Coquimbo|Integra una conurbación relevante junto a La Serena.
+CC|Valparaíso|Valparaíso|Es Patrimonio de la Humanidad por su arquitectura y cerros históricos.
+CC|San Antonio|Valparaíso|Tiene uno de los puertos con mayor movimiento de carga del país.
+CC|Constitución|Maule
+CC|Talcahuano|Biobío|Es una ciudad portuaria clave del centro-sur chileno.
+CC|Valdivia|Los Ríos|Es conocida por su red fluvial y su herencia cultural.
+CC|Puerto Montt|Los Lagos|Es puerta de entrada a Chiloé y la Patagonia norte.
+CC|Punta Arenas|Magallanes y de la Antártica Chilena|Es la ciudad más poblada de la Patagonia chilena.
+
+CI|Arica|Arica y Parinacota
+CI|Iquique|Tarapacá
+CI|Calama|Antofagasta
+CI|Copiapó|Atacama
+CI|La Serena|Coquimbo
+CI|Valparaíso|Valparaíso
+CI|Santiago|Metropolitana de Santiago|Es la capital y principal centro urbano de Chile.
+CI|Rancagua|Libertador General Bernardo O'Higgins
+CI|Talca|Maule
+CI|Concepción|Biobío|Es un importante centro universitario e industrial del sur.
+CI|Temuco|La Araucanía|Es una de las ciudades principales del sur chileno.
+CI|Valdivia|Los Ríos|Destaca por su tradición cervecera y su sistema fluvial.
+CI|Puerto Montt|Los Lagos
+CI|Coyhaique|Aysén del General Carlos Ibáñez del Campo|Es la capital regional más aislada del país por su geografía.
+CI|Punta Arenas|Magallanes y de la Antártica Chilena|Fue un punto estratégico para la navegación del Estrecho de Magallanes.
+
+P|Putre|Arica y Parinacota|Conserva arquitectura tradicional andina del altiplano.
+P|Camiña|Tarapacá|Es conocido por su agricultura de oasis en quebradas interiores.
+P|San Pedro de Atacama|Antofagasta|Es un destino turístico clave del desierto de Atacama.
+P|Vicuña|Coquimbo|Es reconocido por su relación histórica con Gabriela Mistral.
+P|Pomaire|Metropolitana de Santiago|Es reconocido por su tradición alfarera y artesanía en greda.
+P|Lolol|Libertador General Bernardo O'Higgins
+P|Chanco|Maule
+P|Lota Alto|Biobío
+P|Malalcahuello|La Araucanía
+P|Niebla|Los Ríos|Es conocido por su fuerte histórico en la costa valdiviana.
+P|Chonchi|Los Lagos|Es famoso por sus palafitos y su iglesia patrimonial.
+P|Puerto Río Tranquilo|Aysén del General Carlos Ibáñez del Campo|Es base para visitar las Capillas de Mármol.
+P|Cerro Castillo|Magallanes y de la Antártica Chilena|Es un poblado cercano a rutas hacia Torres del Paine.
+
+FL|Araucaria|Sur andino|Es un árbol longevo y símbolo natural del sur de Chile.
+FL|Alerce|Bosque templado lluvioso|Puede vivir más de mil años en bosques del sur.
+FL|Copihue|Centro sur|Es la flor nacional de Chile.
+FL|Quillay|Zona central|Su corteza se usa tradicionalmente como agente espumante natural.
+FL|Peumo|Zona central|Es un árbol nativo frecuente en quebradas de clima mediterráneo.
+FL|Boldo|Zona central|Es conocido por su uso tradicional en infusiones.
+FL|Canelo|Sur húmedo
+FL|Queñoa|Altiplano|Es una de las pocas especies arbóreas que crecen en altura extrema.
+FL|Lenga|Patagonia|Forma bosques andinos australes de alto valor ecológico.
+FL|Nalca|Sur austral|Tiene hojas de gran tamaño características del sur lluvioso.
+
+FA|Cóndor andino|Cordillera de los Andes|Es una de las aves voladoras más grandes del mundo.
+FA|Huemul|Patagonia andina|Es un ciervo andino en peligro de extinción y emblema nacional.
+FA|Pudú|Bosque templado lluvioso|Es uno de los ciervos más pequeños del planeta.
+FA|Puma|Cordillera y precordillera|Es un depredador tope presente en gran parte del territorio.
+FA|Zorro culpeo|Norte y centro
+FA|Chinchilla de cola larga|Norte semiárido
+FA|Flamenco chileno|Altiplano y salares|Habita lagunas salinas del norte y altiplano.
+FA|Guanaco|Patagonia y estepa|Es un camélido silvestre adaptado a climas áridos y fríos.
+FA|Pingüino de Humboldt|Costa norte y centro|Depende de la corriente de Humboldt para su alimentación.
+FA|Monito del monte|Bosque valdiviano|Es un marsupial relicto endémico del bosque templado austral.
+FA|Guiña|Bosque templado lluvioso|Es el felino más pequeño de América.
+FA|Huillín|Ríos y lagos del sur|Es una nutria nativa amenazada del sur de Chile.
+FA|Chungungo|Litoral rocoso|Es una nutria marina que habita costas del Pacífico sur.
+FA|Quirquincho de la puna|Altiplano|Es un armadillo adaptado a zonas altas y áridas.
+FA|Picaflor de Arica|Valles del norte|Es una de las aves más pequeñas de Chile y está en peligro crítico.
+FA|Rana de Darwin|Bosque templado lluvioso|El macho resguarda a sus crías en el saco vocal.
+FA|Degú|Matorral de la zona central|Es un roedor social y diurno propio de Chile central.
+FA|Carpintero negro|Bosques australes|Es el carpintero más grande de Sudamérica.
+FA|Quique|Norte y centro semiárido|Es un pequeño carnívoro nativo también llamado hurón chileno.
+FA|Cisne de cuello negro|Humedales del sur|Es un ave acuática emblemática de lagunas y ríos australes.
+
+X|volcan|Etna
+X|volcan|Vesubio
+X|volcan|Kilimanjaro
+X|volcan|Popocatépetl
+X|volcan|Fuji
+
+X|rio|Amazonas
+X|rio|Nilo
+X|rio|Danubio
+X|rio|Misisipi
+X|rio|Yangtsé
+
+X|montana|Everest
+X|montana|K2
+X|montana|Aconcagua
+X|montana|Kilimanjaro
+X|montana|Denali
+
+X|parque|Yellowstone
+X|parque|Kruger
+X|parque|Serengeti
+X|parque|Banff
+X|parque|Yosemite
+
+X|isla|Sicilia
+X|isla|Cerdeña
+X|isla|Galápagos
+X|isla|Madagascar
+X|isla|Java
+
+X|glaciar|Perito Moreno
+X|glaciar|Aletsch
+X|glaciar|Vatnajökull
+X|glaciar|Jostedalsbreen
+X|glaciar|Franz Josef
+
+X|lago|Titicaca
+X|lago|Victoria
+X|lago|Baikal
+X|lago|Como
+X|lago|Michigan
+
+X|laguna|Laguna Colorada
+X|laguna|Laguna de Bacalar
+X|laguna|Laguna Cejar
+X|laguna|Laguna de Apoyo
+X|laguna|Laguna Hedionda
+
+X|ciudad_costera|Río de Janeiro
+X|ciudad_costera|Barcelona
+X|ciudad_costera|Los Ángeles
+X|ciudad_costera|Miami
+X|ciudad_costera|Lima
+
+X|ciudad|Buenos Aires
+X|ciudad|Madrid
+X|ciudad|Bogotá
+X|ciudad|Ciudad de México
+X|ciudad|Londres
+
+X|pueblo|Machu Picchu Pueblo
+X|pueblo|Capileira
+X|pueblo|Barichara
+X|pueblo|San Cristóbal de las Casas
+X|pueblo|Villa de Leyva
+
+X|flora|Lavanda
+X|flora|Arce japonés
+X|flora|Tulipán
+X|flora|Olivo
+X|flora|Baobab
+
+X|fauna|León africano
+X|fauna|Elefante asiático
+X|fauna|Tigre de Bengala
+X|fauna|Canguro rojo
+X|fauna|Oso polar

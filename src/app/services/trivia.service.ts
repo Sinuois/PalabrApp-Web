@@ -48,6 +48,26 @@ export class TriviaService {
     return true;
   }
 
+  generarDesdeTrivia(pregunta: string, opciones: string[], indiceCorrecto: number): boolean {
+    const limpiar = (txt: string): string => txt.replace(/\s+/g, ' ').trim();
+    const preguntaLimpia = limpiar(pregunta);
+    const opcionesLimpias = opciones.map(limpiar).filter(Boolean);
+
+    if (!preguntaLimpia || opcionesLimpias.length < 3) {
+      return false;
+    }
+
+    if (indiceCorrecto < 0 || indiceCorrecto >= opcionesLimpias.length) {
+      return false;
+    }
+
+    this.conceptoJuego.set(preguntaLimpia);
+    this.opcionesJuego.set(opcionesLimpias);
+    this.indiceCorrecto.set(indiceCorrecto);
+
+    return true;
+  }
+
   resolverOpcion(indice: number): boolean {
     if (this.indiceSeleccionado() !== null) return false;
 
