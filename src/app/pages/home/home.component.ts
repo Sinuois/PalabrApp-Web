@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
   cargandoOtroJuego = signal(false);
   navegandoBuscar = signal(false);
   navegandoNuevaPalabra = signal(false);
+  cambiandoOrden = signal(false);
   sopaArrastrando = false;
   sopaUltimaCeldaArrastre: string | null = null;
   sopaArrastreTuvoMovimiento = false;
@@ -106,7 +107,11 @@ export class HomeComponent implements OnInit {
     if (!esClick && ahora - this.ultimoCambioOrdenMs < 120) return;
 
     this.ultimoCambioOrdenMs = ahora;
+    this.cambiandoOrden.set(true);
     this.ciclarOrden();
+    
+    // Mostrar el spinner por 300ms para feedback visual
+    setTimeout(() => this.cambiandoOrden.set(false), 300);
   }
 
   irABuscar(): void {

@@ -50,11 +50,13 @@
     <button
       class="btn-orden"
       [attr.data-orden]="orden()"
+      [disabled]="cambiandoOrden()"
       (pointerdown)="onCiclarOrdenTap($event)"
       (touchstart)="onCiclarOrdenTap($event)"
       (click)="onCiclarOrdenTap($event)"
     >
-      {{ orden() }}
+      <span *ngIf="cambiandoOrden()" class="btn-spinner" aria-hidden="true"></span>
+      <span *ngIf="!cambiandoOrden()">{{ orden() }}</span>
     </button>
   </div>
 

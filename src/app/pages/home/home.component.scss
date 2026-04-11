@@ -125,6 +125,15 @@ h1 {
   font-family: $font-mono; font-size: 0.82rem;
   font-weight: 500; cursor: pointer; min-width: 56px; text-align: center;
   transition: all 0.18s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  .btn-spinner {
+    width: 10px;
+    height: 10px;
+    flex: 0 0 10px;
+    border-width: 1.5px;
+  }
   &[data-orden='New'] { background: rgba($accent-green,0.1); border: 1px solid rgba($accent-green,0.35); color: $accent-green; &:hover { background: rgba($accent-green,0.18); } }
   &[data-orden='Abc'] { background: rgba($accent-amber,0.1); border: 1px solid rgba($accent-amber,0.35); color: $accent-amber; &:hover { background: rgba($accent-amber,0.18); } }
   &[data-orden='Zyx'] { background: rgba($accent-red,0.08); border: 1px solid rgba($accent-red,0.3); color: $accent-red; &:hover { background: rgba($accent-red,0.14); } }
