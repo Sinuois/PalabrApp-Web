@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnInit, signal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PalabrasService, Orden } from '../../services/palabras.service';
@@ -19,7 +19,7 @@ type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   Math = Math;
 
@@ -103,6 +103,20 @@ export class HomeComponent implements OnInit {
     this.refrescar();
   }
 
+  ngAfterViewInit(): void {
+    // Restaurar posición de scroll al volver desde una palabra
+    if (typeof document === 'undefined') return;
+    try {
+      const scrollGuardado = sessionStorage.getItem('home_scroll');
+      if (scrollGuardado) {
+        const pos = parseInt(scrollGuardado, 10);
+        sessionStorage.removeItem('home_scroll');
+        const lista = document.querySelector<HTMLElement>('.lista-scroll');
+        if (lista) lista.scrollTop = pos;
+      }
+    } catch { /* Safari privado */ }
+  }
+
   async refrescar(): Promise<void> {
     if (this.isRefreshing()) return;
 
@@ -151,6 +165,12 @@ export class HomeComponent implements OnInit {
   }
 
   verPalabra(p: Palabra): void {
+    // Guardar posición de scroll antes de navegar
+    try {
+      const lista = document.querySelector<HTMLElement>('.lista-scroll');
+      if (lista) sessionStorage.setItem('home_scroll', String(lista.scrollTop));
+    } catch { /* Safari privado */ }
+
     this.router.navigate(['/palabra', p._id], {
       state: { concepto: p.concepto, significado: p.significado }
     });
