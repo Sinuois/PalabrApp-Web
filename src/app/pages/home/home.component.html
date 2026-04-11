@@ -427,6 +427,7 @@
     </ng-container>
 
     <p class="game-feedback" *ngIf="mensajeJuego()">{{ mensajeJuego() }}</p>
+    <p class="game-extra-fact" *ngIf="datoExtraTriviaVisible()">{{ datoExtraTriviaVisible() }}</p>
 
     <div class="game-actions" [ngClass]="{ 'crossword-actions': tipoJuego() === 'crucigrama', 'sopa-actions': tipoJuego() === 'sopa' }">
       <button
