@@ -71,7 +71,7 @@
       <li
         *ngFor="let p of palabrasOrdenadas(); trackBy: trackById; let i = index"
         class="item-palabra"
-        [style.animation-delay]="(i * 25) + 'ms'"
+        [attr.data-letter]="obtenerLetraInicial(p.concepto)"
       >
         <button type="button" class="item-action" (pointerup)="onVerPalabraTap($event, p)" (click)="onVerPalabraTap($event, p)" (touchend)="onVerPalabraTap($event, p)">
           <span class="concepto-text">{{ p.concepto }}</span>
@@ -84,6 +84,22 @@
 
     <div class="empty-state" *ngIf="cargado && palabrasOrdenadas().length === 0">
       <p>Aún no hay conceptos.<br/>¡Sé el primero en agregar uno!</p>
+    </div>
+
+    <!-- Índice alfabético flotante -->
+    <div class="alphabet-index" *ngIf="orden() === 'Abc' && cargado && palabrasOrdenadas().length > 0">
+      <button
+        type="button"
+        class="letter-btn"
+        *ngFor="let letra of alfabeto"
+        [attr.data-letra]="letra"
+        (pointerup)="scrollALetra($event, letra)"
+        (click)="scrollALetra($event, letra)"
+        (touchend)="scrollALetra($event, letra)"
+        title="Ir a {{letra}}"
+      >
+        {{ letra }}
+      </button>
     </div>
   </main>
 

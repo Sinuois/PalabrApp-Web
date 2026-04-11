@@ -54,11 +54,35 @@ export class HomeComponent implements OnInit {
   private readonly ventanaIgnorarClickMs = 700;
   private ultimoCambioOrdenMs = 0;
   private juegoAbriendoHasta = 0;
+  private crucigramaActualizandoTimer: any = null;
 
   get orden()            { return this.palabrasService.orden; }
   get palabrasOrdenadas(){ return this.palabrasService.palabrasOrdenadas; }
   get cantPalabras()     { return this.palabrasService.cantPalabras(); }
   get cargado()          { return this.palabrasService.cargado(); }
+
+  alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+  obtenerLetraInicial(concepto: string): string {
+    if (!concepto) return '#';
+    const normalizado = this.gameUtils.normalizarParaComparar(concepto.charAt(0));
+    return normalizado.charAt(0).toUpperCase() || '#';
+  }
+
+  scrollALetra(event: Event, letra: string): void {
+    event.stopPropagation();
+    if (event instanceof PointerEvent || event instanceof TouchEvent || event instanceof MouseEvent) {
+      event.preventDefault();
+    }
+
+    const lista = document.querySelector<HTMLElement>('.lista-scroll');
+    if (!lista) return;
+
+    const item = lista.querySelector<HTMLElement>(`[data-letter="${letra}"]`);
+    if (!item) return;
+
+    item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   constructor(
     private palabrasService: PalabrasService,
@@ -453,8 +477,16 @@ export class HomeComponent implements OnInit {
     if (celda?.fijaDesdeInicio) return;
 
     this.crucigramaService.actualizarCeldaCrucigrama(key, valor);
+    
+    // Debounce el enfoque siguiente para evitar congelamiento en escritura rápida
     if (valor) {
-      setTimeout(() => this.enfocarSiguienteCeldaCrucigrama(key), 0);
+      if (this.crucigramaActualizandoTimer !== null) {
+        clearTimeout(this.crucigramaActualizandoTimer);
+      }
+      this.crucigramaActualizandoTimer = setTimeout(() => {
+        this.enfocarSiguienteCeldaCrucigrama(key);
+        this.crucigramaActualizandoTimer = null;
+      }, 50);
     }
   }
 
@@ -488,10 +520,9 @@ export class HomeComponent implements OnInit {
     const input = document.querySelector<HTMLInputElement>(selector);
     if (!input) return;
 
-    setTimeout(() => {
-      input.focus();
-      input.select();
-    }, 0);
+    // Enfocar directamente sin setTimeout adicional para evitar stack overflow
+    input.focus();
+    input.select();
   }
 
   private resetearScrollJuego(): void {
