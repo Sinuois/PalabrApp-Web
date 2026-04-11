@@ -1,66 +1,76 @@
 # Formato:
 # P|País|Capital|Continente|Dato extra opcional
 
-P|Alemania|Berlín|Europa|Berlín fue dividida por un muro entre 1961 y 1989.
-P|Argentina|Buenos Aires|América del Sur|Buenos Aires está sobre la ribera del Río de la Plata.
-P|Australia|Canberra|Oceanía|Canberra fue planificada para resolver la rivalidad entre Sídney y Melbourne.
-P|Austria|Viena|Europa|Viena es reconocida por su tradición musical clásica.
-P|Bélgica|Bruselas|Europa|Bruselas alberga instituciones clave de la Unión Europea.
-P|Bolivia|Sucre|América del Sur|Bolivia reconoce a Sucre como capital constitucional.
-P|Brasil|Brasilia|América del Sur|Brasilia fue inaugurada en 1960 como capital moderna del país.
-P|Canadá|Ottawa|América del Norte|Ottawa se ubica en la provincia de Ontario.
-P|Chile|Santiago|América del Sur|Santiago se encuentra en el valle central de Chile.
-P|China|Pekín|Asia|Pekín es una de las capitales más antiguas del mundo.
-P|Colombia|Bogotá|América del Sur|Bogotá está situada a gran altitud en la cordillera andina.
-P|Corea del Sur|Seúl|Asia|Seúl es uno de los mayores centros tecnológicos de Asia.
-P|Costa Rica|San José|América Central|San José está en el Valle Central costarricense.
-P|Cuba|La Habana|Caribe|La Habana es famosa por su centro histórico colonial.
-P|Dinamarca|Copenhague|Europa|Copenhague está conectada con Malmö por el puente de Oresund.
-P|Ecuador|Quito|América del Sur|Quito fue una de las primeras ciudades declaradas Patrimonio de la Humanidad.
-P|Egipto|El Cairo|África|El Cairo se ubica cerca del delta del río Nilo.
-P|El Salvador|San Salvador|América Central|San Salvador es el principal centro económico salvadoreño.
-P|Emiratos Árabes Unidos|Abu Dabi|Asia|Abu Dabi es la mayor ciudad del emirato del mismo nombre.
-P|España|Madrid|Europa|Madrid está en el centro geográfico de la península ibérica.
-P|Estados Unidos|Washington D. C.|América del Norte|Washington D. C. no pertenece a ningún estado del país.
-P|Etiopía|Adís Abeba|África|Adís Abeba es sede de la Unión Africana.
-P|Filipinas|Manila|Asia|Manila forma parte de una gran área metropolitana.
-P|Finlandia|Helsinki|Europa|Helsinki se extiende entre islas del mar Báltico.
-P|Francia|París|Europa|París es conocida como la Ciudad de la Luz.
-P|Grecia|Atenas|Europa|Atenas es una de las ciudades más antiguas de Europa.
-P|Guatemala|Ciudad de Guatemala|América Central|Ciudad de Guatemala es la capital más poblada de Centroamérica.
-P|Haití|Puerto Príncipe|Caribe|Puerto Príncipe es el principal puerto de Haití.
-P|Hungría|Budapest|Europa|Budapest se divide entre Buda y Pest por el Danubio.
-P|India|Nueva Delhi|Asia|Nueva Delhi forma parte del Territorio Capital Nacional de Delhi.
-P|Indonesia|Yakarta|Asia|Yakarta es el principal centro financiero de Indonesia.
-P|Irlanda|Dublín|Europa|Dublín se ubica en la costa este de Irlanda.
-P|Islandia|Reikiavik|Europa|Reikiavik es la capital soberana más septentrional del mundo.
-P|Israel|Jerusalén|Asia|Jerusalén tiene gran relevancia histórica y religiosa.
-P|Italia|Roma|Europa|Roma es conocida como la Ciudad Eterna.
-P|Japón|Tokio|Asia|Tokio es una de las mayores áreas metropolitanas del planeta.
-P|Kenia|Nairobi|África|Nairobi combina sectores urbanos y reservas naturales cercanas.
-P|Marruecos|Rabat|África|Rabat se encuentra frente al océano Atlántico.
-P|México|Ciudad de México|América del Norte|Ciudad de México es una de las ciudades más grandes del mundo.
-P|Noruega|Oslo|Europa|Oslo está rodeada de bosques y fiordos.
-P|Nueva Zelanda|Wellington|Oceanía|Wellington es conocida por sus fuertes vientos.
-P|Países Bajos|Ámsterdam|Europa|Ámsterdam destaca por su red de canales históricos.
-P|Pakistán|Islamabad|Asia|Islamabad fue construida para reemplazar a Karachi como capital.
-P|Panamá|Ciudad de Panamá|América Central|Ciudad de Panamá es clave por su canal interoceánico.
-P|Paraguay|Asunción|América del Sur|Asunción es una de las ciudades más antiguas de Sudamérica.
-P|Perú|Lima|América del Sur|Lima se ubica en la costa central del Pacífico.
-P|Polonia|Varsovia|Europa|Varsovia fue reconstruida tras la Segunda Guerra Mundial.
-P|Portugal|Lisboa|Europa|Lisboa está asentada sobre siete colinas.
-P|Reino Unido|Londres|Europa|Londres está atravesada por el río Támesis.
-P|República Checa|Praga|Europa|Praga es famosa por su arquitectura medieval.
-P|República Dominicana|Santo Domingo|Caribe|Santo Domingo es la ciudad europea más antigua de América habitada de forma continua.
-P|Rumanía|Bucarest|Europa|Bucarest es conocida como la Pequeña París del Este.
-P|Rusia|Moscú|Europa|Moscú tiene uno de los sistemas de metro más emblemáticos del mundo.
-P|Senegal|Dakar|África|Dakar se ubica en la punta occidental del continente africano.
-P|Singapur|Singapur|Asia|Singapur es un estado ciudad altamente urbanizado.
-P|Sudáfrica|Pretoria|África|Pretoria es una de las tres capitales de Sudáfrica.
-P|Suecia|Estocolmo|Europa|Estocolmo se distribuye en numerosas islas.
-P|Suiza|Berna|Europa|Berna conserva un casco histórico medieval.
-P|Tailandia|Bangkok|Asia|Bangkok es conocida por su extenso sistema de canales.
-P|Turquía|Ankara|Asia|Ankara reemplazó a Estambul como capital en 1923.
-P|Uruguay|Montevideo|América del Sur|Montevideo está junto al estuario del Río de la Plata.
-P|Venezuela|Caracas|América del Sur|Caracas se extiende en un valle montañoso.
-P|Vietnam|Hanoi|Asia|Hanoi conserva un casco antiguo con fuerte influencia histórica.
+P|Alemania|Berlín|Europa|Tras la caída del Muro de Berlín, la ciudad volvió a ser capital en 1990.
+P|Argentina|Buenos Aires|América del Sur|Buenos Aires es conocida por su arquitectura europea y vida cultural intensa.
+P|Australia|Canberra|Oceanía|Canberra fue diseñada como ciudad planificada entre Sídney y Melbourne.
+P|Austria|Viena|Europa|Durante siglos Viena fue centro del Imperio austrohúngaro.
+P|Bélgica|Bruselas|Europa|Bruselas es considerada la “capital política” de la Unión Europea.
+P|Bolivia|Sucre|América del Sur|La Paz es la sede de gobierno y Sucre es la capital constitucional.
+P|Brasil|Brasilia|América del Sur|El diseño urbano de Brasilia tiene forma de avión visto desde el aire.
+P|Canadá|Ottawa|América del Norte|Ottawa fue elegida por su ubicación estratégica entre comunidades inglesas y francesas.
+P|Chile|Santiago|América del Sur|Santiago está rodeada por la cordillera de los Andes y la cordillera de la Costa.
+P|China|Pekín|Asia|Pekín ha sido capital de varias dinastías imperiales.
+P|Colombia|Bogotá|América del Sur|Bogotá es una de las capitales más altas del mundo (~2600 m).
+P|Corea del Sur|Seúl|Asia|Seúl tiene uno de los sistemas de internet más rápidos del mundo.
+P|Costa Rica|San José|América Central|San José es considerada una de las capitales más seguras de Centroamérica.
+P|Cuba|La Habana|Caribe|El casco histórico de La Habana es Patrimonio de la Humanidad.
+P|Dinamarca|Copenhague|Europa|Copenhague es una de las ciudades más amigables con las bicicletas del mundo.
+P|Ecuador|Quito|América del Sur|Quito está ubicada muy cerca de la línea ecuatorial.
+P|Egipto|El Cairo|África|Cerca de El Cairo se encuentran las pirámides de Giza.
+P|El Salvador|San Salvador|América Central|San Salvador se ubica en una zona sísmica activa.
+P|Emiratos Árabes Unidos|Abu Dabi|Asia|El país posee algunas de las mayores reservas de petróleo del mundo.
+P|España|Madrid|Europa|Madrid es una de las capitales más altas de Europa.
+P|Estados Unidos|Washington D. C.|América del Norte|Washington D. C. fue creada específicamente para ser la capital del país.
+P|Etiopía|Adís Abeba|África|Adís Abeba es conocida como la “capital diplomática de África”.
+P|Filipinas|Manila|Asia|Manila es una de las ciudades más densamente pobladas del mundo.
+P|Finlandia|Helsinki|Europa|Helsinki es famosa por su diseño moderno y arquitectura funcional.
+P|Francia|París|Europa|París es uno de los destinos turísticos más visitados del mundo.
+P|Grecia|Atenas|Europa|Atenas es considerada la cuna de la democracia.
+P|Guatemala|Ciudad de Guatemala|América Central|La ciudad se encuentra cerca de varios volcanes activos.
+P|Haití|Puerto Príncipe|Caribe|Puerto Príncipe ha sufrido importantes terremotos en su historia reciente.
+P|Hungría|Budapest|Europa|Budapest es famosa por sus baños termales a nivel mundial.
+P|India|Nueva Delhi|Asia|Nueva Delhi es parte de una de las áreas urbanas más grandes del planeta.
+P|Indonesia|Yakarta|Asia|Indonesia está trasladando su capital a una nueva ciudad llamada Nusantara.
+P|Irlanda|Dublín|Europa|Dublín es famosa por su tradición literaria.
+P|Islandia|Reikiavik|Europa|Reikiavik se calienta en gran parte con energía geotérmica.
+P|Israel|Jerusalén|Asia|Jerusalén es sagrada para tres religiones principales.
+P|Italia|Roma|Europa|Roma fue el centro del Imperio romano.
+P|Japón|Tokio|Asia|Tokio es el área metropolitana más poblada del mundo.
+P|Kenia|Nairobi|África|Nairobi tiene un parque nacional dentro de la ciudad.
+P|Marruecos|Rabat|África|Rabat es una de las cuatro ciudades imperiales del país.
+P|México|Ciudad de México|América del Norte|Ciudad de México fue construida sobre una antigua ciudad azteca.
+P|Noruega|Oslo|Europa|Oslo es una de las ciudades con mayor calidad de vida del mundo.
+P|Nueva Zelanda|Wellington|Oceanía|Wellington es la capital más austral del mundo.
+P|Países Bajos|Ámsterdam|Europa|Gran parte de Ámsterdam está bajo el nivel del mar.
+P|Pakistán|Islamabad|Asia|Islamabad fue diseñada como ciudad moderna en los años 60.
+P|Panamá|Ciudad de Panamá|América Central|El canal conecta los océanos Atlántico y Pacífico.
+P|Paraguay|Asunción|América del Sur|Asunción es una de las capitales más antiguas de Sudamérica.
+P|Perú|Lima|América del Sur|Lima es una de las capitales más grandes en zonas desérticas.
+P|Polonia|Varsovia|Europa|Varsovia fue casi completamente destruida en la Segunda Guerra Mundial.
+P|Portugal|Lisboa|Europa|Lisboa es una de las ciudades más antiguas de Europa occidental.
+P|Reino Unido|Londres|Europa|Londres ha sido un centro financiero global por siglos.
+P|República Checa|Praga|Europa|El casco histórico de Praga es Patrimonio de la Humanidad.
+P|República Dominicana|Santo Domingo|Caribe|Santo Domingo fue la primera ciudad europea permanente en América.
+P|Rumanía|Bucarest|Europa|Bucarest tiene uno de los edificios administrativos más grandes del mundo.
+P|Rusia|Moscú|Europa|El Kremlin es uno de los símbolos más reconocidos de Moscú.
+P|Senegal|Dakar|África|Dakar es un importante centro cultural de África occidental.
+P|Singapur|Singapur|Asia|Singapur es uno de los principales centros financieros del mundo.
+P|Sudáfrica|Pretoria|África|Sudáfrica tiene tres capitales: ejecutiva, legislativa y judicial.
+P|Suecia|Estocolmo|Europa|Estocolmo está construida sobre 14 islas.
+P|Suiza|Berna|Europa|Berna es conocida por su neutralidad histórica.
+P|Tailandia|Bangkok|Asia|Bangkok tiene uno de los nombres oficiales más largos del mundo.
+P|Turquía|Ankara|Asia|Ankara se convirtió en capital tras la fundación de la república moderna.
+P|Uruguay|Montevideo|América del Sur|Montevideo concentra casi la mitad de la población del país.
+P|Venezuela|Caracas|América del Sur|Caracas está cerca del mar Caribe pero separada por montañas.
+P|Vietnam|Hanoi|Asia|Hanoi tiene más de mil años de historia.
+P|Afganistán|Kabul|Asia|Kabul ha sido una ciudad clave en rutas históricas como la Ruta de la Seda.
+P|Argelia|Argel|África|Argel está ubicada frente al mar Mediterráneo.
+P|Bangladés|Daca|Asia|Daca es una de las ciudades más densamente pobladas del mundo.
+P|Croacia|Zagreb|Europa|Zagreb es el centro político y cultural del país.
+P|Eslovaquia|Bratislava|Europa|Bratislava está cerca de las fronteras con Austria y Hungría.
+P|Hungría|Budapest|Europa|El Parlamento de Budapest es uno de los edificios más icónicos del país.
+P|Irán|Teherán|Asia|Teherán se encuentra cerca de importantes montañas como el Damavand.
+P|Malasia|Kuala Lumpur|Asia|Kuala Lumpur es famosa por las Torres Petronas.
+P|Nepal|Katmandú|Asia|Katmandú es la puerta de entrada al monte Everest.
+P|Serbia|Belgrado|Europa|Belgrado está en la confluencia de los ríos Danubio y Sava.

@@ -1,67 +1,67 @@
 # Formato:
 # Q|Pregunta|Respuesta correcta|Alternativa 1|Alternativa 2|Alternativa 3|Dato extra opcional
 
-Q|¿Quién pintó la obra La noche estrellada?|Vincent van Gogh|Pablo Picasso|Claude Monet|Salvador Dalí|Van Gogh pintó esta obra en 1889.
-Q|¿Qué movimiento artístico se asocia con Claude Monet?|Impresionismo|Surrealismo|Cubismo|Barroco|Monet es una figura clave del impresionismo francés.
-Q|¿Quién esculpió El pensador?|Auguste Rodin|Miguel Ángel|Donatello|Gian Lorenzo Bernini|La versión más conocida es de bronce.
-Q|¿Qué artista es famoso por la técnica del cubismo junto a Braque?|Pablo Picasso|Paul Cézanne|Henri Matisse|Edvard Munch|Picasso pintó Guernica en 1937.
-Q|¿Qué obra fue pintada por Leonardo da Vinci?|La Gioconda|La joven de la perla|El grito|Las meninas|La Gioconda también se conoce como Mona Lisa.
-Q|¿Qué pintor es autor de Las meninas?|Diego Velázquez|Francisco de Goya|El Greco|Joaquín Sorolla|Las meninas fue pintada en 1656.
-Q|¿Qué estilo caracteriza a Salvador Dalí?|Surrealismo|Realismo|Neoclasicismo|Futurismo|Dalí es autor de La persistencia de la memoria.
-Q|¿Quién pintó El grito?|Edvard Munch|Gustav Klimt|Paul Gauguin|Wassily Kandinsky|El grito tiene varias versiones.
-Q|¿Qué arquitecto diseñó gran parte de la Sagrada Familia?|Antoni Gaudí|Le Corbusier|Frank Lloyd Wright|Mies van der Rohe|Gaudí dedicó gran parte de su vida a este templo.
-Q|¿Qué artista mexicana es conocida por sus autorretratos?|Frida Kahlo|Remedios Varo|Leonora Carrington|María Izquierdo|Frida Kahlo pintó decenas de autorretratos.
-Q|¿Qué obra pertenece a Miguel Ángel?|La piedad|El nacimiento de Venus|La libertad guiando al pueblo|El beso|La piedad se encuentra en la Basílica de San Pedro.
-Q|¿Qué movimiento impulsó Andy Warhol?|Pop Art|Romanticismo|Expresionismo|Rococó|Warhol usó imágenes de la cultura de masas.
-Q|¿Quién pintó La joven de la perla?|Johannes Vermeer|Rembrandt|Peter Paul Rubens|Jan van Eyck|La obra es una de las piezas más conocidas del barroco neerlandés.
-Q|¿Quién pintó Guernica?|Pablo Picasso|Salvador Dalí|Joan Miró|Francisco de Goya|Guernica denuncia el bombardeo de la ciudad vasca en 1937.
-Q|¿Qué artista pintó La persistencia de la memoria?|Salvador Dalí|René Magritte|Max Ernst|Joan Miró|La obra es famosa por sus relojes blandos.
-Q|¿Quién es autor de La creación de Adán en la Capilla Sixtina?|Miguel Ángel|Rafael|Caravaggio|Tintoretto|La pintura forma parte del techo de la Capilla Sixtina.
-Q|¿Qué artista es reconocido por sus móviles escultóricos?|Alexander Calder|Constantin Brancusi|Henry Moore|Alberto Giacometti|Calder innovó con esculturas cinéticas suspendidas.
-Q|¿Quién pintó Impresión, sol naciente?|Claude Monet|Edgar Degas|Pierre-Auguste Renoir|Camille Pissarro|El título de esta obra dio nombre al impresionismo.
-Q|¿Qué muralista mexicano pintó Hombre en la encrucijada?|Diego Rivera|José Clemente Orozco|David Alfaro Siqueiros|Rufino Tamayo|Rivera fue una figura central del muralismo latinoamericano.
-Q|¿Quién compuso visualmente el estilo de puntos del puntillismo junto a Signac?|Georges Seurat|Henri Toulouse-Lautrec|Paul Gauguin|Gustave Courbet|Seurat aplicó principios ópticos en la mezcla de color.
-Q|¿Quién pintó La libertad guiando al pueblo?|Eugène Delacroix|Jacques-Louis David|Jean-Auguste-Dominique Ingres|Théodore Géricault|La obra representa la Revolución de Julio de 1830 en Francia.
-Q|¿Qué arquitecta fue la primera mujer en recibir el Premio Pritzker?|Zaha Hadid|Kazuyo Sejima|Lina Bo Bardi|Jeanne Gang|Zaha Hadid obtuvo el Pritzker en 2004.
-Q|¿Qué artista chileno creó la obra El vuelo de Matta?|Roberto Matta|Claudio Bravo|Camilo Mori|Nemesio Antúnez|Matta fue una figura clave del surrealismo y la abstracción.
-Q|¿Qué escultor chileno es conocido por sus obras en gran formato en piedra?|Marta Colvin|Lily Garafulic|Federico Assler|Sergio Castillo|Marta Colvin recibió el Premio Nacional de Arte en 1970.
-Q|¿Qué pintor es autor de Los fusilamientos del 3 de mayo?|Francisco de Goya|Diego Velázquez|El Greco|Bartolomé Esteban Murillo|La obra es un ícono del arte contra la guerra.
+Q|¿Quién pintó la obra La noche estrellada?|Vincent van Gogh|Pablo Picasso|Claude Monet|Salvador Dalí|Vincent van Gogh la pintó desde la ventana de un sanatorio en Saint-Rémy.
+Q|¿Qué movimiento artístico se asocia con Claude Monet?|Impresionismo|Surrealismo|Cubismo|Barroco|El término impresionismo surgió a partir de una crítica a una de sus obras.
+Q|¿Quién esculpió El pensador?|Auguste Rodin|Miguel Ángel|Donatello|Gian Lorenzo Bernini|Originalmente la escultura formaba parte de La puerta del infierno.
+Q|¿Qué artista es famoso por la técnica del cubismo junto a Braque?|Pablo Picasso|Paul Cézanne|Henri Matisse|Edvard Munch|El cubismo rompió con la perspectiva tradicional en la pintura.
+Q|¿Qué obra fue pintada por Leonardo da Vinci?|La Gioconda|La joven de la perla|El grito|Las meninas|La Gioconda está expuesta en el Museo del Louvre.
+Q|¿Qué pintor es autor de Las meninas?|Diego Velázquez|Francisco de Goya|El Greco|Joaquín Sorolla|La obra incluye un autorretrato del propio pintor.
+Q|¿Qué estilo caracteriza a Salvador Dalí?|Surrealismo|Realismo|Neoclasicismo|Futurismo|El surrealismo explora el mundo de los sueños y el subconsciente.
+Q|¿Quién pintó El grito?|Edvard Munch|Gustav Klimt|Paul Gauguin|Wassily Kandinsky|Edvard Munch se inspiró en una crisis de ansiedad del autor.
+Q|¿Qué arquitecto diseñó gran parte de la Sagrada Familia?|Antoni Gaudí|Le Corbusier|Frank Lloyd Wright|Mies van der Rohe|La obra sigue en construcción más de un siglo después de iniciada.
+Q|¿Qué artista mexicana es conocida por sus autorretratos?|Frida Kahlo|Remedios Varo|Leonora Carrington|María Izquierdo|Frida Kahlo usó su imagen para expresar dolor físico y emocional.
+Q|¿Qué obra pertenece a Miguel Ángel?|La piedad|El nacimiento de Venus|La libertad guiando al pueblo|El beso|Miguel Ángel esculpió La piedad cuando tenía poco más de 20 años.
+Q|¿Qué movimiento impulsó Andy Warhol?|Pop Art|Romanticismo|Expresionismo|Rococó|Andy Warhol elevó objetos cotidianos a categoría artística.
+Q|¿Quién pintó La joven de la perla?|Johannes Vermeer|Rembrandt|Peter Paul Rubens|Jan van Eyck|La obra es conocida como la “Mona Lisa del norte”.
+Q|¿Quién pintó Guernica?|Pablo Picasso|Salvador Dalí|Joan Miró|Francisco de Goya|Guernica es un alegato contra la guerra y la violencia.
+Q|¿Qué artista pintó La persistencia de la memoria?|Salvador Dalí|René Magritte|Max Ernst|Joan Miró|Sus relojes blandos desafían la noción del tiempo.
+Q|¿Quién es autor de La creación de Adán en la Capilla Sixtina?|Miguel Ángel|Rafael|Caravaggio|Tintoretto|La pintura forma parte del techo encargado por el Papa Julio II.
+Q|¿Qué artista es reconocido por sus móviles escultóricos?|Alexander Calder|Constantin Brancusi|Henry Moore|Alberto Giacometti|Alexander Calder introdujo el movimiento real en la escultura.
+Q|¿Quién pintó Impresión, sol naciente?|Claude Monet|Edgar Degas|Pierre-Auguste Renoir|Camille Pissarro|Esta obra dio nombre al impresionismo.
+Q|¿Qué muralista mexicano pintó Hombre en la encrucijada?|Diego Rivera|José Clemente Orozco|David Alfaro Siqueiros|Rufino Tamayo|El mural fue destruido y luego recreado en México.
+Q|¿Quién desarrolló el puntillismo junto a Signac?|Georges Seurat|Henri Toulouse-Lautrec|Paul Gauguin|Gustave Courbet|Georges Seurat aplicaba puntos de color puro para mezclar ópticamente.
+Q|¿Quién pintó La libertad guiando al pueblo?|Eugène Delacroix|Jacques-Louis David|Jean-Auguste-Dominique Ingres|Théodore Géricault|La obra simboliza la lucha revolucionaria en Francia.
+Q|¿Qué arquitecta fue la primera mujer en recibir el Premio Pritzker?|Zaha Hadid|Kazuyo Sejima|Lina Bo Bardi|Jeanne Gang|Zaha Hadid fue conocida por sus diseños futuristas.
+Q|¿Qué artista chileno creó la obra El vuelo de Matta?|Roberto Matta|Claudio Bravo|Camilo Mori|Nemesio Antúnez|Roberto Matta fue cercano al movimiento surrealista europeo.
+Q|¿Qué escultora chilena destacó por obras monumentales en piedra?|Marta Colvin|Lily Garafulic|Federico Assler|Sergio Castillo|Marta Colvin ganó el Premio Nacional de Arte en 1970.
+Q|¿Qué pintor es autor de Los fusilamientos del 3 de mayo?|Francisco de Goya|Diego Velázquez|El Greco|Bartolomé Esteban Murillo|La obra denuncia la violencia de la guerra.
 Q|¿Qué artista neerlandés pintó La ronda de noche?|Rembrandt|Johannes Vermeer|Frans Hals|Jan Steen|La obra destaca por su uso dramático de la luz.
-Q|¿Quién pintó El nacimiento de Venus?|Sandro Botticelli|Tiziano|Rafael|Caravaggio|La obra es un emblema del Renacimiento florentino.
-Q|¿Qué escultor realizó el David renacentista más famoso en mármol?|Miguel Ángel|Donatello|Bernini|Lorenzo Ghiberti|El David de Miguel Ángel se terminó en 1504.
-Q|¿Qué artista barroco es famoso por su uso del claroscuro en escenas dramáticas?|Caravaggio|Vermeer|Canaletto|Ingres|Su estilo influyó profundamente en la pintura europea.
-Q|¿Quién pintó Las señoritas de Avignon?|Pablo Picasso|Georges Braque|Juan Gris|Fernand Léger|Esta obra marcó un hito hacia el cubismo.
-Q|¿Qué arquitecto diseñó la Casa de la Cascada (Fallingwater)?|Frank Lloyd Wright|Le Corbusier|Walter Gropius|Alvar Aalto|La casa integra arquitectura y paisaje de forma icónica.
-Q|¿Qué artista es conocido por cortar y recomponer lienzos en su serie Concetto Spaziale?|Lucio Fontana|Piero Manzoni|Giorgio de Chirico|Umberto Boccioni|Fontana abrió nuevas búsquedas en el arte espacial.
-Q|¿Qué pintor francés es referente del postimpresionismo y autor de Jugadores de cartas?|Paul Cézanne|Claude Monet|Henri Matisse|Édouard Manet|Cézanne influyó en el surgimiento del arte moderno.
-Q|¿Quién pintó El jardín de las delicias?|El Bosco|Pieter Brueghel el Viejo|Albrecht Dürer|Hans Holbein|La obra se conserva en el Museo del Prado.
-Q|¿Qué artista chileno es reconocido por sus coloridos retratos y bodegones, y vivió en Marruecos?|Claudio Bravo|Roberto Matta|Gonzalo Cienfuegos|Benjamín Lira|Claudio Bravo alcanzó reconocimiento internacional en el siglo XX.
-Q|¿Qué movimiento artístico promovía formas geométricas y racionalidad en diseño y arquitectura?|Bauhaus|Romanticismo|Rococó|Tenebrismo|La escuela Bauhaus fue fundada en 1919 en Alemania.
-Q|¿Qué escultora chilena destacó por sus figuras monumentales y retratos en bronce?|Lily Garafulic|Marta Colvin|Rebeca Matte|Marta Minujín|Lily Garafulic recibió el Premio Nacional de Arte en 1995.
-Q|¿Quién pintó la serie de Nenúfares?|Claude Monet|Paul Signac|Camille Pissarro|Gustave Caillebotte|Monet dedicó décadas a estudiar luz y color en su jardín.
-Q|¿Qué artista noruego pintó Madonna y otras obras expresionistas además de El grito?|Edvard Munch|Emil Nolde|Egon Schiele|Oskar Kokoschka|Munch exploró ansiedad y emociones intensas en su obra.
-Q|¿Qué arquitecto modernista diseñó la Villa Savoye?|Le Corbusier|Mies van der Rohe|Oscar Niemeyer|Richard Neutra|La obra resume los cinco puntos de la nueva arquitectura.
-Q|¿Qué artista estadounidense es autor de Number 1A, 1948, ligado al action painting?|Jackson Pollock|Mark Rothko|Barnett Newman|Willem de Kooning|Pollock aplicaba pintura con la técnica del dripping.
-Q|¿Qué pintora barroca italiana fue célebre por Judith decapitando a Holofernes?|Artemisia Gentileschi|Sofonisba Anguissola|Angelica Kauffman|Rosalba Carriera|Artemisia es hoy una figura central de la historia del arte.
-Q|¿Qué artista español es autor del mural cerámico para la sede de la UNESCO en París?|Joan Miró|Pablo Picasso|Antoni Tàpies|Eduardo Chillida|Miró también destacó en escultura y obra gráfica.
-Q|¿Qué escultor suizo-alemán es conocido por figuras humanas alargadas?|Alberto Giacometti|Constantin Brancusi|Antoine Bourdelle|Aristide Maillol|Sus obras son iconos de la escultura del siglo XX.
-Q|¿Qué artista pop creó la escultura Balloon Dog?|Jeff Koons|Damien Hirst|Takashi Murakami|Keith Haring|La obra pertenece a su serie Celebration.
-Q|¿Qué pintor flamenco del siglo XV es famoso por El matrimonio Arnolfini?|Jan van Eyck|Rogier van der Weyden|Hans Memling|Petrus Christus|Su técnica del óleo fue decisiva en la pintura nórdica.
-Q|¿Qué artista chileno y grabador fundó el Taller 99 de grabado?|Nemesio Antúnez|Camilo Mori|Mario Carreño|José Balmes|El Taller 99 fue clave para el grabado contemporáneo en Chile.
-Q|¿Qué artista japonesa contemporánea es reconocida por sus instalaciones de lunares infinitos?|Yayoi Kusama|Marina Abramović|Tracey Emin|Jenny Holzer|Kusama creó las Infinity Mirror Rooms.
-Q|¿Qué artista pintó Composición VIII, referente de la abstracción geométrica?|Wassily Kandinsky|Kazimir Malevich|Piet Mondrian|Paul Klee|Kandinsky teorizó sobre la espiritualidad en el arte.
-Q|¿Qué arquitecto brasileño diseñó gran parte de los edificios cívicos de Brasilia?|Oscar Niemeyer|Lúcio Costa|Paulo Mendes da Rocha|Affonso Eduardo Reidy|Niemeyer usó formas curvas de hormigón armado.
-Q|¿Qué pintora mexicana surrealista es autora de Papilla estelar?|Remedios Varo|Frida Kahlo|Leonora Carrington|Olga Costa|Remedios Varo desarrolló una iconografía simbólica singular.
-Q|¿Qué fotógrafo chileno es reconocido por su trabajo documental en comunidades y conflictos sociales?|Sergio Larraín|Antonio Quintana|Tomás Munita|Luis Poirot|Sergio Larraín fue miembro de la agencia Magnum.
-Q|¿Qué artista realizó la obra El gran vidrio?|Marcel Duchamp|Francis Bacon|David Hockney|Henry Moore|Duchamp transformó la idea de obra con sus ready-mades.
-Q|¿Qué pintor francés fue precursor del fauvismo con obras como Lujo, calma y voluptuosidad?|Henri Matisse|Raoul Dufy|Georges Rouault|Maurice de Vlaminck|Matisse exploró color puro y síntesis formal.
-Q|¿Qué artista es conocido por sus latas de sopa Campbell?|Andy Warhol|Roy Lichtenstein|Keith Haring|Jean-Michel Basquiat|Es una obra icónica del Pop Art.
-Q|¿Qué pintor español es famoso por su período azul?|Pablo Picasso|Salvador Dalí|Francisco de Goya|Joan Miró|Este período refleja melancolía y pobreza.
-Q|¿Qué artista renacentista pintó La última cena?|Leonardo da Vinci|Miguel Ángel|Rafael|Donatello|Se encuentra en Milán.
-Q|¿Qué escultor creó El beso en mármol?|Auguste Rodin|Antonio Canova|Gian Lorenzo Bernini|Donatello|Representa una escena romántica.
-Q|¿Qué pintor es conocido por sus girasoles?|Vincent van Gogh|Claude Monet|Paul Gauguin|Henri Matisse|Pintó varias versiones de girasoles.
-Q|¿Qué movimiento artístico está asociado a Salvador Dalí y René Magritte?|Surrealismo|Cubismo|Impresionismo|Barroco|Explora el inconsciente y los sueños.
-Q|¿Qué artista alemán es clave en el expresionismo y pintó El gabinete del Dr. Caligari (escenografía)?|Hermann Warm|Edvard Munch|Paul Klee|Otto Dix|El film es clave en el cine expresionista.
-Q|¿Qué artista francés pintó El almuerzo de los remeros?|Pierre-Auguste Renoir|Claude Monet|Edgar Degas|Édouard Manet|Es una obra clave del impresionismo.
-Q|¿Qué arquitecto diseñó el Museo Guggenheim de Bilbao?|Frank Gehry|Zaha Hadid|Renzo Piano|Norman Foster|Es un ícono de la arquitectura contemporánea.
-Q|¿Qué artista es conocido por sus obras con globos y estética kitsch?|Jeff Koons|Damien Hirst|Banksy|Takashi Murakami|Sus obras alcanzan altos precios en subastas.
+Q|¿Quién pintó El nacimiento de Venus?|Sandro Botticelli|Tiziano|Rafael|Caravaggio|La obra representa el ideal de belleza renacentista.
+Q|¿Qué escultor realizó el David renacentista más famoso en mármol?|Miguel Ángel|Donatello|Bernini|Lorenzo Ghiberti|El David mide más de 5 metros de altura.
+Q|¿Qué artista barroco es famoso por su claroscuro dramático?|Caravaggio|Vermeer|Canaletto|Ingres|Caravaggio influyó en toda la pintura europea posterior.
+Q|¿Quién pintó Las señoritas de Avignon?|Pablo Picasso|Georges Braque|Juan Gris|Fernand Léger|La obra marcó el inicio del cubismo moderno.
+Q|¿Qué arquitecto diseñó la Casa de la Cascada (Fallingwater)?|Frank Lloyd Wright|Le Corbusier|Walter Gropius|Alvar Aalto|La casa integra el entorno natural en su diseño.
+Q|¿Qué artista es conocido por su serie Concetto Spaziale?|Lucio Fontana|Piero Manzoni|Giorgio de Chirico|Umberto Boccioni|Lucio Fontana cortaba el lienzo para explorar el espacio.
+Q|¿Qué pintor francés es referente del postimpresionismo?|Paul Cézanne|Claude Monet|Henri Matisse|Édouard Manet|Paul Cézanne influyó en el cubismo.
+Q|¿Quién pintó El jardín de las delicias?|El Bosco|Pieter Brueghel el Viejo|Albrecht Dürer|Hans Holbein|La obra es una obra llena de simbolismo enigmático.
+Q|¿Qué artista chileno destacó por retratos hiperrealistas?|Claudio Bravo|Roberto Matta|Gonzalo Cienfuegos|Benjamín Lira|Claudio Bravo vivió gran parte de su vida en Marruecos.
+Q|¿Qué movimiento promovía diseño funcional y geométrico?|Bauhaus|Romanticismo|Rococó|Tenebrismo|La Bauhaus unió arte, diseño y arquitectura.
+Q|¿Qué escultora chilena destacó en bronce?|Lily Garafulic|Marta Colvin|Rebeca Matte|Marta Minujín|Lily Garafulic ganó el Premio Nacional de Arte en 1995.
+Q|¿Quién pintó la serie de Nenúfares?|Claude Monet|Paul Signac|Camille Pissarro|Gustave Caillebotte|Claude Monet las pintó en su jardín en Giverny.
+Q|¿Qué artista noruego pintó Madonna?|Edvard Munch|Emil Nolde|Egon Schiele|Oskar Kokoschka|Edvard Munch exploró emociones intensas y existenciales.
+Q|¿Qué arquitecto diseñó la Villa Savoye?|Le Corbusier|Mies van der Rohe|Oscar Niemeyer|Richard Neutra|La obra resume sus “cinco puntos” arquitectónicos.
+Q|¿Qué artista es clave en el action painting?|Jackson Pollock|Mark Rothko|Barnett Newman|Willem de Kooning|Jackson Pollock pintaba dejando caer la pintura sobre el lienzo.
+Q|¿Qué pintora barroca italiana pintó Judith decapitando a Holofernes?|Artemisia Gentileschi|Sofonisba Anguissola|Angelica Kauffman|Rosalba Carriera|La obra es símbolo de reivindicación femenina.
+Q|¿Qué artista español creó un mural para la UNESCO en París?|Joan Miró|Pablo Picasso|Antoni Tàpies|Eduardo Chillida|Joan Miró también destacó en escultura.
+Q|¿Qué escultor es famoso por figuras humanas alargadas?|Alberto Giacometti|Constantin Brancusi|Antoine Bourdelle|Aristide Maillol|Sus obras reflejan soledad y fragilidad humana.
+Q|¿Qué artista pop creó Balloon Dog?|Jeff Koons|Damien Hirst|Takashi Murakami|Keith Haring|Sus obras alcanzan precios millonarios en el mercado del arte.
+Q|¿Qué pintor flamenco pintó El matrimonio Arnolfini?|Jan van Eyck|Rogier van der Weyden|Hans Memling|Petrus Christus|La obra destaca por el detalle y simbolismo.
+Q|¿Qué artista chileno fundó el Taller 99?|Nemesio Antúnez|Camilo Mori|Mario Carreño|José Balmes|Nemesio Antúnez fue clave en el grabado chileno.
+Q|¿Qué artista japonesa creó Infinity Mirror Rooms?|Yayoi Kusama|Marina Abramović|Tracey Emin|Jenny Holzer|Su obsesión por los puntos viene de alucinaciones.
+Q|¿Qué artista pintó Composición VIII?|Wassily Kandinsky|Kazimir Malevich|Piet Mondrian|Paul Klee|Wassily Kandinsky relacionaba arte con música.
+Q|¿Qué arquitecto diseñó Brasilia?|Oscar Niemeyer|Lúcio Costa|Paulo Mendes da Rocha|Affonso Reidy|Oscar Niemeyer usó curvas inspiradas en la naturaleza.
+Q|¿Qué pintora surrealista creó Papilla estelar?|Remedios Varo|Frida Kahlo|Leonora Carrington|Olga Costa|Su obra mezcla ciencia y misticismo.
+Q|¿Qué fotógrafo chileno integró la agencia Magnum?|Sergio Larraín|Antonio Quintana|Tomás Munita|Luis Poirot|Sergio Larraín fue uno de los pocos latinoamericanos en ingresar.
+Q|¿Qué artista realizó El gran vidrio?|Marcel Duchamp|Francis Bacon|David Hockney|Henry Moore|Marcel Duchamp cuestionó qué puede ser considerado arte.
+Q|¿Qué pintor fue clave en el fauvismo?|Henri Matisse|Raoul Dufy|Georges Rouault|Maurice de Vlaminck|Henri Matisse usaba colores intensos sin buscar realismo.
+Q|¿Qué artista popularizó las latas de sopa Campbell?|Andy Warhol|Roy Lichtenstein|Keith Haring|Jean-Michel Basquiat|Andy Warhol transformó productos cotidianos en arte.
+Q|¿Qué pintor español desarrolló el período azul?|Pablo Picasso|Salvador Dalí|Francisco de Goya|Joan Miró|Este período refleja melancolía y pobreza.
+Q|¿Quién pintó La última cena?|Leonardo da Vinci|Miguel Ángel|Rafael|Donatello|La obra se encuentra en un convento en Milán.
+Q|¿Qué escultor creó El beso?|Auguste Rodin|Antonio Canova|Gian Lorenzo Bernini|Donatello|La escultura representa una escena romántica.
+Q|¿Qué pintor es famoso por sus girasoles?|Vincent van Gogh|Claude Monet|Paul Gauguin|Henri Matisse|Vincent van Gogh pintó varias versiones en Arlés.
+Q|¿Qué movimiento explora el subconsciente y los sueños?|Surrealismo|Cubismo|Impresionismo|Barroco|El surrealismo se inspiró en el psicoanálisis.
+Q|¿Qué artista participó en la estética expresionista del cine alemán?|Hermann Warm|Edvard Munch|Paul Klee|Otto Dix|Hermann Warm diseñó escenografías icónicas.
+Q|¿Quién pintó El almuerzo de los remeros?|Pierre-Auguste Renoir|Claude Monet|Edgar Degas|Édouard Manet|La obra representa la vida social parisina.
+Q|¿Qué arquitecto diseñó el Guggenheim de Bilbao?|Frank Gehry|Zaha Hadid|Renzo Piano|Norman Foster|El edificio es un símbolo de la arquitectura contemporánea.
+Q|¿Qué artista es conocido por estética kitsch y esculturas brillantes?|Jeff Koons|Damien Hirst|Banksy|Takashi Murakami|Su obra mezcla arte y cultura de consumo.
