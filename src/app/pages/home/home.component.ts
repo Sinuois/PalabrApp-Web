@@ -1284,6 +1284,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       event.preventDefault();
     }
 
+    // Si el dedo/mouse se suelta fuera del elemento que recibió el handler,
+    // cancelar la acción para evitar selecciones accidentales por arrastre.
+    if ((event.type === 'touchend' || event.type === 'pointerup') && !this.esLiberacionDentroDelObjetivo(event)) {
+      this.ultimoTapTouchMs = Date.now();
+      this.ultimoTapTouchTarget = event.currentTarget;
+      return;
+    }
+
     // Si estamos en ventana de apertura de juego, bloquear acciones dentro del modal del juego
     if (this.juegoAbriendoHasta > Date.now() && this.juegoActivo()) {
       const target = event.target;
@@ -1314,6 +1322,41 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     accion();
+  }
+
+  private esLiberacionDentroDelObjetivo(event: Event): boolean {
+    const objetivo = event.currentTarget;
+    if (!(objetivo instanceof Element)) {
+      return true;
+    }
+
+    const punto = this.obtenerPuntoInteraccion(event);
+    if (!punto) {
+      return true;
+    }
+
+    const rect = objetivo.getBoundingClientRect();
+    const tolerancia = 4;
+    return (
+      punto.x >= rect.left - tolerancia &&
+      punto.x <= rect.right + tolerancia &&
+      punto.y >= rect.top - tolerancia &&
+      punto.y <= rect.bottom + tolerancia
+    );
+  }
+
+  private obtenerPuntoInteraccion(event: Event): { x: number; y: number } | null {
+    if (event instanceof TouchEvent) {
+      const touch = event.changedTouches[0] ?? event.touches[0];
+      if (!touch) return null;
+      return { x: touch.clientX, y: touch.clientY };
+    }
+
+    if (event instanceof PointerEvent || event instanceof MouseEvent) {
+      return { x: event.clientX, y: event.clientY };
+    }
+
+    return null;
   }
 
   private esMismoObjetivoTap(actual: EventTarget | null, previo: EventTarget | null): boolean {
