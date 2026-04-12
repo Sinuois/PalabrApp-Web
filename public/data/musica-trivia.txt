@@ -126,7 +126,7 @@ Q|¿Qué canción de Pantera incluye la frase "Are you talking to me?" en tono a
 Q|¿Qué vocalista lideraba Pantera?|Phil Anselmo|Corey Taylor|Rob Halford|Bruce Dickinson|Es conocido por su potente estilo vocal.
 Q|¿Qué banda lanzó el álbum The Joshua Tree?|U2|Coldplay|R.E.M.|Simple Minds|Incluye éxitos como With or Without You.
 Q|¿Qué canción de U2 comienza con la frase "I still haven't found what I'm looking for"?|I Still Haven't Found What I'm Looking For|One|Beautiful Day|Sunday Bloody Sunday|Es uno de sus temas más emblemáticos.
-Q|¿Qué cantante francesa interpretó La Vie en Rose?|Édith Piaf|Zaz|France Gall|Dalida|Es uno de los mayores clásicos de la música francesa.
+Q|¿Qué cantante francesa interpretó originalmente La Vie en Rose?|Édith Piaf|Zaz|France Gall|Dalida|Es uno de los mayores clásicos de la música francesa.
 Q|¿Qué canción es uno de los mayores éxitos de Édith Piaf?|Non, je ne regrette rien|La Bohème|Ne me quitte pas|Sous le ciel de Paris|Se convirtió en un himno mundial.
 Q|¿Qué cantante francesa moderna canta Je veux?|Zaz|Édith Piaf|Carla Bruni|Vanessa Paradis|Su estilo mezcla jazz y chanson francesa.
 Q|¿Qué estilo musical caracteriza principalmente a Zaz?|Jazz y chanson francesa|Pop electrónico|Rock alternativo|Hip hop|Su música tiene influencias retro.

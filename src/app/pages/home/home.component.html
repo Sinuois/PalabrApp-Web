@@ -118,7 +118,7 @@
   <div class="game-modal" (pointerup)="$event.stopPropagation()" (click)="$event.stopPropagation()" (touchend)="$event.stopPropagation()">
     <ng-container *ngIf="pasoInvitacionJuego() === 'actualizacion'">
       <h3>¡PalabrApp se ha actualizado!</h3>
-      <p>De ahora en adelante, PalabrApp no solo será para aprender vocabulario, sino que también podrás jugar trivia de geografía chilena, capitales del mundo, arte y ciencia. ¿Quieres probar?</p>
+      <p>De ahora en adelante, PalabrApp no solo será para aprender vocabulario, sino que también podrás jugar trivias de múltiples temáticas. ¿Quieres probar?</p>
       <div class="game-actions">
         <button type="button" class="btn-secondary" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Ahora no</button>
         <button type="button" class="btn-primary" (pointerup)="onAceptarInvitacionTap($event)" (click)="onAceptarInvitacionTap($event)" (touchend)="onAceptarInvitacionTap($event)">Aceptar</button>
