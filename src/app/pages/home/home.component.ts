@@ -12,11 +12,14 @@ import { GeografiaChileTriviaService } from '../../services/geografia-chile-triv
 import { CapitalesMundoTriviaService } from '../../services/capitales-mundo-trivia.service';
 import { ArteTriviaService } from '../../services/arte-trivia.service';
 import { CienciaTriviaService } from '../../services/ciencia-trivia.service';
+import { MusicaTriviaService } from '../../services/musica-trivia.service';
+import { CineTriviaService } from '../../services/cine-trivia.service';
+import { DeportesTriviaService } from '../../services/deportes-trivia.service';
 import { Palabra } from '../../interfaces/app.interfaces';
 import { Subject } from 'rxjs';
 
 type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
-type ModalidadJuego = 'aleatoria' | 'vocabulario' | 'geografia' | 'capitales' | 'arte' | 'ciencia';
+type ModalidadJuego = 'aleatoria' | 'vocabulario' | 'geografia' | 'capitales' | 'arte' | 'ciencia' | 'musica' | 'cine' | 'deportes';
 type ModalidadActiva = Exclude<ModalidadJuego, 'aleatoria'>;
 
 @Component({
@@ -77,6 +80,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private capitalesTriviaService = inject(CapitalesMundoTriviaService);
   private arteTriviaService = inject(ArteTriviaService);
   private cienciaTriviaService = inject(CienciaTriviaService);
+  private musicaTriviaService = inject(MusicaTriviaService);
+  private cineTriviaService = inject(CineTriviaService);
+  private deportesTriviaService = inject(DeportesTriviaService);
 
   get orden()            { return this.palabrasService.orden; }
   get palabrasOrdenadas(){ return this.palabrasService.palabrasOrdenadas; }
@@ -535,6 +541,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       return '¡Trivia de ciencia!';
     }
 
+    if (this.modalidadJuegoActiva() === 'musica') {
+      return '¡Trivia de música!';
+    }
+
+    if (this.modalidadJuegoActiva() === 'cine') {
+      return '¡Trivia de cine!';
+    }
+
+    if (this.modalidadJuegoActiva() === 'deportes') {
+      return '¡Trivia de deportes!';
+    }
+
     return '¡Adivina el significado!';
   }
 
@@ -578,6 +596,24 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (modalidadObjetivo === 'ciencia') {
       this.tipoJuego.set('trivia');
       await this.prepararTriviaCiencia();
+      return;
+    }
+
+    if (modalidadObjetivo === 'musica') {
+      this.tipoJuego.set('trivia');
+      await this.prepararTriviaMusica();
+      return;
+    }
+
+    if (modalidadObjetivo === 'cine') {
+      this.tipoJuego.set('trivia');
+      await this.prepararTriviaCine();
+      return;
+    }
+
+    if (modalidadObjetivo === 'deportes') {
+      this.tipoJuego.set('trivia');
+      await this.prepararTriviaDeportes();
       return;
     }
 
@@ -721,6 +757,75 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
       if (!exito) {
         this.mensajeJuego.set('No se pudo preparar la trivia de ciencia en este intento.');
+      }
+    } finally {
+      this.juegoCargando.set(false);
+    }
+  }
+
+  private async prepararTriviaMusica(): Promise<void> {
+    this.juegoCargando.set(true);
+    this.triviaService.resetear();
+    this.triviaDatoExtra.set('');
+
+    try {
+      const reto = await this.musicaTriviaService.generarPregunta();
+      if (!reto) {
+        this.mensajeJuego.set('No se pudo generar una pregunta de música en este momento.');
+        return;
+      }
+
+      this.triviaDatoExtra.set(reto.datoExtra ?? '');
+
+      const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
+      if (!exito) {
+        this.mensajeJuego.set('No se pudo preparar la trivia de música en este intento.');
+      }
+    } finally {
+      this.juegoCargando.set(false);
+    }
+  }
+
+  private async prepararTriviaCine(): Promise<void> {
+    this.juegoCargando.set(true);
+    this.triviaService.resetear();
+    this.triviaDatoExtra.set('');
+
+    try {
+      const reto = await this.cineTriviaService.generarPregunta();
+      if (!reto) {
+        this.mensajeJuego.set('No se pudo generar una pregunta de cine en este momento.');
+        return;
+      }
+
+      this.triviaDatoExtra.set(reto.datoExtra ?? '');
+
+      const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
+      if (!exito) {
+        this.mensajeJuego.set('No se pudo preparar la trivia de cine en este intento.');
+      }
+    } finally {
+      this.juegoCargando.set(false);
+    }
+  }
+
+  private async prepararTriviaDeportes(): Promise<void> {
+    this.juegoCargando.set(true);
+    this.triviaService.resetear();
+    this.triviaDatoExtra.set('');
+
+    try {
+      const reto = await this.deportesTriviaService.generarPregunta();
+      if (!reto) {
+        this.mensajeJuego.set('No se pudo generar una pregunta de deportes en este momento.');
+        return;
+      }
+
+      this.triviaDatoExtra.set(reto.datoExtra ?? '');
+
+      const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
+      if (!exito) {
+        this.mensajeJuego.set('No se pudo preparar la trivia de deportes en este intento.');
       }
     } finally {
       this.juegoCargando.set(false);
@@ -1259,12 +1364,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private reiniciarCargaIconosModalidad(): void {
-    this.iconosModalidadPendientes = new Set<ModalidadJuego>(['aleatoria', 'vocabulario', 'geografia', 'capitales', 'arte', 'ciencia']);
+    this.iconosModalidadPendientes = new Set<ModalidadJuego>(['aleatoria', 'vocabulario', 'geografia', 'capitales', 'arte', 'ciencia', 'musica', 'cine', 'deportes']);
     this.iconosModalidadesListos.set(false);
   }
 
   private elegirModalidadAleatoria(): ModalidadActiva {
-    const modalidades: ModalidadActiva[] = ['vocabulario', 'geografia', 'capitales', 'arte', 'ciencia'];
+    const modalidades: ModalidadActiva[] = ['vocabulario', 'geografia', 'capitales', 'arte', 'ciencia', 'musica', 'cine', 'deportes'];
     return modalidades[Math.floor(Math.random() * modalidades.length)] ?? 'vocabulario';
   }
 

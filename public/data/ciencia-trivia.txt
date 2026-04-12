@@ -45,3 +45,42 @@ Q|¿Qué tipo de onda es la luz?|Electromagnética|Mecánica|Sonora|Gravitaciona
 Q|¿Qué planeta tiene más lunas conocidas?|Saturno|Júpiter|Urano|Neptuno|Saturno ha superado a Júpiter en número confirmado recientemente.
 Q|¿Qué órgano es responsable de desintoxicar el cuerpo?|Hígado|Riñón|Pulmón|Páncreas|El hígado procesa sustancias químicas y medicamentos.
 Q|¿Qué científico descubrió la estructura del ADN junto a Watson?|Francis Crick|Linus Pauling|Erwin Schrödinger|Max Planck|El modelo se basó en datos de Rosalind Franklin.
+Q|¿Qué científico descubrió la penicilina?|Alexander Fleming|Louis Pasteur|Robert Koch|Joseph Lister|El descubrimiento fue accidental cuando observó moho matando bacterias.
+Q|¿Qué planeta es conocido por sus fuertes vientos y tormentas?|Neptuno|Urano|Saturno|Júpiter|En Neptuno se han registrado los vientos más rápidos del sistema solar.
+Q|¿Qué unidad mide la energía?|Julio|Vatio|Pascal|Amperio|El julio lleva el nombre del físico James Prescott Joule.
+Q|¿Qué tipo de sangre es considerado donante universal?|O negativo|A positivo|B negativo|AB positivo|Puede donar a casi todos los tipos de sangre.
+Q|¿Qué órgano permite el intercambio de gases en los humanos?|Pulmones|Corazón|Hígado|Riñones|Los alvéolos son las estructuras donde ocurre el intercambio.
+Q|¿Qué proceso usan las plantas para fabricar su alimento?|Fotosíntesis|Respiración|Digestión|Fermentación|Utilizan luz solar, agua y CO₂.
+Q|¿Qué planeta es conocido como el gigante gaseoso más grande?|Júpiter|Saturno|Urano|Neptuno|Tiene la Gran Mancha Roja, una tormenta gigante.
+Q|¿Qué instrumento mide la temperatura?|Termómetro|Barómetro|Anemómetro|Higrómetro|Puede usar mercurio o sensores digitales.
+Q|¿Qué tipo de célula no tiene núcleo definido?|Procariota|Eucariota|Animal|Vegetal|Las bacterias son procariotas.
+Q|¿Qué fuerza mantiene a los planetas en órbita?|Gravedad|Magnetismo|Fricción|Electricidad|Depende de la masa y distancia entre cuerpos.
+Q|¿Qué gas es esencial para la respiración humana?|Oxígeno|Nitrógeno|Helio|Hidrógeno|Se transporta en la sangre mediante la hemoglobina.
+Q|¿Qué tipo de energía se almacena en los alimentos?|Energía química|Energía cinética|Energía nuclear|Energía térmica|Se libera durante la digestión.
+Q|¿Qué capa de la Tierra es la más externa?|Corteza|Manto|Núcleo externo|Núcleo interno|Es donde vivimos y se forman los continentes.
+Q|¿Qué partícula tiene carga positiva?|Protón|Electrón|Neutrón|Fotón|Se encuentra en el núcleo del átomo.
+Q|¿Qué planeta es famoso por sus anillos visibles?|Saturno|Júpiter|Urano|Neptuno|Son visibles incluso con telescopios pequeños.
+Q|¿Qué fenómeno produce los relámpagos?|Electricidad estática|Magnetismo|Gravedad|Radiación|Se genera por acumulación de cargas.
+Q|¿Qué órgano filtra la sangre en el cuerpo?|Riñón|Corazón|Pulmón|Estómago|Produce la orina eliminando desechos.
+Q|¿Qué unidad mide la presión?|Pascal|Julio|Newton|Hertz|Se usa en física y meteorología.
+Q|¿Qué tipo de energía proviene del calor interno de la Tierra?|Energía geotérmica|Energía solar|Energía eólica|Energía nuclear|Se usa en algunas plantas eléctricas.
+Q|¿Qué estructura protege al cerebro?|Cráneo|Columna vertebral|Costillas|Pelvis|Forma parte del sistema óseo.
+Q|¿Qué elemento es el más abundante en el universo?|Hidrógeno|Oxígeno|Carbono|Helio|Es la base de las estrellas.
+Q|¿Qué tipo de onda necesita un medio para propagarse?|Onda mecánica|Onda electromagnética|Onda cuántica|Onda gravitacional|El sonido es un ejemplo.
+Q|¿Qué instrumento mide los terremotos?|Sismógrafo|Termómetro|Barómetro|Telescopio|Registra vibraciones de la Tierra.
+Q|¿Qué planeta es conocido como el lucero del alba?|Venus|Mercurio|Marte|Júpiter|Es visible al amanecer o atardecer.
+Q|¿Qué sistema controla las funciones del cuerpo humano?|Sistema nervioso|Sistema digestivo|Sistema circulatorio|Sistema óseo|Incluye el cerebro y la médula espinal.
+Q|¿Qué tipo de energía tiene un objeto en altura?|Energía potencial|Energía cinética|Energía térmica|Energía química|Depende de la gravedad.
+Q|¿Qué parte de la célula fabrica proteínas?|Ribosoma|Núcleo|Mitocondria|Membrana|Lee la información del ARN.
+Q|¿Qué fenómeno explica por qué vemos un arcoíris?|Refracción|Reflexión|Difracción|Interferencia|La luz se separa en colores.
+Q|¿Qué órgano produce bilis?|Hígado|Páncreas|Estómago|Intestino|Ayuda a digerir grasas.
+Q|¿Qué tipo de energía usa el viento?|Energía eólica|Energía solar|Energía nuclear|Energía hidráulica|Se aprovecha con aerogeneradores.
+Q|¿Qué parte del átomo no tiene carga?|Neutrón|Protón|Electrón|Ion|Está en el núcleo.
+Q|¿Qué planeta tiene mayor gravedad?|Júpiter|Saturno|Tierra|Neptuno|Por su gran masa.
+Q|¿Qué tipo de mezcla es el aire?|Mezcla homogénea|Mezcla heterogénea|Compuesto|Elemento|Sus componentes no se distinguen.
+Q|¿Qué órgano almacena la orina?|Vejiga|Riñón|Hígado|Pulmón|Se vacía durante la micción.
+Q|¿Qué tipo de energía proviene del Sol?|Energía solar|Energía térmica|Energía química|Energía nuclear|Es la principal fuente de energía de la Tierra.
+Q|¿Qué proceso implica división celular en dos células iguales?|Mitosis|Meiosis|Fusión|Fotosíntesis|Permite el crecimiento y reparación.
+Q|¿Qué unidad mide la fuerza?|Newton|Pascal|Julio|Watt|Nombrada por Isaac Newton.
+Q|¿Qué órgano es responsable del pensamiento?|Cerebro|Corazón|Hígado|Pulmón|Controla todo el sistema nervioso.
+Q|¿Qué tipo de energía usa el agua en movimiento?|Energía hidráulica|Energía eólica|Energía solar|Energía química|Se usa en represas hidroeléctricas.

@@ -1,0 +1,100 @@
+# Formato:
+# Q|Pregunta|Respuesta correcta|Alternativa 1|Alternativa 2|Alternativa 3|Dato extra opcional
+Q|¿Quién es el vocalista principal de la banda Rammstein?|Till Lindemann|Corey Taylor|James Hetfield|Serj Tankian|Till Lindemann también es poeta y ha publicado libros.
+Q|¿Qué banda interpreta la canción Chop Suey!?|System of a Down|Slipknot|Korn|Deftones|Fue lanzada en 2001 y se volvió un himno del metal alternativo.
+Q|¿Qué banda lanzó el álbum Master of Puppets?|Metallica|Megadeth|Slayer|Anthrax|Es considerado uno de los mejores álbumes de metal de la historia.
+Q|¿Quién es el líder de Megadeth?|Dave Mustaine|James Hetfield|Kirk Hammett|Tom Araya|Mustaine fue originalmente guitarrista de Metallica.
+Q|¿De qué país es la banda Gojira?|Francia|Estados Unidos|Suecia|Alemania|Sus letras suelen tratar temas ambientales.
+Q|¿Qué banda compuso Stairway to Heaven?|Led Zeppelin|Queen|Pink Floyd|The Who|Es una de las canciones más icónicas del rock.
+Q|¿Qué banda es parte de los "Big Four" del thrash metal?|Anthrax|Pantera|Judas Priest|Motorhead|Los otros tres son Metallica, Megadeth y Slayer.
+Q|¿Qué banda es conocida por su estilo progresivo y álbumes conceptuales como Blackwater Park?|Opeth|Dream Theater|Porcupine Tree|Tool|Opeth mezcla death metal con rock progresivo.
+Q|¿Qué banda lanzó el álbum Images and Words?|Dream Theater|Rush|Genesis|Yes|Incluye el tema Pull Me Under.
+Q|¿Qué cantante interpretó Vivir así es morir de amor?|Camilo Sesto|José José|Raphael|Nino Bravo|Es un clásico de la balada en español.
+Q|¿Quién es conocido como "El Príncipe de la Canción"?|José José|Luis Miguel|Camilo Sesto|Juan Gabriel|Es una de las voces más reconocidas de Latinoamérica.
+Q|¿Qué artista fue líder de The Police?|Sting|Phil Collins|Freddie Mercury|Elton John|También tiene una exitosa carrera solista.
+Q|¿Qué banda interpretó Every Breath You Take?|The Police|U2|Queen|Dire Straits|Es una de las canciones más reproducidas de la historia.
+Q|¿Qué cantante es conocido por Rebel Yell?|Billy Idol|David Bowie|Prince|Mick Jagger|Su estilo mezcla punk y rock.
+Q|¿Qué banda lideró Lemmy Kilmister?|Motörhead|Black Sabbath|Judas Priest|Deep Purple|Lemmy es un ícono del rock pesado.
+Q|¿Qué banda interpretó Bohemian Rhapsody?|Queen|The Beatles|Pink Floyd|Led Zeppelin|La canción no tiene un coro tradicional.
+Q|¿Quién es conocido como el "Rey del Pop"?|Michael Jackson|Prince|Elvis Presley|Justin Timberlake|Ganó múltiples premios Grammy.
+Q|¿Qué banda canta Wind of Change?|Scorpions|Bon Jovi|Europe|Aerosmith|Se convirtió en símbolo del fin de la Guerra Fría.
+Q|¿Qué banda lanzó Sweet Child O' Mine?|Guns N' Roses|Aerosmith|Bon Jovi|Nirvana|El riff inicial es uno de los más famosos del rock.
+Q|¿Qué banda interpreta Just Like Heaven?|The Cure|Depeche Mode|The Smiths|New Order|Es un clásico del rock alternativo.
+Q|¿Qué banda es conocida por el álbum Moving Pictures?|Rush|Yes|Genesis|King Crimson|Incluye la canción Tom Sawyer.
+Q|¿Quién es conocido como el "Príncipe de las Tinieblas"?|Ozzy Osbourne|Alice Cooper|Rob Halford|Bruce Dickinson|Fue vocalista de Black Sabbath.
+Q|¿Qué banda creó el álbum Paranoid?|Black Sabbath|Led Zeppelin|Deep Purple|Iron Maiden|Es fundamental en el heavy metal.
+Q|¿Qué cantante lanzó el álbum 1989?|Taylor Swift|Ariana Grande|Katy Perry|Dua Lipa|Marcó su transición al pop.
+Q|¿Qué artista canta Espresso?|Sabrina Carpenter|Olivia Rodrigo|Billie Eilish|Dua Lipa|La canción fue un éxito viral.
+Q|¿Qué artista colombiana canta Hips Don't Lie?|Shakira|Karol G|Rosalía|Becky G|Ha ganado múltiples premios Grammy.
+Q|¿Qué banda interpreta Starlight?|Muse|Coldplay|Radiohead|Keane|Es una banda británica de rock alternativo.
+Q|¿Qué banda lanzó In the End?|Linkin Park|Papa Roach|Limp Bizkit|Sum 41|Es uno de los temas más icónicos del nu metal.
+Q|¿Qué banda interpreta Rollin'?|Limp Bizkit|Korn|Slipknot|Deftones|Fue muy popular a inicios de los 2000.
+Q|¿Qué banda lanzó Kickstart My Heart?|Mötley Crüe|Poison|Skid Row|Twisted Sister|Refleja el estilo glam metal.
+Q|¿Qué banda canta Fear of the Dark?|Iron Maiden|Judas Priest|Megadeth|Slayer|Es un clásico en conciertos en vivo.
+Q|¿Qué banda interpreta Tribute?|Tenacious D|Foo Fighters|Weezer|Green Day|Es una canción humorística sobre "la mejor canción del mundo".
+Q|¿Qué banda interpretó House of the Rising Sun?|The Animals|The Beatles|The Rolling Stones|The Who|Es una de las canciones más versionadas de la historia.
+Q|¿Qué banda lanzó el álbum Americana?|The Offspring|Green Day|Blink-182|Sum 41|Incluye el éxito Pretty Fly (for a White Guy).
+Q|¿Qué banda interpretó Happy Together?|The Turtles|The Monkees|The Beach Boys|The Byrds|Es un clásico del pop de los años 60.
+Q|¿Qué banda lanzó el álbum Abbey Road?|The Beatles|The Who|The Kinks|The Doors|Su portada es una de las más famosas de la música.
+Q|¿Qué banda es pionera del punk con álbumes como Rocket to Russia?|Ramones|Sex Pistols|The Clash|Misfits|Son considerados padres del punk rock.
+Q|¿Qué banda británica lanzó God Save the Queen?|Sex Pistols|The Clash|Ramones|Buzzcocks|Fue muy polémica en su época.
+Q|¿Qué banda es conocida por su estética horror punk?|Misfits|Ramones|Black Flag|Dead Kennedys|Su logo con calavera es icónico.
+Q|¿Qué vocalista fue líder de la banda Dio?|Ronnie James Dio|Ozzy Osbourne|Rob Halford|Bruce Dickinson|También cantó en Black Sabbath y Rainbow.
+Q|¿Qué banda formó Ronnie James Dio antes de Dio?|Rainbow|Deep Purple|Black Sabbath|Whitesnake|Fue fundada por Ritchie Blackmore.
+Q|¿Qué banda de rock progresivo lanzó Close to the Edge?|Yes|Genesis|Rush|King Crimson|Es un clásico del prog rock.
+Q|¿Qué banda interpretó Baba O'Riley?|The Who|The Beatles|Led Zeppelin|Pink Floyd|Es famosa por su intro con sintetizador.
+Q|¿Qué dúo interpretó Wake Me Up Before You Go-Go?|Wham!|Pet Shop Boys|Eurythmics|Tears for Fears|George Michael era parte del dúo.
+Q|¿Qué banda lanzó Nevermind?|Nirvana|Pearl Jam|Soundgarden|Alice in Chains|Incluye Smells Like Teen Spirit.
+Q|¿Qué banda fue fundada por Dave Grohl tras Nirvana?|Foo Fighters|Queens of the Stone Age|Audioslave|Soundgarden|Grohl fue baterista de Nirvana.
+Q|¿Qué banda lanzó el álbum Dirt?|Alice in Chains|Soundgarden|Nirvana|Pearl Jam|Es un clásico del grunge.
+Q|¿Qué banda interpretó Black Hole Sun?|Soundgarden|Nirvana|Pearl Jam|Alice in Chains|Ganó un Grammy.
+Q|¿Qué banda reúne a miembros de Rage Against the Machine y Chris Cornell?|Audioslave|Temple of the Dog|Foo Fighters|Soundgarden|Fue una super banda del rock.
+Q|¿Qué banda estadounidense lanzó Ashes to Ashes?|Faith No More|Red Hot Chili Peppers|Nirvana|Jane's Addiction|Mezcla rock con funk y rap.
+Q|¿Qué banda lanzó OK Computer?|Radiohead|Muse|Coldplay|Blur|Es uno de los discos más influyentes de los 90.
+Q|¿Qué banda es conocida por All the Small Things?|Blink-182|Green Day|Sum 41|The Offspring|Es un himno del pop punk.
+Q|¿Qué banda interpretó Mississippi Queen?|Mountain|Cream|Lynyrd Skynyrd|The Allman Brothers|Es un clásico del hard rock.
+Q|¿Qué banda lanzó No One Knows?|Queens of the Stone Age|Foo Fighters|Muse|Arctic Monkeys|Su líder es Josh Homme.
+Q|¿Qué artista interpretó Space Oddity?|David Bowie|Elton John|Freddie Mercury|Prince|Presenta al personaje Major Tom.
+Q|¿Qué banda lanzó Ten?|Pearl Jam|Nirvana|Soundgarden|Alice in Chains|Es uno de los discos más importantes del grunge.
+Q|¿Qué banda interpreta Killing in the Name?|Rage Against the Machine|Audioslave|System of a Down|Tool|Es una canción de protesta icónica.
+Q|¿Qué banda lanzó Savior?|Rise Against|Green Day|Blink-182|Sum 41|Tiene un fuerte mensaje social.
+Q|¿Qué banda brasileña de metal se reunió con una tribu local para grabar sonidos reales de esta?|Sepultura|Angra|Krisiun|Soulfly|En los 80 tocaron en el Instituto Nacional de Chile en un concierto escolar.
+Q|¿Qué banda lanzó American Idiot?|Green Day|Blink-182|The Offspring|Sum 41|Es un álbum conceptual político.
+Q|¿Qué banda interpreta All Star?|Smash Mouth|Sugar Ray|Weezer|Third Eye Blind|Se hizo muy popular por Shrek.
+Q|¿Qué banda lidera Hayley Williams?|Paramore|Evanescence|No Doubt|Flyleaf|Es una banda clave del pop punk/emo.
+Q|¿Qué cantante lanzó Complicated?|Avril Lavigne|Alanis Morissette|P!nk|Kelly Clarkson|Fue ícono del pop punk en los 2000.
+Q|¿Qué artista canta drivers license?|Olivia Rodrigo|Billie Eilish|Taylor Swift|Sabrina Carpenter|Fue un éxito global.
+Q|¿Qué exintegrante de One Direction lanzó As It Was?|Harry Styles|Zayn Malik|Niall Horan|Louis Tomlinson|Tiene una exitosa carrera solista.
+Q|¿Qué banda finlandesa mezcla metal con voces líricas femeninas?|Nightwish|Epica|Within Temptation|Lacuna Coil|Es pionera del metal sinfónico.
+Q|¿Qué banda lanzó In Waves?|Trivium|Killswitch Engage|Lamb of God|Bullet for My Valentine|Es metal moderno con influencias thrash.
+Q|¿Qué proyecto musical lidera Till Lindemann fuera de Rammstein?|Lindemann|Emigrate|OOMPH!|KMFDM|Tiene un estilo más experimental.
+Q|¿Qué banda chilena liderada por Macha mezcla bolero y música popular?|Bloque Depresivo|Los Tres|Los Bunkers|Chancho en Piedra|Sus presentaciones suelen ser íntimas.
+Q|¿Qué banda argentina lanzó Lamento Boliviano?|Enanitos Verdes|Soda Stereo|Los Fabulosos Cadillacs|Virus|Es muy popular en Latinoamérica.
+Q|¿Qué banda lanzó De música ligera?|Soda Stereo|Los Prisioneros|Los Tres|Caifanes|Es uno de los himnos del rock latino.
+Q|¿Quién fue el líder de Soda Stereo?|Gustavo Cerati|Charly García|Fito Páez|Andrés Calamaro|También tuvo exitosa carrera solista.
+Q|¿Qué banda chilena interpreta Déjate caer?|Los Tres|Los Bunkers|La Ley|Chancho en Piedra|Fusionan rock con música chilena.
+Q|¿Qué banda chilena lanzó Bailando Solo?|Los Bunkers|Los Tres|La Ley|Lucybell|Es uno de sus mayores éxitos.
+Q|¿Qué banda finlandesa de folk metal realizó su primer concierto en Chile en Talca?|Korpiklaani|Finntroll|Ensiferum|Eluveitie|Fue el 12 de marzo de 2010, para luego pasar por Valparaíso y Santiago.
+Q|¿Qué banda noruega es referente del black metal sinfónico?|Dimmu Borgir|Mayhem|Darkthrone|Emperor|Se caracterizan por el uso de orquestaciones.
+Q|¿Qué dúo de hip hop lanzó Hey Ya!?|Outkast|Run DMC|Mobb Deep|Wu-Tang Clan|Está formado por André 3000 y Big Boi.
+Q|¿Qué rapero lanzó el álbum The Marshall Mathers LP?|Eminem|Dr. Dre|50 Cent|Nas|Es uno de los discos más vendidos del rap.
+Q|¿Qué rapero es conocido por Drop It Like It's Hot?|Snoop Dogg|Ice Cube|Tupac|Jay-Z|Es un ícono del hip hop de la costa oeste.
+Q|¿Qué músico de jazz es famoso por su saxofón tenor y estilo suave?|Ben Webster|John Coltrane|Charlie Parker|Dexter Gordon|Fue parte de la era del swing.
+Q|¿Qué cantante popularizó My Way?|Frank Sinatra|Elvis Presley|Tony Bennett|Dean Martin|Es uno de los mayores íconos del siglo XX.
+Q|¿Qué banda argentina de reggae lanzó Runaway?|Los Pericos|Los Cafres|Gondwana|Cultura Profética|Son referentes del reggae en español.
+Q|¿Qué artista es considerado el rey del reggae?|Bob Marley|Peter Tosh|Jimmy Cliff|Toots Hibbert|Su música tiene fuerte mensaje social.
+Q|¿Qué cantante mexicano interpretó Si no te hubieras ido?|Marco Antonio Solís|Juan Gabriel|Luis Miguel|José José|También fue líder de Los Bukis.
+Q|¿Qué artista canta Torero?|Chayanne|Ricky Martin|Luis Fonsi|Enrique Iglesias|Es un clásico del pop latino.
+Q|¿Qué cantante español interpretó Sin miedo a nada?|Álex Ubago|Pablo Alborán|Melendi|David Bisbal|Es una balada muy popular.
+Q|¿Qué artista colombiano canta A Dios le pido?|Juanes|Shakira|Carlos Vives|Fonseca|Ganó múltiples premios Grammy Latinos.
+Q|¿Qué músico argentino lanzó Flaca?|Andrés Calamaro|Charly García|Fito Páez|Gustavo Cerati|Fue parte de Los Rodríguez.
+Q|¿Qué cantante mexicano es autor de Querida?|Juan Gabriel|José José|Luis Miguel|Vicente Fernández|Es uno de los compositores más importantes.
+Q|¿Qué banda británica lanzó Holding Back the Years?|Simply Red|Depeche Mode|Duran Duran|Spandau Ballet|Es un clásico del soul pop.
+Q|¿Qué banda canadiense es conocida por Welcome to My Life?|Simple Plan|Sum 41|Blink-182|Good Charlotte|Es muy popular en el pop punk.
+Q|¿Qué rapero es conocido como Slim Shady?|Eminem|Snoop Dogg|Dr. Dre|Ice Cube|Es uno de sus alter egos.
+Q|¿Qué artista jamaicano popularizó No Woman, No Cry?|Bob Marley|Jimmy Cliff|Peter Tosh|Burning Spear|Es una de sus canciones más icónicas.
+Q|¿Qué grupo lanzó Ms. Jackson?|Outkast|Black Eyed Peas|N.E.R.D.|Beastie Boys|Ganó un premio Grammy.
+Q|¿Qué cantante es conocido como "La Voz" y fue ícono del swing?|Frank Sinatra|Elvis Presley|Tom Jones|Nat King Cole|Tuvo gran influencia en la música popular.
+Q|¿Qué banda de reggae argentina es contemporánea de Los Pericos?|Los Cafres|Gondwana|Cultura Profética|Dread Mar-I|Es una de las más influyentes del género.
+Q|¿Qué cantante mexicano fue conocido como "El Divo de Juárez"?|Juan Gabriel|Vicente Fernández|Luis Miguel|José José|Su legado es enorme en Latinoamérica.
+Q|¿Qué estilo musical caracteriza a Korpiklaani?|Folk metal|Black metal|Death metal|Power metal|Incorpora instrumentos tradicionales.

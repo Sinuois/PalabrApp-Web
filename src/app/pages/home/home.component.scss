@@ -866,6 +866,9 @@ h1 {
   &.mode-capitales .mode-icon { background: linear-gradient(145deg, #b86a38, #f1c88e); }
   &.mode-arte .mode-icon { background: linear-gradient(145deg, #5d4aa6, #9884d1); }
   &.mode-ciencia .mode-icon { background: linear-gradient(145deg, #7a3f88, #bf7fc8); }
+  &.mode-musica .mode-icon { background: linear-gradient(145deg, #1e6b7a, #5ab8cc); }
+  &.mode-cine .mode-icon { background: linear-gradient(145deg, #7a2020, #c96060); }
+  &.mode-deportes .mode-icon { background: linear-gradient(145deg, #1f6b2a, #5cba6e); }
 }
 
 @media (max-width: 420px) {

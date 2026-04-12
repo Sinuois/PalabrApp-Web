@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
-export interface TriviaArte {
+export interface TriviaMusica {
   pregunta: string;
   opciones: string[];
   indiceCorrecto: number;
   datoExtra?: string;
 }
 
-type PreguntaArte = {
+type PreguntaMusica = {
   pregunta: string;
   correcta: string;
   distractores: string[];
@@ -17,25 +17,25 @@ type PreguntaArte = {
 };
 
 @Injectable({ providedIn: 'root' })
-export class ArteTriviaService {
+export class MusicaTriviaService {
   private http = inject(HttpClient);
-  private banco: PreguntaArte[] | null = null;
-  private cargaEnCurso: Promise<PreguntaArte[]> | null = null;
+  private banco: PreguntaMusica[] | null = null;
+  private cargaEnCurso: Promise<PreguntaMusica[]> | null = null;
   private preguntasRecientes: string[] = [];
   private readonly maxPreguntasRecientes = 24;
 
-  async generarPregunta(): Promise<TriviaArte | null> {
+  async generarPregunta(): Promise<TriviaMusica | null> {
     const banco = await this.cargarBanco();
     if (banco.length < 3) return null;
 
-    let fallback: TriviaArte | null = null;
+    let fallback: TriviaMusica | null = null;
     const orden = this.barajar(banco);
 
     for (const base of orden) {
       if (base.distractores.length < 3) continue;
 
       const opciones = this.barajar([base.correcta, ...base.distractores.slice(0, 3)]);
-      const reto: TriviaArte = {
+      const reto: TriviaMusica = {
         pregunta: base.pregunta,
         opciones,
         indiceCorrecto: opciones.findIndex((op) => op === base.correcta),
@@ -53,11 +53,11 @@ export class ArteTriviaService {
     return fallback;
   }
 
-  private async cargarBanco(): Promise<PreguntaArte[]> {
+  private async cargarBanco(): Promise<PreguntaMusica[]> {
     if (this.banco) return this.banco;
     if (this.cargaEnCurso) return this.cargaEnCurso;
 
-    this.cargaEnCurso = firstValueFrom(this.http.get('data/arte-trivia.txt', { responseType: 'text' }))
+    this.cargaEnCurso = firstValueFrom(this.http.get('data/musica-trivia.txt', { responseType: 'text' }))
       .then((contenido) => {
         const parseado = this.parsearFuente(contenido);
         this.banco = parseado;
@@ -70,8 +70,8 @@ export class ArteTriviaService {
     return this.cargaEnCurso;
   }
 
-  private parsearFuente(contenido: string): PreguntaArte[] {
-    const banco: PreguntaArte[] = [];
+  private parsearFuente(contenido: string): PreguntaMusica[] {
+    const banco: PreguntaMusica[] = [];
 
     const lineas = contenido
       .split(/\r?\n/)
@@ -94,11 +94,11 @@ export class ArteTriviaService {
     return banco;
   }
 
-  private esPreguntaReciente(reto: TriviaArte): boolean {
+  private esPreguntaReciente(reto: TriviaMusica): boolean {
     return this.preguntasRecientes.includes(reto.pregunta);
   }
 
-  private registrarPreguntaReciente(reto: TriviaArte): void {
+  private registrarPreguntaReciente(reto: TriviaMusica): void {
     this.preguntasRecientes.push(reto.pregunta);
     if (this.preguntasRecientes.length > this.maxPreguntasRecientes) {
       this.preguntasRecientes.shift();

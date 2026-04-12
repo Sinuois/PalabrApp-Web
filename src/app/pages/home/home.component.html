@@ -222,6 +222,57 @@
         </button>
         <button
           type="button"
+          class="mode-card mode-musica"
+          [disabled]="cargandoSeleccionModalidad() !== null"
+          (pointerup)="onSeleccionarModalidadTap($event, 'musica')"
+          (click)="onSeleccionarModalidadTap($event, 'musica')"
+          (touchend)="onSeleccionarModalidadTap($event, 'musica')"
+        >
+          <span class="mode-icon" aria-hidden="true">
+            <span *ngIf="cargandoSeleccionModalidad() === 'musica'" class="btn-spinner"></span>
+            <ng-container *ngIf="cargandoSeleccionModalidad() !== 'musica'">
+              <img class="mode-icon-image" src="images/modos/musica.png" alt="" data-modo="musica" (load)="onIconoModalidadLoad($event)" (error)="onIconoModalidadError($event)" />
+              <span class="mode-icon-fallback">MUS</span>
+            </ng-container>
+          </span>
+          <span class="mode-label">{{ cargandoSeleccionModalidad() === 'musica' ? 'Preparando...' : 'Música' }}</span>
+        </button>
+        <button
+          type="button"
+          class="mode-card mode-cine"
+          [disabled]="cargandoSeleccionModalidad() !== null"
+          (pointerup)="onSeleccionarModalidadTap($event, 'cine')"
+          (click)="onSeleccionarModalidadTap($event, 'cine')"
+          (touchend)="onSeleccionarModalidadTap($event, 'cine')"
+        >
+          <span class="mode-icon" aria-hidden="true">
+            <span *ngIf="cargandoSeleccionModalidad() === 'cine'" class="btn-spinner"></span>
+            <ng-container *ngIf="cargandoSeleccionModalidad() !== 'cine'">
+              <img class="mode-icon-image" src="images/modos/cine.png" alt="" data-modo="cine" (load)="onIconoModalidadLoad($event)" (error)="onIconoModalidadError($event)" />
+              <span class="mode-icon-fallback">CIN</span>
+            </ng-container>
+          </span>
+          <span class="mode-label">{{ cargandoSeleccionModalidad() === 'cine' ? 'Preparando...' : 'Cine' }}</span>
+        </button>
+        <button
+          type="button"
+          class="mode-card mode-deportes"
+          [disabled]="cargandoSeleccionModalidad() !== null"
+          (pointerup)="onSeleccionarModalidadTap($event, 'deportes')"
+          (click)="onSeleccionarModalidadTap($event, 'deportes')"
+          (touchend)="onSeleccionarModalidadTap($event, 'deportes')"
+        >
+          <span class="mode-icon" aria-hidden="true">
+            <span *ngIf="cargandoSeleccionModalidad() === 'deportes'" class="btn-spinner"></span>
+            <ng-container *ngIf="cargandoSeleccionModalidad() !== 'deportes'">
+              <img class="mode-icon-image" src="images/modos/deportes.png" alt="" data-modo="deportes" (load)="onIconoModalidadLoad($event)" (error)="onIconoModalidadError($event)" />
+              <span class="mode-icon-fallback">DEP</span>
+            </ng-container>
+          </span>
+          <span class="mode-label">{{ cargandoSeleccionModalidad() === 'deportes' ? 'Preparando...' : 'Deportes' }}</span>
+        </button>
+        <button
+          type="button"
           class="mode-card mode-aleatoria"
           [disabled]="cargandoSeleccionModalidad() !== null"
           (pointerup)="onSeleccionarModalidadTap($event, 'aleatoria')"

@@ -1,0 +1,48 @@
+# Formato:
+# Q|Pregunta|Respuesta correcta|Alternativa 1|Alternativa 2|Alternativa 3|Dato extra opcional
+Q|¿Qué selección ganó la Copa América 2015?|Chile|Argentina|Brasil|Uruguay|Fue el primer título internacional de Chile.
+Q|¿Qué selección ganó la Copa América Centenario 2016?|Chile|Argentina|Colombia|México|Chile venció nuevamente a Argentina en penales.
+Q|¿Quién anotó el penal decisivo en la Copa América 2015 para Chile?|Alexis Sánchez|Arturo Vidal|Gary Medel|Eduardo Vargas|Lo hizo con un recordado "picotón".
+Q|¿En qué club chileno debutó profesionalmente Alexis Sánchez?|Cobreloa|Colo-Colo|Universidad de Chile|Udinese|Luego emigró joven al fútbol europeo.
+Q|¿Qué club es conocido como "Los Albos"?|Colo-Colo|Universidad de Chile|Universidad Católica|Palestino|Es el club más popular de Chile.
+Q|¿Qué club chileno es apodado "Los Cruzados"?|Universidad Católica|Colo-Colo|Unión Española|Audax Italiano|Su estadio es San Carlos de Apoquindo.
+Q|¿Qué club chileno es conocido como "La U"?|Universidad de Chile|Colo-Colo|O'Higgins|Everton|Tiene una gran rivalidad con Colo-Colo.
+Q|¿Qué arquero fue figura en las Copas América ganadas por Chile?|Claudio Bravo|Johnny Herrera|Brayan Cortés|Cristopher Toselli|Fue capitán de la selección.
+Q|¿Quién fue el máximo goleador de Chile en la Copa América 2015?|Eduardo Vargas|Alexis Sánchez|Arturo Vidal|Mauricio Pinilla|Terminó como goleador del torneo.
+Q|¿Qué equipo chileno ganó la Copa Libertadores en 1991?|Colo-Colo|Universidad de Chile|Universidad Católica|Cobreloa|Es el único club chileno en lograrlo.
+Q|¿Qué tenista chileno ganó el oro olímpico en Atenas 2004 en categoría individual?|Nicolás Massú|Fernando González|Marcelo Ríos|Hans Gildemeister|También ganó el dobles junto a González.
+Q|¿Qué tenista chileno llegó a ser número 1 del mundo?|Marcelo Ríos|Fernando González|Nicolás Massú|Cristian Garin|Fue el primer latinoamericano en lograrlo.
+Q|¿Qué piloto chileno ha destacado en el Rally Dakar?|Francisco "Chaleco" López|Carlo de Gavardo|Ignacio Casale|Pablo Quintanilla|Ha ganado en distintas categorías.
+Q|¿Qué jugador chileno es conocido como "El Rey Arturo"?|Arturo Vidal|Alexis Sánchez|Gary Medel|Charles Aránguiz|Ha jugado en grandes clubes europeos.
+Q|¿Qué jugador chileno es apodado "El Pitbull"?|Gary Medel|Claudio Bravo|Jean Beausejour|Isla|Destaca por su intensidad en defensa.
+Q|¿Qué club europeo ha ganado más Champions League?|Real Madrid|Barcelona|Bayern Múnich|Liverpool|Es el club más exitoso del torneo.
+Q|¿Qué jugador es el máximo goleador histórico del Real Madrid?|Cristiano Ronaldo|Karim Benzema|Raúl|Alfredo Di Stéfano|Anotó más de 400 goles.
+Q|¿Qué club es conocido como "Los Reds"?|Liverpool|Manchester United|Arsenal|Chelsea|Su estadio es Anfield.
+Q|¿Qué club juega en el Camp Nou?|Barcelona|Real Madrid|Atlético Madrid|Sevilla|Es uno de los estadios más grandes de Europa.
+Q|¿Qué jugador es conocido como "La Pulga"?|Lionel Messi|Sergio Agüero|Neymar|Luis Suárez|Es considerado uno de los mejores de la historia.
+Q|¿Qué jugador portugués ganó múltiples Balones de Oro?|Cristiano Ronaldo|Luis Figo|Deco|Bruno Fernandes|Jugó en Manchester United y Real Madrid.
+Q|¿Qué club ganó la Champions League 2020?|Bayern Múnich|PSG|Liverpool|Real Madrid|Se jugó en formato especial por la pandemia.
+Q|¿Qué club italiano es conocido como "La Vecchia Signora"?|Juventus|Milan|Inter|Roma|Es uno de los más ganadores de Italia.
+Q|¿Qué club francés domina la Ligue 1 en la última década?|PSG|Lyon|Marseille|Monaco|Ha fichado a varias estrellas mundiales.
+Q|¿Qué jugador chileno jugó en el Arsenal de Inglaterra?|Alexis Sánchez|Arturo Vidal|Claudio Bravo|Gary Medel|Fue figura y goleador del equipo.
+Q|¿Qué torneo reúne a las mejores selecciones del mundo?|Copa del Mundo|Eurocopa|Copa América|Nations League|Se juega cada 4 años.
+Q|¿Qué país ganó el Mundial 2018?|Francia|Croacia|Alemania|Brasil|Venció a Croacia en la final.
+Q|¿Qué selección ha ganado más Copas del Mundo?|Brasil|Alemania|Italia|Argentina|Tiene cinco títulos.
+Q|¿Qué jugador argentino ganó el Mundial 2022?|Lionel Messi|Javier Mascherano|Paulo Dybala|Sergio Agüero|Fue elegido mejor jugador del torneo.
+Q|¿Qué club inglés es conocido como "Los Citizens"?|Manchester City|Manchester United|Chelsea|Arsenal|Ha dominado la Premier League recientemente.
+Q|¿Qué jugador es máximo goleador histórico de la Champions League?|Cristiano Ronaldo|Lionel Messi|Robert Lewandowski|Karim Benzema|Supera los 100 goles.
+Q|¿Qué equipo ganó la Premier League 2016 sorprendiendo al mundo?|Leicester City|Arsenal|Chelsea|Tottenham|Es uno de los mayores hitos del fútbol.
+Q|¿Qué jugador chileno juega como mediocampista en la Generación Dorada?|Charles Aránguiz|Alexis Sánchez|Claudio Bravo|Eduardo Vargas|Fue clave en las Copas América.
+Q|¿Qué deporte practica Joaquín Niemann?|Golf|Tenis|Fútbol|Automovilismo|Es uno de los mejores golfistas chilenos actuales.
+Q|¿Qué selección eliminó a Chile del Mundial 2014 en octavos?|Brasil|Alemania|Holanda|España|Fue por penales.
+Q|¿Qué jugador chileno casi anotó el gol contra Brasil en 2014 con un tiro al travesaño?|Mauricio Pinilla|Alexis Sánchez|Vidal|Isla|La jugada es recordada como el "palo de Pinilla".
+Q|¿Qué equipo tiene más campeonatos en la liga española?|Real Madrid|Barcelona|Atlético de Madrid|Valencia|Real Madrid es el club más exitoso en la historia de La Liga.
+Q|¿Quién es considerado por muchos el mejor jugador de la historia de la NBA?|Michael Jordan|LeBron James|Kobe Bryant|Magic Johnson|Ganó 6 campeonatos con los Chicago Bulls.
+Q|¿Quién ostenta el récord mundial de los 100 metros planos?|Usain Bolt|Tyson Gay|Yohan Blake|Carl Lewis|El récord es de 9.58 segundos.
+Q|¿En qué año Fernando González y Nicolás Massú ganaron el oro olímpico en dobles?|2004|2000|2008|2012|Fue en los Juegos Olímpicos de Atenas.
+Q|¿Qué futbolista chileno fue goleador de La Liga española en la temporada 1994-95?|Iván Zamorano|Marcelo Salas|Alexis Sánchez|Carlos Caszely|Fue apodado "Pichichi" tras anotar 28 goles con el Real Madrid.
+Q|¿En qué año Nicolás Massú ganó dos medallas de oro olímpicas?|2004|2000|2008|2012|Ganó oro en singles y dobles en Atenas 2004.
+Q|¿Qué atleta jamaicano estableció el récord mundial vigente en los 100 metros planos?|Usain Bolt|Yohan Blake|Tyson Gay|Asafa Powell|Logró la marca en el Mundial de Berlín 2009.
+Q|¿Qué equipo comparte el récord de más campeonatos en la NBA junto a los Boston Celtics?|Los Angeles Lakers|Chicago Bulls|Golden State Warriors|San Antonio Spurs|Ambos equipos están empatados en títulos históricos.
+Q|¿Qué selección chilena es conocida como la "Generación Dorada"?|La selección de 2015-2016|La selección de 1998|La selección de 1982|La selección de 1962|Ganó dos Copas América consecutivas.
+Q|¿Qué selección fue la primera en ganar la Copa América?|Uruguay|Argentina|Brasil|Chile|Ganó el torneo en 1916, cuando aún se llamaba Campeonato Sudamericano.

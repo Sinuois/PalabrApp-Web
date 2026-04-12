@@ -174,13 +174,11 @@ export class CapitalesMundoTriviaService {
   }
 
   private esPreguntaReciente(reto: TriviaCapitalesMundo): boolean {
-    const firma = `${reto.pregunta}::${reto.opciones.join('|')}`;
-    return this.preguntasRecientes.includes(firma);
+    return this.preguntasRecientes.includes(reto.pregunta);
   }
 
   private registrarPreguntaReciente(reto: TriviaCapitalesMundo): void {
-    const firma = `${reto.pregunta}::${reto.opciones.join('|')}`;
-    this.preguntasRecientes.push(firma);
+    this.preguntasRecientes.push(reto.pregunta);
     if (this.preguntasRecientes.length > this.maxPreguntasRecientes) {
       this.preguntasRecientes.shift();
     }

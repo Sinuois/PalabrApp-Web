@@ -1,0 +1,25 @@
+# Formato:
+# Q|Pregunta|Respuesta correcta|Alternativa 1|Alternativa 2|Alternativa 3|Dato extra opcional
+Q|¿Quién dirigió la película Inception?|Christopher Nolan|Steven Spielberg|Quentin Tarantino|James Cameron|La película explora sueños dentro de sueños.
+Q|¿Qué película de Nolan trata sobre un viaje espacial en busca de un nuevo hogar?|Interstellar|Tenet|Gravity|The Martian|Incluye teorías reales sobre agujeros negros.
+Q|¿Qué película de Quentin Tarantino incluye el personaje Jules Winnfield?|Pulp Fiction|Kill Bill|Reservoir Dogs|Django Unchained|Es famosa por su narrativa no lineal.
+Q|¿Qué película de Tarantino trata sobre una venganza con artes marciales?|Kill Bill|Jackie Brown|Inglourious Basterds|Once Upon a Time in Hollywood|Está dividida en dos volúmenes.
+Q|¿Quién interpretó al Joker en The Dark Knight?|Heath Ledger|Joaquin Phoenix|Jared Leto|Jack Nicholson|Ganó un Oscar póstumo por su actuación.
+Q|¿Qué película trata sobre un grupo que roba sueños?|Inception|Matrix|Memento|Tenet|Los sueños tienen múltiples niveles.
+Q|¿Qué película de Tarantino ocurre durante la Segunda Guerra Mundial?|Inglourious Basterds|Django Unchained|Reservoir Dogs|Kill Bill|Reescribe la historia de forma ficticia.
+Q|¿Qué película cuenta la historia al revés?|Memento|Tenet|Inception|The Prestige|Es una de las obras más complejas de Nolan.
+Q|¿Qué película trata sobre dos magos rivales?|The Prestige|Now You See Me|The Illusionist|Doctor Strange|Explora el sacrificio por el arte.
+Q|¿Qué película de Tarantino está ambientada en el viejo oeste?|Django Unchained|Pulp Fiction|Kill Bill|Reservoir Dogs|Ganó varios premios Oscar.
+Q|¿Qué saga incluye el personaje Luke Skywalker?|Star Wars|Star Trek|Harry Potter|Lord of the Rings|Es una de las franquicias más famosas.
+Q|¿Qué película animada presenta a un león llamado Simba?|El Rey León|Madagascar|Zootopia|Frozen|Es un clásico de Disney.
+Q|¿Qué película trata sobre dinosaurios clonados?|Jurassic Park|King Kong|Godzilla|Avatar|Fue dirigida por Steven Spielberg.
+Q|¿Qué película incluye la frase "I'll be back"?|The Terminator|Rocky|Rambo|Predator|Es una de las frases más icónicas del cine.
+Q|¿Qué película ganó el Oscar a mejor película en 1994 y trata sobre la vida de un hombre simple?|Forrest Gump|Pulp Fiction|The Shawshank Redemption|Braveheart|Su frase sobre la vida es muy famosa.
+Q|¿Qué película trata sobre un anillo poderoso?|The Lord of the Rings|Harry Potter|Narnia|The Hobbit|El anillo controla a quien lo posee.
+Q|¿Qué película trata sobre boxeo protagonizada por Sylvester Stallone?|Rocky|Creed|Raging Bull|Million Dollar Baby|Es un símbolo de superación.
+Q|¿Qué película muestra a un tiburón aterrorizando una playa?|Jaws|Deep Blue Sea|Sharknado|Open Water|Es considerada el primer blockbuster.
+Q|¿Qué película trata sobre un parque de diversiones con robots?|Westworld|Ex Machina|Blade Runner|AI|Explora la inteligencia artificial.
+Q|¿Qué película trata sobre viajes en el tiempo con un DeLorean?|Back to the Future|Looper|Tenet|Interstellar|Es una trilogía muy popular.
+Q|¿En qué película Robert De Niro dice la frase "Are you talking to me"?|Taxi Driver|Raging Bull|The Godfather Part II|Goodfellas|Es una de las escenas más icónicas del cine.
+Q|¿Cuál es la película más taquillera de la historia?|Avatar|Avengers: Endgame|Titanic|Star Wars: The Force Awakens|Fue dirigida por James Cameron.
+Q|¿Qué película ganó más premios Oscar en la edición de 1978?|Star Wars|Annie Hall|Rocky|The Godfather|Ganó 6 premios Oscar, pero no logró el de Mejor Película.
