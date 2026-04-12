@@ -98,3 +98,35 @@ Q|¿Qué cantante es conocido como "La Voz" y fue ícono del swing?|Frank Sinatr
 Q|¿Qué banda de reggae argentina es contemporánea de Los Pericos?|Los Cafres|Gondwana|Cultura Profética|Dread Mar-I|Es una de las más influyentes del género.
 Q|¿Qué cantante mexicano fue conocido como "El Divo de Juárez"?|Juan Gabriel|Vicente Fernández|Luis Miguel|José José|Su legado es enorme en Latinoamérica.
 Q|¿Qué estilo musical caracteriza a Korpiklaani?|Folk metal|Black metal|Death metal|Power metal|Incorpora instrumentos tradicionales.
+Q|¿Qué cantante fue el vocalista de la banda The Smiths?|Morrissey|Robert Smith|Ian Curtis|Bono|Es conocido por su estilo lírico melancólico y único.
+Q|¿Qué banda lanzó la canción There Is a Light That Never Goes Out?|The Smiths|The Cure|Joy Division|New Order|Es una de las canciones más icónicas del indie británico.
+Q|¿Qué canción pertenece a la carrera solista de Morrissey?|Everyday Is Like Sunday|This Charming Man|How Soon Is Now?|There Is a Light That Never Goes Out|Fue lanzada en su primer álbum solista.
+Q|¿Qué banda sueca es conocida por su estética inspirada en lo oculto y canciones como Square Hammer?|Ghost|Opeth|Sabaton|Amon Amarth|Su líder es conocido como Papa Emeritus.
+Q|¿Qué banda británica lanzó la canción Somewhere Only We Know?|Keane|Coldplay|Travis|Snow Patrol|Es uno de los mayores éxitos del piano rock.
+Q|¿Qué banda interpreta Duality?|Slipknot|Korn|Mudvayne|Stone Sour|Es uno de los temas más populares del nu metal.
+Q|¿Qué banda canadiense lanzó I Hate Everything About You?|Three Days Grace|Nickelback|Theory of a Deadman|Breaking Benjamin|Fue su sencillo debut.
+Q|¿Qué banda liderada por Jim Morrison lanzó Light My Fire?|The Doors|The Who|The Kinks|The Byrds|Es un clásico del rock psicodélico.
+Q|¿Qué cantante protagonizó Grease y cantó You're the One That I Want?|Olivia Newton-John|Barbra Streisand|Cher|Madonna|La película fue un éxito mundial.
+Q|¿Qué banda irlandesa lanzó With or Without You?|U2|Coldplay|The Cranberries|Snow Patrol|Es uno de sus temas más icónicos.
+Q|¿Qué artista lanzó el álbum No Jacket Required?|Phil Collins|Peter Gabriel|Elton John|Billy Joel|Incluye éxitos como Sussudio.
+Q|¿Qué banda virtual lanzó Clint Eastwood?|Gorillaz|Blur|Radiohead|Daft Punk|Fue creada por Damon Albarn y Jamie Hewlett.
+Q|¿Qué banda de thrash metal fue fundada por Gary Holt?|Exodus|Metallica|Slayer|Testament|Es parte de la escena thrash de la Bay Area.
+Q|¿Qué pionero del rock and roll interpretó Johnny B. Goode?|Chuck Berry|Little Richard|Elvis Presley|Jerry Lee Lewis|Es considerado uno de los padres del rock.
+Q|¿Qué banda lanzó la canción Dream On?|Aerosmith|Bon Jovi|Guns N' Roses|Van Halen|Es uno de sus temas más emblemáticos.
+Q|¿Qué banda británica interpretó (I Can't Get No) Satisfaction?|The Rolling Stones|The Beatles|The Who|The Kinks|Es uno de los riffs más reconocibles del rock.
+Q|¿Qué banda lanzó Livin' on a Prayer?|Bon Jovi|Aerosmith|Def Leppard|Europe|Es un himno del rock de los 80.
+Q|¿Qué músico es conocido por Peggy Sue?|Buddy Holly|Elvis Presley|Roy Orbison|Chuck Berry|Influyó en muchas bandas posteriores.
+Q|¿Qué cantante interpretó Put Your Head on My Shoulder?|Paul Anka|Frank Sinatra|Dean Martin|Tony Bennett|Fue un ícono del pop clásico.
+Q|¿Qué banda glam metal lanzó Every Rose Has Its Thorn?|Poison|Mötley Crüe|Skid Row|Twisted Sister|Es su balada más famosa.
+Q|¿Qué artista lanzó Piano Man?|Billy Joel|Elton John|Phil Collins|Bruce Springsteen|Es una de sus canciones más reconocidas.
+Q|¿Qué banda interpretó Buddy Holly?|Weezer|Blink-182|Green Day|The Offspring|El nombre de la canción homenajea al músico del mismo nombre.
+Q|¿Qué banda lanzó el álbum Cowboys from Hell?|Pantera|Metallica|Megadeth|Slayer|Este álbum marcó su cambio hacia el groove metal.
+Q|¿Qué guitarrista fue parte fundamental del sonido de Pantera?|Dimebag Darrell|Zakk Wylde|Kirk Hammett|Dave Mustaine|Es considerado uno de los mejores guitarristas del metal.
+Q|¿Qué canción de Pantera incluye la frase "Are you talking to me?" en tono agresivo?|Walk|Cemetery Gates|Domination|This Love|Es uno de sus temas más icónicos.
+Q|¿Qué vocalista lideraba Pantera?|Phil Anselmo|Corey Taylor|Rob Halford|Bruce Dickinson|Es conocido por su potente estilo vocal.
+Q|¿Qué banda lanzó el álbum The Joshua Tree?|U2|Coldplay|R.E.M.|Simple Minds|Incluye éxitos como With or Without You.
+Q|¿Qué canción de U2 comienza con la frase "I still haven't found what I'm looking for"?|I Still Haven't Found What I'm Looking For|One|Beautiful Day|Sunday Bloody Sunday|Es uno de sus temas más emblemáticos.
+Q|¿Qué cantante francesa interpretó La Vie en Rose?|Édith Piaf|Zaz|France Gall|Dalida|Es uno de los mayores clásicos de la música francesa.
+Q|¿Qué canción es uno de los mayores éxitos de Édith Piaf?|Non, je ne regrette rien|La Bohème|Ne me quitte pas|Sous le ciel de Paris|Se convirtió en un himno mundial.
+Q|¿Qué cantante francesa moderna canta Je veux?|Zaz|Édith Piaf|Carla Bruni|Vanessa Paradis|Su estilo mezcla jazz y chanson francesa.
+Q|¿Qué estilo musical caracteriza principalmente a Zaz?|Jazz y chanson francesa|Pop electrónico|Rock alternativo|Hip hop|Su música tiene influencias retro.

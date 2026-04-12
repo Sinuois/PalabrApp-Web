@@ -46,3 +46,54 @@ Q|¿Qué atleta jamaicano estableció el récord mundial vigente en los 100 metr
 Q|¿Qué equipo comparte el récord de más campeonatos en la NBA junto a los Boston Celtics?|Los Angeles Lakers|Chicago Bulls|Golden State Warriors|San Antonio Spurs|Ambos equipos están empatados en títulos históricos.
 Q|¿Qué selección chilena es conocida como la "Generación Dorada"?|La selección de 2015-2016|La selección de 1998|La selección de 1982|La selección de 1962|Ganó dos Copas América consecutivas.
 Q|¿Qué selección fue la primera en ganar la Copa América?|Uruguay|Argentina|Brasil|Chile|Ganó el torneo en 1916, cuando aún se llamaba Campeonato Sudamericano.
+Q|¿Qué selección ganó el Mundial de 2014?|Alemania|Argentina|Brasil|España|Venció a Argentina en la final.
+Q|¿Qué jugador alemán anotó el gol del triunfo en la final del Mundial 2014?|Mario Götze|Thomas Müller|Miroslav Klose|Toni Kroos|Marcó en el tiempo extra.
+Q|¿Qué selección ganó el Mundial de 2010?|España|Holanda|Alemania|Brasil|Fue su primer título mundial.
+Q|¿Qué jugador anotó el gol del triunfo en la final del Mundial 2010?|Andrés Iniesta|Xavi|Fernando Torres|David Villa|Marcó en tiempo extra.
+Q|¿Qué club ganó la Champions League 2019?|Liverpool|Tottenham|Barcelona|Ajax|Venció 2-0 en la final.
+Q|¿Qué club ganó la Champions League 2021?|Chelsea|Manchester City|Real Madrid|PSG|Ganó 1-0 la final.
+Q|¿Qué club alemán es el más ganador de la Bundesliga?|Bayern Múnich|Borussia Dortmund|Hamburgo|Werder Bremen|Domina históricamente la liga.
+Q|¿Qué club español es conocido como "Los Colchoneros"?|Atlético de Madrid|Sevilla|Valencia|Real Betis|Es rival de Real Madrid.
+Q|¿Qué jugador chileno jugó en el Bayern Múnich?|Arturo Vidal|Alexis Sánchez|Claudio Bravo|Gary Medel|Ganó varios títulos en Alemania.
+Q|¿Qué jugador chileno fue arquero del Manchester City?|Claudio Bravo|Johnny Herrera|Brayan Cortés|Cristopher Toselli|Ganó la Premier League.
+Q|¿Qué club inglés juega en Old Trafford?|Manchester United|Manchester City|Liverpool|Chelsea|Es uno de los estadios más icónicos.
+Q|¿Qué jugador es máximo goleador histórico de la selección chilena?|Alexis Sánchez|Eduardo Vargas|Iván Zamorano|Marcelo Salas|Superó récords históricos.
+Q|¿Qué jugador chileno es conocido como "Matador"?|Marcelo Salas|Iván Zamorano|Alexis Sánchez|Vargas|Fue figura en River Plate y Lazio.
+Q|¿Qué club italiano juega en San Siro junto al Inter?|AC Milan|Juventus|Roma|Napoli|Comparten estadio histórico.
+Q|¿Qué club ganó la Serie A 2023?|Napoli|Inter|Milan|Juventus|Terminó con larga sequía.
+Q|¿Qué jugador argentino es conocido como "El Kun"?|Sergio Agüero|Lionel Messi|Carlos Tévez|Ángel Di María|Fue figura en Manchester City.
+Q|¿Qué jugador brasileño es conocido como "O Fenómeno"?|Ronaldo Nazário|Ronaldinho|Neymar|Kaká|Ganó dos Mundiales.
+Q|¿Qué selección organizó el Mundial 2014?|Brasil|Alemania|Sudáfrica|Rusia|Fue goleado 7-1 por Alemania.
+Q|¿Qué equipo derrotó a Brasil 7-1 en 2014?|Alemania|Holanda|Argentina|Francia|Es uno de los resultados más históricos.
+Q|¿Qué jugador es el máximo goleador histórico de los Mundiales?|Miroslav Klose|Ronaldo|Gerd Müller|Lionel Messi|Superó a Ronaldo en 2014.
+Q|¿Qué país ganó el Mundial de 2006?|Italia|Francia|Alemania|Brasil|Venció por penales.
+Q|¿Qué jugador francés falló un penal clave en la final de 2006?|David Trezeguet|Zidane|Henry|Ribéry|El balón dio en el travesaño.
+Q|¿Qué jugador fue expulsado por cabezazo en la final 2006?|Zinedine Zidane|Thierry Henry|Gattuso|Cannavaro|Fue su último partido.
+Q|¿Qué club ganó la Champions League 2018?|Real Madrid|Liverpool|Bayern Múnich|Roma|Logró tres seguidas.
+Q|¿Qué arquero alemán fue campeón del mundo en 2014?|Manuel Neuer|Oliver Kahn|Ter Stegen|Lehmann|Revolucionó el puesto.
+Q|¿Qué club inglés ganó la Champions League 2012?|Chelsea|Manchester United|Arsenal|Liverpool|Derrotó al Bayern.
+Q|¿Qué jugador chileno jugó en el FC Barcelona?|Alexis Sánchez|Vidal|Bravo|Medel|Compartió con Messi.
+Q|¿Qué jugador chileno jugó en el Inter de Milán?|Arturo Vidal|Alexis Sánchez|Ambos|Ninguno|Fueron compañeros en el club.
+Q|¿Qué club francés tiene como estadio el Parque de los Príncipes?|PSG|Lyon|Marseille|Monaco|Es su estadio principal.
+Q|¿Qué selección ganó la Eurocopa 2016?|Portugal|Francia|Alemania|España|Cristiano Ronaldo era figura.
+Q|¿Qué jugador portugués es máximo goleador de selecciones?|Cristiano Ronaldo|Eusébio|Figo|Nani|Tiene récord histórico.
+Q|¿Qué club es conocido como "Los Gunners"?|Arsenal|Chelsea|Tottenham|Liverpool|Su símbolo es un cañón.
+Q|¿Qué club juega en Stamford Bridge?|Chelsea|Arsenal|Tottenham|West Ham|Es de Londres.
+Q|¿Qué selección ganó el Mundial de 1998?|Francia|Brasil|Italia|Alemania|Fue anfitrión.
+Q|¿Qué jugador fue figura de Francia 1998?|Zinedine Zidane|Henry|Deschamps|Trezeguet|Marcó dos goles en la final.
+Q|¿Qué selección ganó el Mundial de 2002?|Brasil|Alemania|Francia|Argentina|Fue liderado por Ronaldo.
+Q|¿Qué jugador fue goleador del Mundial 2002?|Ronaldo|Rivaldo|Klose|Ronaldinho|Marcó en la final.
+Q|¿Qué club inglés es conocido como "Los Spurs"?|Tottenham|Arsenal|Chelsea|West Ham|Es rival del Arsenal.
+Q|¿Qué selección chilena logró el tercer lugar en un Mundial?|Chile 1962|Chile 1998|Chile 2010|Chile 2014|Fue como local.
+Q|¿Qué jugador chileno fue figura en el Mundial de 1962?|Leonel Sánchez|Elías Figueroa|Carlos Caszely|Zamorano|Fue goleador del torneo.
+Q|¿Qué estadio albergó la final del Mundial 1962?|Estadio Nacional|Monumental|San Carlos|El Teniente|Está en Santiago.
+Q|¿Qué jugador es máximo goleador histórico del Barcelona?|Lionel Messi|Luis Suárez|César Rodríguez|Neymar|Superó todos los récords.
+Q|¿Qué club alemán es rival histórico del Bayern?|Borussia Dortmund|Leipzig|Schalke 04|Hamburgo|Protagonizan clásicos.
+Q|¿Qué jugador chileno jugó en la Juventus?|Arturo Vidal|Alexis Sánchez|Claudio Bravo|Medel|Ganó múltiples ligas.
+Q|¿Qué jugador chileno jugó en el Sevilla?|Gary Medel|Alexis Sánchez|Vidal|Bravo|Fue muy querido por hinchas.
+Q|¿Qué selección ganó la Copa América 2019?|Brasil|Perú|Argentina|Chile|Se jugó en Brasil.
+Q|¿Qué jugador fue figura de Perú en 2019?|Paolo Guerrero|Farfán|Advíncula|Cueva|Fue goleador histórico.
+Q|¿Qué equipo ganó la Libertadores 2018?|River Plate|Boca Juniors|Flamengo|Palmeiras|La final fue en Madrid.
+Q|¿Qué club chileno llegó a la final de la Libertadores 1973?|Colo-Colo|U de Chile|Católica|Cobreloa|Perdió ante Independiente.
+Q|¿Qué club chileno llegó a dos finales de Libertadores en los 80?|Cobreloa|Colo-Colo|U Católica|Palestino|Fue subcampeón dos veces.
+Q|¿Qué futbolista fue famoso por usar una camiseta con la suma "1+8" en lugar de un número tradicional?|Iván Zamorano|Marcelo Salas|Ronaldo|Gabriel Batistuta|Es el único caso icónico donde un jugador usó una suma en su dorsal, debido a que el número 9 estaba ocupado en el Inter de Milán.

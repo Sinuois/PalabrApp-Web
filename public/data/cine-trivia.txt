@@ -23,3 +23,138 @@ Q|¿Qué película trata sobre viajes en el tiempo con un DeLorean?|Back to the 
 Q|¿En qué película Robert De Niro dice la frase "Are you talking to me"?|Taxi Driver|Raging Bull|The Godfather Part II|Goodfellas|Es una de las escenas más icónicas del cine.
 Q|¿Cuál es la película más taquillera de la historia?|Avatar|Avengers: Endgame|Titanic|Star Wars: The Force Awakens|Fue dirigida por James Cameron.
 Q|¿Qué película ganó más premios Oscar en la edición de 1978?|Star Wars|Annie Hall|Rocky|The Godfather|Ganó 6 premios Oscar, pero no logró el de Mejor Película.
+Q|¿Quién dirigió Goodfellas?|Martin Scorsese|Francis Ford Coppola|Brian De Palma|Quentin Tarantino|Es una de las mejores películas de mafia.
+Q|¿Qué actor protagoniza The Wolf of Wall Street?|Leonardo DiCaprio|Brad Pitt|Johnny Depp|Matt Damon|Está basada en hechos reales.
+Q|¿Qué director es conocido por películas llenas de explosiones como Transformers?|Michael Bay|James Cameron|Ridley Scott|Tony Scott|Su estilo es muy visual y explosivo.
+Q|¿Quién dirigió Fight Club?|David Fincher|Christopher Nolan|Ridley Scott|James Cameron|Está basada en una novela de Chuck Palahniuk.
+Q|¿Qué película de Fincher trata sobre un asesino serial basado en hechos reales?|Zodiac|Se7en|Gone Girl|The Social Network|Nunca se resolvió el caso real.
+Q|¿Quién dirigió Seven Samurai?|Akira Kurosawa|Yasujiro Ozu|Hayao Miyazaki|Kenji Mizoguchi|Es una de las películas más influyentes del cine.
+Q|¿Qué película de Kurosawa inspiró The Magnificent Seven?|Seven Samurai|Rashomon|Ran|Ikiru|Su historia fue adaptada al western.
+Q|¿Quién dirigió Snatch?|Guy Ritchie|Danny Boyle|Matthew Vaughn|Edgar Wright|Tiene múltiples historias entrelazadas.
+Q|¿Qué película de Guy Ritchie incluye boxeo ilegal y diamantes robados?|Snatch|Lock, Stock and Two Smoking Barrels|Sherlock Holmes|RocknRolla|Es un clásico del cine británico moderno.
+Q|¿Quién dirigió la trilogía de The Lord of the Rings?|Peter Jackson|James Cameron|Ridley Scott|Steven Spielberg|Fue filmada en Nueva Zelanda.
+Q|¿Qué actor interpretó a Gollum mediante captura de movimiento?|Andy Serkis|Ian McKellen|Elijah Wood|Viggo Mortensen|Fue pionero en esa técnica.
+Q|¿Qué actor es famoso por su personaje Charlot?|Charles Chaplin|Buster Keaton|Harold Lloyd|Laurel|Es un ícono del cine mudo.
+Q|¿Qué película de Chaplin critica la industrialización?|Modern Times|The Kid|City Lights|The Great Dictator|Incluye escenas en fábricas.
+Q|¿Qué película de Chaplin satiriza a Hitler?|The Great Dictator|Modern Times|City Lights|The Kid|Fue una crítica política valiente.
+Q|¿Qué película ganó el Oscar a Mejor Película en 1994?|Forrest Gump|Pulp Fiction|The Shawshank Redemption|Braveheart|Es una de las más queridas.
+Q|¿Qué actor interpretó a Forrest Gump?|Tom Hanks|Robin Williams|Kevin Costner|Tom Cruise|Ganó el Oscar por este rol.
+Q|¿Qué película trata sobre la mafia italiana en EE.UU.?|The Godfather|Scarface|Goodfellas|Casino|Es dirigida por Coppola.
+Q|¿Quién interpretó a Vito Corleone en la primera película?|Marlon Brando|Al Pacino|Robert De Niro|James Caan|Ganó el Oscar por este papel.
+Q|¿Qué actor interpretó a Tony Montana?|Al Pacino|Robert De Niro|Joe Pesci|Ray Liotta|Es protagonista de Scarface.
+Q|¿Qué película incluye la frase "Here's Johnny!"?|The Shining|Psycho|Halloween|The Exorcist|Es una escena icónica.
+Q|¿Quién dirigió Psycho?|Alfred Hitchcock|Stanley Kubrick|Orson Welles|Billy Wilder|Es maestro del suspenso.
+Q|¿Qué película de Hitchcock trata sobre un asesino en una ducha?|Psycho|Vertigo|Rear Window|The Birds|Tiene una escena legendaria.
+Q|¿Qué película es famosa por el plano secuencia inicial en un club nocturno?|Goodfellas|Casino|Scarface|The Irishman|Es una escena muy estudiada.
+Q|¿Qué actor protagoniza Taxi Driver?|Robert De Niro|Al Pacino|Jack Nicholson|Dustin Hoffman|Interpreta a Travis Bickle.
+Q|¿Qué película trata sobre un periodista investigando un magnate?|Citizen Kane|Casablanca|Gone with the Wind|Rebecca|Es considerada una de las mejores.
+Q|¿Quién dirigió Citizen Kane?|Orson Welles|Alfred Hitchcock|Billy Wilder|John Ford|Tenía solo 25 años.
+Q|¿Qué película incluye la frase "Rosebud"?|Citizen Kane|Casablanca|The Maltese Falcon|Rebecca|Es clave en la historia.
+Q|¿Qué película romántica clásica incluye "Here's looking at you, kid"?|Casablanca|Gone with the Wind|Roman Holiday|Sunset Boulevard|Es un clásico del cine.
+Q|¿Quién protagoniza Casablanca?|Humphrey Bogart|Cary Grant|Clark Gable|James Stewart|Interpreta a Rick.
+Q|¿Qué película trata sobre la Guerra Civil estadounidense?|Gone with the Wind|Ben-Hur|Spartacus|Lawrence of Arabia|Es un clásico épico.
+Q|¿Qué película ganó 11 premios Oscar en 1959?|Ben-Hur|Titanic|Gladiator|Braveheart|Fue un récord en su época.
+Q|¿Qué actor protagonizó Ben-Hur?|Charlton Heston|Kirk Douglas|Gregory Peck|James Stewart|Es famosa por la carrera de carros.
+Q|¿Qué película trata sobre un gladiador romano?|Gladiator|Spartacus|Troy|300|Ganó el Oscar a Mejor Película.
+Q|¿Qué actor protagonizó Gladiator?|Russell Crowe|Mel Gibson|Brad Pitt|Joaquin Phoenix|Interpretó a Máximo.
+Q|¿Qué película trata sobre boxeo dirigida por Scorsese?|Raging Bull|Rocky|Creed|Million Dollar Baby|Está protagonizada por De Niro.
+Q|¿Qué actor protagonizó Raging Bull?|Robert De Niro|Al Pacino|Joe Pesci|Harvey Keitel|Ganó el Oscar.
+Q|¿Qué película trata sobre la creación de Facebook?|The Social Network|Steve Jobs|Moneyball|The Big Short|Dirigida por Fincher.
+Q|¿Qué actor interpreta a Mark Zuckerberg?|Jesse Eisenberg|Andrew Garfield|Michael Cera|Jonah Hill|Fue nominado al Oscar.
+Q|¿Qué película trata sobre un club secreto de pelea?|Fight Club|Snatch|Rocky|Warrior|Tiene un giro inesperado.
+Q|¿Qué actor protagoniza Fight Club?|Brad Pitt|Leonardo DiCaprio|Matt Damon|Tom Cruise|Comparte pantalla con Edward Norton.
+Q|¿Qué película trata sobre sueños y culpa protagonizada por DiCaprio?|Shutter Island|Inception|The Departed|Catch Me If You Can|Dirigida por Scorsese.
+Q|¿Qué película de Scorsese trata sobre infiltrados en la mafia?|The Departed|Goodfellas|Casino|Gangs of New York|Ganó el Oscar a Mejor Película.
+Q|¿Qué actor protagoniza The Revenant?|Leonardo DiCaprio|Tom Hardy|Brad Pitt|Christian Bale|Ganó su primer Oscar.
+Q|¿Qué película trata sobre un oso y supervivencia?|The Revenant|Into the Wild|Cast Away|Life of Pi|Basada en hechos reales.
+Q|¿Qué película trata sobre un náufrago?|Cast Away|The Revenant|Life of Pi|Into the Wild|Protagonizada por Tom Hanks.
+Q|¿Qué objeto acompaña al protagonista en Cast Away?|Wilson|Tommy|Charlie|Buddy|Es una pelota de voleibol.
+Q|¿Qué película trata sobre un tigre en un bote?|Life of Pi|The Jungle Book|The Revenant|Cast Away|Ganó varios premios Oscar.
+Q|¿Qué película trata sobre un parque con robots descontrolados (1973)?|Westworld|Blade Runner|AI|Ex Machina|Inspiró la serie moderna.
+Q|¿Qué película trata sobre replicantes y futuro distópico?|Blade Runner|Matrix|Minority Report|AI|Es un clásico de ciencia ficción.
+Q|¿Quién protagoniza Blade Runner?|Harrison Ford|Tom Cruise|Mel Gibson|Bruce Willis|Interpreta a Deckard.
+Q|¿Qué película trata sobre un policía en un rascacielos?|Die Hard|Lethal Weapon|Speed|Heat|Es un clásico de acción.
+Q|¿Qué actor protagoniza Die Hard?|Bruce Willis|Arnold Schwarzenegger|Sylvester Stallone|Mel Gibson|Interpreta a John McClane.
+Q|¿Qué película trata sobre carreras ilegales y autos?|The Fast and the Furious|Need for Speed|Rush|Cars|Inició una franquicia.
+Q|¿Qué actor protagonizó Top Gun?|Tom Cruise|Val Kilmer|Brad Pitt|Mel Gibson|Interpretó a Maverick.
+Q|¿Qué película trata sobre pilotos de combate?|Top Gun|Pearl Harbor|Dunkirk|1917|Tiene una secuela reciente.
+Q|¿Qué movimiento cinematográfico italiano surgió tras la Segunda Guerra Mundial?|Neorrealismo italiano|Nouvelle Vague|Expresionismo alemán|Dogma 95|Se caracteriza por rodajes en exteriores y actores no profesionales.
+Q|¿Qué director es considerado el padre del suspense?|Alfred Hitchcock|Orson Welles|Stanley Kubrick|Billy Wilder|Utilizaba técnicas innovadoras de tensión narrativa.
+Q|¿Qué técnica consiste en filmar una escena sin cortes aparentes?|Plano secuencia|Montaje paralelo|Jump cut|Fundido|Es muy usada para generar inmersión.
+Q|¿Qué película popularizó el uso del montaje paralelo?|The Birth of a Nation|Citizen Kane|Metropolis|Nosferatu|Fue dirigida por D.W. Griffith.
+Q|¿Qué movimiento cinematográfico francés surgió en los años 50?|Nouvelle Vague|Neorrealismo|Dogma 95|New Hollywood|Rompió con las reglas tradicionales del cine.
+Q|¿Qué director es clave en la Nouvelle Vague?|Jean-Luc Godard|François Truffaut|Claude Chabrol|Eric Rohmer|Dirigió Breathless.
+Q|¿Qué película de Orson Welles es famosa por su uso innovador de la profundidad de campo?|Citizen Kane|Touch of Evil|The Magnificent Ambersons|Othello|Revolucionó el lenguaje cinematográfico.
+Q|¿Qué término describe el sonido que proviene dentro de la escena?|Sonido diegético|Sonido extradiegético|Foley|Ambiente|Forma parte del mundo narrativo.
+Q|¿Qué director es conocido por su perfeccionismo extremo y largas tomas múltiples?|Stanley Kubrick|Ridley Scott|David Fincher|Christopher Nolan|Era famoso por repetir escenas muchas veces.
+Q|¿Qué película de Kubrick trata sobre la guerra de Vietnam?|Full Metal Jacket|Apocalypse Now|Platoon|The Deer Hunter|Tiene estructura en dos partes.
+Q|¿Qué director es autor de Apocalypse Now?|Francis Ford Coppola|Martin Scorsese|Stanley Kubrick|Oliver Stone|Está inspirada en Heart of Darkness.
+Q|¿Qué técnica rompe la continuidad narrativa tradicional con cortes abruptos?|Jump cut|Plano secuencia|Fundido|Travelling|Fue popularizada por la Nouvelle Vague.
+Q|¿Qué director sueco es conocido por El séptimo sello?|Ingmar Bergman|Andrei Tarkovsky|Federico Fellini|Luis Buñuel|Explora temas existenciales.
+Q|¿Qué cineasta ruso es famoso por su estilo contemplativo en Stalker?|Andrei Tarkovsky|Sergei Eisenstein|Dziga Vertov|Vsevolod Pudovkin|Sus películas son filosóficas.
+Q|¿Qué técnica consiste en superponer imágenes gradualmente?|Fundido|Corte seco|Travelling|Zoom|Se usa para transiciones suaves.
+Q|¿Qué director italiano dirigió La Dolce Vita?|Federico Fellini|Roberto Rossellini|Luchino Visconti|Michelangelo Antonioni|Retrata la vida en Roma.
+Q|¿Qué director español es conocido por películas surrealistas como Un perro andaluz?|Luis Buñuel|Pedro Almodóvar|Alejandro Amenábar|Carlos Saura|Colaboró con Salvador Dalí.
+Q|¿Qué término describe la música añadida que los personajes no escuchan?|Extradiegética|Diegética|Foley|Ambiental|Se usa para reforzar emociones.
+Q|¿Qué película de Eisenstein es famosa por el montaje de la escalera?|Battleship Potemkin|October|Strike|Alexander Nevsky|Es un ejemplo clásico de montaje.
+Q|¿Qué tipo de plano muestra todo el cuerpo del personaje?|Plano entero|Primer plano|Plano detalle|Plano medio|Se usa para mostrar acción.
+Q|¿Qué plano se centra en el rostro del personaje?|Primer plano|Plano general|Plano americano|Plano cenital|Resalta emociones.
+Q|¿Qué director danés impulsó el movimiento Dogma 95?|Lars von Trier|Thomas Vinterberg|Nicolas Winding Refn|Susanne Bier|Buscaba realismo extremo.
+Q|¿Qué regla clásica divide la pantalla en tres partes?|Regla de los tercios|Regla de continuidad|Eje de acción|Montaje invisible|Se usa en composición visual.
+Q|¿Qué técnica implica mover la cámara sobre rieles?|Travelling|Zoom|Paneo|Tilt|Genera sensación de desplazamiento.
+Q|¿Qué director es conocido por El resplandor?|Stanley Kubrick|Alfred Hitchcock|Ridley Scott|Roman Polanski|Es un clásico del terror.
+Q|¿Qué película de Ridley Scott trata sobre un xenomorfo?|Alien|Blade Runner|Gladiator|Prometheus|Es un clásico del sci-fi horror.
+Q|¿Qué director es conocido por el uso del color rojo en sus películas?|Pedro Almodóvar|Luis Buñuel|Carlos Saura|Alejandro Amenábar|Su estilo es muy reconocible.
+Q|¿Qué movimiento alemán se caracteriza por sombras y escenarios distorsionados?|Expresionismo alemán|Neorrealismo|Nouvelle Vague|Dogma 95|Influyó en el cine de terror.
+Q|¿Qué película es un ejemplo del expresionismo alemán?|Nosferatu|Metropolis|M|The Cabinet of Dr. Caligari|Usa estética oscura y teatral.
+Q|¿Qué director dirigió Metropolis?|Fritz Lang|F.W. Murnau|G.W. Pabst|Carl Dreyer|Es un clásico de ciencia ficción.
+Q|¿Qué tipo de sonido recrea efectos en postproducción?|Foley|Diegético|Ambiente|Directo|Se graba en estudio.
+Q|¿Qué plano se toma desde arriba hacia abajo?|Plano cenital|Plano contrapicado|Plano medio|Plano americano|Da sensación de inferioridad.
+Q|¿Qué plano se toma desde abajo hacia arriba?|Contrapicado|Cenital|Plano medio|Plano general|Hace ver poderoso al sujeto.
+Q|¿Qué director es conocido por el thriller psicológico Se7en?|David Fincher|Ridley Scott|Christopher Nolan|Denis Villeneuve|Tiene un final impactante.
+Q|¿Qué técnica une dos escenas mediante una transición suave?|Fundido|Corte seco|Jump cut|Travelling|Se usa para cambiar de tiempo o espacio.
+Q|¿Qué término describe la continuidad espacial entre planos?|Eje de acción|Montaje|Plano secuencia|Zoom|Evita confusión visual.
+Q|¿Qué director es conocido por el western spaghetti?|Sergio Leone|Clint Eastwood|John Ford|Sam Peckinpah|Dirigió The Good, the Bad and the Ugly.
+Q|¿Qué tipo de plano muestra un detalle específico?|Plano detalle|Plano general|Plano medio|Plano americano|Se enfoca en objetos.
+Q|¿Qué director dirigió 2001: A Space Odyssey?|Stanley Kubrick|Ridley Scott|George Lucas|James Cameron|Es una obra de ciencia ficción filosófica.
+Q|¿Qué técnica consiste en acercar la imagen sin mover la cámara?|Zoom|Travelling|Paneo|Tilt|Se logra con la lente.
+Q|¿Qué teórico del montaje desarrolló la idea del "montaje de atracciones"?|Sergei Eisenstein|Andrei Tarkovsky|Dziga Vertov|Vsevolod Pudovkin|Buscaba generar impacto emocional mediante choque de imágenes.
+Q|¿Qué concepto describe la organización del espacio dentro del encuadre?|Mise-en-scène|Montaje|Diegesis|Blocking|Incluye iluminación, decorado y actuación.
+Q|¿Qué director desarrolló la teoría del "cine-ojo"?|Dziga Vertov|Sergei Eisenstein|Andrei Tarkovsky|Vsevolod Pudovkin|Creía en capturar la realidad sin intervención.
+Q|¿Qué película de Vertov es clave en el cine experimental?|Man with a Movie Camera|Battleship Potemkin|October|Strike|No tiene narrativa tradicional.
+Q|¿Qué concepto describe la percepción de continuidad pese a cortes?|Montaje invisible|Jump cut|Plano secuencia|Fundido|Es clave en el cine clásico hollywoodense.
+Q|¿Qué director defendía el uso del plano largo sobre el montaje?|Andrei Tarkovsky|Sergei Eisenstein|Alfred Hitchcock|Orson Welles|Creía en el tiempo real cinematográfico.
+Q|¿Qué término describe el movimiento interno de los actores en escena?|Blocking|Mise-en-scène|Montaje|Diegesis|Es clave para la composición visual.
+Q|¿Qué técnica mezcla zoom hacia adelante y travelling hacia atrás?|Efecto vértigo|Plano secuencia|Jump cut|Rack focus|Popularizada por Hitchcock.
+Q|¿En qué película se utilizó por primera vez ampliamente el efecto vértigo?|Vertigo|Psycho|Rear Window|The Birds|Representa desorientación psicológica.
+Q|¿Qué concepto describe el mundo narrativo de una película?|Diegesis|Montaje|Plano|Foley|Incluye todo lo que existe en la historia.
+Q|¿Qué director introdujo el concepto de "cine puro" centrado en imagen?|Germaine Dulac|Jean Renoir|Luis Buñuel|Abel Gance|Buscaba independencia del teatro.
+Q|¿Qué término describe el cambio de foco dentro de un mismo plano?|Rack focus|Zoom|Travelling|Tilt|Dirige la atención del espectador.
+Q|¿Qué director utilizó intensamente el "deep focus"?|Orson Welles|Alfred Hitchcock|Stanley Kubrick|John Ford|Permite ver varios planos en foco.
+Q|¿Qué película es ejemplo clásico de deep focus?|Citizen Kane|Casablanca|Psycho|Vertigo|Revolucionó la fotografía.
+Q|¿Qué concepto describe la relación entre sonido e imagen fuera de cuadro?|Fuera de campo|Diegesis|Montaje|Blocking|Sugiere elementos no visibles.
+Q|¿Qué tipo de montaje yuxtapone imágenes para crear significado nuevo?|Montaje intelectual|Montaje invisible|Continuidad|Analítico|Desarrollado por Eisenstein.
+Q|¿Qué director es conocido por romper la cuarta pared constantemente?|Jean-Luc Godard|François Truffaut|Eric Rohmer|Claude Chabrol|Es típico de la Nouvelle Vague.
+Q|¿Qué concepto describe cuando un personaje mira directamente a cámara?|Ruptura de la cuarta pared|Plano subjetivo|Plano detalle|Montaje paralelo|Rompe la ilusión narrativa.
+Q|¿Qué técnica consiste en enfocar primero el fondo y luego el primer plano?|Rack focus inverso|Zoom|Travelling|Paneo|Se usa para cambiar énfasis.
+Q|¿Qué término describe el sonido añadido para enfatizar acciones específicas?|Foley|Diegético|Extradiegético|Ambiente|Se graba en postproducción.
+Q|¿Qué director dirigió las dos primeras películas de Harry Potter?|Chris Columbus|Alfonso Cuarón|David Yates|Mike Newell|También dirigió Home Alone.
+Q|¿Qué película navideña clásica dirigió Chris Columbus?|Home Alone|Elf|The Santa Clause|Jingle All the Way|Es un clásico de los 90.
+Q|¿Qué director asumió la saga Harry Potter en El prisionero de Azkaban?|Alfonso Cuarón|Chris Columbus|David Yates|Peter Jackson|Le dio un tono más oscuro a la saga.
+Q|¿Qué película de Alfonso Cuarón ganó el Oscar a Mejor Director en 2018?|Roma|Gravity|Children of Men|Y Tu Mamá También|Está filmada en blanco y negro.
+Q|¿Qué película de Cuarón es famosa por sus largos planos secuencia?|Children of Men|Gravity|Roma|Harry Potter 3|Tiene escenas muy técnicas.
+Q|¿Qué director dirigió Gravity?|Alfonso Cuarón|James Cameron|Ridley Scott|Christopher Nolan|Ganó varios premios Oscar.
+Q|¿Qué director es conocido por actuar y dirigir películas del oeste y drama?|Clint Eastwood|Kevin Costner|Mel Gibson|Robert Redford|También fue actor en westerns clásicos.
+Q|¿Qué película dirigida por Clint Eastwood ganó el Oscar a Mejor Película?|Million Dollar Baby|Gran Torino|Unforgiven|Mystic River|También ganó Mejor Director.
+Q|¿Qué película de Clint Eastwood trata sobre un veterano de guerra gruñón?|Gran Torino|Unforgiven|American Sniper|Mystic River|Se convirtió en un clásico moderno.
+Q|¿Qué director mexicano es conocido por su estilo fantástico y criaturas?|Guillermo del Toro|Alfonso Cuarón|Alejandro G. Iñárritu|Carlos Reygadas|Sus películas tienen estética oscura.
+Q|¿Qué película de Guillermo del Toro ganó el Oscar a Mejor Película?|The Shape of Water|Pan's Labyrinth|Crimson Peak|Hellboy|Ganó también Mejor Director.
+Q|¿Qué película de Del Toro mezcla fantasía con la Guerra Civil Española?|Pan's Labyrinth|The Shape of Water|Hellboy|Blade II|Es considerada una obra maestra.
+Q|¿Qué director dirigió Back to the Future?|Robert Zemeckis|Steven Spielberg|James Cameron|George Lucas|Es una trilogía muy popular.
+Q|¿Qué actor interpreta a Marty McFly?|Michael J. Fox|Tom Hanks|Johnny Depp|Matt Damon|Es el protagonista de la trilogía.
+Q|¿Qué película de Zemeckis trata sobre un hombre que vive eventos históricos?|Forrest Gump|Cast Away|The Polar Express|Flight|Ganó varios premios Oscar.
+Q|¿Qué actor protagoniza Forrest Gump?|Tom Hanks|Robin Williams|Kevin Costner|Mel Gibson|Ganó el Oscar por este rol.
+Q|¿Qué película de Zemeckis utiliza captura de movimiento con animación?|The Polar Express|Beowulf|A Christmas Carol|Forrest Gump|Fue innovadora en su estilo visual.
+Q|¿Qué película de Clint Eastwood trata sobre un francotirador en Irak?|American Sniper|Gran Torino|Mystic River|Unforgiven|Está basada en hechos reales.
+Q|¿Qué película de Alfonso Cuarón transcurre en el espacio con Sandra Bullock?|Gravity|Interstellar|The Martian|Ad Astra|Destaca por sus efectos visuales.
+Q|¿Qué película de Guillermo del Toro presenta a un anfibio humanoide?|The Shape of Water|Hellboy|Pacific Rim|Pan's Labyrinth|Ganó el Oscar a Mejor Película.
