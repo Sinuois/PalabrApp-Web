@@ -110,6 +110,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (event instanceof PointerEvent || event instanceof TouchEvent || event instanceof MouseEvent) {
       event.preventDefault();
     }
+
+    if ((event instanceof MouseEvent || event instanceof PointerEvent) && (event as MouseEvent).clientY) {
+      this.letraIndiceActivaTop = (event as MouseEvent).clientY;
+    }
+
     this.scrollALetraInterno(letra);
   }
 
