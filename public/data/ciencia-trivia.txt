@@ -84,3 +84,53 @@ Q|¿Qué proceso implica división celular en dos células iguales?|Mitosis|Meio
 Q|¿Qué unidad mide la fuerza?|Newton|Pascal|Julio|Watt|Nombrada por Isaac Newton.
 Q|¿Qué órgano es responsable del pensamiento?|Cerebro|Corazón|Hígado|Pulmón|Controla todo el sistema nervioso.
 Q|¿Qué tipo de energía usa el agua en movimiento?|Energía hidráulica|Energía eólica|Energía solar|Energía química|Se usa en represas hidroeléctricas.
+Q|¿Qué científico formuló el principio de incertidumbre?|Werner Heisenberg|Erwin Schrödinger|Max Planck|Niels Bohr|Es fundamental en la mecánica cuántica.
+Q|¿Qué tipo de célula tiene núcleo definido?|Eucariota|Procariota|Bacteriana|Viral|Las células animales y vegetales son eucariotas.
+Q|¿Qué elemento tiene el símbolo Fe?|Hierro|Flúor|Fósforo|Francio|Es esencial en la hemoglobina.
+Q|¿Qué planeta tiene la mayor cantidad de volcanes?|Venus|Marte|Júpiter|Tierra|Muchos de ellos están inactivos.
+Q|¿Qué proceso ocurre en los cloroplastos?|Fotosíntesis|Respiración celular|Digestión|Fermentación|Convierte energía solar en química.
+Q|¿Qué ley relaciona presión y volumen de un gas?|Ley de Boyle|Ley de Ohm|Ley de Newton|Ley de Hooke|A temperatura constante.
+Q|¿Qué científico descubrió los rayos X?|Wilhelm Röntgen|Marie Curie|Nikola Tesla|Albert Einstein|Revolucionó la medicina diagnóstica.
+Q|¿Qué órgano controla el equilibrio en el cuerpo humano?|Cerebelo|Cerebro|Médula espinal|Hipotálamo|Forma parte del sistema nervioso central.
+Q|¿Qué partícula subatómica tiene masa pero no carga?|Neutrón|Electrón|Protón|Fotón|Se encuentra en el núcleo.
+Q|¿Qué planeta tiene el volcán más grande del sistema solar?|Marte|Venus|Tierra|Júpiter|El Monte Olimpo es enorme.
+Q|¿Qué tipo de energía almacenan las baterías?|Energía química|Energía térmica|Energía nuclear|Energía mecánica|Se transforma en eléctrica.
+Q|¿Qué fenómeno ocurre cuando un sólido pasa a líquido?|Fusión|Sublimación|Condensación|Evaporación|Requiere aumento de temperatura.
+Q|¿Qué estructura celular regula la entrada y salida de sustancias?|Membrana celular|Núcleo|Ribosoma|Mitocondria|Es semipermeable.
+Q|¿Qué científico desarrolló la teoría heliocéntrica?|Nicolás Copérnico|Galileo Galilei|Johannes Kepler|Isaac Newton|Plantea que el Sol es el centro.
+Q|¿Qué unidad mide la temperatura en el sistema internacional?|Kelvin|Celsius|Fahrenheit|Rankine|Se usa en ciencia.
+Q|¿Qué tipo de sangre puede recibir de todos?|AB positivo|O negativo|A positivo|B negativo|Es el receptor universal.
+Q|¿Qué planeta tiene inclinación extrema y gira "de lado"?|Urano|Neptuno|Saturno|Marte|Su eje está muy inclinado.
+Q|¿Qué tipo de onda es el sonido?|Mecánica|Electromagnética|Cuántica|Gravitacional|Necesita un medio para propagarse.
+Q|¿Qué estructura conecta músculos con huesos?|Tendón|Ligamento|Cartílago|Fascia|Permite el movimiento.
+Q|¿Qué gas utilizan los humanos en la respiración celular?|Oxígeno|Nitrógeno|Dióxido de carbono|Helio|Permite producir energía.
+Q|¿Qué científico formuló la ley de la gravitación universal?|Isaac Newton|Albert Einstein|Galileo Galilei|Stephen Hawking|Describe la atracción entre masas.
+Q|¿Qué tipo de energía tiene un resorte comprimido?|Energía potencial elástica|Energía cinética|Energía térmica|Energía química|Depende de la deformación.
+Q|¿Qué órgano es responsable de producir hormonas?|Glándulas endocrinas|Pulmones|Riñones|Corazón|Regulan funciones del cuerpo.
+Q|¿Qué planeta es conocido por su Gran Mancha Roja?|Júpiter|Saturno|Neptuno|Marte|Es una tormenta gigante.
+Q|¿Qué partícula tiene carga positiva en el átomo?|Protón|Electrón|Neutrón|Fotón|Está en el núcleo.
+Q|¿Qué proceso ocurre cuando el vapor pasa a líquido?|Condensación|Evaporación|Fusión|Sublimación|Ocurre al enfriarse.
+Q|¿Qué órgano es clave en el sistema inmunológico?|Bazo|Hígado|Pulmón|Estómago|Filtra la sangre.
+Q|¿Qué elemento químico es base de la vida orgánica?|Carbono|Oxígeno|Hidrógeno|Nitrógeno|Forma cadenas complejas.
+Q|¿Qué tipo de energía produce una central nuclear?|Energía nuclear|Energía térmica|Energía química|Energía eólica|Se basa en fisión.
+Q|¿Qué estructura celular contiene clorofila?|Cloroplasto|Mitocondria|Núcleo|Ribosoma|Captura energía solar.
+Q|¿Qué científico es conocido por sus leyes del movimiento planetario?|Johannes Kepler|Isaac Newton|Galileo Galilei|Copérnico|Describen órbitas elípticas.
+Q|¿Qué unidad mide la velocidad?|m/s|Newton|Joule|Pascal|Metros por segundo.
+Q|¿Qué tipo de tejido transmite impulsos nerviosos?|Tejido nervioso|Tejido muscular|Tejido epitelial|Tejido conectivo|Permite comunicación interna.
+Q|¿Qué fenómeno explica la propagación de la luz en línea recta?|Propagación rectilínea|Refracción|Difracción|Interferencia|Ocurre en medios homogéneos.
+Q|¿Qué órgano humano produce jugos gástricos?|Estómago|Hígado|Páncreas|Intestino|Ayuda a la digestión.
+Q|¿Qué tipo de enlace une metales?|Enlace metálico|Covalente|Iónico|Puente de hidrógeno|Permite conductividad.
+Q|¿Qué planeta es el más frío del sistema solar?|Urano|Neptuno|Saturno|Plutón|Tiene temperaturas extremadamente bajas.
+Q|¿Qué unidad mide el trabajo?|Julio|Newton|Pascal|Hertz|Se usa en física.
+Q|¿Qué estructura protege la médula espinal?|Columna vertebral|Cráneo|Costillas|Pelvis|Es parte del esqueleto.
+Q|¿Qué gas expulsan los humanos al respirar?|Dióxido de carbono|Oxígeno|Nitrógeno|Hidrógeno|Resultado del metabolismo.
+Q|¿Qué tipo de energía se obtiene de los alimentos?|Energía química|Energía cinética|Energía solar|Energía nuclear|Se transforma en ATP.
+Q|¿Qué proceso implica la formación de gametos?|Meiosis|Mitosis|Fusión|Fotosíntesis|Reduce a la mitad los cromosomas.
+Q|¿Qué científico es considerado padre de la genética?|Gregor Mendel|Charles Darwin|Louis Pasteur|Watson|Estudió guisantes.
+Q|¿Qué planeta tiene el año más largo?|Neptuno|Urano|Saturno|Júpiter|Tarda más en orbitar el Sol.
+Q|¿Qué tipo de sistema regula el equilibrio interno del cuerpo?|Sistema endocrino|Sistema digestivo|Sistema respiratorio|Sistema óseo|Mantiene la homeostasis.
+Q|¿Qué órgano filtra toxinas en la sangre?|Hígado|Riñón|Pulmón|Corazón|Procesa sustancias químicas.
+Q|¿Qué tipo de energía produce el movimiento?|Energía cinética|Energía potencial|Energía térmica|Energía química|Depende de la velocidad.
+Q|¿Qué fenómeno permite escuchar ecos?|Reflexión del sonido|Refracción|Difracción|Absorción|El sonido rebota en superficies.
+Q|¿Qué tipo de célula forma los tejidos animales?|Célula eucariota|Procariota|Bacteriana|Viral|Tienen núcleo definido.
+Q|¿Qué instrumento mide la velocidad del viento?|Anemómetro|Barómetro|Termómetro|Higrómetro|Usado en meteorología.
