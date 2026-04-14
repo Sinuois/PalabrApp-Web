@@ -42,7 +42,7 @@ Q|¿Qué partícula transporta la fuerza electromagnética?|Fotón|Electrón|Pro
 Q|¿Qué científico propuso la teoría de la deriva continental?|Alfred Wegener|Charles Darwin|Isaac Newton|James Hutton|La teoría fue inicialmente rechazada por la comunidad científica.
 Q|¿Qué escala mide la dureza de los minerales?|Escala de Mohs|Escala de Richter|Escala Kelvin|Escala Beaufort|El diamante es el mineral más duro en esta escala.
 Q|¿Qué tipo de onda es la luz?|Electromagnética|Mecánica|Sonora|Gravitacional|La luz puede propagarse en el vacío.
-Q|¿Qué planeta tiene más lunas conocidas?|Saturno|Júpiter|Urano|Neptuno|Saturno ha superado a Júpiter en número confirmado recientemente.
+Q|¿Qué planeta tiene más lunas conocidas actualmente?|Saturno|Júpiter|Urano|Neptuno|Saturno ha superado a Júpiter en número confirmado recientemente, pero constantemente se van superando entre sí.
 Q|¿Qué órgano es responsable de desintoxicar el cuerpo?|Hígado|Riñón|Pulmón|Páncreas|El hígado procesa sustancias químicas y medicamentos.
 Q|¿Qué científico descubrió la estructura del ADN junto a Watson?|Francis Crick|Linus Pauling|Erwin Schrödinger|Max Planck|El modelo se basó en datos de Rosalind Franklin.
 Q|¿Qué científico descubrió la penicilina?|Alexander Fleming|Louis Pasteur|Robert Koch|Joseph Lister|El descubrimiento fue accidental cuando observó moho matando bacterias.
@@ -59,7 +59,7 @@ Q|¿Qué gas es esencial para la respiración humana?|Oxígeno|Nitrógeno|Helio|
 Q|¿Qué tipo de energía se almacena en los alimentos?|Energía química|Energía cinética|Energía nuclear|Energía térmica|Se libera durante la digestión.
 Q|¿Qué capa de la Tierra es la más externa?|Corteza|Manto|Núcleo externo|Núcleo interno|Es donde vivimos y se forman los continentes.
 Q|¿Qué partícula tiene carga positiva?|Protón|Electrón|Neutrón|Fotón|Se encuentra en el núcleo del átomo.
-Q|¿Qué planeta es famoso por sus anillos visibles?|Saturno|Júpiter|Urano|Neptuno|Son visibles incluso con telescopios pequeños.
+Q|¿Qué escala se usa para medir la acidez o alcalinidad de una disolución?|pH|Kelvin|Pascal|Tesla|En la escala de pH, 7 se considera neutro.
 Q|¿Qué fenómeno produce los relámpagos?|Electricidad estática|Magnetismo|Gravedad|Radiación|Se genera por acumulación de cargas.
 Q|¿Qué órgano filtra la sangre en el cuerpo?|Riñón|Corazón|Pulmón|Estómago|Produce la orina eliminando desechos.
 Q|¿Qué unidad mide la presión?|Pascal|Julio|Newton|Hertz|Se usa en física y meteorología.
@@ -72,11 +72,11 @@ Q|¿Qué planeta es conocido como el lucero del alba?|Venus|Mercurio|Marte|Júpi
 Q|¿Qué sistema controla las funciones del cuerpo humano?|Sistema nervioso|Sistema digestivo|Sistema circulatorio|Sistema óseo|Incluye el cerebro y la médula espinal.
 Q|¿Qué tipo de energía tiene un objeto en altura?|Energía potencial|Energía cinética|Energía térmica|Energía química|Depende de la gravedad.
 Q|¿Qué parte de la célula fabrica proteínas?|Ribosoma|Núcleo|Mitocondria|Membrana|Lee la información del ARN.
-Q|¿Qué fenómeno explica por qué vemos un arcoíris?|Refracción|Reflexión|Difracción|Interferencia|La luz se separa en colores.
+Q|¿Qué fenómeno permite que la luz blanca se separe en colores, como en un arcoíris?|Dispersión|Refracción|Reflexión|Difracción|Ocurre cuando la luz se descompone en distintas longitudes de onda.
 Q|¿Qué órgano produce bilis?|Hígado|Páncreas|Estómago|Intestino|Ayuda a digerir grasas.
 Q|¿Qué tipo de energía usa el viento?|Energía eólica|Energía solar|Energía nuclear|Energía hidráulica|Se aprovecha con aerogeneradores.
 Q|¿Qué parte del átomo no tiene carga?|Neutrón|Protón|Electrón|Ion|Está en el núcleo.
-Q|¿Qué planeta tiene mayor gravedad?|Júpiter|Saturno|Tierra|Neptuno|Por su gran masa.
+Q|¿Qué sucede con la presión atmosférica al aumentar la altitud?|Disminuye|Aumenta|Permanece igual|Se duplica|Por eso en zonas altas hay menos oxígeno disponible.
 Q|¿Qué tipo de mezcla es el aire?|Mezcla homogénea|Mezcla heterogénea|Compuesto|Elemento|Sus componentes no se distinguen.
 Q|¿Qué órgano almacena la orina?|Vejiga|Riñón|Hígado|Pulmón|Se vacía durante la micción.
 Q|¿Qué tipo de energía proviene del Sol?|Energía solar|Energía térmica|Energía química|Energía nuclear|Es la principal fuente de energía de la Tierra.
@@ -108,35 +108,34 @@ Q|¿Qué científico formuló la ley de la gravitación universal?|Isaac Newton|
 Q|¿Qué tipo de energía tiene un resorte comprimido?|Energía potencial elástica|Energía cinética|Energía térmica|Energía química|Depende de la deformación.
 Q|¿Qué órgano es responsable de producir hormonas?|Glándulas endocrinas|Pulmones|Riñones|Corazón|Regulan funciones del cuerpo.
 Q|¿Qué planeta es conocido por su Gran Mancha Roja?|Júpiter|Saturno|Neptuno|Marte|Es una tormenta gigante.
-Q|¿Qué partícula tiene carga positiva en el átomo?|Protón|Electrón|Neutrón|Fotón|Está en el núcleo.
+Q|¿Qué partícula determina el número atómico de un elemento?|Protón|Neutrón|Electrón|Fotón|El número atómico define la identidad química del elemento.
 Q|¿Qué proceso ocurre cuando el vapor pasa a líquido?|Condensación|Evaporación|Fusión|Sublimación|Ocurre al enfriarse.
 Q|¿Qué órgano es clave en el sistema inmunológico?|Bazo|Hígado|Pulmón|Estómago|Filtra la sangre.
 Q|¿Qué elemento químico es base de la vida orgánica?|Carbono|Oxígeno|Hidrógeno|Nitrógeno|Forma cadenas complejas.
 Q|¿Qué tipo de energía produce una central nuclear?|Energía nuclear|Energía térmica|Energía química|Energía eólica|Se basa en fisión.
 Q|¿Qué estructura celular contiene clorofila?|Cloroplasto|Mitocondria|Núcleo|Ribosoma|Captura energía solar.
 Q|¿Qué científico es conocido por sus leyes del movimiento planetario?|Johannes Kepler|Isaac Newton|Galileo Galilei|Copérnico|Describen órbitas elípticas.
-Q|¿Qué unidad mide la velocidad?|m/s|Newton|Joule|Pascal|Metros por segundo.
+Q|¿Cuál de las siguientes es una unidad de medida de velocidad?|m/s|Newton|Joule|Pascal|Signfica "metros por segundo".
 Q|¿Qué tipo de tejido transmite impulsos nerviosos?|Tejido nervioso|Tejido muscular|Tejido epitelial|Tejido conectivo|Permite comunicación interna.
-Q|¿Qué fenómeno explica la propagación de la luz en línea recta?|Propagación rectilínea|Refracción|Difracción|Interferencia|Ocurre en medios homogéneos.
 Q|¿Qué órgano humano produce jugos gástricos?|Estómago|Hígado|Páncreas|Intestino|Ayuda a la digestión.
 Q|¿Qué tipo de enlace une metales?|Enlace metálico|Covalente|Iónico|Puente de hidrógeno|Permite conductividad.
-Q|¿Qué planeta es el más frío del sistema solar?|Urano|Neptuno|Saturno|Plutón|Tiene temperaturas extremadamente bajas.
+Q|¿Qué planeta registra las temperaturas más bajas del sistema solar?|Urano|Neptuno|Saturno|Plutón|Tiene temperaturas extremadamente bajas.
 Q|¿Qué unidad mide el trabajo?|Julio|Newton|Pascal|Hertz|Se usa en física.
 Q|¿Qué estructura protege la médula espinal?|Columna vertebral|Cráneo|Costillas|Pelvis|Es parte del esqueleto.
 Q|¿Qué gas expulsan los humanos al respirar?|Dióxido de carbono|Oxígeno|Nitrógeno|Hidrógeno|Resultado del metabolismo.
-Q|¿Qué tipo de energía se obtiene de los alimentos?|Energía química|Energía cinética|Energía solar|Energía nuclear|Se transforma en ATP.
+Q|¿Qué proceso copia el ADN antes de la división celular?|Replicación del ADN|Transcripción|Traducción|Fermentación|Ocurre durante la fase S del ciclo celular.
 Q|¿Qué proceso implica la formación de gametos?|Meiosis|Mitosis|Fusión|Fotosíntesis|Reduce a la mitad los cromosomas.
 Q|¿Qué científico es considerado padre de la genética?|Gregor Mendel|Charles Darwin|Louis Pasteur|Watson|Estudió guisantes.
 Q|¿Qué planeta tiene el año más largo?|Neptuno|Urano|Saturno|Júpiter|Tarda más en orbitar el Sol.
 Q|¿Qué tipo de sistema regula el equilibrio interno del cuerpo?|Sistema endocrino|Sistema digestivo|Sistema respiratorio|Sistema óseo|Mantiene la homeostasis.
 Q|¿Qué órgano filtra toxinas en la sangre?|Hígado|Riñón|Pulmón|Corazón|Procesa sustancias químicas.
-Q|¿Qué tipo de energía produce el movimiento?|Energía cinética|Energía potencial|Energía térmica|Energía química|Depende de la velocidad.
+Q|¿Qué dispositivo transforma energía mecánica en energía eléctrica?|Generador eléctrico|Motor eléctrico|Transformador|Condensador|Las turbinas de centrales suelen mover generadores.
 Q|¿Qué fenómeno permite escuchar ecos?|Reflexión del sonido|Refracción|Difracción|Absorción|El sonido rebota en superficies.
 Q|¿Qué tipo de célula forma los tejidos animales?|Célula eucariota|Procariota|Bacteriana|Viral|Tienen núcleo definido.
 Q|¿Qué instrumento mide la velocidad del viento?|Anemómetro|Barómetro|Termómetro|Higrómetro|Usado en meteorología.
 Q|¿Qué órgano humano es responsable de filtrar la sangre y producir orina?|Riñón|Hígado|Pulmón|Corazón|Los riñones filtran aproximadamente 50 litros de sangre al día.
 Q|¿Qué tipo de energía está asociada al movimiento de las partículas en un cuerpo?|Energía térmica|Energía cinética|Energía potencial|Energía química|A mayor temperatura, mayor energía térmica.
-Q|¿Qué planeta tiene el sistema de anillos más visible desde la Tierra?|Saturno|Júpiter|Urano|Neptuno|Sus anillos están compuestos principalmente de hielo.
+Q|¿Qué capa de la atmósfera contiene la mayor parte del vapor de agua?|Troposfera|Estratósfera|Mesosfera|Termosfera|Por eso la mayor parte de los fenómenos meteorológicos ocurre allí.
 Q|¿Qué estructura del ojo regula la cantidad de luz que entra?|Iris|Córnea|Retina|Cristalino|El iris da el color a los ojos.
 Q|¿Qué gas noble se utiliza en globos aerostáticos para evitar incendios?|Helio|Hidrógeno|Neón|Argón|El helio es más seguro que el hidrógeno porque no es inflamable.
 Q|¿Qué científico es conocido por desarrollar la teoría del electromagnetismo?|James Clerk Maxwell|Isaac Newton|Albert Einstein|Nikola Tesla|Sus ecuaciones unificaron electricidad y magnetismo.
@@ -155,9 +154,8 @@ Q|¿Qué tipo de energía utiliza una central hidroeléctrica?|Energía hidrául
 Q|¿Qué instrumento mide la humedad del aire?|Higrómetro|Barómetro|Termómetro|Anemómetro|Se usa en meteorología.
 Q|¿Qué tipo de reacción libera energía?|Exotérmica|Endotérmica|Reversible|Catalítica|Produce calor.
 Q|¿Qué planeta tiene mayor cantidad de lunas después de Saturno?|Júpiter|Urano|Neptuno|Marte|Tiene decenas de satélites naturales.
-Q|¿Qué órgano humano es responsable de la visión?|Ojo|Cerebro|Nervio óptico|Retina|Convierte luz en señales nerviosas.
+Q|¿Qué órgano capta la luz para la visión?|Ojo|Cerebro|Nervio óptico|Retina|Convierte luz en señales nerviosas.
 Q|¿Qué tipo de energía produce el Sol mediante fusión nuclear?|Energía nuclear|Energía química|Energía térmica|Energía mecánica|Libera enormes cantidades de energía.
-Q|¿Qué fenómeno explica la expansión del universo?|Big Bang|Gravedad|Relatividad|Inflación térmica|Es la teoría más aceptada.
 Q|¿Qué estructura celular es responsable de la síntesis de proteínas?|Ribosoma|Núcleo|Mitocondria|Membrana|Lee el ARN mensajero.
 Q|¿Qué planeta tiene el día más corto?|Júpiter|Saturno|Marte|Mercurio|Rota muy rápido.
 Q|¿Qué tipo de onda transporta energía sin necesidad de medio?|Electromagnética|Mecánica|Sonora|Elástica|Puede viajar en el vacío.
@@ -175,10 +173,10 @@ Q|¿Qué órgano humano almacena la bilis?|Vesícula biliar|Hígado|Páncreas|Es
 Q|¿Qué planeta tiene la atmósfera más densa?|Venus|Tierra|Saturno|Marte|Está compuesta principalmente de CO₂.
 Q|¿Qué tipo de mezcla contiene partículas visibles?|Mezcla heterogénea|Mezcla homogénea|Compuesto|Elemento|Sus componentes se distinguen.
 Q|¿Qué fenómeno explica la desviación de la luz en rendijas?|Difracción|Reflexión|Refracción|Absorción|Es típico de ondas.
-Q|¿Qué tipo de energía tiene una batería antes de usarse?|Energía química|Energía eléctrica|Energía térmica|Energía cinética|Se transforma al usarse.
+Q|¿Qué tipo de radiación tiene mayor frecuencia en el espectro electromagnético?|Rayos gamma|Microondas|Luz visible|Infrarrojo|A mayor frecuencia, mayor energía de la radiación.
 Q|¿Qué órgano es responsable del sentido del equilibrio?|Oído interno|Cerebro|Ojo|Cerebelo|Incluye los canales semicirculares.
 Q|¿Qué tipo de fuerza es la fricción?|Fuerza de contacto|Fuerza gravitatoria|Fuerza eléctrica|Fuerza nuclear|Se opone al movimiento.
-Q|¿Qué planeta tiene mayor cantidad de masa?|Júpiter|Saturno|Neptuno|Tierra|Es el más grande del sistema solar.
+Q|¿Qué enzima descompone el peróxido de hidrógeno en agua y oxígeno?|Catalasa|Amilasa|Pepsina|Lactasa|Es una enzima clave para proteger a las células del daño oxidativo.
 Q|¿Qué tipo de célula realiza fotosíntesis?|Célula vegetal|Célula animal|Célula procariota|Célula bacteriana|Contiene cloroplastos.
 Q|¿Qué fenómeno ocurre cuando un gas se enfría y pasa a líquido?|Condensación|Evaporación|Fusión|Sublimación|Forma gotas.
 Q|¿Qué estructura del sistema nervioso conecta cerebro y cuerpo?|Médula espinal|Cerebelo|Hipotálamo|Nervios ópticos|Transmite señales.
