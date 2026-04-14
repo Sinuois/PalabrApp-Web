@@ -18,7 +18,7 @@ Q|¿Qué capa de la atmósfera contiene la mayor parte del ozono?|Estratósfera|
 Q|¿Qué tipo de enlace comparten átomos para completar su capa de valencia?|Enlace covalente|Enlace iónico|Enlace metálico|Puente de hidrógeno|El enlace covalente es el tipo de enlace presente en moléculas orgánicas.
 Q|¿Qué científico propuso la teoría de la evolución por selección natural?|Charles Darwin|Gregor Mendel|Louis Pasteur|Alfred Wegener|Charles Darwin tardó más de 20 años en publicar su teoría.
 Q|¿Qué instrumento mide la presión atmosférica?|Barómetro|Termómetro|Anemómetro|Higrómetro|La invención del barómetro permitió predecir cambios climáticos.
-Q|¿Qué nombre recibe el cambio de sólido a gas sin pasar por líquido?|Sublimación|Evaporación|Condensación|Fusión|La sublimación también ocurre en algunos procesos industriales y científicos.
+Q|¿Qué nombre recibe el cambio de sólido a gas sin pasar por líquido?|Sublimación|Evaporación|Condensación|Fusión|Un ejemplo común es el hielo seco, que se convierte en gas sin derretirse.
 Q|¿Qué planeta tiene los anillos más notorios del sistema solar?|Saturno|Urano|Neptuno|Júpiter|Los anillos de Saturno están formados principalmente por hielo y roca.
 Q|¿Qué molécula transporta la información genética en la mayoría de los seres vivos?|ADN|ARN|ATP|NADH|El ADN contiene las instrucciones para construir y mantener un organismo.
 Q|¿Qué ley establece que la energía no se crea ni se destruye?|Primera ley de la termodinámica|Ley de gravitación universal|Ley de Boyle|Ley de Ohm|La primera ley de la termodinámica es fundamental en todas las áreas de la física.
@@ -134,3 +134,53 @@ Q|¿Qué tipo de energía produce el movimiento?|Energía cinética|Energía pot
 Q|¿Qué fenómeno permite escuchar ecos?|Reflexión del sonido|Refracción|Difracción|Absorción|El sonido rebota en superficies.
 Q|¿Qué tipo de célula forma los tejidos animales?|Célula eucariota|Procariota|Bacteriana|Viral|Tienen núcleo definido.
 Q|¿Qué instrumento mide la velocidad del viento?|Anemómetro|Barómetro|Termómetro|Higrómetro|Usado en meteorología.
+Q|¿Qué órgano humano es responsable de filtrar la sangre y producir orina?|Riñón|Hígado|Pulmón|Corazón|Los riñones filtran aproximadamente 50 litros de sangre al día.
+Q|¿Qué tipo de energía está asociada al movimiento de las partículas en un cuerpo?|Energía térmica|Energía cinética|Energía potencial|Energía química|A mayor temperatura, mayor energía térmica.
+Q|¿Qué planeta tiene el sistema de anillos más visible desde la Tierra?|Saturno|Júpiter|Urano|Neptuno|Sus anillos están compuestos principalmente de hielo.
+Q|¿Qué estructura del ojo regula la cantidad de luz que entra?|Iris|Córnea|Retina|Cristalino|El iris da el color a los ojos.
+Q|¿Qué gas noble se utiliza en globos aerostáticos para evitar incendios?|Helio|Hidrógeno|Neón|Argón|El helio es más seguro que el hidrógeno porque no es inflamable.
+Q|¿Qué científico es conocido por desarrollar la teoría del electromagnetismo?|James Clerk Maxwell|Isaac Newton|Albert Einstein|Nikola Tesla|Sus ecuaciones unificaron electricidad y magnetismo.
+Q|¿Qué parte del cerebro controla funciones involuntarias como la respiración?|Bulbo raquídeo|Cerebelo|Corteza cerebral|Hipotálamo|Es vital para la supervivencia.
+Q|¿Qué tipo de energía se encuentra almacenada en un resorte estirado?|Energía potencial elástica|Energía cinética|Energía térmica|Energía química|Depende de la deformación del objeto.
+Q|¿Qué planeta tiene la rotación más rápida del sistema solar?|Júpiter|Saturno|Marte|Neptuno|Un día dura menos de 10 horas.
+Q|¿Qué componente de la sangre transporta oxígeno?|Glóbulos rojos|Glóbulos blancos|Plaquetas|Plasma|Contienen hemoglobina.
+Q|¿Qué unidad mide la carga eléctrica?|Coulomb|Voltio|Amperio|Ohmio|Se usa en física eléctrica.
+Q|¿Qué fenómeno ocurre cuando la luz rebota en una superficie?|Reflexión|Refracción|Difracción|Interferencia|Permite ver objetos.
+Q|¿Qué órgano del sistema digestivo absorbe la mayoría de los nutrientes?|Intestino delgado|Estómago|Hígado|Colon|Tiene una gran superficie interna.
+Q|¿Qué tipo de célula forma las bacterias?|Procariota|Eucariota|Animal|Vegetal|No tienen núcleo definido.
+Q|¿Qué planeta es conocido por su color azul intenso?|Neptuno|Urano|Tierra|Saturno|El color se debe al metano en su atmósfera.
+Q|¿Qué ley establece que a mayor fuerza aplicada, mayor aceleración?|Segunda ley de Newton|Primera ley de Newton|Tercera ley de Newton|Ley de Hooke|Se expresa como F=ma.
+Q|¿Qué estructura celular contiene enzimas digestivas?|Lisosoma|Mitocondria|Núcleo|Ribosoma|Ayuda a descomponer desechos.
+Q|¿Qué tipo de energía utiliza una central hidroeléctrica?|Energía hidráulica|Energía solar|Energía eólica|Energía nuclear|Aprovecha el movimiento del agua.
+Q|¿Qué instrumento mide la humedad del aire?|Higrómetro|Barómetro|Termómetro|Anemómetro|Se usa en meteorología.
+Q|¿Qué tipo de reacción libera energía?|Exotérmica|Endotérmica|Reversible|Catalítica|Produce calor.
+Q|¿Qué planeta tiene mayor cantidad de lunas después de Saturno?|Júpiter|Urano|Neptuno|Marte|Tiene decenas de satélites naturales.
+Q|¿Qué órgano humano es responsable de la visión?|Ojo|Cerebro|Nervio óptico|Retina|Convierte luz en señales nerviosas.
+Q|¿Qué tipo de energía produce el Sol mediante fusión nuclear?|Energía nuclear|Energía química|Energía térmica|Energía mecánica|Libera enormes cantidades de energía.
+Q|¿Qué fenómeno explica la expansión del universo?|Big Bang|Gravedad|Relatividad|Inflación térmica|Es la teoría más aceptada.
+Q|¿Qué estructura celular es responsable de la síntesis de proteínas?|Ribosoma|Núcleo|Mitocondria|Membrana|Lee el ARN mensajero.
+Q|¿Qué planeta tiene el día más corto?|Júpiter|Saturno|Marte|Mercurio|Rota muy rápido.
+Q|¿Qué tipo de onda transporta energía sin necesidad de medio?|Electromagnética|Mecánica|Sonora|Elástica|Puede viajar en el vacío.
+Q|¿Qué órgano regula el azúcar en la sangre?|Páncreas|Hígado|Riñón|Bazo|Produce insulina.
+Q|¿Qué tipo de energía tiene un objeto debido a su posición?|Energía potencial|Energía cinética|Energía térmica|Energía química|Depende de la altura.
+Q|¿Qué gas es producido por la respiración celular?|Dióxido de carbono|Oxígeno|Nitrógeno|Hidrógeno|Se elimina al exhalar.
+Q|¿Qué tipo de enlace se forma entre átomos metálicos?|Enlace metálico|Covalente|Iónico|Puente de hidrógeno|Permite conductividad eléctrica.
+Q|¿Qué instrumento permite observar objetos lejanos en el espacio?|Telescopio|Microscopio|Barómetro|Sismógrafo|Esencial en astronomía.
+Q|¿Qué planeta tiene temperaturas más altas debido al efecto invernadero?|Venus|Mercurio|Marte|Júpiter|Su atmósfera atrapa el calor.
+Q|¿Qué unidad mide la intensidad luminosa?|Candela|Lux|Lumen|Voltio|Es una unidad del SI.
+Q|¿Qué parte del sistema nervioso transmite señales?|Neuronas|Glóbulos rojos|Hormonas|Enzimas|Funcionan mediante impulsos eléctricos.
+Q|¿Qué fenómeno ocurre cuando dos ondas se superponen?|Interferencia|Refracción|Reflexión|Difracción|Puede ser constructiva o destructiva.
+Q|¿Qué tipo de energía utiliza un panel solar térmico?|Energía solar|Energía eólica|Energía nuclear|Energía hidráulica|Calienta agua directamente.
+Q|¿Qué órgano humano almacena la bilis?|Vesícula biliar|Hígado|Páncreas|Estómago|La libera durante la digestión.
+Q|¿Qué planeta tiene la atmósfera más densa?|Venus|Tierra|Saturno|Marte|Está compuesta principalmente de CO₂.
+Q|¿Qué tipo de mezcla contiene partículas visibles?|Mezcla heterogénea|Mezcla homogénea|Compuesto|Elemento|Sus componentes se distinguen.
+Q|¿Qué fenómeno explica la desviación de la luz en rendijas?|Difracción|Reflexión|Refracción|Absorción|Es típico de ondas.
+Q|¿Qué tipo de energía tiene una batería antes de usarse?|Energía química|Energía eléctrica|Energía térmica|Energía cinética|Se transforma al usarse.
+Q|¿Qué órgano es responsable del sentido del equilibrio?|Oído interno|Cerebro|Ojo|Cerebelo|Incluye los canales semicirculares.
+Q|¿Qué tipo de fuerza es la fricción?|Fuerza de contacto|Fuerza gravitatoria|Fuerza eléctrica|Fuerza nuclear|Se opone al movimiento.
+Q|¿Qué planeta tiene mayor cantidad de masa?|Júpiter|Saturno|Neptuno|Tierra|Es el más grande del sistema solar.
+Q|¿Qué tipo de célula realiza fotosíntesis?|Célula vegetal|Célula animal|Célula procariota|Célula bacteriana|Contiene cloroplastos.
+Q|¿Qué fenómeno ocurre cuando un gas se enfría y pasa a líquido?|Condensación|Evaporación|Fusión|Sublimación|Forma gotas.
+Q|¿Qué estructura del sistema nervioso conecta cerebro y cuerpo?|Médula espinal|Cerebelo|Hipotálamo|Nervios ópticos|Transmite señales.
+Q|¿Qué unidad mide la cantidad de sustancia?|Mol|Gramo|Litro|Newton|Se usa en química.
+Q|¿Qué tipo de energía se libera en una explosión?|Energía química|Energía nuclear|Energía cinética|Energía potencial|Se libera rápidamente.

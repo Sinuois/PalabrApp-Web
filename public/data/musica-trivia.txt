@@ -74,7 +74,7 @@ Q|¿Qué banda lanzó "De música ligera"?|Soda Stereo|Los Prisioneros|Los Tres|
 Q|¿Quién fue el líder de Soda Stereo?|Gustavo Cerati|Charly García|Fito Páez|Andrés Calamaro|También tuvo exitosa carrera solista.
 Q|¿Qué banda chilena interpreta "Déjate caer"?|Los Tres|Los Bunkers|La Ley|Chancho en Piedra|Fusionan rock con música chilena.
 Q|¿Qué banda chilena lanzó "Bailando Solo"?|Los Bunkers|Los Tres|La Ley|Lucybell|"Bailando Solo" es uno de sus mayores éxitos.
-Q|¿Qué banda finlandesa de folk metal realizó su primer concierto en Chile en Talca?|Korpiklaani|Finntroll|Ensiferum|Eluveitie|Fue el 12 de marzo de 2010, para luego pasar por Valparaíso y Santiago.
+Q|¿Qué banda finlandesa de folk metal ofreció su primer concierto de Chile en la ciudad de Talca?|Korpiklaani|Finntroll|Ensiferum|Eluveitie|Fue el 12 de marzo de 2010, para luego pasar por Valparaíso y Santiago.
 Q|¿Qué banda noruega es referente del black metal sinfónico?|Dimmu Borgir|Mayhem|Darkthrone|Emperor|Se caracterizan por el uso de orquestaciones.
 Q|¿Qué dúo de hip hop lanzó "Hey Ya!"?|Outkast|Run DMC|Mobb Deep|Wu-Tang Clan|Está formado por André 3000 y Big Boi.
 Q|¿Qué rapero lanzó el álbum "The Marshall Mathers LP"?|Eminem|Dr. Dre|50 Cent|Nas|"The Marshall Mathers LP" es uno de los discos más vendidos del rap.
@@ -133,5 +133,5 @@ Q|¿Qué estilo musical caracteriza principalmente a Zaz?|Jazz y chanson frances
 Q|¿Quién fue el baterista original de The Beatles antes de Ringo Starr?|Pete Best|Ringo Starr|Stuart Sutcliffe|George Martin|Fue reemplazado antes del éxito mundial.
 Q|¿Cuál fue el primer álbum de The Beatles?|"Please Please Me"|"With the Beatles"|"A Hard Day's Night"|"Help!"|Fue lanzado en 1963.
 Q|¿En qué ciudad se originaron The Beatles?|Liverpool|Londres|Manchester|Birmingham|Ciudad clave en la historia del rock.
-Q|¿Qué álbum es considerado uno de los primeros conceptuales?|"Sgt. Pepper's Lonely Hearts Club Band"|"Revolver"|"Rubber Soul"|"Abbey Road"|Revolucionó la industria.
-Q|¿Quién fue el "quinto Beatle"?|George Martin|Brian Epstein|Phil Spector|Eric Clapton|Fue productor clave del grupo.
+Q|¿Cuál de los siguientes es considerado uno de los primeros álbumes conceptuales?|"Sgt. Pepper's Lonely Hearts Club Band"|"Revolver"|"Rubber Soul"|"Abbey Road"|Revolucionó la industria.
+Q|¿Quién es considerado el "quinto Beatle"?|George Martin|Brian Epstein|Phil Spector|Eric Clapton|Fue productor clave del grupo.
