@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, signal, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PalabrasService } from '../../services/palabras.service';
@@ -11,7 +11,9 @@ import { Palabra } from '../../interfaces/app.interfaces';
   templateUrl: './buscar.component.html',
   styleUrls: ['./buscar.component.scss']
 })
-export class BuscarComponent {
+export class BuscarComponent implements AfterViewInit {
+
+  @ViewChild('searchInput') private searchInputRef!: ElementRef<HTMLInputElement>;
 
   termino = signal('');
 
@@ -51,6 +53,10 @@ export class BuscarComponent {
     public palabrasService: PalabrasService,
     private router: Router
   ) {}
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.searchInputRef?.nativeElement?.focus(), 120);
+  }
 
   buscar(termino: string): void {
     this.termino.set(termino);
