@@ -168,9 +168,27 @@ export class PalabrasService {
 
     if (t.endsWith(':')) return true;
 
-    return t.includes('hace referencia a varios articulos')
-      || t.includes('puede referirse a:')
-      || t.includes('puede hacer referencia a:')
+    const patronesEditoriales = [
+      /wikipedia(?: en [a-z]+)? tiene un articulo sobre/,
+      /wikipedia(?: en [a-z]+)? tiene articulos sobre/,
+      /wikipedia(?: en [a-z]+)? has an article on/,
+      /en wikipedia se encuentra/,
+      /wikimedia commons alberga/,
+      /wikimedia commons tiene/,
+      /wikimedia (foundation|commons)/,
+      /esta pagina trata sobre/,
+      /esta pagina de desambiguacion/,
+      /pagina de desambiguacion/,
+      /para otros usos/,
+      /articulo principal/,
+      /puedes ayudar a wikipedia/,
+      /referencias y enlaces externos/,
+      /puede referirse a:/,
+      /puede hacer referencia a:/,
+      /hace referencia a varios articulos/
+    ];
+
+    return patronesEditoriales.some((patron) => patron.test(t))
       || t.includes('termino') && t.includes('hace referencia a');
   }
 
@@ -320,6 +338,7 @@ export class PalabrasService {
 
       const candidata = extract.match(/^[^.]+\.[^\d]*/)?.[0]?.trim() ?? extract;
       const limpia = this.limpiarDefinicionResultado(candidata);
+      if (!limpia || this.esDefinicionNoConfiable(limpia)) return null;
       return limpia || null;
     } catch {
       return null;
@@ -422,6 +441,7 @@ export class PalabrasService {
           && !esLineaMorfologica(linea)
           && !esLineaEncabezadoLema(linea)
           && !esLineaPlaceholder(linea)
+          && !this.esDefinicionNoConfiable(linea)
         );
 
       let definicion = '';
