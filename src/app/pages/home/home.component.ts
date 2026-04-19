@@ -13,6 +13,7 @@ import { CapitalesMundoTriviaService } from '../../services/capitales-mundo-triv
 import { ArteTriviaService } from '../../services/arte-trivia.service';
 import { CienciaTriviaService } from '../../services/ciencia-trivia.service';
 import { MusicaTriviaService } from '../../services/musica-trivia.service';
+import { MusicaPianoTriviaService } from '../../services/musica-piano-trivia.service';
 import { CineTriviaService } from '../../services/cine-trivia.service';
 import { DeportesTriviaService } from '../../services/deportes-trivia.service';
 import { Palabra } from '../../interfaces/app.interfaces';
@@ -61,6 +62,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   triviaDatoExtra = signal('');
   triviaImagenUrl = signal('');
   iconosModalidadesListos = signal(false);
+  // Señal para controlar si estamos en modo piano
+  modoPianoActivado = signal(false);
   private listaTouchInicioX = 0;
   private listaTouchInicioY = 0;
   private listaTouchSeMovio = false;
@@ -69,6 +72,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private ultimoTapTouchMs = 0;
   private ultimoTapTouchTarget: EventTarget | null = null;
   private readonly ventanaIgnorarClickMs = 700;
+  private readonly ventanaIgnorarPrimarioDuplicadoMs = 120;
   private ultimoCambioOrdenMs = 0;
   private juegoAbriendoHasta = 0;
   private invitacionAbriendoHasta = 0;
@@ -82,6 +86,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private arteTriviaService = inject(ArteTriviaService);
   private cienciaTriviaService = inject(CienciaTriviaService);
   private musicaTriviaService = inject(MusicaTriviaService);
+  readonly musicaPianoTriviaService = inject(MusicaPianoTriviaService);
   private cineTriviaService = inject(CineTriviaService);
   private deportesTriviaService = inject(DeportesTriviaService);
 
@@ -451,6 +456,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.ahorcadoService.resetear();
     this.crucigramaService.resetear();
     this.sopaService.resetear();
+    this.musicaPianoTriviaService.limpiar();
+    this.modoPianoActivado.set(false);
     this.limpiarRutaInvalidaSopa();
   }
 
@@ -520,6 +527,55 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   onResolverOpcionTap(event: Event, indice: number): void {
     this.ejecutarTapSeguro(event, () => this.resolverOpcion(indice));
+  }
+
+  resolverOpcionPiano(indiceTecla: number): void {
+    if (this.musicaPianoTriviaService.esCorrecta() !== null) return; // Ya respondió
+    if (!this.modoPianoActivado()) return; // No estamos en modo piano
+
+    this.musicaPianoTriviaService.reproducirTecla(indiceTecla);
+
+    if (this.musicaPianoTriviaService.modoActual() === 'acorde') {
+      this.musicaPianoTriviaService.alternarTeclaAcorde(indiceTecla);
+      return;
+    }
+
+    const gano = this.musicaPianoTriviaService.verificarRespuestaNota(indiceTecla);
+    if (gano) {
+      this.mostrarCelebracion.set(true);
+      this.mensajeJuego.set('¡Correcto! ¡Excelente!');
+      setTimeout(() => this.mostrarCelebracion.set(false), 3000);
+      return;
+    }
+
+    this.mensajeJuego.set('No es esa nota, inténtalo de nuevo.');
+  }
+
+  onResolverOpcionPianoTap(event: Event, indiceTecla: number): void {
+    this.ejecutarTapSeguro(event, () => this.resolverOpcionPiano(indiceTecla));
+  }
+
+  confirmarAcordePiano(): void {
+    if (this.musicaPianoTriviaService.modoActual() !== 'acorde') return;
+
+    const resultado = this.musicaPianoTriviaService.confirmarAcorde();
+    if (resultado === null) {
+      this.mensajeJuego.set('Selecciona las notas del acorde antes de confirmar.');
+      return;
+    }
+
+    if (resultado) {
+      this.mostrarCelebracion.set(true);
+      this.mensajeJuego.set('¡Acorde correcto!');
+      setTimeout(() => this.mostrarCelebracion.set(false), 3000);
+      return;
+    }
+
+    this.mensajeJuego.set('Ese no es el acorde correcto.');
+  }
+
+  onConfirmarAcordePianoTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.confirmarAcordePiano());
   }
 
   claseOpcion(indice: number): string {
@@ -778,17 +834,29 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaDatoExtra.set('');
 
     try {
-      const reto = await this.musicaTriviaService.generarPregunta();
-      if (!reto) {
-        this.mensajeJuego.set('No se pudo generar una pregunta de música en este momento.');
-        return;
-      }
+      // 50% de probabilidad de trivia piano, 50% de trivia tradicional
+      const usarPiano = Math.random() < 0.5;
 
-      this.triviaDatoExtra.set(reto.datoExtra ?? '');
+      if (usarPiano) {
+        // Modo piano trivia
+        this.modoPianoActivado.set(true);
+        this.musicaPianoTriviaService.limpiar();
+        await this.musicaPianoTriviaService.generarPreguntaPiano();
+      } else {
+        // Trivia música tradicional
+        this.modoPianoActivado.set(false);
+        const reto = await this.musicaTriviaService.generarPregunta();
+        if (!reto) {
+          this.mensajeJuego.set('No se pudo generar una pregunta de música en este momento.');
+          return;
+        }
 
-      const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
-      if (!exito) {
-        this.mensajeJuego.set('No se pudo preparar la trivia de música en este intento.');
+        this.triviaDatoExtra.set(reto.datoExtra ?? '');
+
+        const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
+        if (!exito) {
+          this.mensajeJuego.set('No se pudo preparar la trivia de música en este intento.');
+        }
       }
     } finally {
       this.juegoCargando.set(false);
@@ -1318,7 +1386,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     const esTapPrimario = event.type === 'touchend' || event.type === 'pointerup';
 
     if (esTapPrimario) {
-      this.ultimoTapTouchMs = Date.now();
+      const ahora = Date.now();
+      const primarioReciente = ahora - this.ultimoTapTouchMs < this.ventanaIgnorarPrimarioDuplicadoMs;
+      const mismoObjetivoPrimario = this.esMismoObjetivoTap(event.target, this.ultimoTapTouchTarget);
+      if (primarioReciente && mismoObjetivoPrimario) {
+        return;
+      }
+
+      this.ultimoTapTouchMs = ahora;
       this.ultimoTapTouchTarget = event.target;
       accion();
       return;

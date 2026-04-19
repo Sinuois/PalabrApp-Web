@@ -118,7 +118,7 @@
   <div class="game-modal" (pointerup)="$event.stopPropagation()" (click)="$event.stopPropagation()" (touchend)="$event.stopPropagation()">
     <ng-container *ngIf="pasoInvitacionJuego() === 'actualizacion'">
       <h3>¡PalabrApp se ha actualizado!</h3>
-      <p>De ahora en adelante, PalabrApp no solo será para aprender vocabulario, sino que también podrás jugar trivias de múltiples temáticas. ¿Quieres probar?</p>
+      <p>De ahora en adelante, PalabrApp no solo será para aprender vocabulario, sino que también podrás jugar distintas modalidades de múltiples temáticas. ¿Quieres probar?</p>
       <div class="game-actions">
         <button type="button" class="btn-secondary" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Ahora no</button>
         <button type="button" class="btn-primary" (pointerup)="onAceptarInvitacionTap($event)" (click)="onAceptarInvitacionTap($event)" (touchend)="onAceptarInvitacionTap($event)">Aceptar</button>
@@ -317,7 +317,59 @@
 
       <p class="game-loading" *ngIf="juegoCargando()">Preparando reto...</p>
 
-      <ng-container *ngIf="!juegoCargando() && triviaService.conceptoJuego()">
+      <!-- PIANO TRIVIA MODE -->
+      <ng-container *ngIf="!juegoCargando() && modoPianoActivado() && (musicaPianoTriviaService.notaActual() || musicaPianoTriviaService.acordeActual())">
+        <p class="piano-trivia-instruccion">{{ musicaPianoTriviaService.obtenerEtiquetaPregunta() }}</p>
+
+        <!-- Teclado de piano -->
+        <div class="piano-keyboard">
+          <div class="piano-white-row">
+            <button
+              type="button"
+              class="piano-key white-key"
+              [attr.aria-label]="'Nota ' + nota.nombre"
+              [ngClass]="{
+                'is-selected': musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx),
+                'is-correct': musicaPianoTriviaService.esCorrecta() === true && musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx),
+                'is-incorrect': musicaPianoTriviaService.esCorrecta() === false && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx)
+              }"
+              *ngFor="let nota of musicaPianoTriviaService.obtenerNotasBlancas()"
+              [disabled]="musicaPianoTriviaService.esCorrecta() !== null"
+              (pointerup)="onResolverOpcionPianoTap($event, nota.teclaIdx)"
+              (click)="onResolverOpcionPianoTap($event, nota.teclaIdx)"
+              (touchend)="onResolverOpcionPianoTap($event, nota.teclaIdx)"
+            ></button>
+          </div>
+
+          <div class="piano-black-row">
+            <button
+              type="button"
+              class="piano-key black-key"
+              [attr.aria-label]="'Nota ' + nota.nombre"
+              [style.left.%]="musicaPianoTriviaService.obtenerPosicionNegra(nota.teclaIdx)"
+              [ngClass]="{
+                'is-selected': musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx),
+                'is-correct': musicaPianoTriviaService.esCorrecta() === true && musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx),
+                'is-incorrect': musicaPianoTriviaService.esCorrecta() === false && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx)
+              }"
+              *ngFor="let nota of musicaPianoTriviaService.obtenerNotasNegras()"
+              [disabled]="musicaPianoTriviaService.esCorrecta() !== null"
+              (pointerup)="onResolverOpcionPianoTap($event, nota.teclaIdx)"
+              (click)="onResolverOpcionPianoTap($event, nota.teclaIdx)"
+              (touchend)="onResolverOpcionPianoTap($event, nota.teclaIdx)"
+            ></button>
+          </div>
+        </div>
+
+        <div class="piano-actions" *ngIf="musicaPianoTriviaService.modoActual() === 'acorde' && musicaPianoTriviaService.esCorrecta() === null">
+          <button type="button" class="btn-secondary btn-revisar" (pointerup)="onConfirmarAcordePianoTap($event)" (click)="onConfirmarAcordePianoTap($event)" (touchend)="onConfirmarAcordePianoTap($event)">
+            Confirmar acorde
+          </button>
+        </div>
+      </ng-container>
+
+      <!-- TRIVIA TRADICIONAL MODE -->
+      <ng-container *ngIf="!juegoCargando() && !modoPianoActivado() && triviaService.conceptoJuego()">
         <ng-container *ngIf="triviaImagenUrl(); else preguntaTexto">
           <img class="trivia-bandera" [src]="triviaImagenUrl()" [alt]="triviaService.conceptoJuego()" />
           <p class="game-concepto">{{ triviaService.conceptoJuego() }}</p>
@@ -450,7 +502,6 @@
               [ngClass]="{
                 'is-selected': esCeldaSopaSeleccionada(celda.key),
                 'is-found': esCeldaSopaEncontrada(celda.key),
-                'is-invalid': esCeldaSopaInvalida(celda.key),
                 'is-start': sopaService.sopaSeleccionInicio()?.f === celda.fila && sopaService.sopaSeleccionInicio()?.c === celda.columna
               }"
               (pointerdown)="iniciarArrastreSopa(celda.fila, celda.columna)"
@@ -485,7 +536,7 @@
     <p class="game-feedback" *ngIf="mensajeJuego()">{{ mensajeJuego() }}</p>
     <p class="game-extra-fact" *ngIf="datoExtraTriviaVisible()">{{ datoExtraTriviaVisible() }}</p>
 
-    <div class="game-actions" [ngClass]="{ 'crossword-actions': tipoJuego() === 'crucigrama', 'sopa-actions': tipoJuego() === 'sopa' }">
+    <div class="game-actions" [ngClass]="{ 'crossword-actions': tipoJuego() === 'crucigrama', 'sopa-actions': tipoJuego() === 'sopa', 'piano-actions': modoPianoActivado() }">
       <button
         type="button"
         class="btn-secondary btn-revisar"
