@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { PINTURAS_ARTE } from './arte-pinturas.data';
 
 export interface TriviaArte {
   pregunta: string;
@@ -17,13 +18,6 @@ type PreguntaArte = {
   datoExtra?: string;
 };
 
-type PinturaArte = {
-  titulo: string;
-  autor: string;
-  imagenUrl: string;
-  datoExtra?: string;
-};
-
 @Injectable({ providedIn: 'root' })
 export class ArteTriviaService {
   private http = inject(HttpClient);
@@ -31,110 +25,8 @@ export class ArteTriviaService {
   private cargaEnCurso: Promise<PreguntaArte[]> | null = null;
   private preguntasRecientes: string[] = [];
   private readonly maxPreguntasRecientes = 24;
-  private readonly pinturas: PinturaArte[] = [
-    {
-      titulo: 'La noche estrellada',
-      autor: 'Vincent van Gogh',
-      imagenUrl: 'https://es.wikipedia.org/wiki/La_noche_estrellada#/media/Archivo:Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
-      datoExtra: 'Van Gogh la pinto en 1889 desde su habitacion en Saint-Remy.'
-    },
-    {
-      titulo: 'La Gioconda',
-      autor: 'Leonardo da Vinci',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/Mona_Lisa.jpg',
-      datoExtra: 'Tambien conocida como Mona Lisa, se exhibe en el Louvre.'
-    },
-    {
-      titulo: 'El grito',
-      autor: 'Edvard Munch',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg',
-      datoExtra: 'Munch realizo varias versiones de esta composicion.'
-    },
-    {
-      titulo: 'La joven de la perla',
-      autor: 'Johannes Vermeer',
-      imagenUrl: 'https://es.wikipedia.org/wiki/La_joven_de_la_perla#/media/Archivo:Meisje_met_de_parel.jpg',
-      datoExtra: 'Es conocida como la Mona Lisa del norte.'
-    },
-    {
-      titulo: 'Guernica',
-      autor: 'Pablo Picasso',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/en/7/74/PicassoGuernica.jpg',
-      datoExtra: 'Es una denuncia artistica contra la guerra y la violencia.'
-    },
-    {
-      titulo: 'La persistencia de la memoria',
-      autor: 'Salvador Dali',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/en/d/dd/The_Persistence_of_Memory.jpg',
-      datoExtra: 'Sus relojes blandos son iconos del surrealismo.'
-    },
-    {
-      titulo: 'Las meninas',
-      autor: 'Diego Velazquez',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Las_Meninas_01.jpg',
-      datoExtra: 'Incluye un autorretrato del propio Velazquez en escena.'
-    },
-    {
-      titulo: 'El nacimiento de Venus',
-      autor: 'Sandro Botticelli',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/61/El_nacimiento_de_Venus%2C_por_Sandro_Botticelli.jpg',
-      datoExtra: 'Es una obra clave del Renacimiento italiano.'
-    },
-    {
-      titulo: 'La gran ola de Kanagawa',
-      autor: 'Katsushika Hokusai',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg',
-      datoExtra: 'Es una estampa iconica de la serie Treinta y seis vistas del monte Fuji.'
-    },
-    {
-      titulo: 'La escuela de Atenas',
-      autor: 'Rafael',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg',
-      datoExtra: 'Representa a grandes filosofos clasicos en una composicion renacentista.'
-    },
-    {
-      titulo: 'La creación de Adán',
-      autor: 'Miguel Angel',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg',
-      datoExtra: 'Es uno de los frescos mas famosos del techo de la Capilla Sixtina.'
-    },
-    {
-      titulo: 'La ronda de noche',
-      autor: 'Rembrandt',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/La_ronda_de_noche%2C_por_Rembrandt_van_Rijn.jpg',
-      datoExtra: 'Su titulo original es La compania militar del capitan Frans Banning Cocq.'
-    },
-    {
-      titulo: 'El beso',
-      autor: 'Gustav Klimt',
-      imagenUrl: 'https://es.wikipedia.org/wiki/El_beso_%28Gustav_Klimt%29#/media/Archivo:The_Kiss_-_Gustav_Klimt_-_Google_Cultural_Institute.jpg',
-      datoExtra: 'Pertenece al periodo dorado de Klimt y destaca por su decoracion en pan de oro.'
-    },
-    {
-      titulo: 'El caminante sobre el mar de nubes',
-      autor: 'Caspar David Friedrich',
-      imagenUrl: 'https://es.wikipedia.org/wiki/El_caminante_sobre_el_mar_de_nubes#/media/Archivo:Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg',
-      datoExtra: 'Es una imagen emblematicamente romantica del siglo XIX.'
-    },
-    {
-      titulo: 'Nighthawks',
-      autor: 'Edward Hopper',
-      imagenUrl: 'https://es.wikipedia.org/wiki/Nighthawks#/media/Archivo:Nighthawks_by_Edward_Hopper_1942.jpg',
-      datoExtra: 'Retrata una escena nocturna urbana con una fuerte sensacion de aislamiento.'
-    },
-    {
-      titulo: 'American Gothic',
-      autor: 'Grant Wood',
-      imagenUrl: 'https://es.wikipedia.org/wiki/American_Gothic#/media/Archivo:Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg',
-      datoExtra: 'Es una de las pinturas mas reconocibles del arte estadounidense.'
-    },
-    {
-      titulo: 'Autorretrato de Van Gogh',
-      autor: 'Vincent van Gogh',
-      imagenUrl: 'https://es.wikipedia.org/wiki/Vincent_van_Gogh#/media/Archivo:Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_(454045).jpg',
-      datoExtra: 'Van Gogh realizo numerosos autorretratos durante sus anos en Paris.'
-    }
-  ];
+  private readonly opcionesPinturaObjetivo = 6;
+  private readonly pinturas = PINTURAS_ARTE;
 
   async generarPregunta(): Promise<TriviaArte | null> {
     const banco = await this.cargarBanco();
@@ -187,20 +79,55 @@ export class ArteTriviaService {
     const correcta = this.elegirUno(this.pinturas);
     if (!correcta) return null;
 
-    const distractores = this.muestraDistinta(
-      this.pinturas.filter((p) => p.titulo !== correcta.titulo).map((p) => p.titulo),
-      3
-    );
-    if (distractores.length < 3) return null;
+    const opcionCorrecta = this.formatearOpcionPintura(correcta.titulo, correcta.autor);
+    const opciones = this.generarOpcionesPintura(correcta, opcionCorrecta);
+    if (opciones.length < 4) return null;
 
-    const opciones = this.barajar([correcta.titulo, ...distractores]);
     return {
-      pregunta: '¿Que pintura es esta?',
+      pregunta: '¿Qué título y artista corresponden a esta pintura?',
       opciones,
-      indiceCorrecto: opciones.findIndex((op) => op === correcta.titulo),
+      indiceCorrecto: opciones.findIndex((op) => op === opcionCorrecta),
       imagenUrl: correcta.imagenUrl,
       datoExtra: correcta.datoExtra ? `${correcta.datoExtra} Autor: ${correcta.autor}.` : `Autor: ${correcta.autor}.`
     };
+  }
+
+  private formatearOpcionPintura(titulo: string, autor: string): string {
+    return `${titulo} — ${autor}`;
+  }
+
+  private generarOpcionesPintura(
+    correcta: (typeof PINTURAS_ARTE)[number],
+    opcionCorrecta: string
+  ): string[] {
+    const opciones = new Set<string>([opcionCorrecta]);
+
+    const autoresIncorrectos = this.pinturas.filter((p) => p.autor !== correcta.autor).map((p) => p.autor);
+    const titulosIncorrectos = this.pinturas.filter((p) => p.titulo !== correcta.titulo).map((p) => p.titulo);
+
+    const autorMismoTitulo = this.elegirUno(this.barajar([...new Set(autoresIncorrectos)]));
+    if (autorMismoTitulo) {
+      opciones.add(this.formatearOpcionPintura(correcta.titulo, autorMismoTitulo));
+    }
+
+    const tituloMismoAutor = this.elegirUno(this.barajar([...new Set(titulosIncorrectos)]));
+    if (tituloMismoAutor) {
+      opciones.add(this.formatearOpcionPintura(tituloMismoAutor, correcta.autor));
+    }
+
+    const titulosBarajados = this.barajar([...new Set(titulosIncorrectos)]);
+    const autoresBarajados = this.barajar([...new Set(autoresIncorrectos)]);
+
+    for (const titulo of titulosBarajados) {
+      if (opciones.size >= this.opcionesPinturaObjetivo) break;
+      for (const autor of autoresBarajados) {
+        if (autor === correcta.autor) continue;
+        opciones.add(this.formatearOpcionPintura(titulo, autor));
+        if (opciones.size >= this.opcionesPinturaObjetivo) break;
+      }
+    }
+
+    return this.barajar([...opciones]);
   }
 
   private async cargarBanco(): Promise<PreguntaArte[]> {

@@ -381,10 +381,11 @@ h1 {
   strong { color: $accent-blue; }
 }
 
-.trivia-bandera {
+.trivia-media {
   display: block;
-  width: 160px;
-  height: auto;
+  height: 200px;
+  width: auto;
+  max-width: 100%;
   border-radius: $radius-sm;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   margin: 0 auto 8px;
@@ -392,15 +393,16 @@ h1 {
 
 .trivia-image-wrap {
   position: relative;
-  width: 160px;
+  width: fit-content;
+  max-width: 100%;
   min-height: 96px;
   margin: 0 auto 8px;
 
-  .trivia-bandera {
+  .trivia-media {
     margin: 0;
   }
 
-  &.is-loading .trivia-bandera {
+  &.is-loading .trivia-media {
     opacity: 0.2;
   }
 }

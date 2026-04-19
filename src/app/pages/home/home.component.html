@@ -372,7 +372,7 @@
       <ng-container *ngIf="!juegoCargando() && !modoPianoActivado() && triviaService.conceptoJuego()">
         <ng-container *ngIf="triviaImagenUrl(); else preguntaTextoSinImagen">
           <div class="trivia-image-wrap" [class.is-loading]="triviaImagenCargando()">
-            <img class="trivia-bandera" [src]="triviaImagenUrl()" [alt]="triviaService.conceptoJuego()" (load)="onTriviaImagenLoad()" (error)="onTriviaImagenError()" />
+            <img class="trivia-media" [src]="triviaImagenUrl()" [alt]="triviaService.conceptoJuego()" (load)="onTriviaImagenLoad()" (error)="onTriviaImagenError()" />
             <div class="trivia-image-spinner" *ngIf="triviaImagenCargando()" aria-hidden="true">
               <span class="btn-spinner"></span>
             </div>
