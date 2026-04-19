@@ -370,29 +370,52 @@
 
       <!-- TRIVIA TRADICIONAL MODE -->
       <ng-container *ngIf="!juegoCargando() && !modoPianoActivado() && triviaService.conceptoJuego()">
-        <ng-container *ngIf="triviaImagenUrl(); else preguntaTexto">
-          <img class="trivia-bandera" [src]="triviaImagenUrl()" [alt]="triviaService.conceptoJuego()" />
-          <p class="game-concepto">{{ triviaService.conceptoJuego() }}</p>
-        </ng-container>
-        <ng-template #preguntaTexto>
-          <p class="game-concepto">{{ etiquetaPromptTrivia() }}: <strong>{{ triviaService.conceptoJuego() }}</strong></p>
-        </ng-template>
+        <ng-container *ngIf="triviaImagenUrl(); else preguntaTextoSinImagen">
+          <div class="trivia-image-wrap" [class.is-loading]="triviaImagenCargando()">
+            <img class="trivia-bandera" [src]="triviaImagenUrl()" [alt]="triviaService.conceptoJuego()" (load)="onTriviaImagenLoad()" (error)="onTriviaImagenError()" />
+            <div class="trivia-image-spinner" *ngIf="triviaImagenCargando()" aria-hidden="true">
+              <span class="btn-spinner"></span>
+            </div>
+          </div>
 
-        <div class="game-options">
-          <button
-            type="button"
-            class="game-option"
-            trivia-option
-            *ngFor="let opcion of triviaService.opcionesJuego(); let i = index"
-            [ngClass]="claseOpcion(i)"
-            [disabled]="triviaService.indiceSeleccionado() !== null"
-            (pointerup)="onResolverOpcionTap($event, i)"
-            (click)="onResolverOpcionTap($event, i)"
-            (touchend)="onResolverOpcionTap($event, i)"
-          >
-            {{ opcion }}
-          </button>
-        </div>
+          <ng-container *ngIf="!triviaImagenCargando()">
+            <p class="game-concepto">{{ triviaService.conceptoJuego() }}</p>
+            <div class="game-options">
+              <button
+                type="button"
+                class="game-option"
+                trivia-option
+                *ngFor="let opcion of triviaService.opcionesJuego(); let i = index"
+                [ngClass]="claseOpcion(i)"
+                [disabled]="triviaService.indiceSeleccionado() !== null"
+                (pointerup)="onResolverOpcionTap($event, i)"
+                (click)="onResolverOpcionTap($event, i)"
+                (touchend)="onResolverOpcionTap($event, i)"
+              >
+                {{ opcion }}
+              </button>
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <ng-template #preguntaTextoSinImagen>
+          <p class="game-concepto">{{ etiquetaPromptTrivia() }}: <strong>{{ triviaService.conceptoJuego() }}</strong></p>
+          <div class="game-options">
+            <button
+              type="button"
+              class="game-option"
+              trivia-option
+              *ngFor="let opcion of triviaService.opcionesJuego(); let i = index"
+              [ngClass]="claseOpcion(i)"
+              [disabled]="triviaService.indiceSeleccionado() !== null"
+              (pointerup)="onResolverOpcionTap($event, i)"
+              (click)="onResolverOpcionTap($event, i)"
+              (touchend)="onResolverOpcionTap($event, i)"
+            >
+              {{ opcion }}
+            </button>
+          </div>
+        </ng-template>
       </ng-container>
     </ng-container>
 

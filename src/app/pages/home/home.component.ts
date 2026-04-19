@@ -22,6 +22,12 @@ import { Subject } from 'rxjs';
 type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
 type ModalidadJuego = 'aleatoria' | 'vocabulario' | 'geografia' | 'capitales' | 'arte' | 'ciencia' | 'musica' | 'cine' | 'deportes';
 type ModalidadActiva = Exclude<ModalidadJuego, 'aleatoria'>;
+type TriviaFallback = {
+  pregunta: string;
+  opciones: string[];
+  indiceCorrecto: number;
+  datoExtra?: string;
+};
 
 @Component({
   selector: 'app-home',
@@ -61,6 +67,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   sopaRutaInvalida = signal<Array<{ f: number; c: number }>>([]);
   triviaDatoExtra = signal('');
   triviaImagenUrl = signal('');
+  triviaImagenCargando = signal(false);
   iconosModalidadesListos = signal(false);
   // Señal para controlar si estamos en modo piano
   modoPianoActivado = signal(false);
@@ -79,6 +86,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private crucigramaActualizandoTimer: any = null;
   private letraIndiceActivaTimer: number | null = null;
   private alfabetoIgnorarClickHasta = 0;
+  private triviaImagenTimeoutTimer: number | null = null;
+  private triviaFallbackPendiente: TriviaFallback | null = null;
+  private readonly triviaImagenMaxEsperaMs = 3800;
   private iconosModalidadPendientes = new Set<ModalidadJuego>();
   private destroy$ = new Subject<void>();
   private geografiaTriviaService = inject(GeografiaChileTriviaService);
@@ -222,6 +232,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.destroy$.next();
     this.destroy$.complete();
+    this.limpiarEsperaTriviaImagen();
   }
 
   ngAfterViewInit(): void {
@@ -459,6 +470,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.musicaPianoTriviaService.limpiar();
     this.modoPianoActivado.set(false);
     this.limpiarRutaInvalidaSopa();
+    this.limpiarEsperaTriviaImagen();
+    this.triviaFallbackPendiente = null;
   }
 
   async jugarOtra(): Promise<void> {
@@ -492,6 +505,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     fallback?.classList.add('is-visible');
 
     this.registrarIconoModalidad(event);
+  }
+
+  onTriviaImagenError(): void {
+    this.aplicarFallbackTriviaImagen();
+  }
+
+  onTriviaImagenLoad(): void {
+    this.triviaImagenCargando.set(false);
+    this.limpiarEsperaTriviaImagen();
+    this.triviaFallbackPendiente = null;
   }
 
   onCerrarJuegoTap(event: Event): void {
@@ -628,6 +651,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mostrarCelebracion.set(false);
     this.triviaDatoExtra.set('');
     this.triviaImagenUrl.set('');
+    this.triviaImagenCargando.set(false);
+    this.limpiarEsperaTriviaImagen();
+    this.triviaFallbackPendiente = null;
 
     const modalidadSeleccionada = this.modalidadJuego();
     let modalidadObjetivo: ModalidadActiva;
@@ -762,6 +788,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
     this.triviaImagenUrl.set('');
+    this.triviaImagenCargando.set(false);
+    this.limpiarEsperaTriviaImagen();
+    this.triviaFallbackPendiente = null;
 
     try {
       const reto = await this.capitalesTriviaService.generarPregunta();
@@ -772,6 +801,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.triviaDatoExtra.set(reto.datoExtra ?? '');
       this.triviaImagenUrl.set(reto.imagenUrl ?? '');
+      this.triviaImagenCargando.set(Boolean(reto.imagenUrl));
+      if (reto.imagenUrl) {
+        this.triviaFallbackPendiente = await this.precargarFallbackSinImagen('capitales');
+        this.iniciarEsperaTriviaImagen();
+      }
 
       const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
       if (!exito) {
@@ -786,6 +820,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
+    this.triviaImagenUrl.set('');
+    this.triviaImagenCargando.set(false);
+    this.limpiarEsperaTriviaImagen();
+    this.triviaFallbackPendiente = null;
 
     try {
       const reto = await this.arteTriviaService.generarPregunta();
@@ -795,6 +833,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       }
 
       this.triviaDatoExtra.set(reto.datoExtra ?? '');
+      this.triviaImagenUrl.set(reto.imagenUrl ?? '');
+      this.triviaImagenCargando.set(Boolean(reto.imagenUrl));
+      if (reto.imagenUrl) {
+        this.triviaFallbackPendiente = await this.precargarFallbackSinImagen('arte');
+        this.iniciarEsperaTriviaImagen();
+      }
 
       const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
       if (!exito) {
@@ -1511,5 +1555,50 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.iconosModalidadPendientes.size === 0) {
       this.iconosModalidadesListos.set(true);
     }
+  }
+
+  private iniciarEsperaTriviaImagen(): void {
+    this.limpiarEsperaTriviaImagen();
+    this.triviaImagenTimeoutTimer = window.setTimeout(() => {
+      this.aplicarFallbackTriviaImagen();
+    }, this.triviaImagenMaxEsperaMs);
+  }
+
+  private limpiarEsperaTriviaImagen(): void {
+    if (this.triviaImagenTimeoutTimer !== null) {
+      clearTimeout(this.triviaImagenTimeoutTimer);
+      this.triviaImagenTimeoutTimer = null;
+    }
+  }
+
+  private aplicarFallbackTriviaImagen(): void {
+    this.triviaImagenCargando.set(false);
+    this.triviaImagenUrl.set('');
+    this.limpiarEsperaTriviaImagen();
+
+    const fallback = this.triviaFallbackPendiente;
+    this.triviaFallbackPendiente = null;
+    if (!fallback) return;
+
+    this.triviaDatoExtra.set(fallback.datoExtra ?? '');
+    this.triviaService.generarDesdeTrivia(fallback.pregunta, fallback.opciones, fallback.indiceCorrecto);
+  }
+
+  private async precargarFallbackSinImagen(modalidad: 'capitales' | 'arte'): Promise<TriviaFallback | null> {
+    for (let i = 0; i < 12; i++) {
+      const reto = modalidad === 'capitales'
+        ? await this.capitalesTriviaService.generarPregunta()
+        : await this.arteTriviaService.generarPregunta();
+
+      if (!reto || reto.imagenUrl) continue;
+      return {
+        pregunta: reto.pregunta,
+        opciones: reto.opciones,
+        indiceCorrecto: reto.indiceCorrecto,
+        datoExtra: reto.datoExtra
+      };
+    }
+
+    return null;
   }
 }
