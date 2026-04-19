@@ -12,7 +12,6 @@ Q|¿Quién fue el máximo goleador de Chile en la Copa América 2015?|Eduardo Va
 Q|¿Qué equipo chileno ganó la Copa Libertadores en 1991?|Colo-Colo|Universidad de Chile|Universidad Católica|Cobreloa|Es el único club chileno en lograrlo.
 Q|¿Qué tenista chileno ganó el oro olímpico en Atenas 2004 en categoría individual?|Nicolás Massú|Fernando González|Marcelo Ríos|Hans Gildemeister|También ganó el dobles junto a González.
 Q|¿Qué tenista chileno llegó a ser número 1 del mundo?|Marcelo Ríos|Fernando González|Nicolás Massú|Cristian Garin|Fue el primer latinoamericano en lograrlo.
-Q|¿Qué piloto chileno ha destacado en el Rally Dakar?|Francisco "Chaleco" López|Carlo de Gavardo|Ignacio Casale|Pablo Quintanilla|Ha ganado en distintas categorías.
 Q|¿Qué jugador chileno es conocido como "El Rey Arturo"?|Arturo Vidal|Alexis Sánchez|Gary Medel|Charles Aránguiz|Ha jugado en grandes clubes europeos.
 Q|¿Qué jugador chileno es apodado "El Pitbull"?|Gary Medel|Claudio Bravo|Jean Beausejour|Isla|Destaca por su intensidad en defensa.
 Q|¿Qué club europeo ha ganado más Champions League?|Real Madrid|Barcelona|Bayern Múnich|Liverpool|Es el club más exitoso del torneo.
@@ -73,7 +72,6 @@ Q|¿Qué club ganó la Champions League 2018?|Real Madrid|Liverpool|Bayern Múni
 Q|¿Qué arquero alemán fue campeón del mundo en 2014?|Manuel Neuer|Oliver Kahn|Ter Stegen|Lehmann|Revolucionó el puesto.
 Q|¿Qué club inglés ganó la Champions League 2012?|Chelsea|Manchester United|Arsenal|Liverpool|Derrotó al Bayern.
 Q|¿Qué jugador chileno jugó en el FC Barcelona?|Alexis Sánchez|Vidal|Bravo|Medel|Compartió con Messi.
-Q|¿Qué jugador chileno jugó en el Inter de Milán?|Arturo Vidal|Alexis Sánchez|Ambos|Ninguno|Fueron compañeros en el club.
 Q|¿Qué club francés tiene como estadio el Parque de los Príncipes?|PSG|Lyon|Marseille|Monaco|Es su estadio principal.
 Q|¿Qué selección ganó la Eurocopa 2016?|Portugal|Francia|Alemania|España|Cristiano Ronaldo era figura.
 Q|¿Qué jugador portugués es máximo goleador de selecciones?|Cristiano Ronaldo|Eusébio|Figo|Nani|Tiene récord histórico.

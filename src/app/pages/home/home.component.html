@@ -360,7 +360,7 @@
             type="button"
             class="hangman-letter-btn"
             hangman-letter
-            *ngFor="let letra of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')"
+            *ngFor="let letra of 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('')"
             [disabled]="
               ahorcadoService.letrasAdivinadas().includes(letra) ||
               ahorcadoService.letrasIncorrectas().includes(letra) ||

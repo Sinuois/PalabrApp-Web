@@ -257,7 +257,7 @@ export class CrucigramaService {
           const [fila, columna] = v.split('-').map(Number);
           return { key: v, fila, columna };
         })
-        .sort((a, b) => (a.fila - b.fila) || (a.columna - b.columna));
+        .sort((a, b) => (a.columna - b.columna) || (a.fila - b.fila));
 
       starts.forEach((s, idx) => startMap.set(s.key, idx + 1));
 
@@ -296,7 +296,7 @@ export class CrucigramaService {
 
       const celdasPistasPredefinidas = new Set<string>();
 
-      // Agregar pistas: inicio, final, y una al azar en el medio de cada palabra
+      // Agregar pistas: inicio, final, y dos al azar en el medio de cada palabra
       for (const palabra of palabras) {
         const celdas = celdaAPorPalabra.get(palabra.id)?.celdas ?? [];
 
@@ -310,12 +310,14 @@ export class CrucigramaService {
           celdasPistasPredefinidas.add(celdas[celdas.length - 1]);
         }
 
-        // Una al azar en el medio (si hay suficientes celdas)
+        // Dos letras al azar en el medio (si hay suficientes celdas)
         if (celdas.length > 2) {
-          const minMedio = 1;
-          const maxMedio = celdas.length - 2;
-          const indiceMedio = minMedio + Math.floor(Math.random() * (maxMedio - minMedio + 1));
-          celdasPistasPredefinidas.add(celdas[indiceMedio]);
+          const medias = celdas.slice(1, celdas.length - 1);
+          const barajadas = [...medias].sort(() => Math.random() - 0.5);
+          const cantidad = Math.min(2, barajadas.length);
+          for (let i = 0; i < cantidad; i++) {
+            celdasPistasPredefinidas.add(barajadas[i]);
+          }
         }
       }
 
@@ -344,7 +346,8 @@ export class CrucigramaService {
           id: p.id,
           numero: startMap.get(`${p.fila}-${p.columna}`) ?? 0,
           pista: p.significado
-        }));
+        }))
+        .sort((a, b) => a.numero - b.numero);
 
       const pistasVerticales: CrucigramaPista[] = palabras
         .filter(p => p.direccion === 'vertical')
@@ -352,7 +355,8 @@ export class CrucigramaService {
           id: p.id,
           numero: startMap.get(`${p.fila}-${p.columna}`) ?? 0,
           pista: p.significado
-        }));
+        }))
+        .sort((a, b) => a.numero - b.numero);
 
       return {
         grid,

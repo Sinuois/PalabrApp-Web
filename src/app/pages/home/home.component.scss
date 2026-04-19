@@ -656,16 +656,13 @@ h1 {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   touch-action: none;
-}
-
-.sopa-row {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 2px;
+}
 
-  & + .sopa-row {
-    margin-top: 2px;
-  }
+.sopa-row {
+  display: contents;
 }
 
 .sopa-cell {
