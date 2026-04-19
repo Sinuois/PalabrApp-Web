@@ -28,6 +28,13 @@ type TriviaFallback = {
   indiceCorrecto: number;
   datoExtra?: string;
 };
+type TriviaPreguntaBase = {
+  pregunta: string;
+  opciones: string[];
+  indiceCorrecto: number;
+  datoExtra?: string;
+  imagenUrl?: string;
+};
 
 @Component({
   selector: 'app-home',
@@ -87,8 +94,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private letraIndiceActivaTimer: number | null = null;
   private alfabetoIgnorarClickHasta = 0;
   private triviaImagenTimeoutTimer: number | null = null;
+  private triviaImagenUrlOriginal: string | null = null;
+  private triviaImagenReintentos = 0;
+  private readonly maxReintentosTriviaImagen = 2;
   private triviaFallbackPendiente: TriviaFallback | null = null;
-  private readonly triviaImagenMaxEsperaMs = 3800;
+  private readonly triviaImagenMaxEsperaMs = 5500;
+  private readonly maxIntentosPreguntaUnicaTrivia = 18;
+  private triviaPreguntasVistas = new Map<ModalidadActiva, Set<string>>();
+  private triviaPinturasMostradas = new Map<ModalidadActiva, Set<string>>();
   private iconosModalidadPendientes = new Set<ModalidadJuego>();
   private destroy$ = new Subject<void>();
   private geografiaTriviaService = inject(GeografiaChileTriviaService);
@@ -391,6 +404,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   abrirSelectorModalidadJuego(): void {
+    this.limpiarHistorialTriviaSesion();
     this.reiniciarCargaIconosModalidad();
     this.juegoActivo.set(false);
     this.juegoCargando.set(false);
@@ -413,6 +427,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async seleccionarModalidadJuego(modalidad: ModalidadJuego): Promise<void> {
     if (this.cargandoSeleccionModalidad()) return;
+
+    this.limpiarHistorialTriviaSesion();
 
     this.cargandoSeleccionModalidad.set(modalidad);
     this.modalidadJuego.set(modalidad);
@@ -437,6 +453,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   async iniciarJuegoDirecto(): Promise<void> {
     if (this.cargandoInicioJuego()) return;
 
+    this.limpiarHistorialTriviaSesion();
+
     this.cargandoInicioJuego.set(true);
     this.juegoActivo.set(true);
     this.juegoAbriendoHasta = Date.now() + 300; // Bloquear eventos de juego durante 300ms
@@ -455,6 +473,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   cerrarJuego(): void {
+    this.limpiarHistorialTriviaSesion();
     this.juegoActivo.set(false);
     this.juegoCargando.set(false);
     this.tipoJuego.set('trivia');
@@ -471,6 +490,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.modoPianoActivado.set(false);
     this.limpiarRutaInvalidaSopa();
     this.limpiarEsperaTriviaImagen();
+    this.triviaImagenUrlOriginal = null;
+    this.triviaImagenReintentos = 0;
     this.triviaFallbackPendiente = null;
   }
 
@@ -508,11 +529,25 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onTriviaImagenError(): void {
-    this.aplicarFallbackTriviaImagen();
+    this.triviaImagenReintentos++;
+    if (this.triviaImagenReintentos >= this.maxReintentosTriviaImagen) {
+      this.aplicarFallbackTriviaImagen();
+      return;
+    }
+
+    // Reintentar con query param para romper cache
+    const urlOriginal = this.triviaImagenUrlOriginal ?? this.triviaImagenUrl();
+    if (urlOriginal) {
+      const separator = urlOriginal.includes('?') ? '&' : '?';
+      const urlConTimestamp = `${urlOriginal}${separator}retry=${this.triviaImagenReintentos}`;
+      this.triviaImagenUrl.set(urlConTimestamp);
+    }
   }
 
   onTriviaImagenLoad(): void {
     this.triviaImagenCargando.set(false);
+    this.triviaImagenReintentos = 0;
+    this.triviaImagenUrlOriginal = null;
     this.limpiarEsperaTriviaImagen();
     this.triviaFallbackPendiente = null;
   }
@@ -627,6 +662,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     if (this.modalidadJuegoActiva() === 'musica') {
+      if (this.modoPianoActivado()) {
+        return '¡Desafío musical!';
+      }
       return '¡Trivia de música!';
     }
 
@@ -654,11 +692,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaImagenCargando.set(false);
     this.limpiarEsperaTriviaImagen();
     this.triviaFallbackPendiente = null;
+    this.modoPianoActivado.set(false);
+    this.musicaPianoTriviaService.limpiar();
 
     const modalidadSeleccionada = this.modalidadJuego();
     let modalidadObjetivo: ModalidadActiva;
     if (modalidadSeleccionada === 'aleatoria') {
-      modalidadObjetivo = this.elegirModalidadAleatoria();
+      const excluirModalidad = excluirTipo ? this.modalidadJuegoActiva() : undefined;
+      modalidadObjetivo = this.elegirModalidadAleatoria(excluirModalidad);
     } else {
       modalidadObjetivo = modalidadSeleccionada;
     }
@@ -766,7 +807,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaDatoExtra.set('');
 
     try {
-      const reto = await this.geografiaTriviaService.generarPregunta();
+      const reto = await this.obtenerPreguntaUnicaTrivia('geografia', () => this.geografiaTriviaService.generarPregunta());
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de geografía chilena en este momento.');
         return;
@@ -793,7 +834,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaFallbackPendiente = null;
 
     try {
-      const reto = await this.capitalesTriviaService.generarPregunta();
+      const reto = await this.obtenerPreguntaUnicaTrivia('capitales', () => this.capitalesTriviaService.generarPregunta());
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de países y capitales en este momento.');
         return;
@@ -801,6 +842,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.triviaDatoExtra.set(reto.datoExtra ?? '');
       this.triviaImagenUrl.set(reto.imagenUrl ?? '');
+      this.triviaImagenUrlOriginal = reto.imagenUrl ?? null;
+      this.triviaImagenReintentos = 0;
       this.triviaImagenCargando.set(Boolean(reto.imagenUrl));
       if (reto.imagenUrl) {
         this.triviaFallbackPendiente = await this.precargarFallbackSinImagen('capitales');
@@ -826,7 +869,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaFallbackPendiente = null;
 
     try {
-      const reto = await this.arteTriviaService.generarPregunta();
+      const reto = await this.obtenerPreguntaUnicaTrivia('arte', () => this.arteTriviaService.generarPregunta());
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de arte en este momento.');
         return;
@@ -834,6 +877,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.triviaDatoExtra.set(reto.datoExtra ?? '');
       this.triviaImagenUrl.set(reto.imagenUrl ?? '');
+      this.triviaImagenUrlOriginal = reto.imagenUrl ?? null;
+      this.triviaImagenReintentos = 0;
       this.triviaImagenCargando.set(Boolean(reto.imagenUrl));
       if (reto.imagenUrl) {
         this.triviaFallbackPendiente = await this.precargarFallbackSinImagen('arte');
@@ -855,7 +900,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaDatoExtra.set('');
 
     try {
-      const reto = await this.cienciaTriviaService.generarPregunta();
+      const reto = await this.obtenerPreguntaUnicaTrivia('ciencia', () => this.cienciaTriviaService.generarPregunta());
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de ciencia en este momento.');
         return;
@@ -889,7 +934,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       } else {
         // Trivia música tradicional
         this.modoPianoActivado.set(false);
-        const reto = await this.musicaTriviaService.generarPregunta();
+        const reto = await this.obtenerPreguntaUnicaTrivia('musica', () => this.musicaTriviaService.generarPregunta());
         if (!reto) {
           this.mensajeJuego.set('No se pudo generar una pregunta de música en este momento.');
           return;
@@ -913,7 +958,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaDatoExtra.set('');
 
     try {
-      const reto = await this.cineTriviaService.generarPregunta();
+      const reto = await this.obtenerPreguntaUnicaTrivia('cine', () => this.cineTriviaService.generarPregunta());
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de cine en este momento.');
         return;
@@ -936,7 +981,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaDatoExtra.set('');
 
     try {
-      const reto = await this.deportesTriviaService.generarPregunta();
+      const reto = await this.obtenerPreguntaUnicaTrivia('deportes', () => this.deportesTriviaService.generarPregunta());
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de deportes en este momento.');
         return;
@@ -1539,9 +1584,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.iconosModalidadesListos.set(false);
   }
 
-  private elegirModalidadAleatoria(): ModalidadActiva {
+  private elegirModalidadAleatoria(excluir?: ModalidadActiva): ModalidadActiva {
     const modalidades: ModalidadActiva[] = ['vocabulario', 'geografia', 'capitales', 'arte', 'ciencia', 'musica', 'cine', 'deportes'];
-    return modalidades[Math.floor(Math.random() * modalidades.length)] ?? 'vocabulario';
+    const disponibles = excluir ? modalidades.filter((m) => m !== excluir) : modalidades;
+    const pool = disponibles.length > 0 ? disponibles : modalidades;
+    return pool[Math.floor(Math.random() * pool.length)] ?? 'vocabulario';
   }
 
   private registrarIconoModalidad(event: Event): void {
@@ -1574,6 +1621,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private aplicarFallbackTriviaImagen(): void {
     this.triviaImagenCargando.set(false);
     this.triviaImagenUrl.set('');
+    this.triviaImagenUrlOriginal = null;
+    this.triviaImagenReintentos = 0;
     this.limpiarEsperaTriviaImagen();
 
     const fallback = this.triviaFallbackPendiente;
@@ -1590,7 +1639,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         ? await this.capitalesTriviaService.generarPregunta()
         : await this.arteTriviaService.generarPregunta();
 
-      if (!reto || reto.imagenUrl) continue;
+      if (!reto || reto.imagenUrl || this.esPreguntaTriviaVista(modalidad, reto)) continue;
       return {
         pregunta: reto.pregunta,
         opciones: reto.opciones,
@@ -1600,5 +1649,73 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     return null;
+  }
+
+  private limpiarHistorialTriviaSesion(): void {
+    this.triviaPreguntasVistas.clear();
+    this.triviaPinturasMostradas.clear();
+  }
+
+  private clavePreguntaTrivia(reto: TriviaPreguntaBase): string {
+    // Para preguntas con imagen ("Adivina la pintura"), usar solo la imagen como clave
+    // De lo contrario, opciones barajadas causarían claves diferentes para la misma pintura
+    if (reto.imagenUrl) {
+      return reto.imagenUrl;
+    }
+    const imagen = reto.imagenUrl ?? '';
+    return `${reto.pregunta}|${reto.indiceCorrecto}|${imagen}|${reto.opciones.join('||')}`;
+  }
+
+  private esPreguntaTriviaVista(modalidad: ModalidadActiva, reto: TriviaPreguntaBase): boolean {
+    // Para imágenes, usar deduplicación específica de pinturas
+    if (reto.imagenUrl) {
+      const setPinturas = this.triviaPinturasMostradas.get(modalidad);
+      if (!setPinturas) return false;
+      return setPinturas.has(reto.imagenUrl);
+    }
+
+    // Para preguntas de texto, usar deduplicación de preguntas
+    const set = this.triviaPreguntasVistas.get(modalidad);
+    if (!set) return false;
+    return set.has(this.clavePreguntaTrivia(reto));
+  }
+
+  private registrarPreguntaTriviaVista(modalidad: ModalidadActiva, reto: TriviaPreguntaBase): void {
+    // Para imágenes, registrar URL de la pintura
+    if (reto.imagenUrl) {
+      const setPinturas = this.triviaPinturasMostradas.get(modalidad) ?? new Set<string>();
+      setPinturas.add(reto.imagenUrl);
+      this.triviaPinturasMostradas.set(modalidad, setPinturas);
+      return;
+    }
+
+    // Para preguntas de texto, registrar pregunta completa
+    const set = this.triviaPreguntasVistas.get(modalidad) ?? new Set<string>();
+    set.add(this.clavePreguntaTrivia(reto));
+    this.triviaPreguntasVistas.set(modalidad, set);
+  }
+
+  private async obtenerPreguntaUnicaTrivia<T extends TriviaPreguntaBase>(
+    modalidad: ModalidadActiva,
+    generar: () => Promise<T | null>
+  ): Promise<T | null> {
+    let fallback: T | null = null;
+
+    for (let i = 0; i < this.maxIntentosPreguntaUnicaTrivia; i++) {
+      const reto = await generar();
+      if (!reto) continue;
+
+      if (!fallback) fallback = reto;
+      if (this.esPreguntaTriviaVista(modalidad, reto)) continue;
+
+      this.registrarPreguntaTriviaVista(modalidad, reto);
+      return reto;
+    }
+
+    if (fallback) {
+      this.registrarPreguntaTriviaVista(modalidad, fallback);
+    }
+
+    return fallback;
   }
 }

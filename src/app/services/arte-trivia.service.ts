@@ -35,7 +35,7 @@ export class ArteTriviaService {
     {
       titulo: 'La noche estrellada',
       autor: 'Vincent van Gogh',
-      imagenUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/The_Starry_Night.jpg',
+      imagenUrl: 'https://es.wikipedia.org/wiki/La_noche_estrellada#/media/Archivo:Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
       datoExtra: 'Van Gogh la pinto en 1889 desde su habitacion en Saint-Remy.'
     },
     {
@@ -53,7 +53,7 @@ export class ArteTriviaService {
     {
       titulo: 'La joven de la perla',
       autor: 'Johannes Vermeer',
-      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/d7/Meisje_met_de_parel.jpg',
+      imagenUrl: 'https://es.wikipedia.org/wiki/La_joven_de_la_perla#/media/Archivo:Meisje_met_de_parel.jpg',
       datoExtra: 'Es conocida como la Mona Lisa del norte.'
     },
     {
@@ -77,8 +77,62 @@ export class ArteTriviaService {
     {
       titulo: 'El nacimiento de Venus',
       autor: 'Sandro Botticelli',
-      imagenUrl: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg',
+      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/61/El_nacimiento_de_Venus%2C_por_Sandro_Botticelli.jpg',
       datoExtra: 'Es una obra clave del Renacimiento italiano.'
+    },
+    {
+      titulo: 'La gran ola de Kanagawa',
+      autor: 'Katsushika Hokusai',
+      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/0a/The_Great_Wave_off_Kanagawa.jpg',
+      datoExtra: 'Es una estampa iconica de la serie Treinta y seis vistas del monte Fuji.'
+    },
+    {
+      titulo: 'La escuela de Atenas',
+      autor: 'Rafael',
+      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/49/%22The_School_of_Athens%22_by_Raffaello_Sanzio_da_Urbino.jpg',
+      datoExtra: 'Representa a grandes filosofos clasicos en una composicion renacentista.'
+    },
+    {
+      titulo: 'La creación de Adán',
+      autor: 'Miguel Angel',
+      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg',
+      datoExtra: 'Es uno de los frescos mas famosos del techo de la Capilla Sixtina.'
+    },
+    {
+      titulo: 'La ronda de noche',
+      autor: 'Rembrandt',
+      imagenUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/La_ronda_de_noche%2C_por_Rembrandt_van_Rijn.jpg',
+      datoExtra: 'Su titulo original es La compania militar del capitan Frans Banning Cocq.'
+    },
+    {
+      titulo: 'El beso',
+      autor: 'Gustav Klimt',
+      imagenUrl: 'https://es.wikipedia.org/wiki/El_beso_%28Gustav_Klimt%29#/media/Archivo:The_Kiss_-_Gustav_Klimt_-_Google_Cultural_Institute.jpg',
+      datoExtra: 'Pertenece al periodo dorado de Klimt y destaca por su decoracion en pan de oro.'
+    },
+    {
+      titulo: 'El caminante sobre el mar de nubes',
+      autor: 'Caspar David Friedrich',
+      imagenUrl: 'https://es.wikipedia.org/wiki/El_caminante_sobre_el_mar_de_nubes#/media/Archivo:Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg',
+      datoExtra: 'Es una imagen emblematicamente romantica del siglo XIX.'
+    },
+    {
+      titulo: 'Nighthawks',
+      autor: 'Edward Hopper',
+      imagenUrl: 'https://es.wikipedia.org/wiki/Nighthawks#/media/Archivo:Nighthawks_by_Edward_Hopper_1942.jpg',
+      datoExtra: 'Retrata una escena nocturna urbana con una fuerte sensacion de aislamiento.'
+    },
+    {
+      titulo: 'American Gothic',
+      autor: 'Grant Wood',
+      imagenUrl: 'https://es.wikipedia.org/wiki/American_Gothic#/media/Archivo:Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg',
+      datoExtra: 'Es una de las pinturas mas reconocibles del arte estadounidense.'
+    },
+    {
+      titulo: 'Autorretrato de Van Gogh',
+      autor: 'Vincent van Gogh',
+      imagenUrl: 'https://es.wikipedia.org/wiki/Vincent_van_Gogh#/media/Archivo:Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_(454045).jpg',
+      datoExtra: 'Van Gogh realizo numerosos autorretratos durante sus anos en Paris.'
     }
   ];
 

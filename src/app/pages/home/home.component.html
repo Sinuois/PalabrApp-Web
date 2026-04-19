@@ -118,7 +118,7 @@
   <div class="game-modal" (pointerup)="$event.stopPropagation()" (click)="$event.stopPropagation()" (touchend)="$event.stopPropagation()">
     <ng-container *ngIf="pasoInvitacionJuego() === 'actualizacion'">
       <h3>¡PalabrApp se ha actualizado!</h3>
-      <p>De ahora en adelante, PalabrApp no solo será para aprender vocabulario, sino que también podrás jugar distintas modalidades de múltiples temáticas. ¿Quieres probar?</p>
+      <p>¡Se han agregado nuevas modalidades de juego! ¿Quieres descubrirlas?</p>
       <div class="game-actions">
         <button type="button" class="btn-secondary" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Ahora no</button>
         <button type="button" class="btn-primary" (pointerup)="onAceptarInvitacionTap($event)" (click)="onAceptarInvitacionTap($event)" (touchend)="onAceptarInvitacionTap($event)">Aceptar</button>
@@ -126,7 +126,7 @@
     </ng-container>
 
     <ng-container *ngIf="pasoInvitacionJuego() === 'modalidad'">
-      <h3>Elige una modalidad de juego</h3>
+      <h3>Elige una temática de juego</h3>
       <p>Puedes jugar con el formato clásico de vocabulario, elegir una trivia temática o dejar la modalidad en aleatorio.</p>
       <div class="mode-selector-stage" [class.is-loading]="!iconosModalidadesListos()">
         <div class="mode-selector-loading" *ngIf="!iconosModalidadesListos()">
@@ -299,7 +299,7 @@
 <!-- Popup juego -->
 <div
   class="game-modal-overlay"
-  [ngClass]="{ 'crossword-mode': tipoJuego() === 'crucigrama', 'sopa-mode': tipoJuego() === 'sopa' }"
+  [ngClass]="{ 'trivia-mode': tipoJuego() === 'trivia', 'crossword-mode': tipoJuego() === 'crucigrama', 'sopa-mode': tipoJuego() === 'sopa' }"
   *ngIf="juegoActivo()"
   (pointerup)="onOverlayJuegoTap($event)"
   (click)="onOverlayJuegoTap($event)"
@@ -329,7 +329,7 @@
               class="piano-key white-key"
               [attr.aria-label]="'Nota ' + nota.nombre"
               [ngClass]="{
-                'is-selected': musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx),
+                'is-selected': musicaPianoTriviaService.esCorrecta() === null && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx),
                 'is-correct': musicaPianoTriviaService.esCorrecta() === true && musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx),
                 'is-incorrect': musicaPianoTriviaService.esCorrecta() === false && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx)
               }"
@@ -348,7 +348,7 @@
               [attr.aria-label]="'Nota ' + nota.nombre"
               [style.left.%]="musicaPianoTriviaService.obtenerPosicionNegra(nota.teclaIdx)"
               [ngClass]="{
-                'is-selected': musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx),
+                'is-selected': musicaPianoTriviaService.esCorrecta() === null && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx),
                 'is-correct': musicaPianoTriviaService.esCorrecta() === true && musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx),
                 'is-incorrect': musicaPianoTriviaService.esCorrecta() === false && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx)
               }"

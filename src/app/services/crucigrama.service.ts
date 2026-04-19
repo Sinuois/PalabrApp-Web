@@ -360,7 +360,7 @@ export class CrucigramaService {
         const letraCruce = palabraCruce.concepto[i];
 
         if (direccion === 'vertical' && usadasCols.has(colCruce)) continue;
-        if (direccion === 'horizontal' && usadasRows.has(filaCruce)) continue;
+        if (direccion === 'horizontal' && this.filaHorizontalBloqueada(filaCruce, usadasRows)) continue;
 
         for (let j = 0; j < concepto.length; j++) {
           if (this.normalizarLetraCrucigrama(concepto[j]) !== this.normalizarLetraCrucigrama(letraCruce)) continue;
@@ -371,6 +371,9 @@ export class CrucigramaService {
           if (startRow < 0 || startCol < 0) continue;
           if (direccion === 'vertical' && startRow + concepto.length > gridSize) continue;
           if (direccion === 'horizontal' && startCol + concepto.length > gridSize) continue;
+          if (direccion === 'horizontal' && this.filaHorizontalBloqueada(startRow, usadasRows)) continue;
+          if (this.inicioPalabraAdyacente(startRow, startCol, palabras)) continue;
+          if (!this.bordesPalabraLibres(startRow, startCol, concepto.length, direccion, ocupadas, gridSize)) continue;
 
           let conflicto = false;
           for (let k = 0; k < concepto.length; k++) {
@@ -440,6 +443,43 @@ export class CrucigramaService {
       .replace(/[ÓÒÖÔ]/g, 'O')
       .replace(/[ÚÙÜÛ]/g, 'U')
       .replace(/[^A-ZÑ]/g, '');
+  }
+
+  private filaHorizontalBloqueada(fila: number, usadasRows: Set<number>): boolean {
+    return usadasRows.has(fila) || usadasRows.has(fila - 1) || usadasRows.has(fila + 1);
+  }
+
+  private inicioPalabraAdyacente(fila: number, columna: number, palabras: CrucigramaPalabra[]): boolean {
+    return palabras.some((p) => {
+      const distanciaFila = Math.abs(p.fila - fila);
+      const distanciaColumna = Math.abs(p.columna - columna);
+      return distanciaFila + distanciaColumna <= 1;
+    });
+  }
+
+  private bordesPalabraLibres(
+    fila: number,
+    columna: number,
+    largo: number,
+    direccion: 'horizontal' | 'vertical',
+    ocupadas: Map<string, string>,
+    gridSize: number
+  ): boolean {
+    if (direccion === 'horizontal') {
+      const antesCol = columna - 1;
+      const despuesCol = columna + largo;
+
+      if (antesCol >= 0 && ocupadas.has(`${fila}-${antesCol}`)) return false;
+      if (despuesCol < gridSize && ocupadas.has(`${fila}-${despuesCol}`)) return false;
+      return true;
+    }
+
+    const antesFila = fila - 1;
+    const despuesFila = fila + largo;
+
+    if (antesFila >= 0 && ocupadas.has(`${antesFila}-${columna}`)) return false;
+    if (despuesFila < gridSize && ocupadas.has(`${despuesFila}-${columna}`)) return false;
+    return true;
   }
 
   private actualizarDireccionCrucigrama(actualKey: string): void {
