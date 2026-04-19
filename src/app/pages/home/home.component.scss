@@ -340,6 +340,15 @@ h1 {
   strong { color: $accent-blue; }
 }
 
+.trivia-bandera {
+  display: block;
+  width: 160px;
+  height: auto;
+  border-radius: $radius-sm;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  margin: 0 auto 8px;
+}
+
 .game-options {
   display: grid;
   gap: 10px;

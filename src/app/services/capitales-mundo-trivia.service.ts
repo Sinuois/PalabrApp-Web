@@ -7,12 +7,14 @@ export interface TriviaCapitalesMundo {
   opciones: string[];
   indiceCorrecto: number;
   datoExtra?: string;
+  imagenUrl?: string;
 }
 
 type CapitalMundo = {
   pais: string;
   capital: string;
   continente: string;
+  codigoISO?: string;
   datoExtra?: string;
 };
 
@@ -31,7 +33,8 @@ export class CapitalesMundoTriviaService {
     const plantillas: Array<() => TriviaCapitalesMundo | null> = [
       () => this.generarCapitalDePais(banco),
       () => this.generarPaisDeCapital(banco),
-      () => this.generarContinenteDePais(banco)
+      () => this.generarContinenteDePais(banco),
+      () => this.generarBandera(banco)
     ];
 
     let fallback: TriviaCapitalesMundo | null = null;
@@ -93,12 +96,13 @@ export class CapitalesMundoTriviaService {
       const pais = partes[1];
       const capital = partes[2];
       const continente = this.normalizarContinente(partes[3]);
-      const datoExtra = partes[4] || undefined;
+      const codigoISO = partes[4] || undefined;
+      const datoExtra = partes[5] || undefined;
 
       if (!pais || !capital || !continente) continue;
       if (banco.some((it) => it.pais === pais || it.capital === capital)) continue;
 
-      banco.push({ pais, capital, continente, datoExtra });
+      banco.push({ pais, capital, continente, codigoISO, datoExtra });
     }
 
     return banco;
@@ -153,6 +157,29 @@ export class CapitalesMundoTriviaService {
     };
   }
 
+  private generarBandera(banco: CapitalMundo[]): TriviaCapitalesMundo | null {
+    const conBandera = banco.filter((it) => it.codigoISO);
+    if (conBandera.length < 4) return null;
+
+    const correcta = this.elegirUno(conBandera);
+    if (!correcta || !correcta.codigoISO) return null;
+
+    const distractores = this.muestraDistinta(
+      conBandera.filter((it) => it.pais !== correcta.pais).map((it) => it.pais),
+      3
+    );
+    if (distractores.length < 3) return null;
+
+    const opciones = this.barajar([correcta.pais, ...distractores]);
+    return {
+      pregunta: '¿A qué país pertenece esta bandera?',
+      opciones,
+      indiceCorrecto: opciones.findIndex((op) => op === correcta.pais),
+      imagenUrl: `https://flagicons.lipis.dev/flags/4x3/${correcta.codigoISO}.svg`,
+      datoExtra: correcta.datoExtra
+    };
+  }
+
   private generarContinenteDePais(banco: CapitalMundo[]): TriviaCapitalesMundo | null {
     const correcta = this.elegirUno(banco);
     if (!correcta) return null;
@@ -173,12 +200,16 @@ export class CapitalesMundoTriviaService {
     };
   }
 
+  private claveReciente(reto: TriviaCapitalesMundo): string {
+    return reto.imagenUrl ? reto.imagenUrl : reto.pregunta;
+  }
+
   private esPreguntaReciente(reto: TriviaCapitalesMundo): boolean {
-    return this.preguntasRecientes.includes(reto.pregunta);
+    return this.preguntasRecientes.includes(this.claveReciente(reto));
   }
 
   private registrarPreguntaReciente(reto: TriviaCapitalesMundo): void {
-    this.preguntasRecientes.push(reto.pregunta);
+    this.preguntasRecientes.push(this.claveReciente(reto));
     if (this.preguntasRecientes.length > this.maxPreguntasRecientes) {
       this.preguntasRecientes.shift();
     }

@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   sopaPrimerToque: SopaCelda | null = null;
   sopaRutaInvalida = signal<Array<{ f: number; c: number }>>([]);
   triviaDatoExtra = signal('');
+  triviaImagenUrl = signal('');
   iconosModalidadesListos = signal(false);
   private listaTouchInicioX = 0;
   private listaTouchInicioY = 0;
@@ -535,7 +536,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     if (this.modalidadJuegoActiva() === 'capitales') {
-      return '¡Trivia de capitales del mundo!';
+      return '¡Trivia de países y capitales!';
     }
 
     if (this.modalidadJuegoActiva() === 'arte') {
@@ -570,6 +571,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mensajeJuego.set('');
     this.mostrarCelebracion.set(false);
     this.triviaDatoExtra.set('');
+    this.triviaImagenUrl.set('');
 
     const modalidadSeleccionada = this.modalidadJuego();
     let modalidadObjetivo: ModalidadActiva;
@@ -703,19 +705,21 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
+    this.triviaImagenUrl.set('');
 
     try {
       const reto = await this.capitalesTriviaService.generarPregunta();
       if (!reto) {
-        this.mensajeJuego.set('No se pudo generar una pregunta de capitales del mundo en este momento.');
+        this.mensajeJuego.set('No se pudo generar una pregunta de países y capitales en este momento.');
         return;
       }
 
       this.triviaDatoExtra.set(reto.datoExtra ?? '');
+      this.triviaImagenUrl.set(reto.imagenUrl ?? '');
 
       const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
       if (!exito) {
-        this.mensajeJuego.set('No se pudo preparar la trivia de capitales del mundo en este intento.');
+        this.mensajeJuego.set('No se pudo preparar la trivia de países y capitales en este intento.');
       }
     } finally {
       this.juegoCargando.set(false);

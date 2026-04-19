@@ -183,7 +183,7 @@
               <span class="mode-icon-fallback">CAP</span>
             </ng-container>
           </span>
-          <span class="mode-label">{{ cargandoSeleccionModalidad() === 'capitales' ? 'Preparando...' : 'Capitales del mundo' }}</span>
+          <span class="mode-label">{{ cargandoSeleccionModalidad() === 'capitales' ? 'Preparando...' : 'Países y capitales' }}</span>
         </button>
         <button
           type="button"
@@ -318,7 +318,13 @@
       <p class="game-loading" *ngIf="juegoCargando()">Preparando reto...</p>
 
       <ng-container *ngIf="!juegoCargando() && triviaService.conceptoJuego()">
-        <p class="game-concepto">{{ etiquetaPromptTrivia() }}: <strong>{{ triviaService.conceptoJuego() }}</strong></p>
+        <ng-container *ngIf="triviaImagenUrl(); else preguntaTexto">
+          <img class="trivia-bandera" [src]="triviaImagenUrl()" [alt]="triviaService.conceptoJuego()" />
+          <p class="game-concepto">{{ triviaService.conceptoJuego() }}</p>
+        </ng-container>
+        <ng-template #preguntaTexto>
+          <p class="game-concepto">{{ etiquetaPromptTrivia() }}: <strong>{{ triviaService.conceptoJuego() }}</strong></p>
+        </ng-template>
 
         <div class="game-options">
           <button
