@@ -315,9 +315,15 @@ h1 {
 }
 
 @media (max-width: 767px) {
-  .game-modal-overlay.crossword-mode,
-  .game-modal-overlay.sopa-mode {
+  .game-modal-overlay.crossword-mode {
     align-items: flex-start;
+    justify-content: center;
+    padding: 12px;
+    overflow-y: auto;
+  }
+
+  .game-modal-overlay.sopa-mode {
+    align-items: center;
     justify-content: center;
     padding: 12px;
     overflow-y: auto;

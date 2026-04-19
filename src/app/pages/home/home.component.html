@@ -502,6 +502,7 @@
               [ngClass]="{
                 'is-selected': esCeldaSopaSeleccionada(celda.key),
                 'is-found': esCeldaSopaEncontrada(celda.key),
+                'is-invalid': esCeldaSopaInvalida(celda.key),
                 'is-start': sopaService.sopaSeleccionInicio()?.f === celda.fila && sopaService.sopaSeleccionInicio()?.c === celda.columna
               }"
               (pointerdown)="iniciarArrastreSopa(celda.fila, celda.columna)"

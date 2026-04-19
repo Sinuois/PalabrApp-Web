@@ -172,7 +172,7 @@ export class CrucigramaService {
     const gridSize = 9;
     const baseRow = 4;
 
-    for (let intento = 0; intento < 40; intento++) {
+    for (let intento = 0; intento < 70; intento++) {
       const barajadas = [...candidatas].sort(() => Math.random() - 0.5);
       const base = barajadas[0];
       const palabraBase = this.limpiarConceptoCrucigrama(base.concepto);
@@ -181,6 +181,7 @@ export class CrucigramaService {
 
       const baseStartCol = Math.floor((gridSize - palabraBase.length) / 2);
       const usadasCols = new Set<number>();
+      const usadasRows = new Set<number>([baseRow]);
       const palabras: CrucigramaPalabra[] = [
         {
           id: 'H1',
@@ -200,51 +201,23 @@ export class CrucigramaService {
       for (const candidata of barajadas.slice(1)) {
         if (palabras.length >= 4) break;
         const concepto = this.limpiarConceptoCrucigrama(candidata.concepto);
-        let agregada = false;
+        const ultimaDireccion = palabras[palabras.length - 1]?.direccion ?? 'horizontal';
+        const direccionPreferida: 'horizontal' | 'vertical' = ultimaDireccion === 'horizontal' ? 'vertical' : 'horizontal';
 
-        for (let i = 0; i < palabraBase.length && !agregada; i++) {
-          const letraBaseNorm = this.normalizarLetraCrucigrama(palabraBase[i]);
-          const colCruce = baseStartCol + i;
-          if (usadasCols.has(colCruce)) continue;
-
-          for (let j = 0; j < concepto.length && !agregada; j++) {
-            if (this.normalizarLetraCrucigrama(concepto[j]) !== letraBaseNorm) continue;
-
-            const startRow = baseRow - j;
-            if (startRow < 0 || startRow + concepto.length > gridSize) continue;
-
-            let conflicto = false;
-            for (let k = 0; k < concepto.length; k++) {
-              const row = startRow + k;
-              const key = `${row}-${colCruce}`;
-              const existente = ocupadas.get(key);
-
-              if (existente && this.normalizarLetraCrucigrama(existente) !== this.normalizarLetraCrucigrama(concepto[k])) {
-                conflicto = true;
-                break;
-              }
-            }
-
-            if (conflicto) continue;
-
-            for (let k = 0; k < concepto.length; k++) {
-              const row = startRow + k;
-              ocupadas.set(`${row}-${colCruce}`, concepto[k]);
-            }
-
-            usadasCols.add(colCruce);
-            palabras.push({
-              id: `V${palabras.length}`,
-              concepto,
-              significado: candidata.significado,
-              direccion: 'vertical',
-              fila: startRow,
-              columna: colCruce
-            });
-            agregada = true;
-          }
-        }
+        this.intentarAgregarPalabra(
+          palabras,
+          ocupadas,
+          concepto,
+          candidata.significado,
+          direccionPreferida,
+          gridSize,
+          usadasCols,
+          usadasRows
+        );
       }
+
+      const hayConsecutivasMismaDireccion = palabras.some((p, idx) => idx > 0 && palabras[idx - 1].direccion === p.direccion);
+      if (hayConsecutivasMismaDireccion) continue;
 
       const verticales = palabras.filter(p => p.direccion === 'vertical');
       if (verticales.length < 2) continue;
@@ -368,6 +341,78 @@ export class CrucigramaService {
     return null;
   }
 
+  private intentarAgregarPalabra(
+    palabras: CrucigramaPalabra[],
+    ocupadas: Map<string, string>,
+    concepto: string,
+    significado: string,
+    direccion: 'horizontal' | 'vertical',
+    gridSize: number,
+    usadasCols: Set<number>,
+    usadasRows: Set<number>
+  ): boolean {
+    const palabrasCruce = palabras.filter(p => p.direccion !== direccion);
+
+    for (const palabraCruce of palabrasCruce) {
+      for (let i = 0; i < palabraCruce.concepto.length; i++) {
+        const filaCruce = palabraCruce.direccion === 'horizontal' ? palabraCruce.fila : palabraCruce.fila + i;
+        const colCruce = palabraCruce.direccion === 'horizontal' ? palabraCruce.columna + i : palabraCruce.columna;
+        const letraCruce = palabraCruce.concepto[i];
+
+        if (direccion === 'vertical' && usadasCols.has(colCruce)) continue;
+        if (direccion === 'horizontal' && usadasRows.has(filaCruce)) continue;
+
+        for (let j = 0; j < concepto.length; j++) {
+          if (this.normalizarLetraCrucigrama(concepto[j]) !== this.normalizarLetraCrucigrama(letraCruce)) continue;
+
+          const startRow = direccion === 'vertical' ? filaCruce - j : filaCruce;
+          const startCol = direccion === 'horizontal' ? colCruce - j : colCruce;
+
+          if (startRow < 0 || startCol < 0) continue;
+          if (direccion === 'vertical' && startRow + concepto.length > gridSize) continue;
+          if (direccion === 'horizontal' && startCol + concepto.length > gridSize) continue;
+
+          let conflicto = false;
+          for (let k = 0; k < concepto.length; k++) {
+            const row = direccion === 'vertical' ? startRow + k : startRow;
+            const col = direccion === 'horizontal' ? startCol + k : startCol;
+            const key = `${row}-${col}`;
+            const existente = ocupadas.get(key);
+
+            if (existente && this.normalizarLetraCrucigrama(existente) !== this.normalizarLetraCrucigrama(concepto[k])) {
+              conflicto = true;
+              break;
+            }
+          }
+
+          if (conflicto) continue;
+
+          for (let k = 0; k < concepto.length; k++) {
+            const row = direccion === 'vertical' ? startRow + k : startRow;
+            const col = direccion === 'horizontal' ? startCol + k : startCol;
+            ocupadas.set(`${row}-${col}`, concepto[k]);
+          }
+
+          if (direccion === 'vertical') usadasCols.add(startCol);
+          if (direccion === 'horizontal') usadasRows.add(startRow);
+
+          const idPrefix = direccion === 'horizontal' ? 'H' : 'V';
+          palabras.push({
+            id: `${idPrefix}${palabras.length + 1}`,
+            concepto,
+            significado,
+            direccion,
+            fila: startRow,
+            columna: startCol
+          });
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
   private sanitizarEntradaCrucigrama(valor: string): string {
     if (!valor) return '';
     const ultimo = valor.trim().toUpperCase().slice(-1);
@@ -431,14 +476,18 @@ export class CrucigramaService {
   }
 
   private contarCeldasActivasEnDireccion(fila: number, columna: number, dr: number, dc: number): number {
+    if (dr === 0 && dc === 0) return 0;
+
     let total = 0;
     let r = fila + dr;
     let c = columna + dc;
+    let pasos = 0;
 
-    while (this.esCeldaActivaCrucigrama(`${r}-${c}`)) {
+    while (this.esCeldaActivaCrucigrama(`${r}-${c}`) && pasos < 20) {
       total++;
       r += dr;
       c += dc;
+      pasos++;
     }
 
     return total;
@@ -481,15 +530,19 @@ export class CrucigramaService {
 
     const dr = direccion === 'v' ? 1 : 0;
     const dc = direccion === 'h' ? 1 : 0;
+    if (dr === 0 && dc === 0) return null;
+
     let fila = actual.fila + dr;
     let col = actual.columna + dc;
+    let pasos = 0;
 
-    while (this.esCeldaActivaCrucigrama(`${fila}-${col}`)) {
+    while (this.esCeldaActivaCrucigrama(`${fila}-${col}`) && pasos < 20) {
       if (this.esCeldaActivaYEditableCrucigrama(`${fila}-${col}`)) {
         return `${fila}-${col}`;
       }
       fila += dr;
       col += dc;
+      pasos++;
     }
 
     return null;
