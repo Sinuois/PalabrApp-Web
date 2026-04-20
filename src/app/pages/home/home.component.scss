@@ -62,6 +62,8 @@
   padding: 14px 22px;
   border-bottom: 1px solid $border-subtle;
   flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .header-brand { display: flex; align-items: center; gap: 10px; }

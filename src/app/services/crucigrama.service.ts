@@ -386,6 +386,11 @@ export class CrucigramaService {
               conflicto = true;
               break;
             }
+
+            if (!existente && this.tieneAdyacenciaNoPermitida(row, col, direccion, ocupadas)) {
+              conflicto = true;
+              break;
+            }
           }
 
           if (conflicto) continue;
@@ -480,6 +485,19 @@ export class CrucigramaService {
     if (antesFila >= 0 && ocupadas.has(`${antesFila}-${columna}`)) return false;
     if (despuesFila < gridSize && ocupadas.has(`${despuesFila}-${columna}`)) return false;
     return true;
+  }
+
+  private tieneAdyacenciaNoPermitida(
+    fila: number,
+    columna: number,
+    direccion: 'horizontal' | 'vertical',
+    ocupadas: Map<string, string>
+  ): boolean {
+    if (direccion === 'horizontal') {
+      return ocupadas.has(`${fila - 1}-${columna}`) || ocupadas.has(`${fila + 1}-${columna}`);
+    }
+
+    return ocupadas.has(`${fila}-${columna - 1}`) || ocupadas.has(`${fila}-${columna + 1}`);
   }
 
   private actualizarDireccionCrucigrama(actualKey: string): void {

@@ -46,12 +46,21 @@ export class MusicaPianoTriviaService {
 
   private acordes: AcordeMusical[] = [
     { nombre: 'Do mayor', teclas: [0, 4, 7] },
+    { nombre: 'Do menor', teclas: [0, 3, 7] },
     { nombre: 'Re menor', teclas: [2, 5, 9] },
+    { nombre: 'Re mayor', teclas: [2, 6, 9] },
     { nombre: 'Mi menor', teclas: [4, 7, 11] },
+    { nombre: 'Mi mayor', teclas: [4, 8, 11] },
     { nombre: 'Fa mayor', teclas: [5, 9, 0] },
+    { nombre: 'Fa menor', teclas: [5, 8, 0] },
     { nombre: 'Sol mayor', teclas: [7, 11, 2] },
+    { nombre: 'Sol menor', teclas: [7, 10, 2] },
     { nombre: 'La menor', teclas: [9, 0, 4] },
-    { nombre: 'Si disminuido', teclas: [11, 2, 5] }
+    { nombre: 'La mayor', teclas: [9, 1, 4] },
+    { nombre: 'Si disminuido', teclas: [11, 2, 5] },
+    { nombre: 'Mi disminuido', teclas: [4, 7, 10] },
+    { nombre: 'Do sus4', teclas: [0, 5, 7] },
+    { nombre: 'Sol sus4', teclas: [7, 0, 2] }
   ];
 
   private audioContext: AudioContext | null = null;
@@ -77,7 +86,7 @@ export class MusicaPianoTriviaService {
     }
   }
 
-  reproducirTecla(teclaIdx: number, duracion = 0.38): void {
+  reproducirTecla(teclaIdx: number, duracion = 1.25): void {
     const nota = this.notas.find(n => n.teclaIdx === teclaIdx);
     if (!nota) return;
 
@@ -85,12 +94,12 @@ export class MusicaPianoTriviaService {
     if (!ctx) return;
 
     const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
+    const gain = ctx.createGain(); 
     osc.type = 'sine';
     osc.frequency.setValueAtTime(nota.frecuencia, ctx.currentTime);
 
     gain.gain.setValueAtTime(0.0001, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.22, ctx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.7, ctx.currentTime + 0.02);
     gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duracion);
 
     osc.connect(gain);

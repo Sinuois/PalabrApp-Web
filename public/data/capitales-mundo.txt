@@ -17,7 +17,7 @@ P|Costa Rica|San José|América|cr|San José es considerada una de las capitales
 P|Cuba|La Habana|Caribe|cu|El casco histórico de La Habana es Patrimonio de la Humanidad.
 P|Dinamarca|Copenhague|Europa|dk|Copenhague es una de las ciudades más amigables con las bicicletas del mundo.
 P|Ecuador|Quito|América|ec|Quito está ubicada muy cerca de la línea ecuatorial.
-P|Egipto|El Cairo|África|eg|Cerca de El Cairo se encuentran las pirámides de Giza.
+P|Egipto|El Cairo|África y Asia|eg|Cerca de El Cairo se encuentran las pirámides de Giza.
 P|El Salvador|San Salvador|América|sv|San Salvador se ubica en una zona sísmica activa.
 P|Emiratos Árabes Unidos|Abu Dabi|Asia|ae|El país posee algunas de las mayores reservas de petróleo del mundo.
 P|España|Madrid|Europa|es|Madrid es una de las capitales más altas de Europa.
@@ -52,14 +52,14 @@ P|Reino Unido|Londres|Europa|gb|Londres ha sido un centro financiero global por 
 P|República Checa|Praga|Europa|cz|El casco histórico de Praga es Patrimonio de la Humanidad.
 P|República Dominicana|Santo Domingo|Caribe|do|Santo Domingo fue la primera ciudad europea permanente en América.
 P|Rumanía|Bucarest|Europa|ro|Bucarest tiene uno de los edificios administrativos más grandes del mundo.
-P|Rusia|Moscú|Europa|ru|El Kremlin es uno de los símbolos más reconocidos de Moscú.
+P|Rusia|Moscú|Europa y Asia|ru|El Kremlin es uno de los símbolos más reconocidos de Moscú.
 P|Senegal|Dakar|África|sn|Dakar es un importante centro cultural de África occidental.
 P|Singapur|Singapur|Asia|sg|Singapur es uno de los principales centros financieros del mundo.
 P|Sudáfrica|Pretoria|África|za|Sudáfrica tiene tres capitales: ejecutiva, legislativa y judicial.
 P|Suecia|Estocolmo|Europa|se|Estocolmo está construida sobre 14 islas.
 P|Suiza|Berna|Europa|ch|Berna es conocida por su neutralidad histórica.
 P|Tailandia|Bangkok|Asia|th|Bangkok tiene uno de los nombres oficiales más largos del mundo.
-P|Turquía|Ankara|Asia|tr|Ankara se convirtió en capital tras la fundación de la república moderna.
+P|Turquía|Ankara|Europa y Asia|tr|Ankara se convirtió en capital tras la fundación de la república moderna.
 P|Uruguay|Montevideo|América|uy|Montevideo concentra casi la mitad de la población del país.
 P|Venezuela|Caracas|América|ve|Caracas está cerca del mar Caribe pero separada por montañas.
 P|Vietnam|Hanoi|Asia|vn|Hanoi tiene más de mil años de historia.

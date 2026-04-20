@@ -564,7 +564,7 @@
       <button
         type="button"
         class="btn-secondary btn-revisar"
-        *ngIf="tipoJuego() === 'crucigrama' && !juegoCargando()"
+        *ngIf="tipoJuego() === 'crucigrama' && !juegoCargando() && crucigramaService.crucigramaResuelto() !== true"
         (pointerup)="onRevisarCrucigramaTap($event)"
         (click)="onRevisarCrucigramaTap($event)"
         (touchend)="onRevisarCrucigramaTap($event)"
