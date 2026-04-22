@@ -329,8 +329,8 @@
               [attr.aria-label]="'Nota ' + nota.nombre"
               [ngClass]="{
                 'is-selected': musicaPianoTriviaService.esCorrecta() === null && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx),
-                'is-correct': musicaPianoTriviaService.esCorrecta() === true && musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx),
-                'is-incorrect': musicaPianoTriviaService.esCorrecta() === false && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx)
+                'is-correct': musicaPianoTriviaService.esCorrecta() !== null && musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx),
+                'is-incorrect': musicaPianoTriviaService.esCorrecta() === false && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx) && !musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx)
               }"
               *ngFor="let nota of musicaPianoTriviaService.obtenerNotasBlancas()"
               [disabled]="musicaPianoTriviaService.esCorrecta() !== null"
@@ -348,8 +348,8 @@
               [style.left.%]="musicaPianoTriviaService.obtenerPosicionNegra(nota.teclaIdx)"
               [ngClass]="{
                 'is-selected': musicaPianoTriviaService.esCorrecta() === null && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx),
-                'is-correct': musicaPianoTriviaService.esCorrecta() === true && musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx),
-                'is-incorrect': musicaPianoTriviaService.esCorrecta() === false && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx)
+                'is-correct': musicaPianoTriviaService.esCorrecta() !== null && musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx),
+                'is-incorrect': musicaPianoTriviaService.esCorrecta() === false && musicaPianoTriviaService.teclaEstaSeleccionada(nota.teclaIdx) && !musicaPianoTriviaService.teclaEsParteObjetivo(nota.teclaIdx)
               }"
               *ngFor="let nota of musicaPianoTriviaService.obtenerNotasNegras()"
               [disabled]="musicaPianoTriviaService.esCorrecta() !== null"
@@ -558,6 +558,19 @@
 
     <p class="game-feedback" *ngIf="mensajeJuego()">{{ mensajeJuego() }}</p>
     <p class="game-extra-fact" *ngIf="datoExtraTriviaVisible()">{{ datoExtraTriviaVisible() }}</p>
+    <p [class]="'game-streak ' + obtenerClaseRacha() + (mostrarAnimacionRacha() ? ' pulse-animation' : '')" *ngIf="!juegoCargando()">
+      <span class="streak-badge" *ngIf="rachaVictorias() >= 3">
+        <span class="badge-icon">
+          <span *ngIf="rachaVictorias() < 5">🔥</span>
+          <span *ngIf="rachaVictorias() >= 5 && rachaVictorias() < 10">🔥🔥</span>
+          <span *ngIf="rachaVictorias() >= 10 && rachaVictorias() < 15">⭐</span>
+          <span *ngIf="rachaVictorias() >= 15 && rachaVictorias() < 20">⭐⭐</span>
+          <span *ngIf="rachaVictorias() >= 20 && rachaVictorias() < 25">👑</span>
+          <span *ngIf="rachaVictorias() >= 25">🏆</span>
+        </span>
+      </span>
+      Racha: <strong>{{ rachaVictorias() }}</strong> · Mejor racha: <strong>{{ mejorRachaVictorias() }}</strong>
+    </p>
 
     <div class="game-actions" [ngClass]="{ 'crossword-actions': tipoJuego() === 'crucigrama', 'sopa-actions': tipoJuego() === 'sopa', 'piano-actions': modoPianoActivado() }">
       <button

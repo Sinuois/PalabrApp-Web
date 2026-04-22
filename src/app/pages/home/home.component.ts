@@ -62,6 +62,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   modalidadJuegoActiva = signal<ModalidadActiva>('vocabulario');
   mensajeJuego = signal('');
   mostrarCelebracion = signal(false);
+  rachaVictorias = signal(0);
+  mejorRachaVictorias = signal(0);
+  mostrarAnimacionRacha = signal(false);
   cargandoSeleccionModalidad = signal<ModalidadJuego | null>(null);
   cargandoInicioJuego = signal(false);
   cargandoOtroJuego = signal(false);
@@ -583,13 +586,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const gano = this.triviaService.resolverOpcion(indice);
     if (gano) {
+      this.registrarVictoria();
       this.mostrarCelebracion.set(true);
       this.mensajeJuego.set('¡Felicitaciones, sigue así!');
       setTimeout(() => this.mostrarCelebracion.set(false), 3000);
       return;
     }
 
-    this.mensajeJuego.set('No pasa nada, inténtalo de nuevo.');
+    this.registrarDerrota();
+    this.mensajeJuego.set('No pasa nada. ¡Más suerte la próxima vez!');
   }
 
   onResolverOpcionTap(event: Event, indice: number): void {
@@ -609,13 +614,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const gano = this.musicaPianoTriviaService.verificarRespuestaNota(indiceTecla);
     if (gano) {
+      this.registrarVictoria();
       this.mostrarCelebracion.set(true);
       this.mensajeJuego.set('¡Correcto! ¡Excelente!');
       setTimeout(() => this.mostrarCelebracion.set(false), 3000);
       return;
     }
 
-    this.mensajeJuego.set('No es esa nota, inténtalo de nuevo.');
+    this.registrarDerrota();
+    this.mensajeJuego.set('Esa nota no es correcta. ¡Más suerte la próxima vez!');
   }
 
   onResolverOpcionPianoTap(event: Event, indiceTecla: number): void {
@@ -632,12 +639,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     if (resultado) {
+      this.registrarVictoria();
       this.mostrarCelebracion.set(true);
       this.mensajeJuego.set('¡Acorde correcto!');
       setTimeout(() => this.mostrarCelebracion.set(false), 3000);
       return;
     }
 
+    this.registrarDerrota();
     this.mensajeJuego.set('Ese no es el acorde correcto.');
   }
 
@@ -1047,6 +1056,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     const { gano, perdio } = this.ahorcadoService.verificarEstado();
 
     if (gano) {
+      this.registrarVictoria();
       this.mostrarCelebracion.set(true);
       this.mensajeJuego.set('¡Lo adivinaste!');
       setTimeout(() => this.mostrarCelebracion.set(false), 3000);
@@ -1054,6 +1064,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     if (perdio) {
+      this.registrarDerrota();
       this.mensajeJuego.set(`Perdiste. La palabra era: ${this.ahorcadoService.palabraAhorcado()}`);
     }
   }
@@ -1133,6 +1144,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     }
 
+    this.registrarVictoria();
     this.mostrarCelebracion.set(true);
     this.mensajeJuego.set('¡Crucigrama resuelto!');
     setTimeout(() => this.mostrarCelebracion.set(false), 3000);
@@ -1377,6 +1389,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     const halladas = this.sopaService.sopaEncontradas().size;
 
     if (halladas >= total) {
+      this.registrarVictoria();
       this.mostrarCelebracion.set(true);
       this.mensajeJuego.set('¡Sopa completada!');
       setTimeout(() => this.mostrarCelebracion.set(false), 3000);
@@ -1561,6 +1574,31 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   datoExtraTriviaVisible(): string {
     if (this.triviaService.indiceSeleccionado() === null) return '';
     return this.mensajeDatoTrivia();
+  }
+
+  private registrarVictoria(): void {
+    const siguienteRacha = this.rachaVictorias() + 1;
+    this.rachaVictorias.set(siguienteRacha);
+    if (siguienteRacha > this.mejorRachaVictorias()) {
+      this.mejorRachaVictorias.set(siguienteRacha);
+    }
+    this.mostrarAnimacionRacha.set(true);
+    setTimeout(() => this.mostrarAnimacionRacha.set(false), 600);
+  }
+
+  private registrarDerrota(): void {
+    this.rachaVictorias.set(0);
+  }
+
+  obtenerClaseRacha(): string {
+    const racha = this.rachaVictorias();
+    if (racha === 0) return 'streak-none';
+    if (racha < 3) return 'streak-low';
+    if (racha < 5) return 'streak-medium';
+    if (racha < 10) return 'streak-high';
+    if (racha < 15) return 'streak-very-high';
+    if (racha < 20) return 'streak-epic';
+    return 'streak-legendary';
   }
 
   private seleccionarDatoCuriosoInicio(): void {

@@ -787,6 +787,163 @@ h1 {
   text-align: center;
 }
 
+.game-streak {
+  margin: 10px 0 0 !important;
+  color: $text-secondary;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-block;
+  width: 100%;
+
+  strong {
+    color: $accent-green;
+    font-weight: 800;
+  }
+
+  // Animación de pulso al obtener victoria
+  &.pulse-animation {
+    animation: pulso-racha 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  // Niveles de racha con colores y tamaños dinámicos
+  &.streak-none {
+    opacity: 0.5;
+    font-size: 0.82rem;
+
+    strong {
+      color: $text-secondary;
+    }
+  }
+
+  &.streak-low {
+    font-size: 0.95rem;
+    color: $text-primary;
+
+    strong {
+      color: $accent-blue;
+    }
+  }
+
+  &.streak-medium {
+    font-size: 1rem;
+    font-weight: 500;
+
+    strong {
+      color: $accent-green;
+      text-shadow: 0 0 8px rgba(102, 187, 106, 0.3);
+    }
+  }
+
+  &.streak-high {
+    font-size: 1.05rem;
+    font-weight: 600;
+
+    strong {
+      color: $accent-green;
+      text-shadow: 0 0 12px rgba(102, 187, 106, 0.5);
+      font-size: 1.1em;
+    }
+  }
+
+  &.streak-very-high {
+    font-size: 1.08rem;
+    font-weight: 600;
+
+    strong {
+      color: #ffd700;
+      text-shadow: 0 0 16px rgba(255, 215, 0, 0.6);
+      font-size: 1.15em;
+    }
+  }
+
+  &.streak-epic {
+    font-size: 1.12rem;
+    font-weight: 700;
+
+    strong {
+      color: #ff6b9d;
+      text-shadow: 0 0 20px rgba(255, 107, 157, 0.6);
+      font-size: 1.2em;
+    }
+  }
+
+  &.streak-legendary {
+    font-size: 1.15rem;
+    font-weight: 700;
+
+    strong {
+      background: linear-gradient(135deg, #ff6b9d, #ffd700, #66bb6a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      font-size: 1.25em;
+      animation: shimmer-text 2s infinite;
+    }
+  }
+}
+
+.streak-badge {
+  display: inline-block;
+  margin-right: 6px;
+  animation: float-badge 2s ease-in-out infinite;
+
+  .badge-icon {
+    display: inline-block;
+    font-size: 1.2em;
+    animation: bounce-badge 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  }
+}
+
+// Animaciones
+@keyframes pulso-racha {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float-badge {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes bounce-badge {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes shimmer-text {
+  0% {
+    background: linear-gradient(135deg, #ff6b9d, #ffd700, #66bb6a);
+    -webkit-background-clip: text;
+  }
+  50% {
+    background: linear-gradient(135deg, #66bb6a, #ff6b9d, #ffd700);
+    -webkit-background-clip: text;
+  }
+  100% {
+    background: linear-gradient(135deg, #ffd700, #66bb6a, #ff6b9d);
+    -webkit-background-clip: text;
+  }
+}
+
+
 .game-significado {
   color: $text-primary;
   font-size: 0.95rem;
