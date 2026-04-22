@@ -513,6 +513,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cargandoOtroJuego.set(true);
     this.juegoAbriendoHasta = Date.now() + 300; // Bloquear eventos de juego durante 300ms
     try {
+      if (this.debeReiniciarRachaPorSalto()) {
+        this.registrarDerrota();
+      }
       await this.prepararJuego(this.tipoJuego());
     } finally {
       this.cargandoOtroJuego.set(false);
@@ -700,6 +703,24 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   etiquetaBotonSiguienteJuego(): string {
     if (this.modalidadJuego() === 'aleatoria') return 'Siguiente juego';
     return this.modalidadJuegoActiva() === 'vocabulario' ? 'Siguiente juego' : 'Siguiente pregunta';
+  }
+
+  private debeReiniciarRachaPorSalto(): boolean {
+    switch (this.tipoJuego()) {
+      case 'trivia':
+        if (this.modoPianoActivado()) {
+          return this.musicaPianoTriviaService.esCorrecta() === null;
+        }
+        return this.triviaService.indiceSeleccionado() === null;
+      case 'ahorcado':
+        return this.ahorcadoService.juegoAhorcadoGanado() === null && this.ahorcadoService.intentosRestantes() > 0;
+      case 'crucigrama':
+        return this.crucigramaService.crucigramaResuelto() !== true;
+      case 'sopa':
+        return !this.sopaPalabrasCompletadas();
+      default:
+        return false;
+    }
   }
 
   private async prepararJuego(excluirTipo?: TipoJuego): Promise<void> {

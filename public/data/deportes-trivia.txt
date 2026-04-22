@@ -71,7 +71,7 @@ Q|¿Qué jugador fue expulsado por cabezazo en la final 2006?|Zinedine Zidane|Th
 Q|¿Qué club ganó la Champions League 2018?|Real Madrid|Liverpool|Bayern Múnich|Roma|Logró tres seguidas.
 Q|¿Qué arquero alemán fue campeón del mundo en 2014?|Manuel Neuer|Oliver Kahn|Ter Stegen|Lehmann|Revolucionó el puesto.
 Q|¿Qué club inglés ganó la Champions League 2012?|Chelsea|Manchester United|Arsenal|Liverpool|Derrotó al Bayern.
-Q|¿Qué jugador chileno jugó en el FC Barcelona?|Alexis Sánchez|Vidal|Bravo|Medel|Compartió con Messi.
+Q|¿Qué jugador chileno no jugó en el FC Barcelona?|Gary Medel|Alexis Sánchez|Arturo Vidal|Claudio Bravo|Sin embargo, al igual que sus compañeros, pasó gran parte de su carrera en Europa.
 Q|¿Qué club francés tiene como estadio el Parque de los Príncipes?|PSG|Lyon|Marseille|Monaco|Es su estadio principal.
 Q|¿Qué selección ganó la Eurocopa 2016?|Portugal|Francia|Alemania|España|Cristiano Ronaldo era figura.
 Q|¿Qué jugador portugués es máximo goleador de selecciones?|Cristiano Ronaldo|Eusébio|Figo|Nani|Tiene récord histórico.

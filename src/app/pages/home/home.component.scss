@@ -316,6 +316,19 @@ h1 {
   overflow-y: auto;
 }
 
+@media (min-width: 768px) {
+  .game-modal-overlay.trivia-mode {
+    padding: 24px;
+  }
+
+  .game-modal-overlay.trivia-mode .game-modal {
+    max-height: min(88dvh, 760px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+}
+
 @media (max-width: 767px) {
   .game-modal-overlay.trivia-mode {
     align-items: center;
