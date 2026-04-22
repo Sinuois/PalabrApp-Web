@@ -17,6 +17,7 @@ import { MusicaPianoTriviaService } from '../../services/musica-piano-trivia.ser
 import { CineTriviaService } from '../../services/cine-trivia.service';
 import { DeportesTriviaService } from '../../services/deportes-trivia.service';
 import { Palabra } from '../../interfaces/app.interfaces';
+import { DATOS_CURIOSOS_INICIO } from './datos-curiosos-inicio.data';
 import { Subject } from 'rxjs';
 
 type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
@@ -51,8 +52,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   // UI Orchestration state (only what component manages)
   isRefreshing = signal(false);
   errorCarga = signal(false);
-  mostrarInvitacionJuego = signal(true);
-  pasoInvitacionJuego = signal<'actualizacion' | 'modalidad'>('actualizacion');
+  mostrarInvitacionJuego = signal(false);
+  pasoInvitacionJuego = signal<'dato' | 'modalidad'>('dato');
+  datoCuriosoInicio = signal('');
   juegoActivo = signal(false);
   juegoCargando = signal(false);
   tipoJuego = signal<TipoJuego>('trivia');
@@ -204,8 +206,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Mostrar invitación solo una vez por sesión (solo en navegador)
-    if (this.leerJuegoPresentadoEnSesion()) {
+    // Evaluar popup inicial solo en navegador para evitar flicker por SSR/hidratacion.
+    if (typeof window !== 'undefined') {
+      if (this.leerJuegoPresentadoEnSesion()) {
+        this.mostrarInvitacionJuego.set(false);
+      } else {
+        this.seleccionarDatoCuriosoInicio();
+        this.mostrarInvitacionJuego.set(true);
+      }
+    } else {
       this.mostrarInvitacionJuego.set(false);
     }
     this.precalentarRutasSecundarias();
@@ -385,7 +394,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   cerrarInvitacionJuego(): void {
-    this.pasoInvitacionJuego.set('actualizacion');
+    this.pasoInvitacionJuego.set('dato');
     this.mostrarInvitacionJuego.set(false);
     this.marcarJuegoPresentadoEnSesion();
   }
@@ -433,7 +442,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cargandoSeleccionModalidad.set(modalidad);
     this.modalidadJuego.set(modalidad);
     this.mostrarInvitacionJuego.set(false);
-    this.pasoInvitacionJuego.set('actualizacion');
+    this.pasoInvitacionJuego.set('dato');
     this.juegoActivo.set(true);
     this.marcarJuegoPresentadoEnSesion();
 
@@ -1552,6 +1561,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   datoExtraTriviaVisible(): string {
     if (this.triviaService.indiceSeleccionado() === null) return '';
     return this.mensajeDatoTrivia();
+  }
+
+  private seleccionarDatoCuriosoInicio(): void {
+    if (DATOS_CURIOSOS_INICIO.length === 0) {
+      this.datoCuriosoInicio.set('');
+      return;
+    }
+
+    const indice = Math.floor(Math.random() * DATOS_CURIOSOS_INICIO.length);
+    this.datoCuriosoInicio.set(DATOS_CURIOSOS_INICIO[indice] ?? '');
   }
 
   private leerJuegoPresentadoEnSesion(): boolean {

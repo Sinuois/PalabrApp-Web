@@ -116,12 +116,11 @@
 <!-- Popup invitacion juego -->
 <div class="game-modal-overlay" *ngIf="mostrarInvitacionJuego() && cargado" (pointerup)="onOverlayInvitacionTap($event)" (click)="onOverlayInvitacionTap($event)" (touchend)="onOverlayInvitacionTap($event)">
   <div class="game-modal" (pointerup)="$event.stopPropagation()" (click)="$event.stopPropagation()" (touchend)="$event.stopPropagation()">
-    <ng-container *ngIf="pasoInvitacionJuego() === 'actualizacion'">
-      <h3>¡PalabrApp se ha actualizado!</h3>
-      <p>¡Se han agregado nuevas modalidades de juego! ¿Quieres descubrirlas?</p>
+    <ng-container *ngIf="pasoInvitacionJuego() === 'dato'">
+      <h3>¡Dato curioso del día!</h3>
+      <p>{{ datoCuriosoInicio() }}</p>
       <div class="game-actions">
-        <button type="button" class="btn-secondary" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Ahora no</button>
-        <button type="button" class="btn-primary" (pointerup)="onAceptarInvitacionTap($event)" (click)="onAceptarInvitacionTap($event)" (touchend)="onAceptarInvitacionTap($event)">Aceptar</button>
+        <button type="button" class="btn-primary" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Cerrar</button>
       </div>
     </ng-container>
 
