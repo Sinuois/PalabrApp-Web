@@ -23,6 +23,7 @@ import { Subject } from 'rxjs';
 type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
 type ModalidadJuego = 'aleatoria' | 'vocabulario' | 'geografia' | 'capitales' | 'arte' | 'ciencia' | 'musica' | 'cine' | 'deportes';
 type ModalidadActiva = Exclude<ModalidadJuego, 'aleatoria'>;
+type RachaPorModalidad = Record<ModalidadJuego, number>;
 type TriviaFallback = {
   pregunta: string;
   opciones: string[];
@@ -64,6 +65,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   mostrarCelebracion = signal(false);
   rachaVictorias = signal(0);
   mejorRachaVictorias = signal(0);
+  readonly metaRachaMaxima = 100;
+  private rachaPorModalidad = signal<RachaPorModalidad>(this.crearRachaInicialPorModalidad());
+  private mejorRachaPorModalidad = signal<RachaPorModalidad>(this.crearRachaInicialPorModalidad());
   mostrarAnimacionRacha = signal(false);
   cargandoSeleccionModalidad = signal<ModalidadJuego | null>(null);
   cargandoInicioJuego = signal(false);
@@ -209,6 +213,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.sincronizarRachaModalidadActiva();
+
     // Evaluar popup inicial solo en navegador para evitar flicker por SSR/hidratacion.
     if (typeof window !== 'undefined') {
       if (this.leerJuegoPresentadoEnSesion()) {
@@ -489,7 +495,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.juegoActivo.set(false);
     this.juegoCargando.set(false);
     this.tipoJuego.set('trivia');
+    this.modalidadJuego.set('aleatoria');
     this.modalidadJuegoActiva.set('vocabulario');
+    this.sincronizarRachaModalidadActiva();
     this.mensajeJuego.set('');
     this.cargandoInicioJuego.set(false);
     this.cargandoSeleccionModalidad.set(null);
@@ -743,6 +751,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       modalidadObjetivo = modalidadSeleccionada;
     }
     this.modalidadJuegoActiva.set(modalidadObjetivo);
+    this.sincronizarRachaModalidadActiva();
 
     if (modalidadObjetivo === 'geografia') {
       this.tipoJuego.set('trivia');
@@ -1598,27 +1607,95 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private registrarVictoria(): void {
-    const siguienteRacha = this.rachaVictorias() + 1;
-    this.rachaVictorias.set(siguienteRacha);
-    if (siguienteRacha > this.mejorRachaVictorias()) {
-      this.mejorRachaVictorias.set(siguienteRacha);
+    const modalidad = this.obtenerClaveRachaActual();
+    const rachasActuales = this.rachaPorModalidad();
+    const rachaActual = rachasActuales[modalidad] ?? 0;
+    const siguienteRacha = Math.min(rachaActual + 1, this.metaRachaMaxima);
+
+    this.rachaPorModalidad.set({
+      ...rachasActuales,
+      [modalidad]: siguienteRacha
+    });
+
+    const mejoresActuales = this.mejorRachaPorModalidad();
+    if (siguienteRacha > (mejoresActuales[modalidad] ?? 0)) {
+      this.mejorRachaPorModalidad.set({
+        ...mejoresActuales,
+        [modalidad]: siguienteRacha
+      });
     }
+
+    this.sincronizarRachaModalidadActiva();
     this.mostrarAnimacionRacha.set(true);
     setTimeout(() => this.mostrarAnimacionRacha.set(false), 600);
   }
 
   private registrarDerrota(): void {
-    this.rachaVictorias.set(0);
+    const modalidad = this.obtenerClaveRachaActual();
+    const rachasActuales = this.rachaPorModalidad();
+    if ((rachasActuales[modalidad] ?? 0) !== 0) {
+      this.rachaPorModalidad.set({
+        ...rachasActuales,
+        [modalidad]: 0
+      });
+    }
+    this.sincronizarRachaModalidadActiva();
+  }
+
+  private crearRachaInicialPorModalidad(): RachaPorModalidad {
+    return {
+      aleatoria: 0,
+      vocabulario: 0,
+      geografia: 0,
+      capitales: 0,
+      arte: 0,
+      ciencia: 0,
+      musica: 0,
+      cine: 0,
+      deportes: 0
+    };
+  }
+
+  private obtenerClaveRachaActual(): ModalidadJuego {
+    return this.modalidadJuego() === 'aleatoria' ? 'aleatoria' : this.modalidadJuegoActiva();
+  }
+
+  private sincronizarRachaModalidadActiva(): void {
+    const modalidad = this.obtenerClaveRachaActual();
+    const rachas = this.rachaPorModalidad();
+    const mejores = this.mejorRachaPorModalidad();
+    this.rachaVictorias.set(rachas[modalidad] ?? 0);
+    this.mejorRachaVictorias.set(mejores[modalidad] ?? 0);
+  }
+
+  rachaCompletada(): boolean {
+    return this.rachaVictorias() >= this.metaRachaMaxima;
+  }
+
+  obtenerInsigniaRacha(): string {
+    const racha = this.rachaVictorias();
+    if (racha < 10) return '';
+    if (racha < 20) return '🔥';
+    if (racha < 30) return '🔥🔥';
+    if (racha < 40) return '⭐';
+    if (racha < 50) return '⭐⭐';
+    if (racha < 60) return '🌟';
+    if (racha < 70) return '👑';
+    if (racha < 80) return '👑👑';
+    if (racha < 90) return '🏆';
+    if (racha < this.metaRachaMaxima) return '🏆🏆';
+    return '💎';
   }
 
   obtenerClaseRacha(): string {
     const racha = this.rachaVictorias();
     if (racha === 0) return 'streak-none';
-    if (racha < 3) return 'streak-low';
-    if (racha < 5) return 'streak-medium';
-    if (racha < 10) return 'streak-high';
-    if (racha < 15) return 'streak-very-high';
-    if (racha < 20) return 'streak-epic';
+    if (racha < 20) return 'streak-low';
+    if (racha < 40) return 'streak-medium';
+    if (racha < 60) return 'streak-high';
+    if (racha < 80) return 'streak-very-high';
+    if (racha < this.metaRachaMaxima) return 'streak-epic';
+    if (racha >= this.metaRachaMaxima) return 'streak-diamond';
     return 'streak-legendary';
   }
 

@@ -896,6 +896,21 @@ h1 {
       animation: shimmer-text 2s infinite;
     }
   }
+
+  &.streak-diamond {
+    font-size: 1.18rem;
+    font-weight: 800;
+
+    strong {
+      background: linear-gradient(135deg, #9be7ff, #e6ffff, #6fffe9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      font-size: 1.28em;
+      animation: diamond-shimmer-text 1.8s infinite;
+    }
+  }
 }
 
 .streak-badge {
@@ -907,7 +922,22 @@ h1 {
     display: inline-block;
     font-size: 1.2em;
     animation: bounce-badge 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+
+    &.is-diamond {
+      filter: drop-shadow(0 0 6px rgba(155, 231, 255, 0.9));
+      animation: diamond-badge-glow 1.2s ease-in-out infinite;
+    }
   }
+}
+
+.game-streak-goal {
+  margin: 8px 0 0 !important;
+  color: #9be7ff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(155, 231, 255, 0.35);
 }
 
 // Animaciones
@@ -953,6 +983,33 @@ h1 {
   100% {
     background: linear-gradient(135deg, #ffd700, #66bb6a, #ff6b9d);
     -webkit-background-clip: text;
+  }
+}
+
+@keyframes diamond-shimmer-text {
+  0% {
+    background: linear-gradient(135deg, #9be7ff, #e6ffff, #6fffe9);
+    -webkit-background-clip: text;
+  }
+  50% {
+    background: linear-gradient(135deg, #6fffe9, #9be7ff, #e6ffff);
+    -webkit-background-clip: text;
+  }
+  100% {
+    background: linear-gradient(135deg, #e6ffff, #6fffe9, #9be7ff);
+    -webkit-background-clip: text;
+  }
+}
+
+@keyframes diamond-badge-glow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  50% {
+    transform: scale(1.14);
+    opacity: 1;
   }
 }
 
@@ -1473,6 +1530,7 @@ h1 {
   gap: 10px;
   justify-content: center;
   margin-top: 14px;
+  flex-wrap: wrap;
 
   .btn-secondary,
   .btn-primary {
@@ -1530,6 +1588,7 @@ h1 {
       filter: none;
     }
   }
+
 }
 
 .game-actions.crossword-actions {

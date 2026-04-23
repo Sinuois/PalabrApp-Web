@@ -18,7 +18,6 @@
     </button>
   </div>
 
-  <!-- Header -->
   <header class="home-header">
     <div class="header-brand">
       <span class="brand-dot"></span>
@@ -559,17 +558,13 @@
     <p class="game-feedback" *ngIf="mensajeJuego()">{{ mensajeJuego() }}</p>
     <p class="game-extra-fact" *ngIf="datoExtraTriviaVisible()">{{ datoExtraTriviaVisible() }}</p>
     <p [class]="'game-streak ' + obtenerClaseRacha() + (mostrarAnimacionRacha() ? ' pulse-animation' : '')" *ngIf="!juegoCargando()">
-      <span class="streak-badge" *ngIf="rachaVictorias() >= 3">
-        <span class="badge-icon">
-          <span *ngIf="rachaVictorias() < 5">🔥</span>
-          <span *ngIf="rachaVictorias() >= 5 && rachaVictorias() < 10">🔥🔥</span>
-          <span *ngIf="rachaVictorias() >= 10 && rachaVictorias() < 15">⭐</span>
-          <span *ngIf="rachaVictorias() >= 15 && rachaVictorias() < 20">⭐⭐</span>
-          <span *ngIf="rachaVictorias() >= 20 && rachaVictorias() < 25">👑</span>
-          <span *ngIf="rachaVictorias() >= 25">🏆</span>
-        </span>
+      <span class="streak-badge" *ngIf="obtenerInsigniaRacha() as insignia">
+        <span class="badge-icon" [class.is-diamond]="rachaCompletada()">{{ insignia }}</span>
       </span>
       Racha: <strong>{{ rachaVictorias() }}</strong> · Mejor racha: <strong>{{ mejorRachaVictorias() }}</strong>
+    </p>
+    <p class="game-streak-goal" *ngIf="!juegoCargando() && rachaCompletada()">
+      ¡Llegaste al final de la racha! Eres verdaderamente una leyenda. Toma una captura a esto, por favor.
     </p>
 
     <div class="game-actions" [ngClass]="{ 'crossword-actions': tipoJuego() === 'crucigrama', 'sopa-actions': tipoJuego() === 'sopa', 'piano-actions': modoPianoActivado() }">
@@ -584,7 +579,7 @@
         Revisar
       </button>
       <button type="button" class="btn-secondary btn-close" (pointerup)="onCerrarJuegoTap($event)" (click)="onCerrarJuegoTap($event)" (touchend)="onCerrarJuegoTap($event)">Cerrar</button>
-      <button type="button" class="btn-primary" *ngIf="!juegoCargando()" [disabled]="cargandoOtroJuego()" (pointerup)="onJugarOtraTap($event)" (click)="onJugarOtraTap($event)" (touchend)="onJugarOtraTap($event)">
+      <button type="button" class="btn-primary" *ngIf="!juegoCargando() && !rachaCompletada()" [disabled]="cargandoOtroJuego()" (pointerup)="onJugarOtraTap($event)" (click)="onJugarOtraTap($event)" (touchend)="onJugarOtraTap($event)">
         <span *ngIf="cargandoOtroJuego()" class="btn-spinner" aria-hidden="true"></span>
         {{ cargandoOtroJuego() ? 'Cargando...' : etiquetaBotonSiguienteJuego() }}
       </button>
