@@ -8,13 +8,16 @@
   <!-- Error state -->
   <div class="error-overlay" *ngIf="errorCarga()">
     <span class="error-icon">⚡</span>
-    <p>No se pudo conectar al servidor.<br/>Comprueba tu conexión e intenta de nuevo.</p>
-    <button class="btn-retry" [disabled]="isRefreshing()" (click)="refrescar()">
+    <p *ngIf="sinConexion(); else mensajeErrorServidor">Sin conexión a internet.<br/>Vuelve a conectarte para reintentar.</p>
+    <ng-template #mensajeErrorServidor>
+      <p>No se pudo conectar al servidor.<br/>Comprueba tu conexión e intenta de nuevo.</p>
+    </ng-template>
+    <button class="btn-retry" [disabled]="isRefreshing() || sinConexion()" (click)="refrescar()">
       <svg *ngIf="!isRefreshing()" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
       </svg>
       <span *ngIf="isRefreshing()" class="btn-spinner" aria-hidden="true"></span>
-      {{ isRefreshing() ? 'Cargando...' : 'Reintentar' }}
+      {{ isRefreshing() ? 'Cargando...' : (sinConexion() ? 'Sin conexión' : 'Reintentar') }}
     </button>
   </div>
 

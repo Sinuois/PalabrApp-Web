@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   // UI Orchestration state (only what component manages)
   isRefreshing = signal(false);
   errorCarga = signal(false);
+  sinConexion = signal(false);
   mostrarInvitacionJuego = signal(false);
   pasoInvitacionJuego = signal<'dato' | 'modalidad'>('dato');
   datoCuriosoInicio = signal('');
@@ -213,6 +214,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    if (typeof navigator !== 'undefined') {
+      this.sinConexion.set(!navigator.onLine);
+    }
+
     this.sincronizarRachaModalidadActiva();
 
     // Evaluar popup inicial solo en navegador para evitar flicker por SSR/hidratacion.
@@ -227,7 +232,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       this.mostrarInvitacionJuego.set(false);
     }
     this.precalentarRutasSecundarias();
-    this.refrescar();
+    void this.refrescar(false);
 
     // Suscribirse a eventos del servicio compartido
     this.appActions.iniciarJuego$.subscribe(() => {
@@ -280,17 +285,43 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     } catch { /* Safari privado */ }
   }
 
-  async refrescar(): Promise<void> {
+  async refrescar(mostrarErrorSinConexion = true): Promise<void> {
     if (this.isRefreshing()) return;
+
+    if (typeof navigator !== 'undefined' && !navigator.onLine) {
+      this.sinConexion.set(true);
+      if (mostrarErrorSinConexion) {
+        this.errorCarga.set(true);
+        return;
+      }
+    }
 
     this.isRefreshing.set(true);
     this.errorCarga.set(false);
+    this.sinConexion.set(false);
     try {
       await this.palabrasService.cargarPalabras();
     } catch {
       this.errorCarga.set(true);
+      if (typeof navigator !== 'undefined') {
+        this.sinConexion.set(!navigator.onLine);
+      }
     } finally {
       this.isRefreshing.set(false);
+    }
+  }
+
+  @HostListener('window:online')
+  onOnline(): void {
+    this.sinConexion.set(false);
+  }
+
+  @HostListener('window:offline')
+  onOffline(): void {
+    this.sinConexion.set(true);
+    // Evita flicker al abrir: solo mostrar overlay si ya hubo carga inicial.
+    if (this.cargado) {
+      this.errorCarga.set(true);
     }
   }
 
