@@ -128,7 +128,7 @@
 
     <ng-container *ngIf="pasoInvitacionJuego() === 'modalidad'">
       <h3>Elige una temática de juego</h3>
-      <p>Puedes jugar con el formato clásico de vocabulario, elegir una trivia temática o dejar la modalidad en aleatorio.</p>
+      <br/>
       <div class="mode-selector-stage" [class.is-loading]="!iconosModalidadesListos()">
         <div class="mode-selector-loading" *ngIf="!iconosModalidadesListos()">
           <span class="btn-spinner" aria-hidden="true"></span>
