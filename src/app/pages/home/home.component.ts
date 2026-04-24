@@ -1035,6 +1035,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
+    this.triviaImagenUrl.set('');
+    this.triviaImagenCargando.set(false);
+    this.limpiarEsperaTriviaImagen();
+    this.triviaFallbackPendiente = null;
 
     try {
       const reto = await this.obtenerPreguntaUnicaTrivia('cine', () => this.cineTriviaService.generarPregunta());
@@ -1044,6 +1048,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       }
 
       this.triviaDatoExtra.set(reto.datoExtra ?? '');
+      this.triviaImagenUrl.set(reto.imagenUrl ?? '');
+      this.triviaImagenUrlOriginal = reto.imagenUrl ?? null;
+      this.triviaImagenReintentos = 0;
+      this.triviaImagenCargando.set(Boolean(reto.imagenUrl));
+      if (reto.imagenUrl) {
+        this.iniciarEsperaTriviaImagen();
+      }
 
       const exito = this.triviaService.generarDesdeTrivia(reto.pregunta, reto.opciones, reto.indiceCorrecto);
       if (!exito) {
