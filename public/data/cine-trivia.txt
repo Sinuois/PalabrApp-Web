@@ -44,7 +44,7 @@ Q|¿Quién interpretó a Vito Corleone en la primera película?|Marlon Brando|Al
 Q|¿Qué actor interpretó a Tony Montana?|Al Pacino|Robert De Niro|Joe Pesci|Ray Liotta|Es protagonista de "Scarface".
 Q|¿Qué película incluye la frase "Here's Johnny!"?|"The Shining"|"Psycho"|"Halloween"|"The Exorcist"|Es una escena icónica.
 Q|¿Quién dirigió "Psycho"?|Alfred Hitchcock|Stanley Kubrick|Orson Welles|Billy Wilder|Es maestro del suspenso.
-Q|¿Qué película de Hitchcock trata sobre un asesino en una ducha?|"Psycho"|"Vertigo"|"Rear Window"|"The Birds"|Tiene una escena legendaria.
+Q|¿Qué película de Hitchcock incluye una famosa escena de asesinato en la ducha?|"Psycho"|"Vertigo"|"Rear Window"|"The Birds"|La escena es una de las más estudiadas del cine.
 Q|¿Qué película es famosa por el plano secuencia inicial en un club nocturno?|"Goodfellas"|"Casino"|"Scarface"|"The Irishman"|Es una escena muy estudiada.
 Q|¿Qué actor protagoniza "Taxi Driver"?|Robert De Niro|Al Pacino|Jack Nicholson|Dustin Hoffman|Interpreta a Travis Bickle.
 Q|¿Qué película trata sobre un periodista investigando un magnate?|"Citizen Kane"|"Casablanca"|"Gone with the Wind"|"Rebecca"|Es considerada una de las mejores.
@@ -62,7 +62,7 @@ Q|¿Qué actor protagonizó "Raging Bull"?|Robert De Niro|Al Pacino|Joe Pesci|Ha
 Q|¿Qué película trata sobre la creación de Facebook?|"The Social Network"|"Steve Jobs"|"Moneyball"|"The Big Short"|Dirigida por Fincher.
 Q|¿Qué actor interpreta a Mark Zuckerberg?|Jesse Eisenberg|Andrew Garfield|Michael Cera|Jonah Hill|Fue nominado al Oscar.
 Q|¿Qué película trata sobre un club secreto de pelea?|"Fight Club"|"Snatch"|"Rocky"|"Warrior"|Tiene un giro inesperado.
-Q|¿Qué actor protagoniza "Fight Club"?|Brad Pitt|Leonardo DiCaprio|Matt Damon|Tom Cruise|Comparte pantalla con Edward Norton.
+Q|¿Qué actor interpreta a Tyler Durden en "Fight Club"?|Brad Pitt|Leonardo DiCaprio|Matt Damon|Tom Cruise|Comparte pantalla con Edward Norton.
 Q|¿Qué película trata sobre sueños y culpa protagonizada por DiCaprio?|"Shutter Island"|"Inception"|"The Departed"|"Catch Me If You Can"|Dirigida por Scorsese.
 Q|¿Qué película de Scorsese trata sobre infiltrados en la mafia?|"The Departed"|"Goodfellas"|"Casino"|"Gangs of New York"|Ganó el Oscar a Mejor Película.
 Q|¿Qué actor protagoniza "The Revenant"?|Leonardo DiCaprio|Tom Hardy|Brad Pitt|Christian Bale|Ganó su primer Oscar.
@@ -83,7 +83,7 @@ Q|¿Qué director es considerado el padre del suspense?|Alfred Hitchcock|Orson W
 Q|¿Qué técnica consiste en filmar una escena sin cortes aparentes?|Plano secuencia|Montaje paralelo|Jump cut|Fundido|Es muy usada para generar inmersión.
 Q|¿Qué película popularizó el uso del montaje paralelo?|"The Birth of a Nation"|"Citizen Kane"|"Metropolis"|"Nosferatu"|Fue dirigida por D.W. Griffith.
 Q|¿Qué movimiento cinematográfico francés surgió en los años 50?|Nouvelle Vague|Neorrealismo|Dogma 95|New Hollywood|Rompió con las reglas tradicionales del cine.
-Q|¿Qué director es clave en la Nouvelle Vague?|Jean-Luc Godard|François Truffaut|Claude Chabrol|Eric Rohmer|Dirigió "Breathless".
+Q|¿Quién dirigió "Breathless", obra clave de la Nouvelle Vague?|Jean-Luc Godard|François Truffaut|Claude Chabrol|Eric Rohmer|Su título original es "À bout de souffle".
 Q|¿Qué película de Orson Welles es famosa por su uso innovador de la profundidad de campo?|"Citizen Kane"|"Touch of Evil"|"The Magnificent Ambersons"|"Othello"|Revolucionó el lenguaje cinematográfico.
 Q|¿Qué término describe el sonido que proviene dentro de la escena?|Sonido diegético|Sonido extradiegético|Foley|Ambiente|Forma parte del mundo narrativo.
 Q|¿Qué director es conocido por su perfeccionismo extremo y largas tomas múltiples?|Stanley Kubrick|Ridley Scott|David Fincher|Christopher Nolan|Era famoso por repetir escenas muchas veces.
@@ -99,14 +99,14 @@ Q|¿Qué término describe la música añadida que los personajes no escuchan?|E
 Q|¿Qué película de Eisenstein es famosa por el montaje de la escalera?|"Battleship Potemkin"|"October"|"Strike"|"Alexander Nevsky"|Es un ejemplo clásico de montaje.
 Q|¿Qué tipo de plano muestra todo el cuerpo del personaje?|Plano entero|Primer plano|Plano detalle|Plano medio|Se usa para mostrar acción.
 Q|¿Qué plano se centra en el rostro del personaje?|Primer plano|Plano general|Plano americano|Plano cenital|Resalta emociones.
-Q|¿Qué director danés impulsó el movimiento Dogma 95?|Lars von Trier|Thomas Vinterberg|Nicolas Winding Refn|Susanne Bier|Buscaba realismo extremo.
+Q|¿Qué director cofundó Dogma 95 junto con Thomas Vinterberg?|Lars von Trier|Nicolas Winding Refn|Susanne Bier|Nikolaj Arcel|El movimiento proponía reglas estrictas de realismo.
 Q|¿Qué regla clásica divide la pantalla en tres partes?|Regla de los tercios|Regla de continuidad|Eje de acción|Montaje invisible|Se usa en composición visual.
 Q|¿Qué técnica implica mover la cámara sobre rieles?|Travelling|Zoom|Paneo|Tilt|Genera sensación de desplazamiento.
 Q|¿Qué director es conocido por "El resplandor"?|Stanley Kubrick|Alfred Hitchcock|Ridley Scott|Roman Polanski|Es un clásico del terror.
 Q|¿Qué película de Ridley Scott trata sobre un xenomorfo?|"Alien"|"Blade Runner"|"Gladiator"|"Prometheus"|Es un clásico del sci-fi horror.
 Q|¿Qué director es conocido por el uso del color rojo en sus películas?|Pedro Almodóvar|Luis Buñuel|Carlos Saura|Alejandro Amenábar|Su estilo es muy reconocible.
 Q|¿Qué movimiento alemán se caracteriza por sombras y escenarios distorsionados?|Expresionismo alemán|Neorrealismo|Nouvelle Vague|Dogma 95|Influyó en el cine de terror.
-Q|¿Qué película es un ejemplo del expresionismo alemán?|"Nosferatu"|"Metropolis"|"M"|"The Cabinet of Dr. Caligari"|Usa estética oscura y teatral.
+Q|¿Qué película es un emblema del expresionismo alemán por sus decorados distorsionados?|"The Cabinet of Dr. Caligari"|"Nosferatu"|"Metropolis"|"M"|Es clave para entender la estética expresionista.
 Q|¿Qué director dirigió "Metropolis"?|Fritz Lang|F.W. Murnau|G.W. Pabst|Carl Dreyer|Es un clásico de ciencia ficción.
 Q|¿Qué tipo de sonido recrea efectos en postproducción?|Foley|Diegético|Ambiente|Directo|Se graba en estudio.
 Q|¿Qué plano se toma desde arriba hacia abajo?|Plano cenital|Plano contrapicado|Plano medio|Plano americano|Da sensación de inferioridad.
@@ -145,7 +145,7 @@ Q|¿Qué película de Alfonso Cuarón ganó el Oscar a Mejor Director en 2018?|"
 Q|¿Qué película de Cuarón es famosa por sus largos planos secuencia?|"Children of Men"|"Gravity"|"Roma"|"Harry Potter 3"|Tiene escenas muy técnicas.
 Q|¿Qué director dirigió "Gravity"?|Alfonso Cuarón|James Cameron|Ridley Scott|Christopher Nolan|Ganó varios premios Oscar.
 Q|¿Qué director es conocido por actuar y dirigir películas del oeste y drama?|Clint Eastwood|Kevin Costner|Mel Gibson|Robert Redford|También fue actor en westerns clásicos.
-Q|¿Qué película dirigida por Clint Eastwood ganó el Oscar a Mejor Película?|"Million Dollar Baby"|"Gran Torino"|"Unforgiven"|"Mystic River"|También ganó Mejor Director.
+Q|¿Qué película dirigida por Clint Eastwood ganó el Oscar a Mejor Película en 2005?|"Million Dollar Baby"|"Gran Torino"|"Mystic River"|"Letters from Iwo Jima"|Ese año también ganó Mejor Director.
 Q|¿Qué película de Clint Eastwood trata sobre un veterano de guerra gruñón?|"Gran Torino"|"Unforgiven"|"American Sniper"|"Mystic River"|Se convirtió en un clásico moderno.
 Q|¿Qué director mexicano es conocido por su estilo fantástico y criaturas?|Guillermo del Toro|Alfonso Cuarón|Alejandro G. Iñárritu|Carlos Reygadas|Sus películas tienen estética oscura.
 Q|¿Qué película de Guillermo del Toro ganó el Oscar a Mejor Película?|"The Shape of Water"|"Pan's Labyrinth"|"Crimson Peak"|"Hellboy"|Ganó también Mejor Director.
@@ -154,7 +154,7 @@ Q|¿Qué director dirigió "Back to the Future"?|Robert Zemeckis|Steven Spielber
 Q|¿Qué actor interpreta a Marty McFly?|Michael J. Fox|Tom Hanks|Johnny Depp|Matt Damon|Es el protagonista de la trilogía.
 Q|¿Qué película de Zemeckis trata sobre un hombre que vive eventos históricos?|"Forrest Gump"|"Cast Away"|"The Polar Express"|"Flight"|Ganó varios premios Oscar.
 Q|¿Qué actor protagoniza "Forrest Gump"?|Tom Hanks|Robin Williams|Kevin Costner|Mel Gibson|Ganó el Oscar por este rol.
-Q|¿Qué película de Zemeckis utiliza captura de movimiento con animación?|"The Polar Express"|"Beowulf"|"A Christmas Carol"|"Forrest Gump"|Fue innovadora en su estilo visual.
+Q|¿Qué película de Zemeckis fue pionera en el uso masivo de captura de movimiento en animación?|"The Polar Express"|"Beowulf"|"A Christmas Carol"|"Forrest Gump"|Abrió camino para proyectos posteriores del director.
 Q|¿Qué película de Clint Eastwood trata sobre un francotirador en Irak?|"American Sniper"|"Gran Torino"|"Mystic River"|"Unforgiven"|Está basada en hechos reales.
 Q|¿Qué película de Alfonso Cuarón transcurre en el espacio con Sandra Bullock?|"Gravity"|"Interstellar"|"The Martian"|"Ad Astra"|Destaca por sus efectos visuales.
 Q|¿Qué película de Guillermo del Toro presenta a un anfibio humanoide?|"The Shape of Water"|"Hellboy"|"Pacific Rim"|"Pan's Labyrinth"|Ganó el Oscar a Mejor Película.
