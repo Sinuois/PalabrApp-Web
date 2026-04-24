@@ -92,6 +92,10 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private listaTouchInicioY = 0;
   private listaTouchSeMovio = false;
   private listaIgnorarClicksHasta = 0;
+  private triviaTouchInicioX = 0;
+  private triviaTouchInicioY = 0;
+  private triviaTouchSeMovio = false;
+  private triviaIgnorarClicksHasta = 0;
   private sopaTimerRutaInvalida: number | null = null;
   private ultimoTapTouchMs = 0;
   private ultimoTapTouchTarget: EventTarget | null = null;
@@ -421,6 +425,32 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.listaIgnorarClicksHasta = Date.now() + 550;
   }
 
+  onTriviaOptionsTouchStart(event: TouchEvent): void {
+    const touch = event.touches[0];
+    if (!touch) return;
+
+    this.triviaTouchInicioX = touch.clientX;
+    this.triviaTouchInicioY = touch.clientY;
+    this.triviaTouchSeMovio = false;
+  }
+
+  onTriviaOptionsTouchMove(event: TouchEvent): void {
+    const touch = event.touches[0];
+    if (!touch) return;
+
+    const dx = Math.abs(touch.clientX - this.triviaTouchInicioX);
+    const dy = Math.abs(touch.clientY - this.triviaTouchInicioY);
+    if (dx > 8 || dy > 8) {
+      this.triviaTouchSeMovio = true;
+      this.triviaIgnorarClicksHasta = Date.now() + 420;
+    }
+  }
+
+  onTriviaOptionsTouchEnd(): void {
+    if (!this.triviaTouchSeMovio) return;
+    this.triviaIgnorarClicksHasta = Date.now() + 550;
+  }
+
   nuevaPalabra(): void {
     if (this.navegandoNuevaPalabra()) return;
 
@@ -640,7 +670,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onResolverOpcionTap(event: Event, indice: number): void {
+    if (Date.now() < this.triviaIgnorarClicksHasta) return;
+
+    if ((event.type === 'touchend' || event.type === 'pointerup') && this.triviaTouchSeMovio) {
+      this.triviaIgnorarClicksHasta = Date.now() + 550;
+      return;
+    }
+
     this.ejecutarTapSeguro(event, () => this.resolverOpcion(indice));
+
+    if (event.type === 'touchend' || event.type === 'pointerup') {
+      this.triviaIgnorarClicksHasta = Date.now() + 450;
+    }
   }
 
   resolverOpcionPiano(indiceTecla: number): void {

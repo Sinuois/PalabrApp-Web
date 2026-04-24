@@ -381,7 +381,7 @@
 
           <ng-container *ngIf="!triviaImagenCargando()">
             <p class="game-concepto">{{ triviaService.conceptoJuego() }}</p>
-            <div class="game-options">
+            <div class="game-options" (touchstart)="onTriviaOptionsTouchStart($event)" (touchmove)="onTriviaOptionsTouchMove($event)" (touchend)="onTriviaOptionsTouchEnd()">
               <button
                 type="button"
                 class="game-option"
@@ -401,7 +401,7 @@
 
         <ng-template #preguntaTextoSinImagen>
           <p class="game-concepto">{{ etiquetaPromptTrivia() }}: <strong>{{ triviaService.conceptoJuego() }}</strong></p>
-          <div class="game-options">
+          <div class="game-options" (touchstart)="onTriviaOptionsTouchStart($event)" (touchmove)="onTriviaOptionsTouchMove($event)" (touchend)="onTriviaOptionsTouchEnd()">
             <button
               type="button"
               class="game-option"
