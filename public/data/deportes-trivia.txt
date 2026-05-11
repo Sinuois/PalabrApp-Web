@@ -27,7 +27,6 @@ Q|¿Qué jugador chileno jugó en el Arsenal de Inglaterra?|Alexis Sánchez|Artu
 Q|¿Qué torneo reúne a las mejores selecciones del mundo?|Copa del Mundo|Eurocopa|Copa América|Nations League|Se juega cada 4 años.
 Q|¿Qué país ganó el Mundial 2018?|Francia|Croacia|Alemania|Brasil|Venció a Croacia en la final.
 Q|¿Qué selección ha ganado más Copas del Mundo?|Brasil|Alemania|Italia|Argentina|Tiene cinco títulos.
-Q|¿Qué jugador argentino ganó el Mundial 2022?|Lionel Messi|Javier Mascherano|Paulo Dybala|Sergio Agüero|Fue elegido mejor jugador del torneo.
 Q|¿Qué club inglés es conocido como "Los Citizens"?|Manchester City|Manchester United|Chelsea|Arsenal|Ha dominado la Premier League recientemente.
 Q|¿Qué jugador es máximo goleador histórico de la Champions League?|Cristiano Ronaldo|Lionel Messi|Robert Lewandowski|Karim Benzema|Supera los 100 goles.
 Q|¿Qué equipo ganó la Premier League 2016 sorprendiendo al mundo?|Leicester City|Arsenal|Chelsea|Tottenham|Es uno de los mayores hitos del fútbol.
@@ -36,7 +35,6 @@ Q|¿Qué deporte practica Joaquín Niemann?|Golf|Tenis|Fútbol|Automovilismo|Es 
 Q|¿Qué selección eliminó a Chile del Mundial 2014 en octavos?|Brasil|Alemania|Holanda|España|Fue por penales.
 Q|¿Qué jugador chileno casi anotó el gol contra Brasil en 2014 con un tiro al travesaño?|Mauricio Pinilla|Alexis Sánchez|Vidal|Isla|La jugada es recordada como el "palo de Pinilla".
 Q|¿Qué equipo tiene más campeonatos en la liga española?|Real Madrid|Barcelona|Atlético de Madrid|Valencia|Real Madrid es el club más exitoso en la historia de La Liga.
-Q|¿Quién es considerado por muchos el mejor jugador de la historia de la NBA?|Michael Jordan|LeBron James|Kobe Bryant|Magic Johnson|Ganó 6 campeonatos con los Chicago Bulls.
 Q|¿Quién ostenta el récord mundial de los 100 metros planos?|Usain Bolt|Tyson Gay|Yohan Blake|Carl Lewis|El récord es de 9.58 segundos.
 Q|¿En qué año Fernando González y Nicolás Massú ganaron el oro olímpico en dobles?|2004|2000|2008|2012|Fue en los Juegos Olímpicos de Atenas.
 Q|¿Qué futbolista chileno fue goleador de La Liga española en la temporada 1994-95?|Iván Zamorano|Marcelo Salas|Alexis Sánchez|Carlos Caszely|Fue apodado "Pichichi" tras anotar 28 goles con el Real Madrid.
@@ -59,7 +57,7 @@ Q|¿Qué club inglés juega en Old Trafford?|Manchester United|Manchester City|L
 Q|¿Qué jugador es máximo goleador histórico de la selección chilena?|Alexis Sánchez|Eduardo Vargas|Iván Zamorano|Marcelo Salas|Superó récords históricos.
 Q|¿Qué jugador chileno es conocido como "Matador"?|Marcelo Salas|Iván Zamorano|Alexis Sánchez|Vargas|Fue figura en River Plate y Lazio.
 Q|¿Qué club italiano juega en San Siro junto al Inter?|AC Milan|Juventus|Roma|Napoli|Comparten estadio histórico.
-Q|¿Qué club ganó la Serie A 2023?|Napoli|Inter|Milan|Juventus|Terminó con larga sequía.
+Q|¿Qué club ganó la Serie A 2022-23?|Napoli|Inter|Milan|Juventus|Terminó con larga sequía.
 Q|¿Qué jugador argentino es conocido como "El Kun"?|Sergio Agüero|Lionel Messi|Carlos Tévez|Ángel Di María|Fue figura en Manchester City.
 Q|¿Qué jugador brasileño es conocido como "O Fenómeno"?|Ronaldo Nazário|Ronaldinho|Neymar|Kaká|Ganó dos Mundiales.
 Q|¿Qué selección organizó el Mundial 2014?|Brasil|Alemania|Sudáfrica|Rusia|Fue goleado 7-1 por Alemania.
@@ -69,7 +67,6 @@ Q|¿Qué país ganó el Mundial de 2006?|Italia|Francia|Alemania|Brasil|Venció 
 Q|¿Qué jugador francés falló un penal clave en la final de 2006?|David Trezeguet|Zidane|Henry|Ribéry|El balón dio en el travesaño.
 Q|¿Qué jugador fue expulsado por cabezazo en la final 2006?|Zinedine Zidane|Thierry Henry|Gattuso|Cannavaro|Fue su último partido.
 Q|¿Qué club ganó la Champions League 2018?|Real Madrid|Liverpool|Bayern Múnich|Roma|Logró tres seguidas.
-Q|¿Qué arquero alemán fue campeón del mundo en 2014?|Manuel Neuer|Oliver Kahn|Ter Stegen|Lehmann|Revolucionó el puesto.
 Q|¿Qué club inglés ganó la Champions League 2012?|Chelsea|Manchester United|Arsenal|Liverpool|Derrotó al Bayern.
 Q|¿Qué jugador chileno no jugó en el FC Barcelona?|Gary Medel|Alexis Sánchez|Arturo Vidal|Claudio Bravo|Sin embargo, al igual que sus compañeros, pasó gran parte de su carrera en Europa.
 Q|¿Qué club francés tiene como estadio el Parque de los Príncipes?|PSG|Lyon|Marseille|Monaco|Es su estadio principal.
@@ -88,10 +85,44 @@ Q|¿Qué estadio albergó la final del Mundial 1962?|Estadio Nacional|Monumental
 Q|¿Qué jugador es máximo goleador histórico del Barcelona?|Lionel Messi|Luis Suárez|César Rodríguez|Neymar|Superó todos los récords.
 Q|¿Qué club alemán es rival histórico del Bayern?|Borussia Dortmund|Leipzig|Schalke 04|Hamburgo|Protagonizan clásicos.
 Q|¿Qué jugador chileno jugó en la Juventus?|Arturo Vidal|Alexis Sánchez|Claudio Bravo|Medel|Ganó múltiples ligas.
-Q|¿Qué jugador chileno jugó en el Sevilla?|Gary Medel|Alexis Sánchez|Vidal|Bravo|Fue muy querido por hinchas.
 Q|¿Qué selección ganó la Copa América 2019?|Brasil|Perú|Argentina|Chile|Se jugó en Brasil.
 Q|¿Qué jugador fue figura de Perú en 2019?|Paolo Guerrero|Farfán|Advíncula|Cueva|Fue goleador histórico.
 Q|¿Qué equipo ganó la Libertadores 2018?|River Plate|Boca Juniors|Flamengo|Palmeiras|La final fue en Madrid.
 Q|¿Qué club chileno llegó a la final de la Libertadores 1973?|Colo-Colo|U de Chile|Católica|Cobreloa|Perdió ante Independiente.
 Q|¿Qué club chileno llegó a dos finales de Libertadores en los 80?|Cobreloa|Colo-Colo|U Católica|Palestino|Fue subcampeón dos veces.
 Q|¿Qué futbolista fue famoso por usar una camiseta con la suma "1+8" en lugar de un número tradicional?|Iván Zamorano|Marcelo Salas|Ronaldo|Gabriel Batistuta|Es el único caso icónico donde un jugador usó una suma en su dorsal, debido a que el número 9 estaba ocupado en el Inter de Milán.
+Q|¿Cuántos títulos de Grand Slam tiene Novak Djokovic?|24|22|20|21|Superó a Federer y Nadal en el récord histórico.
+Q|¿En qué superficie se juega Roland Garros?|Tierra batida|Hierba|Cemento|Indoor|Se juega en París cada mayo-junio.
+Q|¿Qué jugador ganó 14 veces Roland Garros?|Rafael Nadal|Djokovic|Federer|Murray|Es conocido como 'El Rey de la Arcilla'.
+Q|¿Qué Grand Slam se juega en Wimbledon?|Wimbledon|US Open|Australian Open|Roland Garros|Es el torneo más antiguo, fundado en 1877.
+Q|¿Qué tenista chilena fue top 20 del mundo en la última década?|Alexa Guarachi|Daniela Seguel|Bárbara Gatica|Andrea Koch|Destacó principalmente en dobles.
+Q|¿Qué jugador ganó el Golden Slam en 2021?|Novak Djokovic|Rafael Nadal|Stefanos Tsitsipas|Alexander Zverev|Ganó los 4 Grand Slams en el mismo año calendario.
+Q|¿Cuántos anillos de la NBA tiene Michael Jordan?|6|5|4|8|Los ganó todos con los Chicago Bulls.
+Q|¿Qué jugador es máximo anotador histórico de la NBA?|LeBron James|Karl Malone|Kareem Abdul-Jabbar|Michael Jordan|Superó el récord en 2023.
+Q|¿Qué país ganó el oro olímpico en basketball en Tokio 2021?|Estados Unidos|Francia|Australia|España|Venció a Francia en la final.
+Q|¿Qué equipo de la NBA tiene más campeonatos históricos?|Boston Celtics|Los Angeles Lakers|Chicago Bulls|Golden State Warriors|Ambos Celtics y Lakers están históricamente empatados con 17.
+Q|¿Qué jugador apodado 'La Cabra' domina el básquet actual?|Nikola Jokic|Joel Embiid|Giannis Antetokounmpo|Luka Doncic|Ganó 3 MVP de la NBA y un campeonato.
+Q|¿Qué piloto tiene más títulos mundiales de Fórmula 1?|Lewis Hamilton|Michael Schumacher|Sebastian Vettel|Max Verstappen|Tiene 7 títulos, igual que Schumacher.
+Q|¿Qué piloto ganó el campeonato de F1 en 2023?|Max Verstappen|Lewis Hamilton|Fernando Alonso|Charles Leclerc|Ganó 19 de 22 carreras ese año.
+Q|¿De qué país es Max Verstappen?|Países Bajos|Bélgica|Alemania|Austria|Nació en Hasselt, Bélgica, pero representa a Holanda.
+Q|¿Qué escudería tiene más títulos en la historia de la F1?|Ferrari|Mercedes|McLaren|Red Bull|Aunque no siempre ha ganado en épocas recientes.
+Q|¿En qué circuito se corre el Gran Premio de Mónaco?|Circuit de Monaco|Monza|Silverstone|Spa-Francorchamps|Es la carrera más icónica del calendario.
+Q|¿Cuál es el récord mundial vigente en los 100 metros planos masculino?|9.58 segundos|9.63 segundos|9.69 segundos|9.74 segundos|Lo estableció Usain Bolt en Berlín 2009.
+Q|¿Qué maratonista keniata tiene el récord mundial actual?|Kelvin Kiptum|Eliud Kipchoge|Wilson Kipsang|Dennis Kimetto|Corrió en 2:00:35 en Chicago 2023.
+Q|¿Quién ganó el oro en los 200 metros en los Juegos Olímpicos de París 2024?|Letsile Tebogo|Noah Lyles|Erriyon Knighton|Kenny Bednarek|El atleta de Botsuana sorprendió al mundo.
+Q|¿Qué boxeador es conocido como 'El Canelo'?|Saúl Álvarez|Julio César Chávez|Juan Manuel Márquez|Gennady Golovkin|Es el boxeador más exitoso del mundo actualmente.
+Q|¿Qué peso defiende habitualmente Canelo Álvarez?|Supermediano|Mediano|Pesado|Semipesado|Ha ganado títulos en múltiples divisiones.
+Q|¿Qué leyenda del boxeo fue campeón mundial en tres oportunidades como peso pesado?|Muhammad Ali|Mike Tyson|Floyd Mayweather|Sugar Ray Leonard|Fue el primer peso pesado en recuperar el título tres veces.
+Q|¿Qué ciclista esloveno dominó el Tour de Francia en los últimos años?|Tadej Pogacar|Primoz Roglic|Jonas Vingegaard|Egan Bernal|Ganó en 2020, 2021 y 2024.
+Q|¿Cuántas veces ganó el Tour de Francia Miguel Induráin?|5|3|4|6|Las ganó de manera consecutiva entre 1991 y 1995.
+Q|¿Qué colombiano ganó el Tour de Francia 2019?|Egan Bernal|Rigoberto Urán|Nairo Quintana|Miguel Ángel López|Fue el primer latinoamericano en ganar el Tour.
+Q|¿Qué golfista chileno está entre los mejores del mundo actualmente?|Joaquín Niemann|Felipe Aguilar|Ignacio Garrido|Nico Geyger|Ha ganado torneos del PGA Tour y LIV Golf.
+Q|¿Qué golfista tiene más títulos de Grand Slam histórico?|Jack Nicklaus|Tiger Woods|Arnold Palmer|Gary Player|Tiene 18 majors, uno más que Tiger.
+Q|¿Cómo se llama el torneo de golf más famoso del mundo?|The Masters|US Open|The Open Championship|PGA Championship|Se juega cada abril en Augusta, Georgia.
+Q|¿Qué jugador ganó la Copa América 2024 con Argentina?|Lionel Messi|Lautaro Martínez|Julián Álvarez|Angel Di María|Argentina venció a Colombia en la final.
+Q|¿Qué club ganó la Champions League 2024?|Real Madrid|Borussia Dortmund|Manchester City|Bayern Múnich|Venció al Borussia Dortmund en la final de Wembley.
+Q|¿Quién ganó el Balón de Oro 2023?|Lionel Messi|Erling Haaland|Kylian Mbappé|Vinicius Jr|Su octavo Balón de Oro, récord histórico.
+Q|¿En qué club juega actualmente Kylian Mbappé?|Real Madrid|PSG|Bayern Múnich|Arsenal|Se unió al club en 2024 como agente libre.
+Q|¿Qué selección ganó la Eurocopa 2024?|España|Inglaterra|Francia|Alemania|Venció a Inglaterra 2-1 en la final en Berlín.
+Q|¿Qué rama del taekwondo es la que se compite en los Juegos Olímpicos?|WT|ITF|ATA|TTF|WT significa World Taekwondo, antes llamada WTF.
+Q|¿Qué arte marcial es de origen japonés?|Karate|Taekwondo|Kung-fu|Hapkido|El Taekwondo es coreano, el Kung-fu chino y el Hapkido también coreano.

@@ -182,3 +182,52 @@ Q|¿Qué fenómeno ocurre cuando un gas se enfría y pasa a líquido?|Condensaci
 Q|¿Qué estructura del sistema nervioso conecta cerebro y cuerpo?|Médula espinal|Cerebelo|Hipotálamo|Nervios ópticos|Transmite señales.
 Q|¿Qué unidad mide la cantidad de sustancia?|Mol|Gramo|Litro|Newton|Se usa en química.
 Q|¿Qué tipo de energía se libera en una explosión?|Energía química|Energía nuclear|Energía cinética|Energía potencial|Se libera rápidamente.
+Q|¿Qué científico propuso el modelo atómico planetario?|Ernest Rutherford|Niels Bohr|J.J. Thomson|John Dalton|Demostró que el átomo tiene un núcleo central pequeño y denso.
+Q|¿Qué modelo atómico representa a los electrones en niveles de energía fijos?|Modelo de Bohr|Modelo de Rutherford|Modelo de Thomson|Modelo de Dalton|Explicó el espectro del hidrógeno con precisión.
+Q|¿Cuántos elementos tiene la tabla periódica actualmente?|118|112|106|120|El último elemento confirmado es el oganesón.
+Q|¿Qué tipo de reacción ocurre cuando una sustancia se combina con oxígeno y libera calor y luz?|Combustión|Electrólisis|Precipitación|Neutralización|Es la base del fuego.
+Q|¿Qué gas se forma cuando el hidrógeno reacciona con el oxígeno?|Agua|Dióxido de carbono|Amoníaco|Metano|La reacción libera mucha energía.
+Q|¿Qué tipo de isómeros tienen la misma fórmula molecular pero distinta disposición espacial?|Isómeros estereoisómeros|Isómeros de cadena|Isómeros de función|Isómeros de posición|Son clave en farmacología.
+Q|¿Qué elemento es el mejor conductor de electricidad?|Plata|Cobre|Oro|Aluminio|Aunque el cobre es más usado por su costo.
+Q|¿Qué partícula subatómica fue descubierta por J.J. Thomson?|Electrón|Protón|Neutrón|Positrón|Lo descubrió en 1897 usando tubos de rayos catódicos.
+Q|¿Qué científico descubrió el neutrón?|James Chadwick|Ernest Rutherford|Niels Bohr|Enrico Fermi|Lo anunció en 1932.
+Q|¿Qué ley establece que los gases ideales cumplen PV=nRT?|Ley del gas ideal|Ley de Boyle|Ley de Charles|Ley de Dalton|Combina varias leyes de gases.
+Q|¿Qué nombre recibe la cantidad de calor necesaria para elevar 1°C un gramo de agua?|Caloría|Julio|Kelvin|BTU|Es la unidad calórica original.
+Q|¿Qué tipo de radiación puede detenerse con una hoja de papel?|Radiación alfa|Radiación beta|Radiación gamma|Rayos X|Son las menos penetrantes.
+Q|¿Qué fenómeno explica que un átomo emita luz al calentarse?|Emisión de fotones|Fisión nuclear|Efecto fotoeléctrico|Resonancia magnética|Cada elemento emite un espectro único.
+Q|¿Qué es la constante de Planck?|La relación entre energía y frecuencia de un fotón|La velocidad de la luz|La masa del electrón|La carga eléctrica del protón|Es fundamental en la mecánica cuántica.
+Q|¿Qué fenómeno cuántico permite que partículas pasen a través de barreras?|Efecto túnel|Superposición|Entrelazamiento|Colapso de función de onda|Se usa en transistores modernos.
+Q|¿Qué nombre recibe la longitud de onda de un electrón en movimiento?|Longitud de onda de De Broglie|Longitud de Planck|Longitud de Compton|Radio de Bohr|Propuso la dualidad onda-partícula de la materia.
+Q|¿Qué planeta enano fue reclasificado en 2006 por la UAI?|Plutón|Ceres|Eris|Makemake|Antes era considerado el noveno planeta.
+Q|¿Qué es un agujero negro?|Una región del espacio con gravedad tan intensa que nada escapa|Una estrella apagada|Un planeta sin atmósfera|Un sistema binario de estrellas|Ni la luz puede escapar de él.
+Q|¿Qué nombre recibe la radiación que emiten los agujeros negros según Hawking?|Radiación de Hawking|Radiación de fondo|Radiación de Cherenkov|Radiación de Planck|Implica que los agujeros negros no son eternos.
+Q|¿Qué tipo de estrella se forma tras la explosión de una supernova?|Estrella de neutrones o agujero negro|Enana blanca|Gigante roja|Estrella amarilla|Depende de la masa original.
+Q|¿Qué es la materia oscura?|Una forma de materia que no emite ni absorbe luz|Gas interestelar|Plasma caliente|Antimateria|Compone aproximadamente el 27% del universo.
+Q|¿Qué es el año luz?|La distancia que recorre la luz en un año|El tiempo en orbitar el Sol|La edad de una estrella|La velocidad de la luz|Equivale a unos 9.46 billones de kilómetros.
+Q|¿Cuántas galaxias se estima que hay en el universo observable?|Dos billones|200 mil millones|Un millón|500 millones|Según estudios del Hubble.
+Q|¿Qué teoría explica el origen del universo?|Big Bang|Universo estacionario|Creación continua|Universo cíclico|Ocurrió hace aproximadamente 13.800 millones de años.
+Q|¿Qué hueso es el más largo del cuerpo humano?|Fémur|Tibia|Húmero|Radio|Se ubica en el muslo.
+Q|¿Cuántos huesos tiene el cuerpo humano adulto?|206|212|198|220|Los bebés nacen con más, que se fusionan al crecer.
+Q|¿Qué músculo es el más grande del cuerpo humano?|Glúteo mayor|Cuádriceps|Dorsal ancho|Deltoides|Se ubica en la nalga.
+Q|¿Cuántos pares de nervios craneales tiene el ser humano?|12|10|8|14|Controlan funciones como visión, olfato y movimiento facial.
+Q|¿Qué parte del sistema nervioso controla las acciones voluntarias?|Sistema nervioso somático|Sistema nervioso autónomo|Sistema nervioso simpático|Sistema nervioso parasimpático|Permite mover músculos a voluntad.
+Q|¿Cuántos cromosomas tiene una célula humana normal?|46|44|48|23|Organizados en 23 pares.
+Q|¿Qué nombre recibe la mutación que ocurre en células somáticas y no se hereda?|Mutación somática|Mutación germinal|Mutación puntual|Mutación cromosómica|No pasa a la descendencia.
+Q|¿Qué molécula actúa como mensajero entre neuronas?|Neurotransmisor|Hormona|Enzima|Proteína transportadora|Se libera en la sinapsis.
+Q|¿Qué vitamina produce el cuerpo al exponerse al sol?|Vitamina D|Vitamina C|Vitamina A|Vitamina B12|Es esencial para absorber calcio.
+Q|¿Qué tipo de vitaminas se disuelven en grasa y pueden almacenarse?|Vitaminas liposolubles|Vitaminas hidrosolubles|Vitaminas sintetizadas|Vitaminas esenciales|Son las vitaminas A, D, E y K.
+Q|¿Qué órgano produce la hormona del crecimiento?|Hipófisis|Tiroides|Páncreas|Suprarrenal|También se llama glándula pituitaria.
+Q|¿Qué nombre recibe el proceso por el que las proteínas adquieren su forma tridimensional?|Plegamiento proteico|Traducción|Transcripción|Replicación|Un error puede causar enfermedades como el Alzheimer.
+Q|¿Qué tipo de ARN lleva la información del ADN al ribosoma?|ARN mensajero|ARN de transferencia|ARN ribosómico|ARN de interferencia|Sirve de plantilla para fabricar proteínas.
+Q|¿Qué científica fue pionera en el estudio del ADN con rayos X?|Rosalind Franklin|Marie Curie|Barbara McClintock|Rita Levi-Montalcini|Sus imágenes fueron clave para Watson y Crick.
+Q|¿Qué nombre recibe la secuencia de tres bases del ARN que codifica un aminoácido?|Codón|Anticodón|Exón|Intrón|El código genético está formado por codones.
+Q|¿Qué tipo de organismos pueden sobrevivir en ambientes extremos como volcanes o hielo?|Extremófilos|Anaerobios|Parásitos|Saprófitos|Algunos podrían existir en otros planetas.
+Q|¿Qué fenómeno ocurre cuando dos placas tectónicas chocan?|Subducción o colisión|Rifting|Expansión oceánica|Orogénesis|Puede formar montañas o trincheras oceánicas.
+Q|¿Qué escala mide la magnitud de los terremotos?|Escala de Richter o de momento sísmico|Escala de Mercalli|Escala de Beaufort|Escala de Mohs|La de momento sísmico es la más usada hoy.
+Q|¿Qué nombre recibe la capa límite entre el manto y el núcleo terrestre?|Discontinuidad de Gutenberg|Discontinuidad de Mohorovičić|Litosfera|Astenosfera|Se ubica a unos 2.900 km de profundidad.
+Q|¿Qué tipo de roca se forma por enfriamiento del magma?|Roca ígnea|Roca sedimentaria|Roca metamórfica|Roca calcárea|El granito y el basalto son ejemplos.
+Q|¿Qué proceso forma las rocas sedimentarias?|Acumulación y compactación de sedimentos|Enfriamiento del magma|Presión y calor extremos|Erosión volcánica|Pueden contener fósiles.
+Q|¿Qué nombre recibe el punto donde se origina un terremoto bajo la superficie?|Foco o hipocentro|Epicentro|Núcleo|Falla activa|El epicentro está justo encima, en la superficie.
+Q|¿Qué fenómeno produce las auroras boreales?|Interacción del viento solar con el campo magnético|Tormenta eléctrica|Reflexión de la luz solar|Erupción volcánica|Ocurren cerca de los polos.
+Q|¿Qué es el efecto Doppler?|El cambio de frecuencia de una onda según el movimiento de la fuente|La reflexión del sonido|La absorción de la luz|La difracción de ondas|Se usa en radares y ecografías.
+Q|¿Qué velocidad tiene la luz en el vacío?|300.000 km/s|150.000 km/s|450.000 km/s|200.000 km/s|Es el límite de velocidad del universo.
