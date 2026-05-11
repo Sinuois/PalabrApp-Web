@@ -1043,8 +1043,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaDatoExtra.set('');
 
     try {
-      // 50% de probabilidad de trivia piano, 50% de trivia tradicional
-      const usarPiano = Math.random() < 0.5;
+      // 20% de probabilidad de trivia piano, 80% de trivia tradicional
+      const usarPiano = Math.random() < 0.2;
 
       if (usarPiano) {
         // Modo piano trivia
