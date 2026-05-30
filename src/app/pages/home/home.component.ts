@@ -9,12 +9,12 @@ import { AhorcadoService } from '../../services/ahorcado.service';
 import { CrucigramaService, CrucigramaCelda } from '../../services/crucigrama.service';
 import { SopaCelda, SopaService, SopaPalabra } from '../../services/sopa.service';
 import { GeografiaChileTriviaService } from '../../services/geografia-chile-trivia.service';
-import { CapitalesMundoTriviaService } from '../../services/capitales-mundo-trivia.service';
-import { ArteTriviaService } from '../../services/arte-trivia.service';
-import { CienciaTriviaService } from '../../services/ciencia-trivia.service';
+import { CapitalesMundoTriviaService, TipoTriviaCapitales } from '../../services/capitales-mundo-trivia.service';
+import { ArteTriviaService, TipoTriviaArte } from '../../services/arte-trivia.service';
+import { CienciaTriviaService, DificultadTriviaCiencia } from '../../services/ciencia-trivia.service';
 import { MusicaTriviaService } from '../../services/musica-trivia.service';
 import { MusicaPianoTriviaService } from '../../services/musica-piano-trivia.service';
-import { CineTriviaService } from '../../services/cine-trivia.service';
+import { CineTriviaService, TipoTriviaCine } from '../../services/cine-trivia.service';
 import { DeportesTriviaService } from '../../services/deportes-trivia.service';
 import { Palabra } from '../../interfaces/app.interfaces';
 import { DATOS_CURIOSOS_INICIO } from './datos-curiosos-inicio.data';
@@ -23,6 +23,40 @@ import { Subject } from 'rxjs';
 type TipoJuego = 'trivia' | 'ahorcado' | 'crucigrama' | 'sopa';
 type ModalidadJuego = 'aleatoria' | 'vocabulario' | 'geografia' | 'capitales' | 'arte' | 'ciencia' | 'musica' | 'cine' | 'deportes';
 type ModalidadActiva = Exclude<ModalidadJuego, 'aleatoria'>;
+type CategoriaTriviaDeportes = 'aleatoria' | 'futbol' | 'basquetbol' | 'tenis' | 'formula1' | 'olimpicos';
+type SubmodalidadJuego =
+  | 'aleatoria'
+  | 'vocabulario-significado'
+  | 'vocabulario-ahorcado'
+  | 'vocabulario-crucigrama'
+  | 'vocabulario-sopa'
+  | 'geografia-trivia'
+  | 'capitales-capital-pais'
+  | 'capitales-pais-capital'
+  | 'capitales-continente'
+  | 'capitales-banderas'
+  | 'arte-trivia'
+  | 'arte-pinturas'
+  | 'ciencia-trivia'
+  | 'ciencia-facil'
+  | 'ciencia-media'
+  | 'ciencia-dificil'
+  | 'musica-trivia'
+  | 'musica-piano'
+  | 'cine-trivia'
+  | 'cine-peliculas'
+  | 'deportes-trivia'
+  | 'deportes-futbol'
+  | 'deportes-basquetbol'
+  | 'deportes-tenis'
+  | 'deportes-formula1'
+  | 'deportes-olimpicos';
+type SubmodalidadActiva = Exclude<SubmodalidadJuego, 'aleatoria'>;
+type OpcionSubmodalidad = {
+  clave: SubmodalidadJuego;
+  nombre: string;
+  descripcion: string;
+};
 type RachaPorModalidad = Record<ModalidadJuego, number>;
 type TriviaFallback = {
   pregunta: string;
@@ -55,13 +89,16 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   errorCarga = signal(false);
   sinConexion = signal(false);
   mostrarInvitacionJuego = signal(false);
-  pasoInvitacionJuego = signal<'dato' | 'modalidad'>('dato');
+  pasoInvitacionJuego = signal<'dato' | 'modalidad' | 'submodalidad'>('dato');
   datoCuriosoInicio = signal('');
   juegoActivo = signal(false);
   juegoCargando = signal(false);
   tipoJuego = signal<TipoJuego>('trivia');
   modalidadJuego = signal<ModalidadJuego>('aleatoria');
   modalidadJuegoActiva = signal<ModalidadActiva>('vocabulario');
+  submodalidadJuego = signal<SubmodalidadJuego>('aleatoria');
+  submodalidadJuegoActiva = signal<SubmodalidadActiva>('vocabulario-significado');
+  modalidadSubmenuSeleccionada = signal<ModalidadActiva | null>(null);
   mensajeJuego = signal('');
   mostrarCelebracion = signal(false);
   rachaVictorias = signal(0);
@@ -71,6 +108,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private mejorRachaPorModalidad = signal<RachaPorModalidad>(this.crearRachaInicialPorModalidad());
   mostrarAnimacionRacha = signal(false);
   cargandoSeleccionModalidad = signal<ModalidadJuego | null>(null);
+  cargandoSeleccionSubmodalidad = signal<SubmodalidadJuego | null>(null);
   cargandoInicioJuego = signal(false);
   cargandoOtroJuego = signal(false);
   navegandoBuscar = signal(false);
@@ -487,6 +525,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.reiniciarCargaIconosModalidad();
     this.juegoActivo.set(false);
     this.juegoCargando.set(false);
+    this.modalidadSubmenuSeleccionada.set(null);
+    this.submodalidadJuego.set('aleatoria');
     this.invitacionAbriendoHasta = Date.now() + 350;
     this.mostrarInvitacionJuego.set(true);
     this.pasoInvitacionJuego.set('modalidad');
@@ -494,6 +534,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   aceptarInvitacionJuego(): void {
     this.reiniciarCargaIconosModalidad();
+    this.modalidadSubmenuSeleccionada.set(null);
+    this.submodalidadJuego.set('aleatoria');
     this.invitacionAbriendoHasta = Date.now() + 300;
     this.pasoInvitacionJuego.set('modalidad');
   }
@@ -504,13 +546,115 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  async seleccionarModalidadJuego(modalidad: ModalidadJuego): Promise<void> {
+  seleccionarModalidadJuego(modalidad: ModalidadJuego): void {
     if (this.cargandoSeleccionModalidad()) return;
 
     this.limpiarHistorialTriviaSesion();
 
     this.cargandoSeleccionModalidad.set(modalidad);
     this.modalidadJuego.set(modalidad);
+
+    if (modalidad === 'aleatoria' || modalidad === 'geografia') {
+      this.submodalidadJuego.set('aleatoria');
+      this.mostrarInvitacionJuego.set(false);
+      this.pasoInvitacionJuego.set('dato');
+      this.juegoActivo.set(true);
+      this.marcarJuegoPresentadoEnSesion();
+      this.cargandoSeleccionModalidad.set(null);
+      void this.prepararJuego();
+      return;
+    }
+
+    this.modalidadSubmenuSeleccionada.set(modalidad);
+    this.submodalidadJuego.set('aleatoria');
+    this.pasoInvitacionJuego.set('submodalidad');
+    this.cargandoSeleccionModalidad.set(null);
+  }
+
+  onSeleccionarModalidadTap(event: Event, modalidad: ModalidadJuego): void {
+    this.ejecutarTapSeguro(event, () => {
+      this.seleccionarModalidadJuego(modalidad);
+    });
+  }
+
+  volverASelectorModalidad(): void {
+    if (this.cargandoSeleccionSubmodalidad()) return;
+    this.modalidadSubmenuSeleccionada.set(null);
+    this.submodalidadJuego.set('aleatoria');
+    this.pasoInvitacionJuego.set('modalidad');
+  }
+
+  onVolverSelectorModalidadTap(event: Event): void {
+    this.ejecutarTapSeguro(event, () => this.volverASelectorModalidad());
+  }
+
+  opcionesSubmodalidad(): OpcionSubmodalidad[] {
+    const modalidad = this.modalidadSubmenuSeleccionada();
+    if (!modalidad) return [];
+
+    switch (modalidad) {
+      case 'vocabulario':
+        return [
+          { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla entre significado, ahorcado, crucigrama y sopa.' },
+          { clave: 'vocabulario-significado', nombre: 'Adivinar significado', descripcion: 'Modo trivia clásico de conceptos.' },
+          { clave: 'vocabulario-ahorcado', nombre: 'Letra a letra', descripcion: 'Adivina la palabra antes de quedarte sin intentos.' },
+          { clave: 'vocabulario-crucigrama', nombre: 'Crucigrama', descripcion: 'Completa el tablero usando pistas.' },
+          { clave: 'vocabulario-sopa', nombre: 'Sopa de letras', descripcion: 'Encuentra todas las palabras ocultas.' }
+        ];
+      case 'geografia':
+        return [];
+      case 'capitales':
+        return [
+          { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla de capitales, países, continentes y banderas.' },
+          { clave: 'capitales-capital-pais', nombre: 'Capital de país', descripcion: 'Selecciona la capital correcta de cada país.' },
+          { clave: 'capitales-pais-capital', nombre: 'País por capital', descripcion: 'Adivina el país a partir de su capital.' },
+          { clave: 'capitales-continente', nombre: 'Continentes', descripcion: 'Relaciona cada país con su continente.' },
+          { clave: 'capitales-banderas', nombre: 'Banderas', descripcion: 'Identifica el país por su bandera.' }
+        ];
+      case 'arte':
+        return [
+          { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla entre trivia y adivinar pinturas.' },
+          { clave: 'arte-trivia', nombre: 'Trivia de arte', descripcion: 'Preguntas de artistas, estilos y obras.' },
+          { clave: 'arte-pinturas', nombre: 'Adivinar pinturas', descripcion: 'Reconoce título y autor desde la imagen.' }
+        ];
+      case 'ciencia':
+        return [
+          { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla preguntas fáciles, medias y difíciles.' },
+          { clave: 'ciencia-facil', nombre: 'Ciencia fácil', descripcion: 'Conceptos básicos y preguntas más directas.' },
+          { clave: 'ciencia-media', nombre: 'Ciencia media', descripcion: 'Nivel intermedio de complejidad.' },
+          { clave: 'ciencia-dificil', nombre: 'Ciencia difícil', descripcion: 'Preguntas avanzadas y más técnicas.' }
+        ];
+      case 'musica':
+        return [
+          { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla entre trivia musical y modo piano.' },
+          { clave: 'musica-trivia', nombre: 'Trivia de música', descripcion: 'Preguntas de artistas, canciones y cultura musical.' },
+          { clave: 'musica-piano', nombre: 'Piano', descripcion: 'Identifica notas y acordes en teclado interactivo.' }
+        ];
+      case 'cine':
+        return [
+          { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla entre trivia y adivinar películas por imagen.' },
+          { clave: 'cine-trivia', nombre: 'Trivia de cine', descripcion: 'Preguntas sobre directores, películas y técnica cinematográfica.' },
+          { clave: 'cine-peliculas', nombre: 'Adivinar películas', descripcion: 'Reconoce película y director desde la imagen.' }
+        ];
+      case 'deportes':
+        return [
+          { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla de disciplinas deportivas.' },
+          { clave: 'deportes-futbol', nombre: 'Fútbol', descripcion: 'Selecciones, clubes, mundiales y jugadores.' },
+          { clave: 'deportes-basquetbol', nombre: 'Básquetbol', descripcion: 'NBA, selecciones y figuras históricas.' },
+          { clave: 'deportes-tenis', nombre: 'Tenis', descripcion: 'Grand Slams, ranking y referentes.' },
+          { clave: 'deportes-formula1', nombre: 'Fórmula 1', descripcion: 'Pilotos, escuderías y Grandes Premios.' },
+          { clave: 'deportes-olimpicos', nombre: 'Olímpicos y varios', descripcion: 'Atletismo, boxeo, ciclismo, golf y más.' }
+        ];
+      default:
+        return [];
+    }
+  }
+
+  async seleccionarSubmodalidadJuego(submodalidad: SubmodalidadJuego): Promise<void> {
+    if (this.cargandoSeleccionSubmodalidad()) return;
+
+    this.cargandoSeleccionSubmodalidad.set(submodalidad);
+    this.submodalidadJuego.set(submodalidad);
     this.mostrarInvitacionJuego.set(false);
     this.pasoInvitacionJuego.set('dato');
     this.juegoActivo.set(true);
@@ -519,13 +663,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     try {
       await this.prepararJuego();
     } finally {
-      this.cargandoSeleccionModalidad.set(null);
+      this.cargandoSeleccionSubmodalidad.set(null);
     }
   }
 
-  onSeleccionarModalidadTap(event: Event, modalidad: ModalidadJuego): void {
+  onSeleccionarSubmodalidadTap(event: Event, submodalidad: SubmodalidadJuego): void {
     this.ejecutarTapSeguro(event, () => {
-      void this.seleccionarModalidadJuego(modalidad);
+      void this.seleccionarSubmodalidadJuego(submodalidad);
     });
   }
 
@@ -558,10 +702,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.tipoJuego.set('trivia');
     this.modalidadJuego.set('aleatoria');
     this.modalidadJuegoActiva.set('vocabulario');
+    this.submodalidadJuego.set('aleatoria');
+    this.submodalidadJuegoActiva.set('vocabulario-significado');
+    this.modalidadSubmenuSeleccionada.set(null);
     this.sincronizarRachaModalidadActiva();
     this.mensajeJuego.set('');
     this.cargandoInicioJuego.set(false);
     this.cargandoSeleccionModalidad.set(null);
+    this.cargandoSeleccionSubmodalidad.set(null);
     this.cargandoOtroJuego.set(false);
     this.triviaService.resetear();
     this.ahorcadoService.resetear();
@@ -746,6 +894,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   tituloTrivia(): string {
+    if (this.submodalidadJuegoActiva() === 'arte-pinturas') {
+      return '¡Adivina la pintura!';
+    }
+
+    if (this.submodalidadJuegoActiva() === 'cine-peliculas') {
+      return '¡Adivina la película!';
+    }
+
+    if (this.submodalidadJuegoActiva() === 'capitales-banderas') {
+      return '¡Adivina la bandera!';
+    }
+
     if (this.modalidadJuegoActiva() === 'geografia') {
       return '¡Trivia de geografía chilena!';
     }
@@ -781,7 +941,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   etiquetaBotonSiguienteJuego(): string {
-    if (this.modalidadJuego() === 'aleatoria') return 'Siguiente juego';
+    if (this.modalidadJuego() === 'aleatoria' || this.submodalidadJuego() === 'aleatoria') return 'Siguiente juego';
     return this.modalidadJuegoActiva() === 'vocabulario' ? 'Siguiente juego' : 'Siguiente pregunta';
   }
 
@@ -822,72 +982,158 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       modalidadObjetivo = modalidadSeleccionada;
     }
+
+    const submodalidadObjetivo = this.resolverSubmodalidadObjetivo(modalidadObjetivo, modalidadSeleccionada === 'aleatoria');
     this.modalidadJuegoActiva.set(modalidadObjetivo);
+    this.submodalidadJuegoActiva.set(submodalidadObjetivo);
     this.sincronizarRachaModalidadActiva();
 
-    if (modalidadObjetivo === 'geografia') {
-      this.tipoJuego.set('trivia');
-      await this.prepararTriviaGeografia();
-      return;
+    switch (submodalidadObjetivo) {
+      case 'vocabulario-significado':
+        this.tipoJuego.set('trivia');
+        await this.prepararTrivia();
+        return;
+      case 'vocabulario-ahorcado':
+        this.tipoJuego.set('ahorcado');
+        await this.prepararAhorcado();
+        return;
+      case 'vocabulario-crucigrama':
+        this.tipoJuego.set('crucigrama');
+        await this.prepararCrucigrama();
+        return;
+      case 'vocabulario-sopa':
+        this.tipoJuego.set('sopa');
+        await this.prepararSopaLetras();
+        return;
+      case 'geografia-trivia':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaGeografia();
+        return;
+      case 'capitales-capital-pais':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCapitales('capital-pais');
+        return;
+      case 'capitales-pais-capital':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCapitales('pais-capital');
+        return;
+      case 'capitales-continente':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCapitales('continente');
+        return;
+      case 'capitales-banderas':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCapitales('banderas');
+        return;
+      case 'arte-trivia':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaArte('trivia');
+        return;
+      case 'arte-pinturas':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaArte('pinturas');
+        return;
+      case 'ciencia-trivia':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCiencia('aleatoria');
+        return;
+      case 'ciencia-facil':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCiencia('facil');
+        return;
+      case 'ciencia-media':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCiencia('media');
+        return;
+      case 'ciencia-dificil':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCiencia('dificil');
+        return;
+      case 'musica-trivia':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaMusica('trivia');
+        return;
+      case 'musica-piano':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaMusica('piano');
+        return;
+      case 'cine-trivia':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCine('trivia');
+        return;
+      case 'cine-peliculas':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaCine('peliculas');
+        return;
+      case 'deportes-trivia':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaDeportes('aleatoria');
+        return;
+      case 'deportes-futbol':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaDeportes('futbol');
+        return;
+      case 'deportes-basquetbol':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaDeportes('basquetbol');
+        return;
+      case 'deportes-tenis':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaDeportes('tenis');
+        return;
+      case 'deportes-formula1':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaDeportes('formula1');
+        return;
+      case 'deportes-olimpicos':
+        this.tipoJuego.set('trivia');
+        await this.prepararTriviaDeportes('olimpicos');
+        return;
+      default:
+        this.tipoJuego.set('trivia');
+        await this.prepararTrivia();
+    }
+  }
+
+  private resolverSubmodalidadObjetivo(modalidad: ModalidadActiva, forzarAleatorio: boolean): SubmodalidadActiva {
+    const seleccion = this.submodalidadJuego();
+    if (forzarAleatorio || seleccion === 'aleatoria' || !this.submodalidadPerteneceAModalidad(modalidad, seleccion)) {
+      return this.elegirSubmodalidadAleatoria(modalidad);
     }
 
-    if (modalidadObjetivo === 'capitales') {
-      this.tipoJuego.set('trivia');
-      await this.prepararTriviaCapitales();
-      return;
+    return seleccion;
+  }
+
+  private submodalidadPerteneceAModalidad(modalidad: ModalidadActiva, submodalidad: SubmodalidadJuego): submodalidad is SubmodalidadActiva {
+    return this.submodalidadesDisponibles(modalidad).includes(submodalidad as SubmodalidadActiva);
+  }
+
+  private elegirSubmodalidadAleatoria(modalidad: ModalidadActiva): SubmodalidadActiva {
+    const disponibles = this.submodalidadesDisponibles(modalidad);
+    return disponibles[Math.floor(Math.random() * disponibles.length)] ?? disponibles[0] ?? 'vocabulario-significado';
+  }
+
+  private submodalidadesDisponibles(modalidad: ModalidadActiva): SubmodalidadActiva[] {
+    switch (modalidad) {
+      case 'vocabulario':
+        return ['vocabulario-significado', 'vocabulario-ahorcado', 'vocabulario-crucigrama', 'vocabulario-sopa'];
+      case 'geografia':
+        return ['geografia-trivia'];
+      case 'capitales':
+        return ['capitales-capital-pais', 'capitales-pais-capital', 'capitales-continente', 'capitales-banderas'];
+      case 'arte':
+        return ['arte-trivia', 'arte-pinturas'];
+      case 'ciencia':
+        return ['ciencia-facil', 'ciencia-media', 'ciencia-dificil'];
+      case 'musica':
+        return ['musica-trivia', 'musica-piano'];
+      case 'cine':
+        return ['cine-trivia', 'cine-peliculas'];
+      case 'deportes':
+        return ['deportes-futbol', 'deportes-basquetbol', 'deportes-tenis', 'deportes-formula1', 'deportes-olimpicos'];
+      default:
+        return ['vocabulario-significado'];
     }
-
-    if (modalidadObjetivo === 'arte') {
-      this.tipoJuego.set('trivia');
-      await this.prepararTriviaArte();
-      return;
-    }
-
-    if (modalidadObjetivo === 'ciencia') {
-      this.tipoJuego.set('trivia');
-      await this.prepararTriviaCiencia();
-      return;
-    }
-
-    if (modalidadObjetivo === 'musica') {
-      this.tipoJuego.set('trivia');
-      await this.prepararTriviaMusica();
-      return;
-    }
-
-    if (modalidadObjetivo === 'cine') {
-      this.tipoJuego.set('trivia');
-      await this.prepararTriviaCine();
-      return;
-    }
-
-    if (modalidadObjetivo === 'deportes') {
-      this.tipoJuego.set('trivia');
-      await this.prepararTriviaDeportes();
-      return;
-    }
-
-    const tipos: TipoJuego[] = ['trivia', 'ahorcado', 'crucigrama', 'sopa'];
-    const tiposDisponibles = excluirTipo ? tipos.filter(t => t !== excluirTipo) : tipos;
-    const tipoAleatorio = tiposDisponibles[Math.floor(Math.random() * tiposDisponibles.length)];
-    this.tipoJuego.set(tipoAleatorio);
-
-    if (tipoAleatorio === 'trivia') {
-      await this.prepararTrivia();
-      return;
-    }
-
-    if (tipoAleatorio === 'ahorcado') {
-      await this.prepararAhorcado();
-      return;
-    }
-
-    if (tipoAleatorio === 'crucigrama') {
-      await this.prepararCrucigrama();
-      return;
-    }
-
-    await this.prepararSopaLetras();
   }
 
   private async prepararTrivia(): Promise<void> {
@@ -944,7 +1190,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private async prepararTriviaCapitales(): Promise<void> {
+  private async prepararTriviaCapitales(tipo: TipoTriviaCapitales = 'aleatoria'): Promise<void> {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
@@ -954,7 +1200,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaFallbackPendiente = null;
 
     try {
-      const reto = await this.obtenerPreguntaUnicaTrivia('capitales', () => this.capitalesTriviaService.generarPregunta());
+      const reto = await this.obtenerPreguntaUnicaTrivia('capitales', () => this.capitalesTriviaService.generarPregunta(tipo));
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de países y capitales en este momento.');
         return;
@@ -979,7 +1225,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private async prepararTriviaArte(): Promise<void> {
+  private async prepararTriviaArte(tipo: TipoTriviaArte = 'aleatoria'): Promise<void> {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
@@ -989,7 +1235,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaFallbackPendiente = null;
 
     try {
-      const reto = await this.obtenerPreguntaUnicaTrivia('arte', () => this.arteTriviaService.generarPregunta());
+      const reto = await this.obtenerPreguntaUnicaTrivia('arte', () => this.arteTriviaService.generarPregunta(tipo));
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de arte en este momento.');
         return;
@@ -1014,13 +1260,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private async prepararTriviaCiencia(): Promise<void> {
+  private async prepararTriviaCiencia(dificultad: DificultadTriviaCiencia = 'aleatoria'): Promise<void> {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
 
     try {
-      const reto = await this.obtenerPreguntaUnicaTrivia('ciencia', () => this.cienciaTriviaService.generarPregunta());
+      const reto = await this.obtenerPreguntaUnicaTrivia('ciencia', () => this.cienciaTriviaService.generarPregunta(dificultad));
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de ciencia en este momento.');
         return;
@@ -1037,14 +1283,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private async prepararTriviaMusica(): Promise<void> {
+  private async prepararTriviaMusica(tipo: 'aleatoria' | 'trivia' | 'piano' = 'aleatoria'): Promise<void> {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
 
     try {
-      // 20% de probabilidad de trivia piano, 80% de trivia tradicional
-      const usarPiano = Math.random() < 0.2;
+      const usarPiano = tipo === 'piano' ? true : tipo === 'trivia' ? false : Math.random() < 0.5;
 
       if (usarPiano) {
         // Modo piano trivia
@@ -1072,7 +1317,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private async prepararTriviaCine(): Promise<void> {
+  private async prepararTriviaCine(tipo: TipoTriviaCine = 'aleatoria'): Promise<void> {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
@@ -1082,7 +1327,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.triviaFallbackPendiente = null;
 
     try {
-      const reto = await this.obtenerPreguntaUnicaTrivia('cine', () => this.cineTriviaService.generarPregunta());
+      const reto = await this.obtenerPreguntaUnicaTrivia('cine', () => this.cineTriviaService.generarPregunta(tipo));
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de cine en este momento.');
         return;
@@ -1106,13 +1351,13 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private async prepararTriviaDeportes(): Promise<void> {
+  private async prepararTriviaDeportes(categoria: CategoriaTriviaDeportes = 'aleatoria'): Promise<void> {
     this.juegoCargando.set(true);
     this.triviaService.resetear();
     this.triviaDatoExtra.set('');
 
     try {
-      const reto = await this.obtenerPreguntaUnicaTrivia('deportes', () => this.deportesTriviaService.generarPregunta());
+      const reto = await this.obtenerPreguntaUnicaTrivia('deportes', () => this.deportesTriviaService.generarPregunta(categoria));
       if (!reto) {
         this.mensajeJuego.set('No se pudo generar una pregunta de deportes en este momento.');
         return;

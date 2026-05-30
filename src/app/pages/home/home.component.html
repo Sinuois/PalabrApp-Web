@@ -294,6 +294,36 @@
         <button type="button" class="btn-secondary" [disabled]="cargandoSeleccionModalidad() !== null" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Cerrar</button>
       </div>
     </ng-container>
+
+    <ng-container *ngIf="pasoInvitacionJuego() === 'submodalidad'">
+      <h3>Elige tu minijuego</h3>
+      <p class="submenu-caption" *ngIf="modalidadSubmenuSeleccionada() as modalidad">
+        Temática: <strong>{{ modalidad === 'capitales' ? 'Países y capitales' : (modalidad === 'geografia' ? 'Geografía chilena' : (modalidad === 'ciencia' ? 'Ciencia' : (modalidad === 'musica' ? 'Música' : (modalidad === 'cine' ? 'Cine' : (modalidad === 'deportes' ? 'Deportes' : (modalidad === 'arte' ? 'Arte' : 'Vocabulario')))))) }}</strong>
+      </p>
+
+      <div class="submode-selector">
+        <button
+          type="button"
+          class="submode-card"
+          *ngFor="let opcion of opcionesSubmodalidad()"
+          [disabled]="cargandoSeleccionSubmodalidad() !== null"
+          (pointerup)="onSeleccionarSubmodalidadTap($event, opcion.clave)"
+          (click)="onSeleccionarSubmodalidadTap($event, opcion.clave)"
+          (touchend)="onSeleccionarSubmodalidadTap($event, opcion.clave)"
+        >
+          <span class="submode-title">
+            <span *ngIf="cargandoSeleccionSubmodalidad() === opcion.clave" class="btn-spinner" aria-hidden="true"></span>
+            {{ cargandoSeleccionSubmodalidad() === opcion.clave ? 'Preparando...' : opcion.nombre }}
+          </span>
+          <span class="submode-description" *ngIf="cargandoSeleccionSubmodalidad() !== opcion.clave">{{ opcion.descripcion }}</span>
+        </button>
+      </div>
+
+      <div class="game-actions crossword-actions">
+        <button type="button" class="btn-secondary" [disabled]="cargandoSeleccionSubmodalidad() !== null" (pointerup)="onVolverSelectorModalidadTap($event)" (click)="onVolverSelectorModalidadTap($event)" (touchend)="onVolverSelectorModalidadTap($event)">Volver</button>
+        <button type="button" class="btn-secondary" [disabled]="cargandoSeleccionSubmodalidad() !== null" (pointerup)="onCerrarInvitacionTap($event)" (click)="onCerrarInvitacionTap($event)" (touchend)="onCerrarInvitacionTap($event)">Cerrar</button>
+      </div>
+    </ng-container>
   </div>
 </div>
 

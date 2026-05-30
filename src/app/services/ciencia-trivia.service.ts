@@ -9,11 +9,14 @@ export interface TriviaCiencia {
   datoExtra?: string;
 }
 
+export type DificultadTriviaCiencia = 'aleatoria' | 'facil' | 'media' | 'dificil';
+
 type PreguntaCiencia = {
   pregunta: string;
   correcta: string;
   distractores: string[];
   datoExtra?: string;
+  dificultad: Exclude<DificultadTriviaCiencia, 'aleatoria'>;
 };
 
 @Injectable({ providedIn: 'root' })
@@ -24,9 +27,12 @@ export class CienciaTriviaService {
   private preguntasRecientes: string[] = [];
   private readonly maxPreguntasRecientes = 24;
 
-  async generarPregunta(): Promise<TriviaCiencia | null> {
-    const banco = await this.cargarBanco();
-    if (banco.length < 3) return null;
+  async generarPregunta(dificultad: DificultadTriviaCiencia = 'aleatoria'): Promise<TriviaCiencia | null> {
+    const bancoCompleto = await this.cargarBanco();
+    const banco = dificultad === 'aleatoria'
+      ? bancoCompleto
+      : bancoCompleto.filter((item) => item.dificultad === dificultad);
+    if (banco.length < 1) return null;
 
     let fallback: TriviaCiencia | null = null;
     const orden = this.barajar(banco);
@@ -82,13 +88,15 @@ export class CienciaTriviaService {
       const partes = linea.split('|').map((p) => p.trim());
       if (partes[0] !== 'Q' || partes.length < 6) continue;
 
-      const pregunta = partes[1];
+      const { textoPregunta, dificultadMarcada } = this.extraerDificultadDesdePregunta(partes[1]);
+      const pregunta = textoPregunta;
       const correcta = partes[2];
       const distractores = [partes[3], partes[4], partes[5]].filter(Boolean);
       const datoExtra = partes[6] || undefined;
+      const dificultad = dificultadMarcada ?? this.clasificarDificultad(pregunta, datoExtra);
 
       if (!pregunta || !correcta || distractores.length < 3) continue;
-      banco.push({ pregunta, correcta, distractores, datoExtra });
+      banco.push({ pregunta, correcta, distractores, datoExtra, dificultad });
     }
 
     return banco;
@@ -112,5 +120,47 @@ export class CienciaTriviaService {
       [copia[i], copia[j]] = [copia[j], copia[i]];
     }
     return copia;
+  }
+
+  private extraerDificultadDesdePregunta(raw: string): {
+    textoPregunta: string;
+    dificultadMarcada: Exclude<DificultadTriviaCiencia, 'aleatoria'> | null;
+  } {
+    const texto = raw.trim();
+    if (texto.startsWith('[F]')) {
+      return { textoPregunta: texto.slice(3).trim(), dificultadMarcada: 'facil' };
+    }
+    if (texto.startsWith('[M]')) {
+      return { textoPregunta: texto.slice(3).trim(), dificultadMarcada: 'media' };
+    }
+    if (texto.startsWith('[D]')) {
+      return { textoPregunta: texto.slice(3).trim(), dificultadMarcada: 'dificil' };
+    }
+
+    return { textoPregunta: texto, dificultadMarcada: null };
+  }
+
+  private clasificarDificultad(
+    pregunta: string,
+    datoExtra?: string
+  ): Exclude<DificultadTriviaCiencia, 'aleatoria'> {
+    const texto = this.normalizar(`${pregunta} ${datoExtra ?? ''}`);
+
+    if (/(cuantic|planck|de broglie|isomer|codon|estereoisomer|gutenberg|subduccion|hawking|agujero negro|materia oscura|uai|funcion de onda|espectro electromagnetico|rayos gamma)/.test(texto)) {
+      return 'dificil';
+    }
+
+    if (/(mitosis|meiosis|adn|arn|replicacion|transcripcion|termodinamica|bohr|rutherford|maxwell|newton|copernico|kepler|radiacion|fotosintesis|estratosfera|enlace|isotop|sismograf|ozono)/.test(texto)) {
+      return 'media';
+    }
+
+    return 'facil';
+  }
+
+  private normalizar(valor: string): string {
+    return valor
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
   }
 }

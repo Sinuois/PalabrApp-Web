@@ -11,6 +11,8 @@ export interface TriviaArte {
   imagenUrl?: string;
 }
 
+export type TipoTriviaArte = 'aleatoria' | 'trivia' | 'pinturas';
+
 type PreguntaArte = {
   pregunta: string;
   correcta: string;
@@ -28,13 +30,20 @@ export class ArteTriviaService {
   private readonly opcionesPinturaObjetivo = 6;
   private readonly pinturas = PINTURAS_ARTE;
 
-  async generarPregunta(): Promise<TriviaArte | null> {
+  async generarPregunta(tipo: TipoTriviaArte = 'aleatoria'): Promise<TriviaArte | null> {
     const banco = await this.cargarBanco();
     const hayTriviaTexto = banco.length >= 3;
     const hayTriviaPintura = this.pinturas.length >= 4;
     if (!hayTriviaTexto && !hayTriviaPintura) return null;
 
-    if (hayTriviaPintura && Math.random() < 0.45) {
+    if (tipo === 'pinturas') {
+      const retoPintura = this.generarAdivinaPintura();
+      if (!retoPintura) return null;
+      this.registrarPreguntaReciente(retoPintura);
+      return retoPintura;
+    }
+
+    if (tipo === 'aleatoria' && hayTriviaPintura && Math.random() < 0.45) {
       const retoPintura = this.generarAdivinaPintura();
       if (retoPintura) {
         if (!this.esPreguntaReciente(retoPintura)) {
@@ -44,10 +53,14 @@ export class ArteTriviaService {
       }
     }
 
-    if (!hayTriviaTexto) {
+    if (!hayTriviaTexto && tipo !== 'trivia') {
       const retoPintura = this.generarAdivinaPintura();
       if (retoPintura) this.registrarPreguntaReciente(retoPintura);
       return retoPintura;
+    }
+
+    if (!hayTriviaTexto && tipo === 'trivia') {
+      return null;
     }
 
     let fallback: TriviaArte | null = null;

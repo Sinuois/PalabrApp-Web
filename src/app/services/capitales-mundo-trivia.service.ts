@@ -10,6 +10,8 @@ export interface TriviaCapitalesMundo {
   imagenUrl?: string;
 }
 
+export type TipoTriviaCapitales = 'aleatoria' | 'capital-pais' | 'pais-capital' | 'continente' | 'banderas';
+
 type CapitalMundo = {
   pais: string;
   capital: string;
@@ -26,16 +28,18 @@ export class CapitalesMundoTriviaService {
   private preguntasRecientes: string[] = [];
   private readonly maxPreguntasRecientes = 24;
 
-  async generarPregunta(): Promise<TriviaCapitalesMundo | null> {
+  async generarPregunta(tipo: TipoTriviaCapitales = 'aleatoria'): Promise<TriviaCapitalesMundo | null> {
     const banco = await this.cargarBanco();
     if (banco.length < 6) return null;
 
-    const plantillas: Array<() => TriviaCapitalesMundo | null> = [
-      () => this.generarCapitalDePais(banco),
-      () => this.generarPaisDeCapital(banco),
-      () => this.generarContinenteDePais(banco),
-      () => this.generarBandera(banco)
-    ];
+    const plantillas: Array<() => TriviaCapitalesMundo | null> = tipo === 'aleatoria'
+      ? [
+          () => this.generarCapitalDePais(banco),
+          () => this.generarPaisDeCapital(banco),
+          () => this.generarContinenteDePais(banco),
+          () => this.generarBandera(banco)
+        ]
+      : [() => this.generarSegunTipo(banco, tipo)];
 
     let fallback: TriviaCapitalesMundo | null = null;
 
@@ -62,6 +66,21 @@ export class CapitalesMundoTriviaService {
       this.registrarPreguntaReciente(fallback);
     }
     return fallback;
+  }
+
+  private generarSegunTipo(banco: CapitalMundo[], tipo: Exclude<TipoTriviaCapitales, 'aleatoria'>): TriviaCapitalesMundo | null {
+    switch (tipo) {
+      case 'capital-pais':
+        return this.generarCapitalDePais(banco);
+      case 'pais-capital':
+        return this.generarPaisDeCapital(banco);
+      case 'continente':
+        return this.generarContinenteDePais(banco);
+      case 'banderas':
+        return this.generarBandera(banco);
+      default:
+        return null;
+    }
   }
 
   private async cargarBanco(): Promise<CapitalMundo[]> {

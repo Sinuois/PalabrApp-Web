@@ -11,6 +11,8 @@ export interface TriviaCine {
   imagenUrl?: string;
 }
 
+export type TipoTriviaCine = 'aleatoria' | 'trivia' | 'peliculas';
+
 type PreguntaCine = {
   pregunta: string;
   correcta: string;
@@ -35,13 +37,20 @@ export class CineTriviaService {
   private readonly opcionesPeliculaObjetivo = 6;
   private readonly peliculas: readonly PeliculaCine[] = CINE_PELICULAS as readonly PeliculaCine[];
 
-  async generarPregunta(): Promise<TriviaCine | null> {
+  async generarPregunta(tipo: TipoTriviaCine = 'aleatoria'): Promise<TriviaCine | null> {
     const banco = await this.cargarBanco();
     const hayTriviaTexto = banco.length >= 3;
     const hayTriviaPelicula = this.peliculas.length >= 4;
     if (!hayTriviaTexto && !hayTriviaPelicula) return null;
 
-    if (hayTriviaPelicula && Math.random() < 0.45) {
+    if (tipo === 'peliculas') {
+      const retoPelicula = this.generarAdivinaPelicula();
+      if (!retoPelicula) return null;
+      this.registrarPreguntaReciente(retoPelicula);
+      return retoPelicula;
+    }
+
+    if (tipo === 'aleatoria' && hayTriviaPelicula && Math.random() < 0.45) {
       const retoPelicula = this.generarAdivinaPelicula();
       if (retoPelicula) {
         if (!this.esPreguntaReciente(retoPelicula)) {
@@ -51,10 +60,14 @@ export class CineTriviaService {
       }
     }
 
-    if (!hayTriviaTexto) {
+    if (!hayTriviaTexto && tipo !== 'trivia') {
       const retoPelicula = this.generarAdivinaPelicula();
       if (retoPelicula) this.registrarPreguntaReciente(retoPelicula);
       return retoPelicula;
+    }
+
+    if (!hayTriviaTexto && tipo === 'trivia') {
+      return null;
     }
 
     let fallback: TriviaCine | null = null;

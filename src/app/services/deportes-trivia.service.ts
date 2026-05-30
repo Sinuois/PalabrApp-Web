@@ -9,11 +9,14 @@ export interface TriviaDeportes {
   datoExtra?: string;
 }
 
+export type CategoriaTriviaDeportes = 'aleatoria' | 'futbol' | 'basquetbol' | 'tenis' | 'formula1' | 'olimpicos';
+
 type PreguntaDeportes = {
   pregunta: string;
   correcta: string;
   distractores: string[];
   datoExtra?: string;
+  categoria: Exclude<CategoriaTriviaDeportes, 'aleatoria'>;
 };
 
 @Injectable({ providedIn: 'root' })
@@ -24,9 +27,12 @@ export class DeportesTriviaService {
   private preguntasRecientes: string[] = [];
   private readonly maxPreguntasRecientes = 24;
 
-  async generarPregunta(): Promise<TriviaDeportes | null> {
-    const banco = await this.cargarBanco();
-    if (banco.length < 3) return null;
+  async generarPregunta(categoria: CategoriaTriviaDeportes = 'aleatoria'): Promise<TriviaDeportes | null> {
+    const bancoCompleto = await this.cargarBanco();
+    const banco = categoria === 'aleatoria'
+      ? bancoCompleto
+      : bancoCompleto.filter((item) => item.categoria === categoria);
+    if (banco.length < 1) return null;
 
     let fallback: TriviaDeportes | null = null;
     const orden = this.barajar(banco);
@@ -86,9 +92,10 @@ export class DeportesTriviaService {
       const correcta = partes[2];
       const distractores = [partes[3], partes[4], partes[5]].filter(Boolean);
       const datoExtra = partes[6] || undefined;
+      const categoria = this.clasificarCategoria(pregunta, datoExtra);
 
       if (!pregunta || !correcta || distractores.length < 3) continue;
-      banco.push({ pregunta, correcta, distractores, datoExtra });
+      banco.push({ pregunta, correcta, distractores, datoExtra, categoria });
     }
 
     return banco;
@@ -112,5 +119,34 @@ export class DeportesTriviaService {
       [copia[i], copia[j]] = [copia[j], copia[i]];
     }
     return copia;
+  }
+
+  private clasificarCategoria(pregunta: string, datoExtra?: string): Exclude<CategoriaTriviaDeportes, 'aleatoria'> {
+    const texto = this.normalizar(`${pregunta} ${datoExtra ?? ''}`);
+
+    if (/(nba|basquet|basket|celtics|lakers|lebron|jordan|jokic)/.test(texto)) {
+      return 'basquetbol';
+    }
+
+    if (/(tenis|wimbledon|roland garros|grand slam|djokovic|nadal|federer|massu|gonzalez|rios)/.test(texto)) {
+      return 'tenis';
+    }
+
+    if (/(formula 1|\bf1\b|escuderia|gran premio|verstappen|hamilton|ferrari|monaco|piloto)/.test(texto)) {
+      return 'formula1';
+    }
+
+    if (/(olimpic|100 metros|maraton|atlet|taekwondo|boxeo|ciclis|tour de france|golf)/.test(texto)) {
+      return 'olimpicos';
+    }
+
+    return 'futbol';
+  }
+
+  private normalizar(valor: string): string {
+    return valor
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
   }
 }
