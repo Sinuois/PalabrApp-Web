@@ -598,9 +598,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     switch (modalidad) {
       case 'vocabulario':
         return [
-          { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla entre significado, ahorcado, crucigrama y sopa.' },
+          { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla de todos los minijuegos.' },
           { clave: 'vocabulario-significado', nombre: 'Adivinar significado', descripcion: 'Modo trivia clásico de conceptos.' },
-          { clave: 'vocabulario-ahorcado', nombre: 'Letra a letra', descripcion: 'Adivina la palabra antes de quedarte sin intentos.' },
+          { clave: 'vocabulario-ahorcado', nombre: 'Adivinar palabra', descripcion: 'Adivina la palabra antes de quedarte sin intentos.' },
           { clave: 'vocabulario-crucigrama', nombre: 'Crucigrama', descripcion: 'Completa el tablero usando pistas.' },
           { clave: 'vocabulario-sopa', nombre: 'Sopa de letras', descripcion: 'Encuentra todas las palabras ocultas.' }
         ];

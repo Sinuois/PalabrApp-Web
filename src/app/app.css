@@ -1,0 +1,8 @@
+.route-touch-shield {
+	position: fixed;
+	inset: 0;
+	z-index: 1200;
+	background: transparent;
+	pointer-events: auto;
+	touch-action: none;
+}

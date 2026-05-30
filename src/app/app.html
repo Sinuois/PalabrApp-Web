@@ -1,2 +1,12 @@
 <router-outlet />
 <app-tab-nav />
+
+<div
+	*ngIf="bloqueoNavegacionActivo()"
+	class="route-touch-shield"
+	(click)="onBloqueoNavegacion($event)"
+	(pointerdown)="onBloqueoNavegacion($event)"
+	(pointerup)="onBloqueoNavegacion($event)"
+	(touchstart)="onBloqueoNavegacion($event)"
+	(touchend)="onBloqueoNavegacion($event)"
+></div>
