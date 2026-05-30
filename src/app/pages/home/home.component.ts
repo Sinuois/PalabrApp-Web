@@ -57,7 +57,7 @@ type OpcionSubmodalidad = {
   nombre: string;
   descripcion: string;
 };
-type RachaPorModalidad = Record<ModalidadJuego, number>;
+type RachaPorClave = Record<string, number>;
 type TriviaFallback = {
   pregunta: string;
   opciones: string[];
@@ -104,8 +104,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   rachaVictorias = signal(0);
   mejorRachaVictorias = signal(0);
   readonly metaRachaMaxima = 100;
-  private rachaPorModalidad = signal<RachaPorModalidad>(this.crearRachaInicialPorModalidad());
-  private mejorRachaPorModalidad = signal<RachaPorModalidad>(this.crearRachaInicialPorModalidad());
+  metaRachaActual = signal(this.metaRachaMaxima);
+  private rachaPorClave = signal<RachaPorClave>({ aleatoria: 0 });
+  private mejorRachaPorClave = signal<RachaPorClave>({ aleatoria: 0 });
   mostrarAnimacionRacha = signal(false);
   cargandoSeleccionModalidad = signal<ModalidadJuego | null>(null);
   cargandoSeleccionSubmodalidad = signal<SubmodalidadJuego | null>(null);
@@ -150,6 +151,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private triviaImagenReintentos = 0;
   private readonly maxReintentosTriviaImagen = 2;
   private triviaFallbackPendiente: TriviaFallback | null = null;
+  private versionMetaRacha = 0;
   private readonly triviaImagenMaxEsperaMs = 5500;
   private readonly maxIntentosPreguntaUnicaTrivia = 18;
   private triviaPreguntasVistas = new Map<ModalidadActiva, Set<string>>();
@@ -261,6 +263,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     this.sincronizarRachaModalidadActiva();
+    void this.actualizarMetaRachaActual();
 
     // Evaluar popup inicial solo en navegador para evitar flicker por SSR/hidratacion.
     if (typeof window !== 'undefined') {
@@ -706,6 +709,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.submodalidadJuegoActiva.set('vocabulario-significado');
     this.modalidadSubmenuSeleccionada.set(null);
     this.sincronizarRachaModalidadActiva();
+    void this.actualizarMetaRachaActual();
     this.mensajeJuego.set('');
     this.cargandoInicioJuego.set(false);
     this.cargandoSeleccionModalidad.set(null);
@@ -987,6 +991,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.modalidadJuegoActiva.set(modalidadObjetivo);
     this.submodalidadJuegoActiva.set(submodalidadObjetivo);
     this.sincronizarRachaModalidadActiva();
+    void this.actualizarMetaRachaActual();
 
     switch (submodalidadObjetivo) {
       case 'vocabulario-significado':
@@ -1935,21 +1940,21 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private registrarVictoria(): void {
-    const modalidad = this.obtenerClaveRachaActual();
-    const rachasActuales = this.rachaPorModalidad();
-    const rachaActual = rachasActuales[modalidad] ?? 0;
-    const siguienteRacha = Math.min(rachaActual + 1, this.metaRachaMaxima);
+    const clave = this.obtenerClaveRachaActual();
+    const rachasActuales = this.rachaPorClave();
+    const rachaActual = rachasActuales[clave] ?? 0;
+    const siguienteRacha = Math.min(rachaActual + 1, this.metaRachaActual());
 
-    this.rachaPorModalidad.set({
+    this.rachaPorClave.set({
       ...rachasActuales,
-      [modalidad]: siguienteRacha
+      [clave]: siguienteRacha
     });
 
-    const mejoresActuales = this.mejorRachaPorModalidad();
-    if (siguienteRacha > (mejoresActuales[modalidad] ?? 0)) {
-      this.mejorRachaPorModalidad.set({
+    const mejoresActuales = this.mejorRachaPorClave();
+    if (siguienteRacha > (mejoresActuales[clave] ?? 0)) {
+      this.mejorRachaPorClave.set({
         ...mejoresActuales,
-        [modalidad]: siguienteRacha
+        [clave]: siguienteRacha
       });
     }
 
@@ -1959,45 +1964,101 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private registrarDerrota(): void {
-    const modalidad = this.obtenerClaveRachaActual();
-    const rachasActuales = this.rachaPorModalidad();
-    if ((rachasActuales[modalidad] ?? 0) !== 0) {
-      this.rachaPorModalidad.set({
+    const clave = this.obtenerClaveRachaActual();
+    const rachasActuales = this.rachaPorClave();
+    if ((rachasActuales[clave] ?? 0) !== 0) {
+      this.rachaPorClave.set({
         ...rachasActuales,
-        [modalidad]: 0
+        [clave]: 0
       });
     }
     this.sincronizarRachaModalidadActiva();
   }
 
-  private crearRachaInicialPorModalidad(): RachaPorModalidad {
-    return {
-      aleatoria: 0,
-      vocabulario: 0,
-      geografia: 0,
-      capitales: 0,
-      arte: 0,
-      ciencia: 0,
-      musica: 0,
-      cine: 0,
-      deportes: 0
-    };
-  }
-
-  private obtenerClaveRachaActual(): ModalidadJuego {
-    return this.modalidadJuego() === 'aleatoria' ? 'aleatoria' : this.modalidadJuegoActiva();
+  private obtenerClaveRachaActual(): string {
+    return this.modalidadJuego() === 'aleatoria' ? 'aleatoria' : this.submodalidadJuegoActiva();
   }
 
   private sincronizarRachaModalidadActiva(): void {
-    const modalidad = this.obtenerClaveRachaActual();
-    const rachas = this.rachaPorModalidad();
-    const mejores = this.mejorRachaPorModalidad();
-    this.rachaVictorias.set(rachas[modalidad] ?? 0);
-    this.mejorRachaVictorias.set(mejores[modalidad] ?? 0);
+    const clave = this.obtenerClaveRachaActual();
+    const rachas = this.rachaPorClave();
+    const mejores = this.mejorRachaPorClave();
+    this.rachaVictorias.set(rachas[clave] ?? 0);
+    this.mejorRachaVictorias.set(mejores[clave] ?? 0);
+  }
+
+  private async actualizarMetaRachaActual(): Promise<void> {
+    const version = ++this.versionMetaRacha;
+
+    if (this.modalidadJuego() === 'aleatoria') {
+      if (version === this.versionMetaRacha) {
+        this.metaRachaActual.set(this.metaRachaMaxima);
+      }
+      return;
+    }
+
+    const limite = await this.resolverLimitePorSubmodalidad(this.submodalidadJuegoActiva());
+    if (version !== this.versionMetaRacha) return;
+
+    this.metaRachaActual.set(Math.max(1, limite));
+  }
+
+  private async resolverLimitePorSubmodalidad(submodalidad: SubmodalidadActiva): Promise<number> {
+    switch (submodalidad) {
+      case 'vocabulario-significado':
+      case 'vocabulario-ahorcado':
+      case 'vocabulario-crucigrama':
+      case 'vocabulario-sopa':
+        return this.cantPalabras;
+      case 'geografia-trivia':
+        return this.geografiaTriviaService.obtenerTotalDisponible();
+      case 'capitales-capital-pais':
+        return this.capitalesTriviaService.obtenerTotalDisponible('capital-pais');
+      case 'capitales-pais-capital':
+        return this.capitalesTriviaService.obtenerTotalDisponible('pais-capital');
+      case 'capitales-continente':
+        return this.capitalesTriviaService.obtenerTotalDisponible('continente');
+      case 'capitales-banderas':
+        return this.capitalesTriviaService.obtenerTotalDisponible('banderas');
+      case 'arte-trivia':
+        return this.arteTriviaService.obtenerTotalDisponible('trivia');
+      case 'arte-pinturas':
+        return this.arteTriviaService.obtenerTotalDisponible('pinturas');
+      case 'ciencia-trivia':
+        return this.cienciaTriviaService.obtenerTotalDisponible('aleatoria');
+      case 'ciencia-facil':
+        return this.cienciaTriviaService.obtenerTotalDisponible('facil');
+      case 'ciencia-media':
+        return this.cienciaTriviaService.obtenerTotalDisponible('media');
+      case 'ciencia-dificil':
+        return this.cienciaTriviaService.obtenerTotalDisponible('dificil');
+      case 'musica-trivia':
+        return this.musicaTriviaService.obtenerTotalDisponible();
+      case 'musica-piano':
+        return this.musicaPianoTriviaService.obtenerTotalDisponible();
+      case 'cine-trivia':
+        return this.cineTriviaService.obtenerTotalDisponible('trivia');
+      case 'cine-peliculas':
+        return this.cineTriviaService.obtenerTotalDisponible('peliculas');
+      case 'deportes-trivia':
+        return this.deportesTriviaService.obtenerTotalDisponible('aleatoria');
+      case 'deportes-futbol':
+        return this.deportesTriviaService.obtenerTotalDisponible('futbol');
+      case 'deportes-basquetbol':
+        return this.deportesTriviaService.obtenerTotalDisponible('basquetbol');
+      case 'deportes-tenis':
+        return this.deportesTriviaService.obtenerTotalDisponible('tenis');
+      case 'deportes-formula1':
+        return this.deportesTriviaService.obtenerTotalDisponible('formula1');
+      case 'deportes-olimpicos':
+        return this.deportesTriviaService.obtenerTotalDisponible('olimpicos');
+      default:
+        return this.metaRachaMaxima;
+    }
   }
 
   rachaCompletada(): boolean {
-    return this.rachaVictorias() >= this.metaRachaMaxima;
+    return this.rachaVictorias() >= this.metaRachaActual();
   }
 
   obtenerInsigniaRacha(): string {
@@ -2011,7 +2072,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (racha < 70) return '👑';
     if (racha < 80) return '👑👑';
     if (racha < 90) return '🏆';
-    if (racha < this.metaRachaMaxima) return '🏆🏆';
+    if (racha < this.metaRachaActual()) return '🏆🏆';
     return '💎';
   }
 
@@ -2022,8 +2083,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     if (racha < 40) return 'streak-medium';
     if (racha < 60) return 'streak-high';
     if (racha < 80) return 'streak-very-high';
-    if (racha < this.metaRachaMaxima) return 'streak-epic';
-    if (racha >= this.metaRachaMaxima) return 'streak-diamond';
+    if (racha < this.metaRachaActual()) return 'streak-epic';
+    if (racha >= this.metaRachaActual()) return 'streak-diamond';
     return 'streak-legendary';
   }
 

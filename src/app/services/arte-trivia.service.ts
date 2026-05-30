@@ -88,6 +88,14 @@ export class ArteTriviaService {
     return fallback;
   }
 
+  async obtenerTotalDisponible(tipo: TipoTriviaArte = 'aleatoria'): Promise<number> {
+    const banco = await this.cargarBanco();
+
+    if (tipo === 'trivia') return banco.length;
+    if (tipo === 'pinturas') return this.pinturas.length;
+    return banco.length + this.pinturas.length;
+  }
+
   private generarAdivinaPintura(): TriviaArte | null {
     const correcta = this.elegirUno(this.pinturas);
     if (!correcta) return null;

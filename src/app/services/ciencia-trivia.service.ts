@@ -59,6 +59,12 @@ export class CienciaTriviaService {
     return fallback;
   }
 
+  async obtenerTotalDisponible(dificultad: DificultadTriviaCiencia = 'aleatoria'): Promise<number> {
+    const banco = await this.cargarBanco();
+    if (dificultad === 'aleatoria') return banco.length;
+    return banco.filter((item) => item.dificultad === dificultad).length;
+  }
+
   private async cargarBanco(): Promise<PreguntaCiencia[]> {
     if (this.banco) return this.banco;
     if (this.cargaEnCurso) return this.cargaEnCurso;

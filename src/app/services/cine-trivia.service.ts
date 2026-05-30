@@ -95,6 +95,14 @@ export class CineTriviaService {
     return fallback;
   }
 
+  async obtenerTotalDisponible(tipo: TipoTriviaCine = 'aleatoria'): Promise<number> {
+    const banco = await this.cargarBanco();
+
+    if (tipo === 'trivia') return banco.length;
+    if (tipo === 'peliculas') return this.peliculas.length;
+    return banco.length + this.peliculas.length;
+  }
+
   private generarAdivinaPelicula(): TriviaCine | null {
     const correcta = this.elegirUno(this.peliculas);
     if (!correcta) return null;

@@ -126,6 +126,26 @@ export class GeografiaChileTriviaService {
     return primerFallback;
   }
 
+  async obtenerTotalDisponible(): Promise<number> {
+    const banco = await this.cargarBanco();
+    return (
+      banco.regiones.length +
+      banco.volcanes.length +
+      banco.rios.length +
+      banco.montanas.length +
+      banco.parquesNacionales.length +
+      banco.islas.length +
+      banco.glaciares.length +
+      banco.lagos.length +
+      banco.lagunas.length +
+      banco.ciudadesCosteras.length +
+      banco.ciudades.length +
+      banco.pueblos.length +
+      banco.floraNativa.length +
+      banco.faunaNativa.length
+    );
+  }
+
   private async cargarBanco(): Promise<BancoGeografia> {
     if (this.banco) return this.banco;
     if (this.cargaEnCurso) return this.cargaEnCurso;

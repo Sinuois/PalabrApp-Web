@@ -67,6 +67,10 @@ export class MusicaPianoTriviaService {
 
   constructor() {}
 
+  obtenerTotalDisponible(): number {
+    return this.notas.length + this.acordes.length;
+  }
+
   private obtenerAudioContext(): AudioContext | null {
     try {
       if (typeof window === 'undefined') return null;

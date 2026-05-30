@@ -59,6 +59,12 @@ export class DeportesTriviaService {
     return fallback;
   }
 
+  async obtenerTotalDisponible(categoria: CategoriaTriviaDeportes = 'aleatoria'): Promise<number> {
+    const banco = await this.cargarBanco();
+    if (categoria === 'aleatoria') return banco.length;
+    return banco.filter((item) => item.categoria === categoria).length;
+  }
+
   private async cargarBanco(): Promise<PreguntaDeportes[]> {
     if (this.banco) return this.banco;
     if (this.cargaEnCurso) return this.cargaEnCurso;

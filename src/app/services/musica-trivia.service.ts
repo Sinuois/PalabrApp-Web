@@ -53,6 +53,11 @@ export class MusicaTriviaService {
     return fallback;
   }
 
+  async obtenerTotalDisponible(): Promise<number> {
+    const banco = await this.cargarBanco();
+    return banco.length;
+  }
+
   private async cargarBanco(): Promise<PreguntaMusica[]> {
     if (this.banco) return this.banco;
     if (this.cargaEnCurso) return this.cargaEnCurso;

@@ -68,6 +68,21 @@ export class CapitalesMundoTriviaService {
     return fallback;
   }
 
+  async obtenerTotalDisponible(tipo: TipoTriviaCapitales = 'aleatoria'): Promise<number> {
+    const banco = await this.cargarBanco();
+
+    switch (tipo) {
+      case 'capital-pais':
+      case 'pais-capital':
+      case 'continente':
+        return banco.length;
+      case 'banderas':
+        return banco.filter((item) => Boolean(item.codigoISO)).length;
+      default:
+        return banco.length;
+    }
+  }
+
   private generarSegunTipo(banco: CapitalMundo[], tipo: Exclude<TipoTriviaCapitales, 'aleatoria'>): TriviaCapitalesMundo | null {
     switch (tipo) {
       case 'capital-pais':
