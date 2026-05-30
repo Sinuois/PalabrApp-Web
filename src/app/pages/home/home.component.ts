@@ -620,9 +620,9 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       case 'ciencia':
         return [
           { clave: 'aleatoria', nombre: 'Aleatorio', descripcion: 'Mezcla preguntas fáciles, medias y difíciles.' },
-          { clave: 'ciencia-facil', nombre: 'Ciencia fácil', descripcion: 'Conceptos básicos y preguntas más directas.' },
-          { clave: 'ciencia-media', nombre: 'Ciencia media', descripcion: 'Nivel intermedio de complejidad.' },
-          { clave: 'ciencia-dificil', nombre: 'Ciencia difícil', descripcion: 'Preguntas avanzadas y más técnicas.' }
+          { clave: 'ciencia-facil', nombre: 'Dificultad fácil', descripcion: 'Conceptos básicos y preguntas más directas.' },
+          { clave: 'ciencia-media', nombre: 'Dificultad media', descripcion: 'Nivel intermedio de complejidad.' },
+          { clave: 'ciencia-dificil', nombre: 'Dificultad difícil', descripcion: 'Preguntas avanzadas y más técnicas.' }
         ];
       case 'musica':
         return [

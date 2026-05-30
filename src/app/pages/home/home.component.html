@@ -296,7 +296,7 @@
     </ng-container>
 
     <ng-container *ngIf="pasoInvitacionJuego() === 'submodalidad'">
-      <h3>Elige tu minijuego</h3>
+      <h3>Selecciona minijuego</h3>
       <p class="submenu-caption" *ngIf="modalidadSubmenuSeleccionada() as modalidad">
         Temática: <strong>{{ modalidad === 'capitales' ? 'Países y capitales' : (modalidad === 'geografia' ? 'Geografía chilena' : (modalidad === 'ciencia' ? 'Ciencia' : (modalidad === 'musica' ? 'Música' : (modalidad === 'cine' ? 'Cine' : (modalidad === 'deportes' ? 'Deportes' : (modalidad === 'arte' ? 'Arte' : 'Vocabulario')))))) }}</strong>
       </p>
