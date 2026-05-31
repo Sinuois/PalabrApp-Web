@@ -11,6 +11,14 @@ export interface TriviaDeportes {
 
 export type CategoriaTriviaDeportes = 'aleatoria' | 'futbol' | 'basquetbol' | 'tenis' | 'formula1' | 'olimpicos';
 
+const CATEGORIAS_DEPORTES: ReadonlySet<Exclude<CategoriaTriviaDeportes, 'aleatoria'>> = new Set([
+  'futbol',
+  'basquetbol',
+  'tenis',
+  'formula1',
+  'olimpicos'
+]);
+
 type PreguntaDeportes = {
   pregunta: string;
   correcta: string;
@@ -92,13 +100,15 @@ export class DeportesTriviaService {
 
     for (const linea of lineas) {
       const partes = linea.split('|').map((p) => p.trim());
-      if (partes[0] !== 'Q' || partes.length < 6) continue;
+      if (partes[0] !== 'Q' || partes.length < 7) continue;
 
-      const pregunta = partes[1];
-      const correcta = partes[2];
-      const distractores = [partes[3], partes[4], partes[5]].filter(Boolean);
-      const datoExtra = partes[6] || undefined;
-      const categoria = this.clasificarCategoria(pregunta, datoExtra);
+      const categoria = this.parsearCategoria(partes[1]);
+      if (!categoria) continue;
+
+      const pregunta = partes[2];
+      const correcta = partes[3];
+      const distractores = [partes[4], partes[5], partes[6]].filter(Boolean);
+      const datoExtra = partes[7] || undefined;
 
       if (!pregunta || !correcta || distractores.length < 3) continue;
       banco.push({ pregunta, correcta, distractores, datoExtra, categoria });
@@ -127,32 +137,10 @@ export class DeportesTriviaService {
     return copia;
   }
 
-  private clasificarCategoria(pregunta: string, datoExtra?: string): Exclude<CategoriaTriviaDeportes, 'aleatoria'> {
-    const texto = this.normalizar(`${pregunta} ${datoExtra ?? ''}`);
-
-    if (/(nba|basquet|basket|celtics|lakers|lebron|jordan|jokic)/.test(texto)) {
-      return 'basquetbol';
+  private parsearCategoria(valor: string): Exclude<CategoriaTriviaDeportes, 'aleatoria'> | null {
+    if (CATEGORIAS_DEPORTES.has(valor as Exclude<CategoriaTriviaDeportes, 'aleatoria'>)) {
+      return valor as Exclude<CategoriaTriviaDeportes, 'aleatoria'>;
     }
-
-    if (/(tenis|wimbledon|roland garros|grand slam|djokovic|nadal|federer|massu|gonzalez|rios)/.test(texto)) {
-      return 'tenis';
-    }
-
-    if (/(formula 1|\bf1\b|escuderia|gran premio|verstappen|hamilton|ferrari|monaco|piloto)/.test(texto)) {
-      return 'formula1';
-    }
-
-    if (/(olimpic|100 metros|maraton|atlet|taekwondo|boxeo|ciclis|tour de france|golf)/.test(texto)) {
-      return 'olimpicos';
-    }
-
-    return 'futbol';
-  }
-
-  private normalizar(valor: string): string {
-    return valor
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
+    return null;
   }
 }
